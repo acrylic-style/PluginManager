@@ -31,9 +31,9 @@ public class Main extends JavaPlugin {
 		try {
 			Bukkit.getServer().getLogger().info("PluginManager is enabled!");
 		} catch(Exception e) {
-			Bukkit.getServer().getLogger().severe("Plugin initialize error! Unloading...");
-			Manager.getPluginUtil().unloadPlugin(null, "PluginManager");
+			Bukkit.getServer().getLogger().severe("Plugin initialize error! Unloading... and Please see errors.");
 			e.printStackTrace();
+			Manager.getPluginUtil().unloadPlugin(null, "PluginManager");
 		}
 	}
 
@@ -42,7 +42,7 @@ public class Main extends JavaPlugin {
 		try {
 		Bukkit.getServer().getLogger().info("PluginManager is disabled!");
 		} catch(Exception e) {
-			Bukkit.getServer().getLogger().severe("Unknown error!");
+			Bukkit.getServer().getLogger().severe("Unknown error! Please see errors.");
 			e.printStackTrace();
 		}
 	}
