@@ -33,12 +33,18 @@ public class Main extends JavaPlugin {
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().severe("Plugin initialize error! Unloading...");
 			Manager.getPluginUtil().unloadPlugin(null, "PluginManager");
+			e.printStackTrace();
 		}
 	}
 
 	@Override
 	public void onDisable() {
+		try {
 		Bukkit.getServer().getLogger().info("PluginManager is disabled!");
+		} catch(Exception e) {
+			Bukkit.getServer().getLogger().severe("Unknown error!");
+			e.printStackTrace();
+		}
 	}
 
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
