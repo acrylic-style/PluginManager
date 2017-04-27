@@ -1,6 +1,6 @@
 name: PluginManager
 main: tk.rht0910.plugin_manager.Main
-version: 0.4.1
+version: 0.4.2
 
 commands:
    unload:

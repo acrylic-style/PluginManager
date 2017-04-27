@@ -25,15 +25,26 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.google.common.io.Files;
 
 public class Main extends JavaPlugin {
-
 	@Override
 	public void onEnable() {
 		try {
-			Bukkit.getServer().getLogger().info("PluginManager is enabled!");
+			Bukkit.getServer().getLogger().info("PluginManager is initializing...");
+			Bukkit.getServer().getLogger().info("PluginManager is initialized!");
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().severe("Plugin initialize error! Disabling plugin... and Please see errors.");
 			e.printStackTrace();
 			Manager.getPluginUtil().unloadPlugin(null, "PluginManager");
+		}
+	}
+
+	@Override
+	public void onLoad() {
+		try {
+			Bukkit.getServer().getLogger().info("Loading PluginManager v0.4.2...");
+			Bukkit.getServer().getLogger().info("Loaded PluginManager v0.4.2");
+		} catch(Exception e) {
+			Bukkit.getServer().getLogger().info("Unknown error: " + e);
+			e.printStackTrace();
 		}
 	}
 
