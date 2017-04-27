@@ -111,7 +111,7 @@ public class Main extends JavaPlugin {
 					sender.sendMessage(ChatColor.RED + "An error occurred: " + e);
 					e.printStackTrace();
 				}
-				// ---
+				// ----------
 				try {
 					if(!Bukkit.getServer().getPluginManager().isPluginEnabled(Bukkit.getServer().getPluginManager().getPlugin(args[0]))) {
 						if(!Bukkit.getServer().getPluginManager().isPluginEnabled(args[0])) {
