@@ -31,7 +31,7 @@ public class Main extends JavaPlugin {
 		try {
 			Bukkit.getServer().getLogger().info("PluginManager is enabled!");
 		} catch(Exception e) {
-			Bukkit.getServer().getLogger().severe("Plugin initialize error! Unloading... and Please see errors.");
+			Bukkit.getServer().getLogger().severe("Plugin initialize error! Disabling plugin... and Please see errors.");
 			e.printStackTrace();
 			Manager.getPluginUtil().unloadPlugin(null, "PluginManager");
 		}
@@ -140,6 +140,9 @@ public class Main extends JavaPlugin {
 			DownloadFile(sender, args);
 		} else if(command.getName().equalsIgnoreCase("editor")) {
 			Manager.getPluginUtil().EditConfigFile(sender, args, args[2], args[3]);
+		} else if(command.getName().equalsIgnoreCase("viewer")) {
+			Bukkit.getServer().getLogger().warning("Opening config viewer by " + sender.toString());
+			Manager.getPluginUtil().ConfigViewer(sender, args[0], args[1]);
 		} else if(command.getName().equalsIgnoreCase("pman")) {
 			if(!sender.isOp()) {
 				sender.sendMessage(ChatColor.DARK_RED + "You are not Operator!");

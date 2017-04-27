@@ -1,6 +1,6 @@
 name: PluginManager
 main: tk.rht0910.plugin_manager.Main
-version: 0.4
+version: 0.4.1
 
 commands:
    unload:
@@ -31,3 +31,7 @@ commands:
       description: 'Open the config editor. Very dangerous. Please see BukkitDev page. projects/pluginmanagement/'
       permission: pluginmanager.editor
       usage: '/<command> [PluginName(directory)] [Config file name(default=config.yml)] [LineNumber(Count from 0)] [Config]'
+   viewer:
+      description: 'Open ConfigViewer. Return array.'
+      permission: pluginmanager.viewer
+      usage: '/<command> [ConfigDir] [ConfigFile]'

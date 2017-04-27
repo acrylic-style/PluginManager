@@ -22,8 +22,11 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.UnknownDependencyException;
 
-public final class PluginUtils {
+import com.google.common.io.Files;
 
+import tk.rht0910.plugin_manager.Manager;
+
+public final class PluginUtils {
 	public String loadPlugin(CommandSender sender, Plugin plugin, String[] args) {
 		return loadPlugin(sender, plugin.getServer().getName(), args);
 	}
@@ -68,10 +71,10 @@ public final class PluginUtils {
 						} finally {
 							if(is == 1) {
 								sender.sendMessage(ChatColor.DARK_RED + "Load is failed.");
-								Bukkit.getServer().getLogger().severe("Load is failed! : Additional information: Args[0]: \"" + args[0] + "\", Args[1]: \"" + args[1] + "\" Player: \"" + sender.getServer().getName() + "\"(IP:" + sender.getServer().getIp() + ")");
+								Bukkit.getServer().getLogger().severe("Load is failed! : Additional information: Args[0]: \"" + args[0] + "\", Args[1]: \"" + args[1] + "\" Player: \"" + sender.toString() + "\"(IP:" + sender.getServer().getIp() + ")");
 							}
 							sender.sendMessage("Load is success!");
-							Bukkit.getServer().getLogger().info("Load is success! : Additional information: Args[0]: \"" + args[0] + "\", Args[1]: \"" + args[1] + "\" Player: \"" + sender.getServer().getName() + "\"(IP:" + sender.getServer().getIp() + ")");
+							Bukkit.getServer().getLogger().info("Load is success! : Additional information: Args[0]: \"" + args[0] + "\", Args[1]: \"" + args[1] + "\" Player: \"" + sender.toString() + "\"(IP:" + sender.getServer().getIp() + ")");
 						}
 					}
 				}
@@ -96,6 +99,7 @@ public final class PluginUtils {
 
 	@SuppressWarnings({ "rawtypes", "unused" })
 	public boolean unloadPlugin(CommandSender sender, String name) {
+		/* Thank you for PlugMan Developers */
 		/* 399 */       Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin(name);
 		/*     */
 		/* 401 */       PluginManager pluginManager = Bukkit.getServer().getPluginManager();
@@ -150,27 +154,27 @@ public final class PluginUtils {
 	public boolean EditConfigFile(CommandSender sender, String[] args, String vine, String strs) {
 		if(!sender.isOp()) {
 			sender.sendMessage(ChatColor.RED + "You are not Operator!");
-			Bukkit.getServer().getLogger().severe("(operator)Tried to access Config editor by " + sender.getServer().getName());
+			Bukkit.getServer().getLogger().severe("(operator)Tried to access Config editor by " + sender.toString());
 			return false;
 		}
 		if(!sender.hasPermission("pluginmanager.editor")) {
 			sender.sendMessage(ChatColor.RED + "You don't not have permission.");
-			Bukkit.getServer().getLogger().severe("(pluginmanager.editor)Tried to access Config editor by " + sender.getServer().getName());
+			Bukkit.getServer().getLogger().severe("(pluginmanager.editor)Tried to access Config editor by " + sender.toString());
 			return false;
 		}
 		if(!sender.hasPermission("pluginmanager.admin")) {
 			sender.sendMessage(ChatColor.RED + "You don't not have permission.");
-			Bukkit.getServer().getLogger().severe("(pluginmanager.admin)Tried to access Config editor by " + sender.getServer().getName());
+			Bukkit.getServer().getLogger().severe("(pluginmanager.admin)Tried to access Config editor by " + sender.toString());
 			return false;
 		}
 		if(!sender.hasPermission("pluginmanager.super-admin")) {
 			sender.sendMessage(ChatColor.RED + "You don't not have permission.");
-			Bukkit.getServer().getLogger().severe("(pluginmanager.super-admin)Tried to access Config editor by " + sender.getServer().getName());
+			Bukkit.getServer().getLogger().severe("(pluginmanager.super-admin)Tried to access Config editor by " + sender.toString());
 			return false;
 		}
 		if(!sender.hasPermission("pluginmanager.extra-admin")) {
 			sender.sendMessage(ChatColor.RED + "You don't not have permission.");
-			Bukkit.getServer().getLogger().severe("(pluginmanager.extra-admin)Tried to access Config editor by " + sender.getServer().getName());
+			Bukkit.getServer().getLogger().severe("(pluginmanager.extra-admin)Tried to access Config editor by " + sender.toString());
 			return false;
 		}
 		int line = new Integer(vine);
@@ -188,6 +192,14 @@ public final class PluginUtils {
 			return false;
 		} else if(file.exists()) {
 			if(!file.isDirectory()) {
+				try {
+					Files.copy(file, new File(file + ".bak"));
+				} catch (IOException e) {
+					sender.sendMessage("Config backup failed.");
+					Bukkit.getServer().getLogger().severe("Config backup failed.");
+					e.printStackTrace();
+					return false;
+				}
 				try {
 					br = new BufferedReader(new FileReader(file));
 				} catch (FileNotFoundException e) {
@@ -227,13 +239,76 @@ public final class PluginUtils {
 		return true;
 	}
 
+	public boolean ConfigViewer(CommandSender sender, String configDir, String configFile) {
+		if(configDir == null) {
+			Manager.getCommand().Help(sender);
+		}
+		if(configFile == null) {
+			Manager.getCommand().Help(sender);
+		}
+		String arg1 = configDir;
+		String arg2 = configFile;
+		BufferedReader br = null;
+		File file = null;
+		file = new File("plugins/" + arg1 + "/" + arg2 + ".yml");
+		if(!file.exists()) {
+			file = new File("plugins/" + arg1 + "/" + arg2);
+		}
+		if(!file.exists()) {
+			sender.sendMessage("Can't find config file. exiting now");
+			return false;
+		} else if(file.exists()) {
+			if(!file.isDirectory()) {
+				try {
+					br = new BufferedReader(new FileReader(file));
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				}
+				if(!file.canWrite()) {
+					file.setWritable(true);
+				}
+				if(!file.canRead()) {
+					file.setReadable(true);
+				}
+				if(!file.canExecute()) {
+					file.setExecutable(true);
+				}
+				List<String> list = new ArrayList<String>();
+				String str;
+				try {
+					while((str = br.readLine()) != null){
+						list.add(str);
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				} finally {
+					try {
+						br.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+				Object[] arg = list.toArray();
+				ArrayOut(sender, arg);
+			} else {
+				sender.sendMessage(ChatColor.RED + "Selected File is Directory, cannot continue.");
+			}
+		}
+		return true;
+	}
+
+	public void ArrayOut(CommandSender sender, Object[] array) {
+		for(int i=0;i<=array.length;) {
+			sender.sendMessage("[" + i + "] " + array[i]);
+		}
+	}
 
 	public void FileWrite(CommandSender sender, Object[] args, File file) {
 		FileWriter fw = null;
 		try {
 			fw = new FileWriter(file);
 		} catch (IOException e) {
-			Bukkit.getServer().getLogger().severe("Cannot Edit config: [IOException. FileWriter object not created.] by " + sender.getServer().getName());
+			Bukkit.getServer().getLogger().severe("Cannot Edit config: [IOException. FileWriter object not created.] by " + sender.toString());
 			sender.sendMessage(ChatColor.RED + "Error!:IOException. FileWriter object not created.");
 			e.printStackTrace();
 		}
@@ -242,7 +317,7 @@ public final class PluginUtils {
 				fw.write((String)args[i] + "\r\n");
 			}
 		} catch(Exception e) {
-			Bukkit.getServer().getLogger().severe("Cannot Edit config: [Exception] by " + sender.getServer().getName());
+			Bukkit.getServer().getLogger().severe("Cannot Edit config: [Exception] by " + sender.toString());
 			sender.sendMessage(ChatColor.RED + "Error!: This error is generated by catch");
 			e.printStackTrace();
 		} finally {
