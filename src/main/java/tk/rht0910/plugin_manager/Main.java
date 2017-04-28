@@ -147,7 +147,7 @@ public class Main extends JavaPlugin {
 				sender.sendMessage(ChatColor.DARK_RED + "No permission");
 				return false;
 			}
-			Bukkit.getServer().getLogger().warning("Downloading plugin via PluginManager by " + sender.getServer().getName());
+			Bukkit.getServer().getLogger().warning("Downloading plugin via PluginManager by " + sender.toString());
 			DownloadFile(sender, args);
 		} else if(command.getName().equalsIgnoreCase("editor")) {
 			Manager.getPluginUtil().EditConfigFile(sender, args, args[2], args[3]);
@@ -204,7 +204,7 @@ public class Main extends JavaPlugin {
 				sender.sendMessage(ChatColor.AQUA + "Enabled plugin");
 			} else if(args[0] == "disable") {
 				if(!sender.isPermissionSet("pluginmanager.admin")) {
-					Bukkit.getServer().getLogger().severe("No permission: /pman disable : " + sender.getServer().getName());
+					Bukkit.getServer().getLogger().severe("No permission: /pman disable : " + sender.toString());
 					sender.sendMessage(ChatColor.DARK_RED + "No permission");
 					return false;
 				}
@@ -238,7 +238,7 @@ public class Main extends JavaPlugin {
 					return false;
 				}
 				try {
-					((CommandSender) sender.getServer()).sendMessage("Downloading plugin '" + args[1] + "(URL: " + args[2] + ")' by " + sender.getServer().getName());
+					((CommandSender) sender.getServer()).sendMessage("Downloading plugin '" + args[1] + "(URL: " + args[2] + ")' by " + sender.toString());
 					URL url = new URL(args[2]);
 					HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 					conn.setAllowUserInteraction(false);
@@ -251,7 +251,7 @@ public class Main extends JavaPlugin {
 					DataOutputStream dataOutStream = new DataOutputStream( new BufferedOutputStream( new FileOutputStream("plugins/" + args[1] + ".jar"))); // Read Data
 					byte[] b = new byte[4096]; int readByte = 0; while(-1 != (readByte = dataInStream.read(b))){ dataOutStream.write(b, 0, readByte); } // Close Stream
 					dataInStream.close(); dataOutStream.close();
-					((CommandSender) sender.getServer()).sendMessage("Downloaded plugin '" + args[1] + "(URL: " + args[2] + ")' by " + sender.getServer().getName());
+					((CommandSender) sender.getServer()).sendMessage("Downloaded plugin '" + args[1] + "(URL: " + args[2] + ")' by " + sender.toString());
 					} catch (FileNotFoundException e) { e.printStackTrace(); } catch (ProtocolException e) { e.printStackTrace(); } catch (MalformedURLException e) { e.printStackTrace(); } catch (IOException e) { e.printStackTrace(); } catch (Exception e) { e.printStackTrace();
 				}
 			}
@@ -322,7 +322,7 @@ public class Main extends JavaPlugin {
 	}
 
 	public static void DeletePlugin(CommandSender sender, String filename, String pluginName) {
-		sender.sendMessage(ChatColor.AQUA + "[PluginManager]" + ChatColor.RED + " [Warning] " + ChatColor.BLACK + "REMOVING plugin(" + pluginName + ") by " + ChatColor.DARK_RED + sender.getServer().getName());
+		sender.sendMessage(ChatColor.AQUA + "[PluginManager]" + ChatColor.RED + " [Warning] " + ChatColor.BLACK + "REMOVING plugin(" + pluginName + ") by " + ChatColor.DARK_RED + sender.toString());
 		File file = new File("plugins/" + filename + ".jar");
 		if(file.exists()) {
 			if(Bukkit.getServer().getPluginManager().isPluginEnabled(Bukkit.getServer().getPluginManager().getPlugin(pluginName))) {
@@ -334,14 +334,14 @@ public class Main extends JavaPlugin {
 					if(!dir.exists()) {
 						if(!dir.mkdirs()) {
 							Bukkit.getServer().getPluginManager().enablePlugin(Bukkit.getServer().getPluginManager().getPlugin(pluginName));
-							sender.sendMessage(ChatColor.AQUA + "[PluginManager]" + ChatColor.RED + " [Warning] " + ChatColor.BLACK + "Tried to DELETE plugin by " + ChatColor.DARK_RED + sender.getServer().getName());
+							sender.sendMessage(ChatColor.AQUA + "[PluginManager]" + ChatColor.RED + " [Warning] " + ChatColor.BLACK + "Tried to DELETE plugin by " + ChatColor.DARK_RED + sender.toString());
 							return;
 						}
 					}
 					if(!dir.canWrite()) {
 						if(!dir.setWritable(true, false)) {
 							Bukkit.getServer().getPluginManager().enablePlugin(Bukkit.getServer().getPluginManager().getPlugin(pluginName));
-							sender.sendMessage(ChatColor.AQUA + "[PluginManager]" + ChatColor.RED + " [Warning] " + ChatColor.BLACK + "Tried to DELETE plugin by " + ChatColor.DARK_RED + sender.getServer().getName());
+							sender.sendMessage(ChatColor.AQUA + "[PluginManager]" + ChatColor.RED + " [Warning] " + ChatColor.BLACK + "Tried to DELETE plugin by " + ChatColor.DARK_RED + sender.toString());
 							return;
 						}
 					}
@@ -349,43 +349,43 @@ public class Main extends JavaPlugin {
 					File to = new File("plugins/plugins_backup/" + pluginName + ".jar");
 					try {
 						Files.move(file, to);
-						sender.sendMessage("Successfully Remove plugin by " + sender.getServer().getName());
+						sender.sendMessage("Successfully Remove plugin by " + sender.toString());
 						sender.sendMessage("Successfully Remove plugin. To restore plugin, Please enter command: '/restore " + pluginName + "'");
 					} catch (IOException e) {
 						Bukkit.getServer().getPluginManager().enablePlugin(Bukkit.getServer().getPluginManager().getPlugin(pluginName));
-						sender.sendMessage(ChatColor.AQUA + "[PluginManager]" + ChatColor.RED + " [Warning] " + ChatColor.BLACK + "Tried to DELETE plugin by " + ChatColor.DARK_RED + sender.getServer().getName());
+						sender.sendMessage(ChatColor.AQUA + "[PluginManager]" + ChatColor.RED + " [Warning] " + ChatColor.BLACK + "Tried to DELETE plugin by " + ChatColor.DARK_RED + sender.toString());
 						e.printStackTrace();
 					}
 				} else {
 					Bukkit.getServer().getPluginManager().enablePlugin(Bukkit.getServer().getPluginManager().getPlugin(pluginName));
-					sender.sendMessage(ChatColor.AQUA + "[PluginManager]" + ChatColor.RED + " [Warning] " + ChatColor.BLACK + "Tried to DELETE plugin by " + ChatColor.DARK_RED + sender.getServer().getName());
+					sender.sendMessage(ChatColor.AQUA + "[PluginManager]" + ChatColor.RED + " [Warning] " + ChatColor.BLACK + "Tried to DELETE plugin by " + ChatColor.DARK_RED + sender.toString());
 					sender.sendMessage("File is not readable.");
 					return;
 				}
 			} else {
 				Bukkit.getServer().getPluginManager().enablePlugin(Bukkit.getServer().getPluginManager().getPlugin(pluginName));
-				sender.sendMessage(ChatColor.AQUA + "[PluginManager]" + ChatColor.RED + " [Warning] " + ChatColor.BLACK + "Tried to DELETE plugin by " + ChatColor.DARK_RED + sender.getServer().getName());
+				sender.sendMessage(ChatColor.AQUA + "[PluginManager]" + ChatColor.RED + " [Warning] " + ChatColor.BLACK + "Tried to DELETE plugin by " + ChatColor.DARK_RED + sender.toString());
 				sender.sendMessage("Selected file is DIRECTORY.");
 				return;
 			}
 		} else {
 			sender.sendMessage(ChatColor.RED + "Selected file is not exists!");
-			sender.sendMessage(ChatColor.AQUA + "[PluginManager]" + ChatColor.RED + " [Warning] " + ChatColor.BLACK + "Tried to DELETE plugin by " + ChatColor.DARK_RED + sender.getServer().getName());
+			sender.sendMessage(ChatColor.AQUA + "[PluginManager]" + ChatColor.RED + " [Warning] " + ChatColor.BLACK + "Tried to DELETE plugin by " + ChatColor.DARK_RED + sender.toString());
 			return;
 		}
 	}
 
 
 	public static void RestorePlugin(CommandSender sender, String pluginName) {
-		sender.sendMessage(ChatColor.AQUA + "[PluginManager]" + ChatColor.YELLOW + " [Warning] " + ChatColor.BLACK + "Restoring plugin(" + pluginName + ") by " + sender.getServer().getName());
+		sender.sendMessage(ChatColor.AQUA + "[PluginManager]" + ChatColor.YELLOW + " [Warning] " + ChatColor.BLACK + "Restoring plugin(" + pluginName + ") by " + sender.toString());
 		File from = new File("plugins/plugins_backup/" + pluginName + ".jar");
 		File to = new File("plugins/" + pluginName + ".jar");
 		try {
 			Files.move(from, to);
-			sender.sendMessage("Successfully Restore plugin by " + sender.getServer().getName());
+			sender.sendMessage("Successfully Restore plugin by " + sender.toString());
 			sender.sendMessage("Successfully Restore plugin. To Load and enable: /load " + pluginName);
 		} catch (IOException e) {
-			sender.sendMessage(ChatColor.AQUA + "[PluginManager]" + ChatColor.RED + " [Warning] " + ChatColor.BLACK + "Tried to RESTORE plugin by " + ChatColor.DARK_RED + sender.getServer().getName());
+			sender.sendMessage(ChatColor.AQUA + "[PluginManager]" + ChatColor.RED + " [Warning] " + ChatColor.BLACK + "Tried to RESTORE plugin by " + ChatColor.DARK_RED + sender.toString());
 			e.printStackTrace();
 		}
 	}
@@ -394,7 +394,7 @@ public class Main extends JavaPlugin {
 
 	public static void DownloadFile(CommandSender sender, String[] args) {
 		try {
-			sender.sendMessage(ChatColor.RED + "Downloading plugin" + ChatColor.BLACK + " '" + args[0] + "(URL: " + args[1] + ")' by " + sender.getServer().getName());
+			sender.sendMessage(ChatColor.RED + "Downloading plugin" + ChatColor.BLACK + " '" + args[0] + "(URL: " + args[1] + ")' by " + sender.toString());
 			URL url = new URL(args[1]);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setAllowUserInteraction(false);
@@ -408,7 +408,7 @@ public class Main extends JavaPlugin {
 			DataOutputStream dataOutStream = new DataOutputStream( new BufferedOutputStream( new FileOutputStream("plugins/" + args[0] + ".jar"))); // Read Data
 			byte[] b = new byte[4096]; int readByte = 0; while(-1 != (readByte = dataInStream.read(b))){ dataOutStream.write(b, 0, readByte); } // Close Stream
 			dataInStream.close(); dataOutStream.close();
-			sender.sendMessage(ChatColor.RED + "Downloaded plugin" + ChatColor.BLACK + " '" + args[0] + "(URL: " + args[1] + ")' by " + sender.getServer().getName());
+			sender.sendMessage(ChatColor.RED + "Downloaded plugin" + ChatColor.BLACK + " '" + args[0] + "(URL: " + args[1] + ")' by " + sender.toString());
 			} catch (FileNotFoundException e) { e.printStackTrace(); } catch (ProtocolException e) { e.printStackTrace(); } catch (MalformedURLException e) { e.printStackTrace(); } catch (IOException e) { e.printStackTrace(); } catch (Exception e) { e.printStackTrace();
 		}
 	}
