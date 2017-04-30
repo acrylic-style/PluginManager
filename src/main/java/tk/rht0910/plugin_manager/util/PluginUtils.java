@@ -263,6 +263,7 @@ public final class PluginUtils {
 					br = new BufferedReader(new FileReader(file));
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
+					return false;
 				}
 				if(!file.canWrite()) {
 					file.setWritable(true);
@@ -281,26 +282,26 @@ public final class PluginUtils {
 					}
 				} catch (IOException e) {
 					e.printStackTrace();
+					return false;
 				} finally {
 					try {
 						br.close();
 					} catch (IOException e) {
 						e.printStackTrace();
+						return false;
 					}
 				}
 				Object[] arg = list.toArray();
-				ArrayOut(sender, arg);
+				for(int i=0;i<=arg.length;) {
+					sender.sendMessage("[" + i + "] " + arg[i]);
+				}
+				return true;
 			} else {
 				sender.sendMessage(ChatColor.RED + "Selected File is Directory, cannot continue.");
+				return false;
 			}
 		}
 		return true;
-	}
-
-	public void ArrayOut(CommandSender sender, Object[] array) {
-		for(int i=0;i<=array.length;) {
-			sender.sendMessage("[" + i + "] " + array[i]);
-		}
 	}
 
 	public void FileWrite(CommandSender sender, Object[] args, File file) {

@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>tk.rht0910.plugin_manager</groupId>
   <artifactId>PluginManager</artifactId>
-  <version>0.4.2</version>
+  <version>0.4.3</version>
   <name>PluginManager</name>
      <build>
    <plugins>
