@@ -292,7 +292,8 @@ public final class PluginUtils {
 					}
 				}
 				Object[] arg = list.toArray();
-				for(int i=0;i<=arg.length;) {
+				for(int i=0;i<=arg.length;i++) {
+					sender.sendMessage("" + arg.length);
 					sender.sendMessage("[" + i + "] " + arg[i]);
 				}
 				return true;
