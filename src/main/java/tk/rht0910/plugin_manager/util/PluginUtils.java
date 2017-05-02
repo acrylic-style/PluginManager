@@ -51,7 +51,9 @@ public final class PluginUtils {
 								if(!Bukkit.getServer().getPluginManager().isPluginEnabled(args[0])) {
 									Bukkit.getServer().getPluginManager().loadPlugin(file);
 									Plugin pm = Bukkit.getServer().getPluginManager().getPlugin(args[0]);
-									Bukkit.getServer().getPluginManager().enablePlugin(pm);
+									if(!Bukkit.getServer().getPluginManager().isPluginEnabled(pm)) {
+										Bukkit.getServer().getPluginManager().enablePlugin(pm);
+									}
 								}
 							}
 						} catch(InvalidPluginException e) {
