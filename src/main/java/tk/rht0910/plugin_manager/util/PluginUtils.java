@@ -195,7 +195,7 @@ public final class PluginUtils {
 				try {
 					Files.copy(file, new File(file + ".bak"));
 				} catch (IOException e) {
-					sender.sendMessage("Config backup failed.");
+					sender.sendMessage("Config backup failed. exiting");
 					Bukkit.getServer().getLogger().severe("Config backup failed. exiting");
 					e.printStackTrace();
 					return false;
