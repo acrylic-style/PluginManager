@@ -40,8 +40,8 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onLoad() {
 		try {
-			Bukkit.getServer().getLogger().info("Loading PluginManager v0.4.2...");
-			Bukkit.getServer().getLogger().info("Loaded PluginManager v0.4.2");
+			Bukkit.getServer().getLogger().info("Loading PluginManager v0.4.5...");
+			Bukkit.getServer().getLogger().info("Loaded PluginManager v0.4.5");
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().info("Unknown error: " + e);
 			e.printStackTrace();
