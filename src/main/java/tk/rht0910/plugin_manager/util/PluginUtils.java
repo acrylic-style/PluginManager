@@ -240,6 +240,10 @@ public final class PluginUtils {
 	}
 
 	public boolean ConfigViewer(CommandSender sender, String configDir, String configFile) {
+		return ConfigViewer(sender, configDir, configFile, null);
+	}
+
+	public boolean ConfigViewer(CommandSender sender, String configDir, String configFile, Integer line_option) {
 		if(configDir == null) {
 			Manager.getCommand().Help(sender);
 		}
@@ -276,24 +280,40 @@ public final class PluginUtils {
 				}
 				List<String> list = new ArrayList<String>();
 				String str;
-				try {
-					while((str = br.readLine()) != null){
-						list.add(str);
-					}
-				} catch (IOException e) {
-					e.printStackTrace();
-					return false;
-				} finally {
 					try {
-						br.close();
+						while((str = br.readLine()) != null){
+							list.add(str);
+						}
 					} catch (IOException e) {
 						e.printStackTrace();
 						return false;
+					} finally {
+						try {
+							br.close();
+						} catch (IOException e) {
+							e.printStackTrace();
+							return false;
+						}
+					}
+				if(line_option != null) {
+					try {
+						for(int i=0; i<=list.size(); i++) {
+							if(i != line_option) {
+								list.remove(i);
+							} else {
+								list.set(0, (String) list.toArray()[line_option]);
+							}
+						}
+					} finally {
+						try {
+							br.close();
+						} catch(IOException e) {
+							e.printStackTrace();
+						}
 					}
 				}
 				Object[] arg = list.toArray();
 				for(int i=0;i<=arg.length;i++) {
-					sender.sendMessage("" + arg.length);
 					sender.sendMessage("[" + i + "] " + arg[i]);
 				}
 				return true;

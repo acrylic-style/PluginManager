@@ -153,7 +153,11 @@ public class Main extends JavaPlugin {
 			Manager.getPluginUtil().EditConfigFile(sender, args, args[2], args[3]);
 		} else if(command.getName().equalsIgnoreCase("viewer")) {
 			Bukkit.getServer().getLogger().warning("Opening config viewer by " + sender.toString());
-			Manager.getPluginUtil().ConfigViewer(sender, args[0], args[1]);
+			if(args[2] == null || args[2] == "") {
+				Manager.getPluginUtil().ConfigViewer(sender, args[0], args[1]);
+			} else {
+				Manager.getPluginUtil().ConfigViewer(sender, args[0], args[1], new Integer(args[2]));
+			}
 		} else if(command.getName().equalsIgnoreCase("pman")) {
 			if(!sender.isOp()) {
 				sender.sendMessage(ChatColor.DARK_RED + "You are not Operator!");
