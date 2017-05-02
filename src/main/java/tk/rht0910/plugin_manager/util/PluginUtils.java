@@ -39,8 +39,8 @@ public final class PluginUtils {
 				for(int i=0; i< objFiles.length; i++ ) {
 					File file = objFiles[i];
 					String file_str = args[0];
-					if(file_str.length() < 1) {
-						sender.sendMessage(ChatColor.RED + "Not allowed plugin file name length is 1 or order.");
+					if(file_str.length() < 2) {
+						sender.sendMessage(ChatColor.RED + "Not allowed plugin file name length is 2 or order.");
 					}
 					Pattern p = Pattern.compile("\\w");
 					Matcher m = p.matcher(file_str);
