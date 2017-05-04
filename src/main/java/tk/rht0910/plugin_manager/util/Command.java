@@ -4,7 +4,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
 public final class Command {
-	public void Help(CommandSender sender) {
+	public boolean Help(CommandSender sender) {
 		sender.sendMessage(ChatColor.GREEN + "----- Plugin Manager Help -----");
 		sender.sendMessage(ChatColor.RED + "----- <Requirement args> [Permission] - Information");
 		sender.sendMessage(ChatColor.GRAY + "----- <[Options]> -----");
@@ -19,5 +19,6 @@ public final class Command {
 		sender.sendMessage(ChatColor.DARK_RED + "--- Required permission [pluginmanager.admin], [pluginmanager.super-admin] and [pluginmanager.extra-admin] ---");
 		sender.sendMessage(ChatColor.AQUA + "- /editor <ConfigDir> <ConfigFile> <Line(Count from 0)> <e=xample> [pluginmanager.editor]");
 		sender.sendMessage(ChatColor.AQUA + "- /viewer <ConfigDir> <ConfigFile> [pluginmanager.viewer]");
+		return true;
 	}
 }
