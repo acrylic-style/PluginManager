@@ -1,9 +1,9 @@
 
 # PluginManager
 
-<a href="http://point.rht0910.tk:8080/job/PluginManager"><img src="http://point.rht0910.tk:8080/job/PluginManager/badge/icon"></a>
+Jenkins: <a href="http://point.rht0910.tk:8080/job/PluginManager"><img src="http://point.rht0910.tk:8080/job/PluginManager/badge/icon"></a>
 
-[![Build Status](https://travis-ci.org/rht0910/PluginManager.svg?branch=master)](https://travis-ci.org/rht0910/PluginManager)
+TravisCI: [![Build Status](https://travis-ci.org/rht0910/PluginManager.svg?branch=master)](https://travis-ci.org/rht0910/PluginManager)
 
 PluginManager is Bukkit plugin.
 
