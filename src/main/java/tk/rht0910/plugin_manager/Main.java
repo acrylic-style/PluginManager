@@ -56,7 +56,7 @@ public class Main extends JavaPlugin {
 			if(args[0] == "help") {
 				Manager.getCommand().ShowHelp(sender);
 				sender.sendMessage(ChatColor.AQUA + "PluginManager 0.4.5" + ChatColor.RED + "(dev)");
-			} else if(args[0] == "load") {
+			} else if(args[0].equalsIgnoreCase("load")) {
 				if(!sender.isPermissionSet("pluginmanager.admin")) {
 					sender.sendMessage(ChatColor.DARK_RED + "No permission");
 					return false;
@@ -66,21 +66,21 @@ public class Main extends JavaPlugin {
 					return false;
 				}
 				Manager.getPluginUtil().loadPlugin(sender, args[1]);
-			} else if(args[0] == "disable") {
+			} else if(args[0].equalsIgnoreCase("disable")) {
 				if(!sender.isPermissionSet("pluginmanager.admin")) {
 					Bukkit.getServer().getLogger().severe("No permission: /pman disable : " + sender.toString());
 					sender.sendMessage(ChatColor.DARK_RED + "No permission");
 					return false;
 				}
 				Manager.getPluginUtil().unloadPlugin(sender, args[1]);
-			} else if(args[0] == "unload") {
+			} else if(args[0].equalsIgnoreCase("unload")) {
 				if(!sender.isPermissionSet("pluginmanager.admin")) {
 					Bukkit.getServer().getLogger().severe("No permission: /pman unload : " + sender.toString());
 					sender.sendMessage(ChatColor.DARK_RED + "No permission");
 					return false;
 				}
 				Manager.getPluginUtil().unloadPlugin(sender, args[1]);
-			} else if(args[0] == "download") {
+			} else if(args[0].equalsIgnoreCase("download")) {
 				if(!sender.isOp()) {
 					sender.sendMessage(ChatColor.DARK_RED + "You are not Operator!");
 					return false;
@@ -89,16 +89,12 @@ public class Main extends JavaPlugin {
 					sender.sendMessage(ChatColor.DARK_RED + "No permission");
 					return false;
 				}
-				if(args[1] == null) {
-					sender.sendMessage(ChatColor.RED + "Not enough args");
-					return false;
-				}
-				if(args[2] == null) {
+				if(args[1] == null || args[2] == null) {
 					sender.sendMessage(ChatColor.RED + "Not enough args");
 					return false;
 				}
 				Manager.getPluginUtil().Download(sender, args[1], args[2]);
-			} else if(args[0] == "restore") {
+			} else if(args[0].equalsIgnoreCase("restore")) {
 				if(!sender.isOp()) {
 					sender.sendMessage(ChatColor.DARK_RED + "You are not Operator!");
 					return false;
@@ -116,7 +112,7 @@ public class Main extends JavaPlugin {
 					return false;
 				}
 				Manager.getPluginUtil().RestorePlugin(sender, args[1]);
-			} else if(args[0] == "delete") {
+			} else if(args[0].equalsIgnoreCase("delete")) {
 				if(!sender.isOp()) {
 					sender.sendMessage(ChatColor.DARK_RED + "You are not Operator!");
 					return false;
@@ -129,19 +125,19 @@ public class Main extends JavaPlugin {
 					sender.sendMessage(ChatColor.DARK_RED + "No permission");
 					return false;
 				}
-				if(args[0] == null) {
+				if(args[1] == null || args[2] == null) {
 					sender.sendMessage(ChatColor.RED + "Not enough args, cannot continue.");
 					return false;
 				}
 				Manager.getPluginUtil().DeletePlugin(sender, args[1], args[2]);
-			} else if(args[0] == "viewer") {
+			} else if(args[0].equalsIgnoreCase("viewer")) {
 				Bukkit.getServer().getLogger().warning("Opening config viewer by " + sender.toString());
 				//if(args[2] == null || args[2] == "") {
 					Manager.getPluginUtil().ConfigViewer(sender, args[1], args[2]);
 				//} else {
 				//	Manager.getPluginUtil().ConfigViewer(sender, args[0], args[1], new Integer(args[2]));
 				//}
-			} else if(args[0] == "editor") {
+			} else if(args[0].equalsIgnoreCase("editor")) {
 				Manager.getPluginUtil().EditConfigFile(sender, args[1], args[2], args[3], args[4]);
 			} else {
 				sender.sendMessage(ChatColor.RED + "Invalid args");
