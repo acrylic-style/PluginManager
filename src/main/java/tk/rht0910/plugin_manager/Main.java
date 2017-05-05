@@ -25,8 +25,8 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onLoad() {
 		try {
-			Bukkit.getServer().getLogger().info("Loading PluginManager v0.4.5...");
-			Bukkit.getServer().getLogger().info("Loaded PluginManager v0.4.5");
+			Bukkit.getServer().getLogger().info("Loading PluginManager v0.5...");
+			Bukkit.getServer().getLogger().info("Loaded PluginManager v0.5");
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().info("Unknown error: " + e);
 			e.printStackTrace();
@@ -55,7 +55,7 @@ public class Main extends JavaPlugin {
 			}
 			if(args[0] == "help") {
 				Manager.getCommand().ShowHelp(sender);
-				sender.sendMessage(ChatColor.AQUA + "PluginManager 0.4.5" + ChatColor.RED + "(dev)");
+				sender.sendMessage(ChatColor.AQUA + "PluginManager 0.5" + ChatColor.RED + "(dev)");
 			} else if(args[0].equalsIgnoreCase("load")) {
 				if(!sender.isPermissionSet("pluginmanager.admin")) {
 					sender.sendMessage(ChatColor.DARK_RED + "No permission");
