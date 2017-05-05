@@ -162,9 +162,10 @@ public class Main extends JavaPlugin {
 			//	Manager.getPluginUtil().ConfigViewer(sender, args[0], args[1], new Integer(args[2]));
 			//}
 		} else if(command.getName().equalsIgnoreCase("pman")) {
-			if(args == null) {
+			if(args.length == 0) {
 				Manager.getCommand().ShowHelp(Manager.getSender(sender));
-			} else if(args[0] == "help") {
+			}
+			if(args[0] == "help") {
 				Manager.getCommand().ShowHelp(Manager.getSender(sender));
 			} else if(args[0] == "load") {
 				if(!sender.isPermissionSet("pluginmanager.admin")) {
@@ -257,6 +258,9 @@ public class Main extends JavaPlugin {
 					((CommandSender) sender.getServer()).sendMessage("Downloaded plugin '" + args[1] + "(URL: " + args[2] + ")' by " + sender.toString());
 					} catch (FileNotFoundException e) { e.printStackTrace(); } catch (ProtocolException e) { e.printStackTrace(); } catch (MalformedURLException e) { e.printStackTrace(); } catch (IOException e) { e.printStackTrace(); } catch (Exception e) { e.printStackTrace();
 				}
+			} else {
+				Manager.getSender(sender).sendMessage(ChatColor.RED + "Invalid args");
+				Manager.getCommand().ShowHelp(Manager.getSender(sender));
 			}
 		} else if(command.getName().equalsIgnoreCase("edit")) {
 			if(!sender.isOp()) {
