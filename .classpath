@@ -35,5 +35,6 @@
 	<classpathentry kind="lib" path="D:/downloads/PlugMan.jar"/>
 	<classpathentry kind="lib" path="D:/downloads/craftbukkit-0.0.1-SNAPSHOT.1000.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Owner/AppData/Roaming/.minecraft/libraries/com/google/guava/guava/17.0/guava-17.0.jar"/>
+	<classpathentry kind="lib" path="D:/downloads/DiscordSRV-Build-13.6.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
