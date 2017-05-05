@@ -239,11 +239,11 @@ public final class PluginUtils {
 		return true;
 	}
 
-	public boolean ConfigViewer(CommandSender sender, String configDir, String configFile) {
-		return ConfigViewer(sender, configDir, configFile, null);
-	}
+	//public boolean ConfigViewer(CommandSender sender, String configDir, String configFile) {
+	//	return ConfigViewer(sender, configDir, configFile, null);
+	//}
 
-	public boolean ConfigViewer(CommandSender sender, String configDir, String configFile, Integer line_option) {
+	public boolean ConfigViewer(CommandSender sender, String configDir, String configFile/*, Integer line_option) {*/ ) {
 		if(configDir == null) {
 			sender.sendMessage(ChatColor.GREEN + "----- Plugin Manager Help -----");
 			sender.sendMessage(ChatColor.RED + "----- <Requirement args> [Permission] - Information");
@@ -323,7 +323,7 @@ public final class PluginUtils {
 							return false;
 						}
 					}
-				if(line_option != null) {
+				/*if(line_option != null) {
 					try {
 						for(int i=0; i<=list.size(); i++) {
 							if(i != line_option) {
@@ -339,7 +339,7 @@ public final class PluginUtils {
 							e.printStackTrace();
 						}
 					}
-				}
+				}*/
 				Object[] arg = list.toArray();
 				for(int i=0;i<=arg.length;i++) {
 					sender.sendMessage("[" + i + "] " + arg[i]);

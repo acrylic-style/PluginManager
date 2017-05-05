@@ -4,7 +4,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
 public final class Command {
-	public boolean Help(CommandSender sender) {
+	public boolean ShowHelp(CommandSender sender) {
 		sender.sendMessage(ChatColor.GREEN + "----- Plugin Manager Help -----");
 		sender.sendMessage(ChatColor.RED + "----- <Requirement args> [Permission] - Information");
 		sender.sendMessage(ChatColor.GRAY + "----- <[Options]> -----");
