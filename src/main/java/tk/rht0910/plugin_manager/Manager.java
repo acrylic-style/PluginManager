@@ -10,16 +10,11 @@ import tk.rht0910.plugin_manager.util.PluginUtils;
 public abstract class Manager {
 	private static PluginUtils pluginUtils;
 	private static Command command;
-	private static Main instance;
-	private static Main main;
 	private static CommandSender sender;
 
 	static {
 		pluginUtils = new PluginUtils();
 		command = new Command();
-		new Main();
-		instance = Main.instance;
-		main = new Main();
 	}
 
 	public static PluginUtils getPluginUtil() {
@@ -30,13 +25,6 @@ public abstract class Manager {
 		return command;
 	}
 
-	public static Main getInstance() {
-		return instance;
-	}
-
-	public static Main getMain() {
-		return main;
-	}
 
 	public static CommandSender getSender(CommandSender sender) {
 		Manager.sender = sender;

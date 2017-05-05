@@ -162,7 +162,7 @@ public class Main extends JavaPlugin {
 			//	Manager.getPluginUtil().ConfigViewer(sender, args[0], args[1], new Integer(args[2]));
 			//}
 		} else if(command.getName().equalsIgnoreCase("pman")) {
-			if(args.length == 0) {
+			if(args.length == 0 || args.equals(null)) {
 				try {
 					Manager.getCommand().ShowHelp(sender);
 				} catch(ExceptionInInitializerError e) {
