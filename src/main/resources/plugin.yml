@@ -3,35 +3,7 @@ main: tk.rht0910.plugin_manager.Main
 version: 0.4.5
 
 commands:
-   unload:
-      description: Unload plugin
-      permission: pluginmanager.unload
-      usage: /<command> [plugin]
-   load:
-      description: Enable plugin
-      permission: pluginmanager.load
-      usage: /<command> [plugin or file]
-   download:
-      description: Download a plugin.
-      permission: pluginmanager.download
-      usage: /<command> [FileName] [URL]
    pman:
-      description: Root command the Plugin Manager.
-      permission: pluginmanager.help
+      description: Root command in PluginManager.
       usage: /<command> [args]
-   delete:
-      description: Remove a plugin from File system.(but file moving.) Removed file is NOT readable!(To reading, Please restore.)
-      permission: pluginmanager.delete
-      usage: /<command> [filename] [pluginName]
-   restore:
-      description: Restore from file system(Copy file). but not auto loading and enable.
-      permission: pluginmanager.restore
-      usage: /<command> [pluginName]
-   editor:
-      description: 'Open the config editor. Very dangerous. Please see BukkitDev page. projects/pluginmanagement/'
-      permission: pluginmanager.editor
-      usage: '/<command> [PluginName(directory)] [Config file name(default=config.yml)] [LineNumber(Count from 0)] [Config]'
-   viewer:
-      description: 'Open ConfigViewer. Return array.'
-      permission: pluginmanager.viewer
-      usage: '/<command> [ConfigDir] [ConfigFile]'
+      permission: pluginmanager.help

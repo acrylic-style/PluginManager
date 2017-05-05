@@ -8,15 +8,18 @@ import tk.rht0910.plugin_manager.Manager;
 public final class Command {
 	public boolean ShowHelp(CommandSender sender) {
 		Manager.getSender(sender).sendMessage(ChatColor.GREEN + "----- Plugin Manager Help -----");
-		Manager.getSender(sender).sendMessage(ChatColor.RED + "----- <Required> [Optional] - [Permission] - Information");
-		Manager.getSender(sender).sendMessage(ChatColor.AQUA + " - /pman [arg] [pluginmanager.help(Defaults granted permission for all operators.)] - Displays this.");
-		Manager.getSender(sender).sendMessage(ChatColor.AQUA + "- /load(/pman load) <Plugin name or Plugin File> - Load or Enable a plugin");
-		Manager.getSender(sender).sendMessage(ChatColor.AQUA + "- /unload(/pman disable) <Plugin name> - Disable plugin");
-		Manager.getSender(sender).sendMessage(ChatColor.AQUA + "- /download(/pman download) <FileName> <URL> - Download plugin");
-		Manager.getSender(sender).sendMessage(ChatColor.AQUA + "- /delete <(Current)FileName> <PluginName(or Backup file name)>");
-		Manager.getSender(sender).sendMessage(ChatColor.AQUA + "- /restore <FileName>");
-		Manager.getSender(sender).sendMessage(ChatColor.AQUA + "- /editor <Dir> <File> <Line(Count from 0)> <value>");
-		Manager.getSender(sender).sendMessage(ChatColor.AQUA + "- /viewer <Dir> <File>");
+		Manager.getSender(sender).sendMessage(ChatColor.RED + "----- <Required> [Optional] - Information");
+		Manager.getSender(sender).sendMessage(ChatColor.AQUA + " - /pman help - Displays this.");
+		Manager.getSender(sender).sendMessage(ChatColor.AQUA + "- /pman load <Plugin name or Plugin File> - Load or Enable a plugin");
+		Manager.getSender(sender).sendMessage(ChatColor.AQUA + "- /pman unload(or /pman disable) <Plugin name> - Disable plugin");
+		Manager.getSender(sender).sendMessage(ChatColor.AQUA + "- /pman download <FileName> <URL> - Download plugin");
+		Manager.getSender(sender).sendMessage(ChatColor.AQUA + "- /pman delete <(Current)FileName> <PluginName(or Backup file name)>");
+		Manager.getSender(sender).sendMessage(ChatColor.AQUA + "- /pman restore <FileName>");
+		Manager.getSender(sender).sendMessage(ChatColor.AQUA + "- /pman editor <Dir> <File> <Line(Count from 0)> <value>");
+		Manager.getSender(sender).sendMessage(ChatColor.AQUA + "- /pman viewer <Dir> <File>");
+		Manager.getSender(sender).sendMessage(ChatColor.AQUA + "- BukkitDev(Project page): https://dev.bukkit.org/projects/pluginmanagement/");
+		Manager.getSender(sender).sendMessage(ChatColor.AQUA + "- Jenkins(Developer version): http://point.rht0910.tk:8080/job/PluginManager/");
+		Manager.getSender(sender).sendMessage(ChatColor.AQUA + "- Source code: https://github.com/rht0910/PluginManager/");
 		return true;
 	}
 }

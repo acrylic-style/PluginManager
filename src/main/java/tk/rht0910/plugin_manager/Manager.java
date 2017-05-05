@@ -7,14 +7,16 @@ import org.bukkit.entity.Player;
 import tk.rht0910.plugin_manager.util.Command;
 import tk.rht0910.plugin_manager.util.PluginUtils;
 
-public abstract class Manager {
+public final class Manager {
 	private static PluginUtils pluginUtils;
 	private static Command command;
 	private static CommandSender sender;
+	private static Manager manager;
 
 	static {
 		pluginUtils = new PluginUtils();
 		command = new Command();
+		manager = new Manager();
 	}
 
 	public static PluginUtils getPluginUtil() {
@@ -45,5 +47,9 @@ public abstract class Manager {
 
 	public static boolean isSenderConsole(CommandSender sender) {
 		return Manager.getSender(sender) instanceof ConsoleCommandSender;
+	}
+
+	public static Manager getServer() {
+		return manager;
 	}
 }
