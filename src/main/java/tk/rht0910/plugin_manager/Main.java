@@ -162,12 +162,12 @@ public class Main extends JavaPlugin {
 			//	Manager.getPluginUtil().ConfigViewer(sender, args[0], args[1], new Integer(args[2]));
 			//}
 		} else if(command.getName().equalsIgnoreCase("pman")) {
+			if(!sender.isOp()) {
+				sender.sendMessage(ChatColor.RED + "You are not operator!");
+			}
 			if(args.length == 0 || args.equals(null)) {
-				try {
-					Manager.getCommand().ShowHelp(sender);
-				} catch(ExceptionInInitializerError e) {
-					e.getCause().printStackTrace();
-				}
+				sender.sendMessage(ChatColor.AQUA + "PluginManager is running on" + ChatColor.GREEN + "version 0.4.5(dev)");
+				sender.sendMessage(ChatColor.AQUA + "Available commands: '/pman help'");
 			}
 			if(args[0] == "help") {
 				Manager.getCommand().ShowHelp(sender);
