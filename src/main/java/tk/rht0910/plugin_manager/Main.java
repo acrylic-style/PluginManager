@@ -264,7 +264,7 @@ public class Main extends JavaPlugin {
 				}
 			} else {
 				sender.sendMessage(ChatColor.RED + "Invalid args");
-				Manager.getCommand().ShowHelp(Manager.getSender(sender));
+				Manager.getCommand().ShowHelp(sender);
 			}
 		} else if(command.getName().equalsIgnoreCase("edit")) {
 			if(!sender.isOp()) {
