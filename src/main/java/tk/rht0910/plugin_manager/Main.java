@@ -163,7 +163,11 @@ public class Main extends JavaPlugin {
 			//}
 		} else if(command.getName().equalsIgnoreCase("pman")) {
 			if(args.length == 0) {
-				Manager.getCommand().ShowHelp(sender);
+				try {
+					Manager.getCommand().ShowHelp(sender);
+				} catch(ExceptionInInitializerError e) {
+					e.getCause().printStackTrace();
+				}
 			}
 			if(args[0] == "help") {
 				Manager.getCommand().ShowHelp(sender);
