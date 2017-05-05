@@ -24,6 +24,8 @@ import org.bukkit.plugin.UnknownDependencyException;
 
 import com.google.common.io.Files;
 
+import tk.rht0910.plugin_manager.Manager;
+
 public final class PluginUtils {
 	public String loadPlugin(CommandSender sender, Plugin plugin, String[] args) {
 		return loadPlugin(sender, plugin.getServer().getName(), args);
@@ -245,38 +247,10 @@ public final class PluginUtils {
 
 	public boolean ConfigViewer(CommandSender sender, String configDir, String configFile/*, Integer line_option) {*/ ) {
 		if(configDir == null) {
-			sender.sendMessage(ChatColor.GREEN + "----- Plugin Manager Help -----");
-			sender.sendMessage(ChatColor.RED + "----- <Requirement args> [Permission] - Information");
-			sender.sendMessage(ChatColor.GRAY + "----- <[Options]> -----");
-			sender.sendMessage(ChatColor.AQUA + "- /pman <[help]> [pluginmanager.help(Defaults granted permission for all operators.)] - Displays this.");
-			sender.sendMessage(ChatColor.DARK_BLUE + "--- Requires permission [pluginmanager.admin] ---");
-			sender.sendMessage(ChatColor.AQUA + "- /load(/pman load) <Plugin name or Plugin File> [pluginmanager.load] - Load or Enable a plugin");
-			sender.sendMessage(ChatColor.AQUA + "- /unload(/pman disable) <Plugin name> [pluginmanager.unload] - Disable plugin");
-			sender.sendMessage(ChatColor.AQUA + "- /download(/pman download) <FileName> <URL> [pluginmanager.download] - Download plugin");
-			sender.sendMessage(ChatColor.DARK_BLUE + "--- Requires permission [pluginmanager.admin] and [pluginmanager.super-admin] ---");
-			sender.sendMessage(ChatColor.AQUA + "- /delete <(Current)FileName> <PluginName(or Backup file name)> [pluginmanager.delete]");
-			sender.sendMessage(ChatColor.AQUA + "- /restore <FileName> [pluginmanager.restore]");
-			sender.sendMessage(ChatColor.DARK_RED + "--- Required permission [pluginmanager.admin], [pluginmanager.super-admin] and [pluginmanager.extra-admin] ---");
-			sender.sendMessage(ChatColor.AQUA + "- /editor <ConfigDir> <ConfigFile> <Line(Count from 0)> <e=xample> [pluginmanager.editor]");
-			sender.sendMessage(ChatColor.AQUA + "- /viewer <ConfigDir> <ConfigFile> [pluginmanager.viewer]");
-			// Manager.getCommand().Help(sender);
+			Manager.getCommand().ShowHelp(Manager.getSender(sender));
 		}
 		if(configFile == null) {
-			sender.sendMessage(ChatColor.GREEN + "----- Plugin Manager Help -----");
-			sender.sendMessage(ChatColor.RED + "----- <Requirement args> [Permission] - Information");
-			sender.sendMessage(ChatColor.GRAY + "----- <[Options]> -----");
-			sender.sendMessage(ChatColor.AQUA + "- /pman <[help]> [pluginmanager.help(Defaults granted permission for all operators.)] - Displays this.");
-			sender.sendMessage(ChatColor.DARK_BLUE + "--- Requires permission [pluginmanager.admin] ---");
-			sender.sendMessage(ChatColor.AQUA + "- /load(/pman load) <Plugin name or Plugin File> [pluginmanager.load] - Load or Enable a plugin");
-			sender.sendMessage(ChatColor.AQUA + "- /unload(/pman disable) <Plugin name> [pluginmanager.unload] - Disable plugin");
-			sender.sendMessage(ChatColor.AQUA + "- /download(/pman download) <FileName> <URL> [pluginmanager.download] - Download plugin");
-			sender.sendMessage(ChatColor.DARK_BLUE + "--- Requires permission [pluginmanager.admin] and [pluginmanager.super-admin] ---");
-			sender.sendMessage(ChatColor.AQUA + "- /delete <(Current)FileName> <PluginName(or Backup file name)> [pluginmanager.delete]");
-			sender.sendMessage(ChatColor.AQUA + "- /restore <FileName> [pluginmanager.restore]");
-			sender.sendMessage(ChatColor.DARK_RED + "--- Required permission [pluginmanager.admin], [pluginmanager.super-admin] and [pluginmanager.extra-admin] ---");
-			sender.sendMessage(ChatColor.AQUA + "- /editor <ConfigDir> <ConfigFile> <Line(Count from 0)> <e=xample> [pluginmanager.editor]");
-			sender.sendMessage(ChatColor.AQUA + "- /viewer <ConfigDir> <ConfigFile> [pluginmanager.viewer]");
-			// Manager.getCommand().Help(sender);
+			Manager.getCommand().ShowHelp(Manager.getSender(sender));
 		}
 		String arg1 = configDir;
 		String arg2 = configFile;

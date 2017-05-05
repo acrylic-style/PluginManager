@@ -162,8 +162,10 @@ public class Main extends JavaPlugin {
 			//	Manager.getPluginUtil().ConfigViewer(sender, args[0], args[1], new Integer(args[2]));
 			//}
 		} else if(command.getName().equalsIgnoreCase("pman")) {
-			if(args[0] == "help") {
-				Manager.getCommand().ShowHelp(sender);
+			if(args[0] == null || args[0] == "") {
+				Manager.getCommand().ShowHelp(Manager.getSender(sender));
+			} else if(args[0] == "help") {
+				Manager.getCommand().ShowHelp(Manager.getSender(sender));
 			} else if(args[0] == "load") {
 				if(!sender.isPermissionSet("pluginmanager.admin")) {
 					sender.sendMessage(ChatColor.DARK_RED + "No permission");
