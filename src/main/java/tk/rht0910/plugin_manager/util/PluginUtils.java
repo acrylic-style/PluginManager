@@ -245,7 +245,12 @@ public final class PluginUtils {
 	//	return ConfigViewer(sender, configDir, configFile, null);
 	//}
 
-	public boolean ConfigViewer(CommandSender sender, String configDir, String configFile/*, Integer line_option) {*/ ) {
+	public boolean ConfigViewer(CommandSender sender, String[] args/*, Integer line_option) {*/ ) {
+		if(args == null) {
+			Manager.getCommand().ShowHelp(Manager.getSender(sender));
+		}
+		String configDir = args[0];
+		String configFile = args[1];
 		if(configDir == null) {
 			Manager.getCommand().ShowHelp(Manager.getSender(sender));
 		}
