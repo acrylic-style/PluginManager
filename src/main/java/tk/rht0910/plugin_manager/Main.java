@@ -25,10 +25,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.google.common.io.Files;
 
 public class Main extends JavaPlugin {
+	public static Main instance = null;
+
 	@Override
 	public void onEnable() {
 		try {
 			Bukkit.getServer().getLogger().info("PluginManager is initializing...");
+			instance = this;
 			Bukkit.getServer().getLogger().info("PluginManager is initialized!");
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().severe("Plugin initialize error! Disabling plugin... and Please see errors.");
@@ -159,27 +162,7 @@ public class Main extends JavaPlugin {
 			//	Manager.getPluginUtil().ConfigViewer(sender, args[0], args[1], new Integer(args[2]));
 			//}
 		} else if(command.getName().equalsIgnoreCase("pman")) {
-			if(!sender.isOp()) {
-				sender.sendMessage(ChatColor.DARK_RED + "You are not Operator!");
-				return false;
-			}
-			/*if(args[0] == null) {
-				sender.sendMessage(ChatColor.GREEN + "----- Plugin Manager Help -----");
-				sender.sendMessage(ChatColor.RED + "----- <Requirement args> [Permission] - Information");
-				sender.sendMessage(ChatColor.GRAY + "----- <[Options]> -----");
-				sender.sendMessage(ChatColor.AQUA + "- /pman <[help]> [pluginmanager.help(Defaults granted permission for all operators.)] - Displays this.");
-				sender.sendMessage(ChatColor.DARK_BLUE + "--- Requires permission [pluginmanager.admin] ---");
-				sender.sendMessage(ChatColor.AQUA + "- /load(/pman load) <Plugin name or Plugin File> [pluginmanager.load] - Load or Enable a plugin");
-				sender.sendMessage(ChatColor.AQUA + "- /unload(/pman disable) <Plugin name> [pluginmanager.unload] - Disable plugin");
-				sender.sendMessage(ChatColor.AQUA + "- /download(/pman download) <FileName> <URL> [pluginmanager.download] - Download plugin");
-				sender.sendMessage(ChatColor.DARK_BLUE + "--- Requires permission [pluginmanager.admin] and [pluginmanager.super-admin] ---");
-				sender.sendMessage(ChatColor.AQUA + "- /delete <(Current)FileName> <PluginName(or Backup file name)> [pluginmanager.delete]");
-				sender.sendMessage(ChatColor.AQUA + "- /restore <FileName> [pluginmanager.restore]");
-				sender.sendMessage(ChatColor.DARK_RED + "--- Required permission [pluginmanager.admin], [pluginmanager.super-admin] and [pluginmanager.extra-admin] ---");
-				sender.sendMessage(ChatColor.AQUA + "- /editor <ConfigDir> <ConfigFile> <Line(Count from 0)> <e=xample> [pluginmanager.editor]");
-				sender.sendMessage(ChatColor.AQUA + "- /viewer <ConfigDir> <ConfigFile> [pluginmanager.viewer]");
-				// Manager.getCommand().Help(sender);
-		}	*/if(args[0] == "help") {
+			if(args[0] == "help") {
 				Manager.getCommand().ShowHelp(sender);
 			} else if(args[0] == "load") {
 				if(!sender.isPermissionSet("pluginmanager.admin")) {
