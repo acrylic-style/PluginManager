@@ -44,11 +44,21 @@ public final class PluginUtils {
 			Bukkit.getServer().getLogger().warning("Starting plugins load via PluginManager...");
 			File[] objFiles = (new File("plugins/")).listFiles();
 			if ( objFiles != null ) {
+				int trying = 0;
 				for(int i=0; i< objFiles.length; i++ ) {
+					if(trying == 0) {
+						trying = 1;
+					} else if(trying == 1) {
+						trying = 2;
+					} else if(trying == 2) {
+						trying = 3;
+					} else if(trying == 3) {
+						return "Giving up";
+					}
 					File file = objFiles[i];
 					String file_str = plugin;
 					if(file_str.length() < 2) {
-						sender.sendMessage(ChatColor.RED + "Not allowed plugin file name length is 2 or order.");
+						sender.sendMessage(ChatColor.RED + "Not allowed plugin file name length is 2 or older.");
 					}
 					Pattern p = Pattern.compile("\\w");
 					Matcher m = p.matcher(file_str);
@@ -63,6 +73,8 @@ public final class PluginUtils {
 										Bukkit.getServer().getPluginManager().enablePlugin(pm);
 									}
 								}
+							} else {
+								sender.sendMessage(ChatColor.RED + "This plugin is already enabled!");
 							}
 						} catch(InvalidPluginException e) {
 							e.printStackTrace();
@@ -83,7 +95,7 @@ public final class PluginUtils {
 								sender.sendMessage(ChatColor.DARK_RED + "Load is failed.");
 								Bukkit.getServer().getLogger().severe("Load is failed! : Additional information: Args[0]: \"" + plugin + "\", Args[1]: \"not defined\" Player: \"" + sender.toString() + "\"(IP:" + sender.getServer().getIp() + ")");
 							}
-							sender.sendMessage("Load is success!");
+							sender.sendMessage(ChatColor.GREEN + "Load is success!");
 							Bukkit.getServer().getLogger().info("Load is success! : Additional information: Args[0]: \"" + plugin + "\", Args[1]: \"not defined\" Player: \"" + sender.toString() + "\"(IP:" + sender.getServer().getIp() + ")");
 						}
 					}
