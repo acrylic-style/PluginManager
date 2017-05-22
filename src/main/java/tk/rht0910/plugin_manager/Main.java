@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
@@ -25,8 +26,8 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onLoad() {
 		try {
-			Bukkit.getServer().getLogger().info("Loading PluginManager v0.5...");
-			Bukkit.getServer().getLogger().info("Loaded PluginManager v0.5");
+			Bukkit.getServer().getLogger().info("Loading PluginManager v0.6...");
+			Bukkit.getServer().getLogger().info("Loaded PluginManager v0.6");
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().info("Unknown error: " + e);
 			e.printStackTrace();
@@ -38,7 +39,7 @@ public class Main extends JavaPlugin {
 		try {
 		Bukkit.getServer().getLogger().info("PluginManager is disabled!");
 		} catch(Exception e) {
-			Bukkit.getServer().getLogger().severe("Unknown error! Please see errors.");
+			Bukkit.getServer().getLogger().severe(ChatColor.DARK_RED + "Unknown error! Please see errors.");
 			e.printStackTrace();
 		}
 	}
@@ -46,16 +47,16 @@ public class Main extends JavaPlugin {
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		if(command.getName().equalsIgnoreCase("pman")) {
 			if(!sender.isOp()) {
-				sender.sendMessage(ChatColor.RED + "You are not operator!");
+				sender.sendMessage(ChatColor.RED + "You're not operator!");
 			}
 			if(args.length == 0 || args.equals(null)) {
-				sender.sendMessage(ChatColor.AQUA + "PluginManager is running on " + ChatColor.GREEN + "version 0.4.5" + ChatColor.RED + "(dev)");
+				sender.sendMessage(ChatColor.AQUA + "PluginManager is running on " + ChatColor.GREEN + "version 0.6");
 				sender.sendMessage(ChatColor.AQUA + "Available commands: '/pman help'");
 				return true;
 			}
 			if(args[0] == "help") {
 				Manager.getCommand().ShowHelp(sender);
-				sender.sendMessage(ChatColor.AQUA + "PluginManager 0.5" + ChatColor.RED + "(dev)");
+				sender.sendMessage(ChatColor.AQUA + "PluginManager 0.6" + ChatColor.AQUA + "(BETA)");
 			} else if(args[0].equalsIgnoreCase("load")) {
 				if(!sender.isPermissionSet("pluginmanager.admin")) {
 					sender.sendMessage(ChatColor.DARK_RED + "No permission");
@@ -139,6 +140,28 @@ public class Main extends JavaPlugin {
 				//}
 			} else if(args[0].equalsIgnoreCase("editor")) {
 				Manager.getPluginUtil().EditConfigFile(sender, args[1], args[2], args[3], args[4]);
+			} else if(args[0].equalsIgnoreCase("update")) {
+				if(!sender.isOp()) {
+					sender.sendMessage(ChatColor.DARK_RED + "You are not Operator!");
+					return false;
+				}
+				if(!sender.isPermissionSet("pluginmanager.admin")) {
+					sender.sendMessage(ChatColor.DARK_RED + "No permission");
+					return false;
+				}
+				sender.sendMessage(ChatColor.AQUA + "Updating plugin...(Downloading from stable build)");
+				try {
+					Manager.getPluginUtil().Download(sender, "PluginManager", "http://point.rht0910.tk:8080/job/PluginManager/lastSuccessfulBuild/artifact/target/PluginManager.jar");
+				} catch(Exception e) {
+					sender.sendMessage(ChatColor.RED + "Failed to update. (Is Download server down?)");
+					return false;
+				}
+				final Player[] players = Bukkit.getServer().getOnlinePlayers();
+				for(int i=0;i<=players.length;i++) {
+					if(players[i].isOp()) {
+						players[i].sendMessage(ChatColor.GREEN + "PluginManager is updated by " + sender.toString() + ". Please restart server.");
+					}
+				}
 			} else {
 				sender.sendMessage(ChatColor.RED + "Invalid args");
 				Manager.getCommand().ShowHelp(sender);

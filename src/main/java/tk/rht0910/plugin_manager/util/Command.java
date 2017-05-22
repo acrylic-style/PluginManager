@@ -7,7 +7,7 @@ import tk.rht0910.plugin_manager.Manager;
 
 public final class Command {
 	public boolean ShowHelp(CommandSender sender) {
-		Manager.getSender(sender).sendMessage(ChatColor.GREEN + " ----- Plugin Manager Help -----");
+		Manager.getSender(sender).sendMessage(ChatColor.GREEN + " ----- Plugin Manager[v0.6" + ChatColor.AQUA + "(BETA)" + ChatColor.AQUA + "] Help -----");
 		Manager.getSender(sender).sendMessage(ChatColor.RED + " ----- <Required> [Optional] - Information");
 		Manager.getSender(sender).sendMessage(ChatColor.AQUA + " - /pman help - Displays this.");
 		Manager.getSender(sender).sendMessage(ChatColor.AQUA + " - /pman load <Plugin name or Plugin File> - Load or Enable a plugin");

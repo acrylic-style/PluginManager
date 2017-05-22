@@ -401,7 +401,7 @@ public final class PluginUtils {
 					if(!dir.canWrite()) {
 						if(!dir.setWritable(true, false)) {
 							Bukkit.getServer().getPluginManager().enablePlugin(Bukkit.getServer().getPluginManager().getPlugin(pluginName));
-							sender.sendMessage(ChatColor.AQUA + "[PluginManager]" + ChatColor.RED + " [Warning] " + ChatColor.BLACK + "Tried to DELETE plugin by " + ChatColor.DARK_RED + sender.toString());
+							sender.sendMessage("File is not writable.");
 							return;
 						}
 					}
@@ -413,24 +413,21 @@ public final class PluginUtils {
 						sender.sendMessage("Successfully Remove plugin. To restore plugin, Please enter command: '/restore " + pluginName + "'");
 					} catch (IOException e) {
 						Bukkit.getServer().getPluginManager().enablePlugin(Bukkit.getServer().getPluginManager().getPlugin(pluginName));
-						sender.sendMessage(ChatColor.AQUA + "[PluginManager]" + ChatColor.RED + " [Warning] " + ChatColor.BLACK + "Tried to DELETE plugin by " + ChatColor.DARK_RED + sender.toString());
+						sender.sendMessage("Unexpected error occurred.");
 						e.printStackTrace();
 					}
 				} else {
 					Bukkit.getServer().getPluginManager().enablePlugin(Bukkit.getServer().getPluginManager().getPlugin(pluginName));
-					sender.sendMessage(ChatColor.AQUA + "[PluginManager]" + ChatColor.RED + " [Warning] " + ChatColor.BLACK + "Tried to DELETE plugin by " + ChatColor.DARK_RED + sender.toString());
 					sender.sendMessage("File is not readable.");
 					return;
 				}
 			} else {
 				Bukkit.getServer().getPluginManager().enablePlugin(Bukkit.getServer().getPluginManager().getPlugin(pluginName));
-				sender.sendMessage(ChatColor.AQUA + "[PluginManager]" + ChatColor.RED + " [Warning] " + ChatColor.BLACK + "Tried to DELETE plugin by " + ChatColor.DARK_RED + sender.toString());
 				sender.sendMessage("Selected file is DIRECTORY.");
 				return;
 			}
 		} else {
 			sender.sendMessage(ChatColor.RED + "Selected file is not exists!");
-			sender.sendMessage(ChatColor.AQUA + "[PluginManager]" + ChatColor.RED + " [Warning] " + ChatColor.BLACK + "Tried to DELETE plugin by " + ChatColor.DARK_RED + sender.toString());
 			return;
 		}
 	}
