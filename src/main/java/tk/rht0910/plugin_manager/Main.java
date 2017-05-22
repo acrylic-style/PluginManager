@@ -49,6 +49,7 @@ public class Main extends JavaPlugin implements Listener {
 	}
 
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+		try {
 		if(command.getName().equalsIgnoreCase("pman")) {
 			if(!sender.isOp()) {
 				sender.sendMessage(ChatColor.RED + "You're not operator!");
@@ -194,6 +195,9 @@ public class Main extends JavaPlugin implements Listener {
 				sender.sendMessage(ChatColor.RED + "Invalid args");
 				Manager.getCommand().ShowHelp(sender);
 			}
+		}
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
 		return true;
 	}
