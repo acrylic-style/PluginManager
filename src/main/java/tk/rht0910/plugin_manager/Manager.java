@@ -12,11 +12,13 @@ public final class Manager {
 	private static Command command;
 	private static CommandSender sender;
 	private static Manager manager;
+	private static Main main;
 
 	static {
 		pluginUtils = new PluginUtils();
 		command = new Command();
 		manager = new Manager();
+		main = new Main();
 	}
 
 	public static PluginUtils getPluginUtil() {
@@ -51,5 +53,14 @@ public final class Manager {
 
 	public static Manager getServer() {
 		return manager;
+	}
+
+	public static Main getMain() {
+		return main;
+	}
+
+	public static boolean getConfig(String path, Object def) {
+
+		return true;
 	}
 }

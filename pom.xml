@@ -19,14 +19,14 @@
   <repositories>
    <repository>
       <id>bukkit-repo</id>
-      <url>https://login.rht0910.tk/maven/</url>
+      <url>https://hub.spigotmc.org/nexus/public/</url>
     </repository>
  </repositories>
  <dependencies>
   <dependency>
     <groupId>org.bukkit</groupId>
     <artifactId>bukkit</artifactId>
-    <version>craftbukkit-1000</version>
+    <version>1.8-R0.1-SNAPSHOT</version>
   </dependency>
   <dependency>
     <groupId>com.google.guava</groupId>
