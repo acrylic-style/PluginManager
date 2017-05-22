@@ -13,10 +13,11 @@ public final class Command {
 		Manager.getSender(sender).sendMessage(ChatColor.AQUA + " - /pman load <Plugin name or Plugin File> - Load or Enable a plugin");
 		Manager.getSender(sender).sendMessage(ChatColor.AQUA + " - /pman unload(or /pman disable) <Plugin name> - Disable plugin");
 		Manager.getSender(sender).sendMessage(ChatColor.AQUA + " - /pman download <FileName> <URL> - Download plugin");
-		Manager.getSender(sender).sendMessage(ChatColor.AQUA + " - /pman delete <(Current)FileName> <PluginName(or Backup file name)>");
-		Manager.getSender(sender).sendMessage(ChatColor.AQUA + " - /pman restore <FileName>");
-		Manager.getSender(sender).sendMessage(ChatColor.AQUA + " - /pman editor <Dir> <File> <Line(Count from 0)> <value>");
-		Manager.getSender(sender).sendMessage(ChatColor.AQUA + " - /pman viewer <Dir> <File>");
+		Manager.getSender(sender).sendMessage(ChatColor.AQUA + " - /pman delete <(Current)FileName> <PluginName(or Backup file name)> - Delete(move) plugin.");
+		Manager.getSender(sender).sendMessage(ChatColor.AQUA + " - /pman restore <FileName> - Restore deleted plugin.");
+		Manager.getSender(sender).sendMessage(ChatColor.AQUA + " - /pman editor <Dir> <File> <Line(Count from 0)> <value> - Edit config.");
+		Manager.getSender(sender).sendMessage(ChatColor.AQUA + " - /pman viewer <Dir> <File> - View config.");
+		Manager.getSender(sender).sendMessage(ChatColor.AQUA + " - /pman update - Update this plugin.");
 		Manager.getSender(sender).sendMessage(ChatColor.AQUA + " - BukkitDev(Project page): https://dev.bukkit.org/projects/pluginmanagement/");
 		Manager.getSender(sender).sendMessage(ChatColor.AQUA + " - Jenkins(Developer version): http://point.rht0910.tk:8080/job/PluginManager/");
 		Manager.getSender(sender).sendMessage(ChatColor.AQUA + " - Source code: https://github.com/rht0910/PluginManager/");
