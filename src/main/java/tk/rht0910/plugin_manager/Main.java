@@ -1,7 +1,5 @@
 package tk.rht0910.plugin_manager;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.Collection;
 
 import org.bukkit.Bukkit;
@@ -157,18 +155,31 @@ public class Main extends JavaPlugin implements Listener {
 				}
 				sender.sendMessage(ChatColor.AQUA + "Updating plugin...(Downloading from stable build)");
 				try {
-					InetAddress addr = InetAddress.getLocalHost();
-					if(addr.getHostAddress() == "192.168.0.210") {
-						Manager.getPluginUtil().Download(sender, "PluginManager", "http://local4.point.rht0910.tk:8080/job/PluginManager/lastSuccessfulBuild/artifact/target/PluginManager.jar"); // Not usable in local[my server]
-					} else {
-						Manager.getPluginUtil().Download(sender, "PluginManager", "http://point.rht0910.tk:8080/job/PluginManager/lastSuccessfulBuild/artifact/target/PluginManager.jar");
-					}
-				}
-				catch(UnknownHostException e) {
-					sender.sendMessage("Unknown host(Cannot resolve host name), Exiting.");
+					Manager.getPluginUtil().Download(sender, "PluginManager", "http://point.rht0910.tk:8080/job/PluginManager/lastSuccessfulBuild/artifact/target/PluginManager.jar");
+				} catch(Exception e) {
+					sender.sendMessage(ChatColor.RED + "Failed to update. (Is Download server down?)");
 					return false;
 				}
-				catch(Exception e) {
+				final Collection<? extends Player> onplayers = Bukkit.getServer().getOnlinePlayers();
+				final Player[] players = (Player[]) onplayers.toArray();
+				for(int i=0;i<=players.length;i++) {
+					if(players[i].isOp()) {
+						players[i].sendMessage(ChatColor.GREEN + "PluginManager is updated by " + sender.toString() + ". Please restart server.");
+					}
+				}
+			} else if(args[0].equalsIgnoreCase("update-local")) {
+				if(!sender.isOp()) {
+					sender.sendMessage(ChatColor.DARK_RED + "You are not Operator!");
+					return false;
+				}
+				if(!sender.isPermissionSet("pluginmanager.admin")) {
+					sender.sendMessage(ChatColor.DARK_RED + "No permission");
+					return false;
+				}
+				sender.sendMessage(ChatColor.AQUA + "Updating plugin...(Downloading from stable build)");
+				try {
+					Manager.getPluginUtil().Download(sender, "PluginManager", "http://local4.point.rht0910.tk:8080/job/PluginManager/lastSuccessfulBuild/artifact/target/PluginManager.jar");
+				} catch(Exception e) {
 					sender.sendMessage(ChatColor.RED + "Failed to update. (Is Download server down?)");
 					return false;
 				}
