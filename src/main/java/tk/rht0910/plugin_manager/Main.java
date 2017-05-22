@@ -9,9 +9,10 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class Main extends JavaPlugin {
+public class Main extends JavaPlugin implements Listener {
 	public static Main instance = new Main();
 
 	@Override
@@ -31,6 +32,7 @@ public class Main extends JavaPlugin {
 	public void onLoad() {
 		try {
 			Bukkit.getServer().getLogger().info("Loading PluginManager v0.6...");
+			Bukkit.getServer().getPluginManager().registerEvents(new Main(), this);
 			Bukkit.getServer().getLogger().info("Loaded PluginManager v0.6");
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().info("Unknown error: " + e);
