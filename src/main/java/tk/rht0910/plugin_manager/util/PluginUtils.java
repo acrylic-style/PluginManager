@@ -18,29 +18,27 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.SimpleCommandMap;
-import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
-import org.bukkit.plugin.UnknownDependencyException;
 
 import com.google.common.io.Files;
 
 import tk.rht0910.plugin_manager.Manager;
+import tk.rht0910.plugin_manager.thread.LoadPlugin;
 
 public final class PluginUtils {
-	public String loadPlugin(CommandSender sender, Plugin plugin) {
-		return loadPlugin(sender, plugin.getServer().getName());
+	public void loadPlugin(CommandSender sender, Plugin plugin) {
+		loadPlugin(sender, plugin.getServer().getName());
 	}
 
-	public String loadPlugin(CommandSender sender, String plugin) {
-		try {
+	public void loadPlugin(CommandSender sender, String plugin) {
+		LoadPlugin.run();
+		/*try {
 			Bukkit.getServer().getLogger().warning("Starting plugins load via PluginManager...");
 			File[] objFiles = (new File("plugins/")).listFiles();
 			if ( objFiles != null ) {
@@ -112,7 +110,7 @@ public final class PluginUtils {
 			sender.sendMessage("Load failed: " + plugin);
 			return "Load failed.";
 		}
-		return "Successfully to load plugin: " + plugin;
+		return "Successfully to load plugin: " + plugin;*/
 	}
 
 	public boolean unloadPlugin(CommandSender sender, Plugin plugin) {

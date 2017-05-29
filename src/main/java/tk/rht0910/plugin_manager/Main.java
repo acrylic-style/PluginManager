@@ -7,17 +7,13 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class Main extends JavaPlugin implements Listener {
-	public static Main instance = new Main();
-
+public final class Main extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		try {
 			Bukkit.getServer().getLogger().info("PluginManager is initializing...");
-			instance = this;
 			Bukkit.getServer().getLogger().info("PluginManager is initialized!");
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().severe("Plugin initialize error! Disabling plugin... and Please see errors.");
@@ -30,7 +26,6 @@ public class Main extends JavaPlugin implements Listener {
 	public void onLoad() {
 		try {
 			Bukkit.getServer().getLogger().info("Loading PluginManager v0.6...");
-			Bukkit.getServer().getPluginManager().registerEvents(new Main(), this);
 			Bukkit.getServer().getLogger().info("Loaded PluginManager v0.6");
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().info("Unknown error: " + e);
