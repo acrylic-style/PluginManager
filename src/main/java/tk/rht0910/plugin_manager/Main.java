@@ -117,7 +117,7 @@ public final class Main extends JavaPlugin {
 					sender.sendMessage(ChatColor.RED + "Not enough args");
 					return false;
 				}
-				Manager.getPluginUtil().Download(sender, args[1], args[2]);
+				PluginUtils.Download(sender, args[1], args[2]);
 			} else if(args[0].equalsIgnoreCase("restore")) {
 				if(sender instanceof Player) {
 					if(!sender.isOp()) {
@@ -180,7 +180,7 @@ public final class Main extends JavaPlugin {
 				}
 				sender.sendMessage(ChatColor.AQUA + "Updating plugin...(Downloading from stable build)");
 				try {
-					Manager.getPluginUtil().Download(sender, "PluginManager", "http://point.rht0910.tk:8080/job/PluginManager/lastSuccessfulBuild/artifact/target/PluginManager.jar");
+					PluginUtils.Download(sender, "PluginManager", "http://point.rht0910.tk:8080/job/PluginManager/lastSuccessfulBuild/artifact/target/PluginManager.jar");
 				} catch(Exception e) {
 					sender.sendMessage(ChatColor.RED + "Failed to update. (Is Download server down?)");
 					return false;
@@ -205,7 +205,7 @@ public final class Main extends JavaPlugin {
 				}
 				sender.sendMessage(ChatColor.AQUA + "Updating plugin...(Downloading from stable build)");
 				try {
-					Manager.getPluginUtil().Download(sender, "PluginManager", "http://local4.point.rht0910.tk:8080/job/PluginManager/lastSuccessfulBuild/artifact/target/PluginManager.jar");
+					PluginUtils.Download(sender, "PluginManager", "http://local4.point.rht0910.tk:8080/job/PluginManager/lastSuccessfulBuild/artifact/target/PluginManager.jar");
 				} catch(Exception e) {
 					sender.sendMessage(ChatColor.RED + "Failed to update. (Is Download server down?)");
 					return false;

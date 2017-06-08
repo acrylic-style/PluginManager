@@ -444,7 +444,7 @@ public final class PluginUtils {
 		}
 	}
 
-	public void Download(CommandSender sender, String file, String url) {
+	public static void Download(CommandSender sender, String file, String url) {
 		try {
 			sender.sendMessage(ChatColor.RED + "Downloading plugin" + ChatColor.BLACK + " '" + file + "(URL: " + url + ")' by " + sender.toString());
 			URL url2 = new URL(url);
