@@ -6,7 +6,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -47,8 +46,7 @@ public final class Main extends JavaPlugin {
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		try {
 		if(command.getName().equalsIgnoreCase("pman")) {
-			ConsoleCommandSender ccs = null;
-			if(!(sender == ccs)) {
+			if(sender instanceof Player) {
 				if(!sender.isOp()) {
 					sender.sendMessage(ChatColor.RED + "You're not operator!");
 				}
@@ -62,7 +60,7 @@ public final class Main extends JavaPlugin {
 				Manager.getCommand().ShowHelp(sender);
 				sender.sendMessage(ChatColor.AQUA + "PluginManager 0.6" + ChatColor.AQUA + "(BETA)");
 			} else if(args[0].equalsIgnoreCase("load")) {
-				if(!(sender == ccs)) {
+				if(sender instanceof Player) {
 					if(!sender.isPermissionSet("pluginmanager.admin")) {
 						sender.sendMessage(ChatColor.DARK_RED + "No permission");
 						return false;
@@ -85,7 +83,7 @@ public final class Main extends JavaPlugin {
 				sender.sendMessage(ChatColor.AQUA + " - /delete <FileName> <PluginName(DummyPluginName is allowed)> [pluginmanager.delete] - ");
 				sender.sendMessage(ChatColor.AQUA + " - /restore <FileName> [pluginmanager.restore]");
 			} else if(args[0].equalsIgnoreCase("disable")) {
-				if(!(sender == ccs)) {
+				if(sender instanceof Player) {
 					if(!sender.isPermissionSet("pluginmanager.admin")) {
 						Bukkit.getServer().getLogger().severe("No permission: /pman disable : " + sender.toString());
 						sender.sendMessage(ChatColor.DARK_RED + "No permission");
@@ -94,7 +92,7 @@ public final class Main extends JavaPlugin {
 				}
 				Manager.getPluginUtil().unloadPlugin(sender, args[1]);
 			} else if(args[0].equalsIgnoreCase("unload")) {
-				if(!(sender == ccs)) {
+				if(sender instanceof Player) {
 					if(!sender.isPermissionSet("pluginmanager.admin")) {
 						Bukkit.getServer().getLogger().severe("No permission: /pman unload : " + sender.toString());
 						sender.sendMessage(ChatColor.DARK_RED + "No permission");
@@ -103,7 +101,7 @@ public final class Main extends JavaPlugin {
 				}
 				Manager.getPluginUtil().unloadPlugin(sender, args[1]);
 			} else if(args[0].equalsIgnoreCase("download")) {
-				if(!(sender == ccs)) {
+				if(sender instanceof Player) {
 					if(!sender.isOp()) {
 						sender.sendMessage(ChatColor.DARK_RED + "You are not Operator!");
 						return false;
@@ -119,7 +117,7 @@ public final class Main extends JavaPlugin {
 				}
 				Manager.getPluginUtil().Download(sender, args[1], args[2]);
 			} else if(args[0].equalsIgnoreCase("restore")) {
-				if(!(sender == ccs)) {
+				if(sender instanceof Player) {
 					if(!sender.isOp()) {
 						sender.sendMessage(ChatColor.DARK_RED + "You are not Operator!");
 						return false;
@@ -139,7 +137,7 @@ public final class Main extends JavaPlugin {
 				}
 				Manager.getPluginUtil().RestorePlugin(sender, args[1]);
 			} else if(args[0].equalsIgnoreCase("delete")) {
-				if(!(sender == ccs)) {
+				if(sender instanceof Player) {
 					if(!sender.isOp()) {
 						sender.sendMessage(ChatColor.DARK_RED + "You are not Operator!");
 						return false;
@@ -168,7 +166,7 @@ public final class Main extends JavaPlugin {
 			} else if(args[0].equalsIgnoreCase("editor")) {
 				Manager.getPluginUtil().EditConfigFile(sender, args[1], args[2], args[3], args[4]);
 			} else if(args[0].equalsIgnoreCase("update")) {
-				if(!(sender == ccs)) {
+				if(sender instanceof Player) {
 					if(!sender.isOp()) {
 						sender.sendMessage(ChatColor.DARK_RED + "You are not Operator!");
 						return false;
@@ -193,7 +191,7 @@ public final class Main extends JavaPlugin {
 					}
 				}
 			} else if(args[0].equalsIgnoreCase("update-local")) {
-				if(!(sender == ccs)) {
+				if(sender instanceof Player) {
 					if(!sender.isOp()) {
 						sender.sendMessage(ChatColor.DARK_RED + "You are not Operator!");
 						return false;
