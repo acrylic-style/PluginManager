@@ -11,13 +11,11 @@ public final class Manager {
 	private static PluginUtils pluginUtils;
 	private static Command command;
 	private static CommandSender sender;
-	private static Manager manager;
 	private static Main main;
 
 	static {
 		pluginUtils = new PluginUtils();
 		command = new Command();
-		manager = new Manager();
 		main = new Main();
 	}
 
@@ -49,10 +47,6 @@ public final class Manager {
 
 	public static boolean isSenderConsole(CommandSender sender) {
 		return Manager.getSender(sender) instanceof ConsoleCommandSender;
-	}
-
-	public static Manager getServer() {
-		return manager;
 	}
 
 	public static Main getMain() {
