@@ -9,6 +9,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import tk.rht0910.plugin_manager.util.PluginUtils;
+
 public final class Main extends JavaPlugin {
 	@Override
 	public void onEnable() {
@@ -164,7 +166,7 @@ public final class Main extends JavaPlugin {
 				//	Manager.getPluginUtil().ConfigViewer(sender, args[0], args[1], new Integer(args[2]));
 				//}
 			} else if(args[0].equalsIgnoreCase("editor")) {
-				Manager.getPluginUtil().EditConfigFile(sender, args[1], args[2], args[3], args[4]);
+				PluginUtils.EditConfigFile(sender, args[1], args[2], args[3], args[4]);
 			} else if(args[0].equalsIgnoreCase("update")) {
 				if(sender instanceof Player) {
 					if(!sender.isOp()) {

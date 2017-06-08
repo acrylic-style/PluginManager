@@ -171,7 +171,7 @@ public final class PluginUtils {
 		return true;
 	}
 
-	public boolean EditConfigFile(CommandSender sender, String dir, String cfile, String vine, String strs) {
+	public static boolean EditConfigFile(CommandSender sender, String dir, String cfile, String vine, String strs) {
 		if(!sender.isOp()) {
 			sender.sendMessage(ChatColor.RED + "You are not Operator!");
 			Bukkit.getServer().getLogger().severe("(operator)Tried to access Config editor by " + sender.toString());
@@ -345,7 +345,7 @@ public final class PluginUtils {
 		return true;
 	}
 
-	public void FileWrite(CommandSender sender, Object[] args, File file) {
+	public static void FileWrite(CommandSender sender, Object[] args, File file) {
 		FileWriter fw = null;
 		try {
 			fw = new FileWriter(file);
