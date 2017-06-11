@@ -380,7 +380,6 @@ public final class PluginUtils {
 		/* 379 */    }
 
 	public void DeletePlugin(CommandSender sender, String filename, String pluginName) {
-		sender.sendMessage(ChatColor.AQUA + "[PluginManager]" + ChatColor.RED + " [Warning] " + ChatColor.BLACK + "REMOVING plugin(" + pluginName + ") by " + ChatColor.DARK_RED + sender.toString());
 		File file = new File("plugins/" + filename + ".jar");
 		if(file.exists()) {
 			if(Bukkit.getServer().getPluginManager().isPluginEnabled(Bukkit.getServer().getPluginManager().getPlugin(pluginName))) {
@@ -392,7 +391,6 @@ public final class PluginUtils {
 					if(!dir.exists()) {
 						if(!dir.mkdirs()) {
 							Bukkit.getServer().getPluginManager().enablePlugin(Bukkit.getServer().getPluginManager().getPlugin(pluginName));
-							sender.sendMessage(ChatColor.AQUA + "[PluginManager]" + ChatColor.RED + " [Warning] " + ChatColor.BLACK + "Tried to DELETE plugin by " + ChatColor.DARK_RED + sender.toString());
 							return;
 						}
 					}
@@ -403,7 +401,6 @@ public final class PluginUtils {
 							return;
 						}
 					}
-
 					File to = new File("plugins/plugins_backup/" + pluginName + ".jar");
 					try {
 						Files.move(file, to);
@@ -431,20 +428,20 @@ public final class PluginUtils {
 	}
 
 	public void RestorePlugin(CommandSender sender, String pluginName) {
-		sender.sendMessage(ChatColor.AQUA + "[PluginManager]" + ChatColor.YELLOW + " [Warning] " + ChatColor.BLACK + "Restoring plugin(" + pluginName + ") by " + sender.toString());
 		File from = new File("plugins/plugins_backup/" + pluginName + ".jar");
 		File to = new File("plugins/" + pluginName + ".jar");
 		try {
 			Files.move(from, to);
-			sender.sendMessage("Successfully Restore plugin by " + sender.toString());
-			sender.sendMessage("Successfully Restore plugin. To Load and enable: /load " + pluginName);
+			sender.sendMessage(ChatColor.GREEN + "Successfully Restore plugin by " + sender.toString());
+			sender.sendMessage(ChatColor.GREEN + "Successfully Restore plugin. To Load and enable: /load " + pluginName);
 		} catch (IOException e) {
-			sender.sendMessage(ChatColor.AQUA + "[PluginManager]" + ChatColor.RED + " [Warning] " + ChatColor.BLACK + "Tried to RESTORE plugin by " + ChatColor.DARK_RED + sender.toString());
 			e.printStackTrace();
 		}
 	}
 
 	public static void Download(CommandSender sender, String file, String url) {
+		Bukkit.getLogger().info("------------------------------\n DOWNLOADING PLUGIN\n------------------------------\n");
+		long start = System.currentTimeMillis();
 		try {
 			sender.sendMessage(ChatColor.RED + "Downloading plugin" + ChatColor.BLACK + " '" + file + "(URL: " + url + ")' by " + sender.toString());
 			URL url2 = new URL(url);
@@ -461,8 +458,17 @@ public final class PluginUtils {
 			byte[] b = new byte[4096]; int readByte = 0; while(-1 != (readByte = dataInStream.read(b))){ dataOutStream.write(b, 0, readByte); } // Close Stream
 			dataInStream.close(); dataOutStream.close();
 			sender.sendMessage(ChatColor.RED + "Downloaded plugin" + ChatColor.BLACK + " '" + file + "(URL: " + url + ")'");
-			} catch (FileNotFoundException e) { e.printStackTrace(); } catch (ProtocolException e) { e.printStackTrace(); } catch (MalformedURLException e) { e.printStackTrace(); } catch (IOException e) { e.printStackTrace(); } catch (Exception e) { e.printStackTrace();
+			} catch (FileNotFoundException e) { e.printStackTrace(); } catch (ProtocolException e) { e.printStackTrace(); } catch (MalformedURLException e) { e.printStackTrace(); } catch (IOException e) { e.printStackTrace(); } catch (Exception e) {
+				e.printStackTrace();
+				long stop = System.currentTimeMillis();
+				long total = start - stop;
+				Bukkit.getLogger().severe("------------------------------\n DOWNLOAD FAILURE\n-------------------------------\n Total time: " + total + "\n Finished at: \n" + stop + "\n------------------------------\n");
+				return;
 		}
+		long stop = System.currentTimeMillis();
+		long total = start - stop;
+		Bukkit.getLogger().severe("------------------------------\n DOWNLOAD SUCCESS\n-------------------------------\n Total time: " + total + "\n Finished at: \n" + stop + "\n------------------------------\n");
+		return;
 	}
 }
 // Thank you for PlugMan developers.
