@@ -72,18 +72,7 @@ public final class Main extends JavaPlugin {
 					sender.sendMessage(ChatColor.RED + "Not enough args");
 					return false;
 				}
-				//Manager.getPluginUtil().loadPlugin(sender, args[1]);
-				sender.sendMessage(ChatColor.GREEN + "----- Plugin Manager Help -----");
-				sender.sendMessage(ChatColor.RED + "----- <Requirement args> [Permission] - Information");
-				sender.sendMessage(ChatColor.GRAY + "----- <[Options]> -----");
-				sender.sendMessage(ChatColor.AQUA + " - /pman <[help]> [pluginmanager.help(Defaults granted permission for all operators.)] - Displays this. '/ピーマン'? No...");
-				sender.sendMessage(ChatColor.DARK_BLUE + " --- Requires permission [pluginmanager.admin] ---");
-				sender.sendMessage(ChatColor.AQUA + " - /load(/pman load) <Plugin name or Plugin File> [pluginmanager.load] - Load or Enable a plugin");
-				sender.sendMessage(ChatColor.AQUA + " - /unload(/pman disable) <Plugin name> [pluginmanager.unload] - Disable plugin");
-				sender.sendMessage(ChatColor.AQUA + " - /download(/pman download) <FileName> <URL> [pluginmanager.download] - Download plugin");
-				sender.sendMessage(ChatColor.DARK_BLUE + " --- Requires permission [pluginmanager.admin] and [pluginmanager.super-admin] ---");
-				sender.sendMessage(ChatColor.AQUA + " - /delete <FileName> <PluginName(DummyPluginName is allowed)> [pluginmanager.delete] - ");
-				sender.sendMessage(ChatColor.AQUA + " - /restore <FileName> [pluginmanager.restore]");
+				Manager.getPluginUtil().loadPlugin(sender, args[1]);
 			} else if(args[0].equalsIgnoreCase("disable")) {
 				if(sender instanceof Player) {
 					if(!sender.isPermissionSet("pluginmanager.admin")) {
