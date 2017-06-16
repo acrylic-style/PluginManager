@@ -4,6 +4,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
+import tk.rht0910.plugin_manager.exception.ThrowUncaughtException;
+import tk.rht0910.plugin_manager.exception.UncaughtException;
 import tk.rht0910.plugin_manager.util.Command;
 import tk.rht0910.plugin_manager.util.PluginUtils;
 
@@ -20,41 +22,59 @@ public final class Manager {
 	}
 
 	public static PluginUtils getPluginUtil() {
-		return pluginUtils;
+		try {
+			return pluginUtils;
+		} catch(Exception e) {e.printStackTrace();return pluginUtils;}
 	}
 
 	public static Command getCommand() {
-		return command;
+		try{
+			return command;
+		} catch(Exception e) {e.printStackTrace();return command;}
 	}
 
 
 	public static CommandSender getSender(CommandSender sender) {
-		Manager.sender = sender;
-		return Manager.sender;
+		try {
+			Manager.sender = sender;
+			return Manager.sender;
+		} catch(Exception e) {e.printStackTrace();return Manager.sender;}
 	}
 
 	public static boolean hasPermission(CommandSender sender, String permission) {
-		if(Manager.getSender(sender).hasPermission(permission)) {
-			return true;
-		} else {
-			return false;
-		}
+		try {
+			if(Manager.getSender(sender).hasPermission(permission)) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch(Exception e) {e.printStackTrace();return false;}
 	}
 
 	public static boolean isSenderPlayer(CommandSender sender) {
-		return Manager.getSender(sender) instanceof Player;
+		try {
+			return Manager.getSender(sender) instanceof Player;
+		} catch(Exception e) {e.printStackTrace();return Manager.getSender(sender) instanceof Player;}
 	}
 
 	public static boolean isSenderConsole(CommandSender sender) {
-		return Manager.getSender(sender) instanceof ConsoleCommandSender;
+		try {
+			return Manager.getSender(sender) instanceof ConsoleCommandSender;
+		} catch(Exception e) {e.printStackTrace();return Manager.getSender(sender) instanceof ConsoleCommandSender;}
 	}
 
 	public static Main getMain() {
-		return main;
+		try {
+			return main;
+		} catch(Exception e) {e.printStackTrace();return main;}
 	}
 
 	public static boolean getConfig(String path, Object def) {
-
+		try {
+			ThrowUncaughtException.callException("@ Debug call");
+		} catch (UncaughtException e) {
+			e.printStackTrace();
+		}
 		return true;
 	}
 }
