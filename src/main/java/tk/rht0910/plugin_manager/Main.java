@@ -20,7 +20,8 @@ public final class Main extends JavaPlugin {
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().severe("Plugin initialize error! Disabling plugin... and Please see errors.");
 			e.printStackTrace();
-			Manager.getPluginUtil().unloadPlugin(null, "PluginManager");
+			Manager.getPluginUtil();
+			PluginUtils.unloadPlugin(null, "PluginManager");
 		}
 	}
 
@@ -72,7 +73,7 @@ public final class Main extends JavaPlugin {
 					sender.sendMessage(ChatColor.RED + "Not enough args");
 					return false;
 				}
-				Manager.getPluginUtil().loadPlugin(sender, args[1]);
+				PluginUtils.loadPlugin(sender, args[1]);
 			} else if(args[0].equalsIgnoreCase("disable")) {
 				if(sender instanceof Player) {
 					if(!sender.isPermissionSet("pluginmanager.admin")) {
@@ -81,7 +82,7 @@ public final class Main extends JavaPlugin {
 						return false;
 					}
 				}
-				Manager.getPluginUtil().unloadPlugin(sender, args[1]);
+				PluginUtils.unloadPlugin(sender, args[1]);
 			} else if(args[0].equalsIgnoreCase("unload")) {
 				if(sender instanceof Player) {
 					if(!sender.isPermissionSet("pluginmanager.admin")) {
@@ -90,7 +91,7 @@ public final class Main extends JavaPlugin {
 						return false;
 					}
 				}
-				Manager.getPluginUtil().unloadPlugin(sender, args[1]);
+				PluginUtils.unloadPlugin(sender, args[1]);
 			} else if(args[0].equalsIgnoreCase("download")) {
 				if(sender instanceof Player) {
 					if(!sender.isOp()) {

@@ -36,7 +36,7 @@ public final class PluginUtils {
 		loadPlugin(sender, plugin.getServer().getName());
 	}
 
-	public void loadPlugin(CommandSender sender, String plugin) {
+	public static void loadPlugin(CommandSender sender, String plugin) {
 		LoadPlugin.run();
 		/*try {
 			Bukkit.getServer().getLogger().warning("Starting plugins load via PluginManager...");
@@ -118,7 +118,7 @@ public final class PluginUtils {
 	}
 
 	@SuppressWarnings({ "rawtypes", "unused" })
-	public boolean unloadPlugin(CommandSender sender, String name) {
+	public static boolean unloadPlugin(CommandSender sender, String name) {
 		/* Thank you for PlugMan Developers */
 		/* 399 */       Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin(name);
 		/*     */
