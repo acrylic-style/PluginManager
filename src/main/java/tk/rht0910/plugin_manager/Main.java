@@ -60,7 +60,21 @@ public final class Main extends JavaPlugin {
 				return true;
 			}
 			if(args[0].equalsIgnoreCase("help")) {
-				Manager.getCommand().ShowHelp(sender);
+				//Manager.getCommand().ShowHelp(sender);
+				sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[v0.7" + ChatColor.AQUA + "(BETA)" + ChatColor.AQUA + "] Help -----");
+				sender.sendMessage(ChatColor.RED + " ----- <Required> [Optional] - Information");
+				sender.sendMessage(ChatColor.AQUA + " - /pman help - Displays this.");
+				sender.sendMessage(ChatColor.AQUA + " - /pman load <Plugin name or Plugin File> - Load or Enable a plugin");
+				sender.sendMessage(ChatColor.AQUA + " - /pman unload(or /pman disable) <Plugin name> - Disable plugin");
+				sender.sendMessage(ChatColor.AQUA + " - /pman download <FileName> <URL> - Download plugin");
+				sender.sendMessage(ChatColor.AQUA + " - /pman delete <(Current)FileName> <PluginName(or Backup file name)> - Delete(move) plugin.");
+				sender.sendMessage(ChatColor.AQUA + " - /pman restore <FileName> - Restore deleted plugin.");
+				sender.sendMessage(ChatColor.AQUA + " - /pman editor <Dir> <File> <Line(Count from 0)> <value> - Edit config.");
+				sender.sendMessage(ChatColor.AQUA + " - /pman viewer <Dir> <File> - View config.");
+				sender.sendMessage(ChatColor.AQUA + " - /pman update - Update this plugin.");
+				sender.sendMessage(ChatColor.AQUA + " - BukkitDev(Project page): https://dev.bukkit.org/projects/pluginmanagement/");
+				sender.sendMessage(ChatColor.AQUA + " - Jenkins(Developer version): http://point.rht0910.tk:8080/job/PluginManager/");
+				sender.sendMessage(ChatColor.AQUA + " - Source code: https://github.com/rht0910/PluginManager/");
 				sender.sendMessage(ChatColor.AQUA + "PluginManager 0.7" + ChatColor.AQUA + "(BETA)");
 			} else if(args[0].equalsIgnoreCase("load")) {
 				if(sender instanceof Player) {
@@ -209,7 +223,21 @@ public final class Main extends JavaPlugin {
 				}
 			} else {
 				sender.sendMessage(ChatColor.RED + "Invalid args");
-				Manager.getCommand().ShowHelp(sender);
+				//Manager.getCommand().ShowHelp(sender);
+				sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[v0.7" + ChatColor.AQUA + "(BETA)" + ChatColor.AQUA + "] Help -----");
+				sender.sendMessage(ChatColor.RED + " ----- <Required> [Optional] - Information");
+				sender.sendMessage(ChatColor.AQUA + " - /pman help - Displays this.");
+				sender.sendMessage(ChatColor.AQUA + " - /pman load <Plugin name or Plugin File> - Load or Enable a plugin");
+				sender.sendMessage(ChatColor.AQUA + " - /pman unload(or /pman disable) <Plugin name> - Disable plugin");
+				sender.sendMessage(ChatColor.AQUA + " - /pman download <FileName> <URL> - Download plugin");
+				sender.sendMessage(ChatColor.AQUA + " - /pman delete <(Current)FileName> <PluginName(or Backup file name)> - Delete(move) plugin.");
+				sender.sendMessage(ChatColor.AQUA + " - /pman restore <FileName> - Restore deleted plugin.");
+				sender.sendMessage(ChatColor.AQUA + " - /pman editor <Dir> <File> <Line(Count from 0)> <value> - Edit config.");
+				sender.sendMessage(ChatColor.AQUA + " - /pman viewer <Dir> <File> - View config.");
+				sender.sendMessage(ChatColor.AQUA + " - /pman update - Update this plugin.");
+				sender.sendMessage(ChatColor.AQUA + " - BukkitDev(Project page): https://dev.bukkit.org/projects/pluginmanagement/");
+				sender.sendMessage(ChatColor.AQUA + " - Jenkins(Developer version): http://point.rht0910.tk:8080/job/PluginManager/");
+				sender.sendMessage(ChatColor.AQUA + " - Source code: https://github.com/rht0910/PluginManager/");
 			}
 		}
 		} catch(Exception e) {
