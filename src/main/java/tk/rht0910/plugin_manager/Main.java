@@ -59,7 +59,7 @@ public final class Main extends JavaPlugin {
 				sender.sendMessage(ChatColor.AQUA + "Available commands: '/pman help'");
 				return true;
 			}
-			if(args[0] == "help") {
+			if(args[0].equalsIgnoreCase("help")) {
 				Manager.getCommand().ShowHelp(sender);
 				sender.sendMessage(ChatColor.AQUA + "PluginManager 0.7" + ChatColor.AQUA + "(BETA)");
 			} else if(args[0].equalsIgnoreCase("load")) {
@@ -209,7 +209,7 @@ public final class Main extends JavaPlugin {
 				}
 			} else {
 				sender.sendMessage(ChatColor.RED + "Invalid args");
-				//Manager.getCommand().ShowHelp(sender);
+				Manager.getCommand().ShowHelp(sender);
 			}
 		}
 		} catch(Exception e) {
