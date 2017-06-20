@@ -18,18 +18,21 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.SimpleCommandMap;
+import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
+import org.bukkit.plugin.UnknownDependencyException;
 
 import com.google.common.io.Files;
 
 import tk.rht0910.plugin_manager.Manager;
-import tk.rht0910.plugin_manager.thread.LoadPlugin;
 
 public final class PluginUtils {
 	public void loadPlugin(CommandSender sender, Plugin plugin) {
@@ -37,8 +40,8 @@ public final class PluginUtils {
 	}
 
 	public static void loadPlugin(CommandSender sender, String plugin) {
-		LoadPlugin.run();
-		/*try {
+		//LoadPlugin.run();
+		try {
 			Bukkit.getServer().getLogger().warning("Starting plugins load via PluginManager...");
 			File[] objFiles = (new File("plugins/")).listFiles();
 			if ( objFiles != null ) {
@@ -51,7 +54,7 @@ public final class PluginUtils {
 					} else if(trying == 2) {
 						trying = 3;
 					} else if(trying == 3) {
-						return "Giving up";
+						return;
 					}
 					File file = objFiles[i];
 					String file_str = plugin;
@@ -93,14 +96,14 @@ public final class PluginUtils {
 								sender.sendMessage(ChatColor.DARK_RED + "Load is failed.");
 								Bukkit.getServer().getLogger().severe("Load is failed! : Additional information: Args[0]: \"" + plugin + "\", Args[1]: \"not defined\" Player: \"" + sender.toString() + "\"(IP:" + sender.getServer().getIp() + ")");
 							}
-							sender.sendMessage(ChatColor.GREEN + "Load is success!");
+							sender.sendMessage(ChatColor.GREEN + "Loaded plugin: " + plugin);
 							Bukkit.getServer().getLogger().info("Load is success! : Additional information: Args[0]: \"" + plugin + "\", Args[1]: \"not defined\" Player: \"" + sender.toString() + "\"(IP:" + sender.getServer().getIp() + ")");
 						}
 					}
 				}
 			} else {
 				sender.sendMessage(ChatColor.RED + "Unknown error!");
-				Bukkit.getServer().getLogger().severe("Unknown error!:PluginUtils.java:loadPlugin(objFiles notfound, what?)");
+				Bukkit.getServer().getLogger().severe("Unknown error!:PluginUtils.java:loadPlugin(objFiles notfound, why?)");
 			}
 		} catch (Exception e) {
 			sender.sendMessage(ChatColor.RED + "An error occurred: " + e);
@@ -108,9 +111,9 @@ public final class PluginUtils {
 			Bukkit.getServer().getLogger().severe("An error occurred: " + e);
 			e.printStackTrace();
 			sender.sendMessage("Load failed: " + plugin);
-			return "Load failed.";
+			return;
 		}
-		return "Successfully to load plugin: " + plugin;*/
+		return;
 	}
 
 	public boolean unloadPlugin(CommandSender sender, Plugin plugin) {
