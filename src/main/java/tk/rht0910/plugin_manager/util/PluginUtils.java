@@ -93,11 +93,12 @@ public final class PluginUtils {
 							e.printStackTrace();
 						} finally {
 							if(is == 1) {
-								sender.sendMessage(ChatColor.DARK_RED + "Load is failed.");
+								sender.sendMessage(ChatColor.DARK_RED + "Failed to load plugin: " + plugin);
 								Bukkit.getServer().getLogger().severe("Load is failed! : Additional information: Args[0]: \"" + plugin + "\", Args[1]: \"not defined\" Player: \"" + sender.toString() + "\"(IP:" + sender.getServer().getIp() + ")");
+							} else {
+								sender.sendMessage(ChatColor.GREEN + "Loaded plugin: " + plugin);
+								Bukkit.getServer().getLogger().info("Load is success! : Additional information: Args[0]: \"" + plugin + "\", Args[1]: \"not defined\" Player: \"" + sender.toString() + "\"(IP:" + sender.getServer().getIp() + ")");
 							}
-							sender.sendMessage(ChatColor.GREEN + "Loaded plugin: " + plugin);
-							Bukkit.getServer().getLogger().info("Load is success! : Additional information: Args[0]: \"" + plugin + "\", Args[1]: \"not defined\" Player: \"" + sender.toString() + "\"(IP:" + sender.getServer().getIp() + ")");
 						}
 					}
 				}
