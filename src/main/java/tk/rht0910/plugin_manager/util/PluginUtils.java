@@ -170,6 +170,9 @@ public final class PluginUtils {
 		/* 443 */          } catch (Exception e) {
 			sender.sendMessage(ChatColor.RED + "An error occurred: " + e);
 			return false;
+		} finally {
+			sender.sendMessage(ChatColor.GREEN
+					 + "Unloaded plugin: " + name);
 		}
 		}
 		return true;
@@ -369,6 +372,7 @@ public final class PluginUtils {
 		} finally {
 			try {
 				fw.close();
+				sender.sendMessage("Writed file: " + file.toString());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
