@@ -28,8 +28,8 @@ public final class Main extends JavaPlugin {
 	@Override
 	public void onLoad() {
 		try {
-			Bukkit.getServer().getLogger().info("Loading PluginManager v0.8-beta...");
-			Bukkit.getServer().getLogger().info("Loaded PluginManager v0.8-beta");
+			Bukkit.getServer().getLogger().info("Loading PluginManager v0.8...");
+			Bukkit.getServer().getLogger().info("Loaded PluginManager v0.8");
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().info("Unknown error: " + e);
 			e.printStackTrace();
@@ -55,13 +55,13 @@ public final class Main extends JavaPlugin {
 				}
 			}
 			if(args.length == 0 || args.equals(null)) {
-				sender.sendMessage(ChatColor.AQUA + "PluginManager is running on " + ChatColor.GREEN + "version 0.8" + ChatColor.AQUA + "(BETA)");
+				sender.sendMessage(ChatColor.AQUA + "PluginManager is running on " + ChatColor.GREEN + "version 0.8");
 				sender.sendMessage(ChatColor.AQUA + "Available commands: '/pman help'");
 				return true;
 			}
 			if(args[0].equalsIgnoreCase("help")) {
 				//Manager.getCommand().ShowHelp(sender);
-				sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[v0.8" + ChatColor.AQUA + "(BETA)" + ChatColor.AQUA + "] Help -----");
+				sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[v0.8] Help -----");
 				sender.sendMessage(ChatColor.RED + " ----- <Required> [Optional] - Information");
 				sender.sendMessage(ChatColor.AQUA + " - /pman help - Displays this.");
 				sender.sendMessage(ChatColor.AQUA + " - /pman load <Plugin name or Plugin File> - Load or Enable a plugin");
@@ -75,7 +75,6 @@ public final class Main extends JavaPlugin {
 				sender.sendMessage(ChatColor.AQUA + " - BukkitDev(Project page): https://dev.bukkit.org/projects/pluginmanagement/");
 				sender.sendMessage(ChatColor.AQUA + " - Jenkins(Developer version): http://point.rht0910.tk:8080/job/PluginManager/");
 				sender.sendMessage(ChatColor.AQUA + " - Source code: https://github.com/rht0910/PluginManager/");
-				sender.sendMessage(ChatColor.AQUA + "PluginManager 0.8" + ChatColor.AQUA + "(BETA)");
 			} else if(args[0].equalsIgnoreCase("load")) {
 				if(sender instanceof Player) {
 					if(!sender.isPermissionSet("pluginmanager.admin")) {
@@ -224,7 +223,7 @@ public final class Main extends JavaPlugin {
 			} else {
 				sender.sendMessage(ChatColor.RED + "Invalid args");
 				//Manager.getCommand().ShowHelp(sender);
-				sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[v0.8" + ChatColor.AQUA + "(BETA)" + ChatColor.AQUA + "] Help -----");
+				sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[v0.8] Help -----");
 				sender.sendMessage(ChatColor.RED + " ----- <Required> [Optional] - Information");
 				sender.sendMessage(ChatColor.AQUA + " - /pman help - Displays this.");
 				sender.sendMessage(ChatColor.AQUA + " - /pman load <Plugin name or Plugin File> - Load or Enable a plugin");
