@@ -168,7 +168,8 @@ public final class PluginUtils {
 		/* 441 */             commands = (Map)value.get(commandMap);
 		/*     */
 		/* 443 */          } catch (Exception e) {
-			sender.sendMessage(ChatColor.RED + "An error occurred: " + e);
+			sender.sendMessage(ChatColor.RED + "An error occurred: " + e + ". please see console log.");
+			e.printStackTrace();
 			return false;
 		} finally {
 			sender.sendMessage(ChatColor.GREEN + "Unloaded plugin: " + name);
@@ -271,10 +272,10 @@ public final class PluginUtils {
 
 	public boolean ConfigViewer(CommandSender sender, String configDir, String configFile/*, Integer line_option) {*/ ) {
 		if(configDir == null) {
-			Manager.getCommand().ShowHelp(sender);
+			Manager.getCommand().showHelp(sender);
 		}
 		if(configFile == null) {
-			Manager.getCommand().ShowHelp(sender);
+			Manager.getCommand().showHelp(sender);
 		}
 		String arg1 = configDir;
 		String arg2 = configFile;
