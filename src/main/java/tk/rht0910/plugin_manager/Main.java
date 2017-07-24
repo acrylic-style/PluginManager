@@ -220,6 +220,8 @@ public final class Main extends JavaPlugin {
 						players[i].sendMessage(ChatColor.GREEN + "PluginManager is updated by " + sender.toString() + ". Please restart server.");
 					}
 				}
+			} else if(args[0].equalsIgnoreCase("usage")) {
+				Manager.getCommand().getUsageOfCmd(sender, args[1]);
 			} else {
 				sender.sendMessage(ChatColor.RED + "Invalid args");
 				//Manager.getCommand().ShowHelp(sender);
