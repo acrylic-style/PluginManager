@@ -28,8 +28,8 @@ public final class Main extends JavaPlugin {
 	@Override
 	public void onLoad() {
 		try {
-			Bukkit.getServer().getLogger().info("Loading PluginManager v0.8...");
-			Bukkit.getServer().getLogger().info("Loaded PluginManager v0.8");
+			Bukkit.getServer().getLogger().info("Loading PluginManager v0.8.2...");
+			Bukkit.getServer().getLogger().info("Loaded PluginManager v0.8.2");
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().info("Unknown error: " + e);
 			e.printStackTrace();
@@ -55,7 +55,7 @@ public final class Main extends JavaPlugin {
 				}
 			}
 			if(args.length == 0 || args.equals(null)) {
-				sender.sendMessage(ChatColor.AQUA + "PluginManager is running on " + ChatColor.GREEN + "version 0.8");
+				sender.sendMessage(ChatColor.AQUA + "PluginManager is running on " + ChatColor.GREEN + "version 0.8.2");
 				sender.sendMessage(ChatColor.AQUA + "Available commands: '/pman help'");
 				return true;
 			}
@@ -72,6 +72,7 @@ public final class Main extends JavaPlugin {
 				sender.sendMessage(ChatColor.AQUA + " - /pman editor <Dir> <File> <Line(Count from 0)> <value> - Edit config.");
 				sender.sendMessage(ChatColor.AQUA + " - /pman viewer <Dir> <File> - View config.");
 				sender.sendMessage(ChatColor.AQUA + " - /pman update - Update this plugin.");
+				sender.sendMessage(ChatColor.AQUA + " - /pman usage <Command> - Usage of command.");
 				sender.sendMessage(ChatColor.AQUA + " - BukkitDev(Project page): https://dev.bukkit.org/projects/pluginmanagement/");
 				sender.sendMessage(ChatColor.AQUA + " - Jenkins(Developer version): http://point.rht0910.tk:8080/job/PluginManager/");
 				sender.sendMessage(ChatColor.AQUA + " - Source code: https://github.com/rht0910/PluginManager/");
@@ -236,6 +237,7 @@ public final class Main extends JavaPlugin {
 				sender.sendMessage(ChatColor.AQUA + " - /pman editor <Dir> <File> <Line(Count from 0)> <value> - Edit config.");
 				sender.sendMessage(ChatColor.AQUA + " - /pman viewer <Dir> <File> - View config.");
 				sender.sendMessage(ChatColor.AQUA + " - /pman update - Update this plugin.");
+				sender.sendMessage(ChatColor.AQUA + " - /pman usage <Command> - Usage of command.");
 				sender.sendMessage(ChatColor.AQUA + " - BukkitDev(Project page): https://dev.bukkit.org/projects/pluginmanagement/");
 				sender.sendMessage(ChatColor.AQUA + " - Jenkins(Developer version): http://point.rht0910.tk:8080/job/PluginManager/");
 				sender.sendMessage(ChatColor.AQUA + " - Source code: https://github.com/rht0910/PluginManager/");

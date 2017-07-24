@@ -19,6 +19,7 @@ public final class Command {
 		Manager.getSender(sender).sendMessage(ChatColor.AQUA + " - /pman editor <Dir> <File> <Line(Count from 0)> <value> - Edit config.");
 		Manager.getSender(sender).sendMessage(ChatColor.AQUA + " - /pman viewer <Dir> <File> - View config.");
 		Manager.getSender(sender).sendMessage(ChatColor.AQUA + " - /pman update - Update this plugin.");
+		Manager.getSender(sender).sendMessage(ChatColor.AQUA + " - /pman usage <Command> - Usage of command.");
 		Manager.getSender(sender).sendMessage(ChatColor.AQUA + " - BukkitDev(Project page): https://dev.bukkit.org/projects/pluginmanagement/");
 		Manager.getSender(sender).sendMessage(ChatColor.AQUA + " - Jenkins(Developer version): http://point.rht0910.tk:8080/job/PluginManager/");
 		Manager.getSender(sender).sendMessage(ChatColor.AQUA + " - Source code: https://github.com/rht0910/PluginManager/");
