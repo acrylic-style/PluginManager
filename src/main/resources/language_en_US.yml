@@ -1,7 +1,4 @@
-##
-## Language file for PluginManager
-##
-
+---
 help: "Help"
 invalid_args: "Invalid args"
 required: "&bRequired"
@@ -25,7 +22,7 @@ no_permission: "&cNo permission."
 opened_config_viewer: "Opened config viewer by %s"
 not_enough_args: "&cNot enough argument, cannot continue."
 running_on: "PluginManager is running on %s"
-available_commands: "Available commands: /pman help"
+available_commands: 'Available commands: /pman help'
 beta: "(BETA)"
 alpha: "(ALPHA)"
 project_page: "Project page"
