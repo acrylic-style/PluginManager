@@ -270,7 +270,7 @@ public final class PluginUtils {
 	//	return ConfigViewer(sender, configDir, configFile, null);
 	//}
 
-	public boolean ConfigViewer(CommandSender sender, String configDir, String configFile/*, Integer line_option) {*/ ) {
+	public static boolean ConfigViewer(CommandSender sender, String configDir, String configFile/*, Integer line_option) {*/ ) {
 		if(configDir == null) {
 			Manager.getCommand().showHelp(sender);
 		}
@@ -386,7 +386,7 @@ public final class PluginUtils {
 		/*     */       }
 		/* 379 */    }
 
-	public void DeletePlugin(CommandSender sender, String filename, String pluginName) {
+	public static void DeletePlugin(CommandSender sender, String filename, String pluginName) {
 		File file = new File("plugins/" + filename + ".jar");
 		if(file.exists()) {
 			if(Bukkit.getServer().getPluginManager().isPluginEnabled(Bukkit.getServer().getPluginManager().getPlugin(pluginName))) {
@@ -434,7 +434,7 @@ public final class PluginUtils {
 		}
 	}
 
-	public void RestorePlugin(CommandSender sender, String pluginName) {
+	public static void RestorePlugin(CommandSender sender, String pluginName) {
 		File from = new File("plugins/plugins_backup/" + pluginName + ".jar");
 		File to = new File("plugins/" + pluginName + ".jar");
 		try {

@@ -16,6 +16,11 @@ public final class Main extends JavaPlugin {
 	public void onEnable() {
 		try {
 			Bukkit.getServer().getLogger().info("PluginManager is initializing...");
+			if(!this.getConfig().isSet("language")) {
+				this.getConfig().set("language", "en_US");
+				this.getConfig().options().copyDefaults(true);
+				//this.getConfig().options().copyDefaults(!this.getConfig().contains("language"));
+			}
 			Bukkit.getServer().getLogger().info("PluginManager is initialized!");
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().severe("Plugin initialize error! Disabling plugin... and Please see errors.");
@@ -28,8 +33,8 @@ public final class Main extends JavaPlugin {
 	@Override
 	public void onLoad() {
 		try {
-			Bukkit.getServer().getLogger().info("Loading PluginManager v0.8.2...");
-			Bukkit.getServer().getLogger().info("Loaded PluginManager v0.8.2");
+			Bukkit.getServer().getLogger().info("Loading PluginManager v0.8.3...");
+			Bukkit.getServer().getLogger().info("Loaded PluginManager v0.8.3");
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().info("Unknown error: " + e);
 			e.printStackTrace();
@@ -46,6 +51,10 @@ public final class Main extends JavaPlugin {
 		}
 	}
 
+	public Main getInstance() {
+		return this;
+	}
+
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		try {
 		if(command.getName().equalsIgnoreCase("pman")) {
@@ -55,24 +64,26 @@ public final class Main extends JavaPlugin {
 				}
 			}
 			if(args.length == 0 || args.equals(null)) {
-				sender.sendMessage(ChatColor.AQUA + "PluginManager is running on " + ChatColor.GREEN + "version 0.8.2");
+				sender.sendMessage(ChatColor.AQUA + "PluginManager is running on " + ChatColor.GREEN + "version 0.8.3");
 				sender.sendMessage(ChatColor.AQUA + "Available commands: '/pman help'");
 				return true;
 			}
 			if(args[0].equalsIgnoreCase("help")) {
 				//Manager.getCommand().ShowHelp(sender);
-				sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[v0.8] Help -----");
-				sender.sendMessage(ChatColor.RED + " ----- <Required> [Optional] - Information");
-				sender.sendMessage(ChatColor.AQUA + " - /pman help - Displays this.");
-				sender.sendMessage(ChatColor.AQUA + " - /pman load <Plugin name or Plugin File> - Load or Enable a plugin");
-				sender.sendMessage(ChatColor.AQUA + " - /pman unload(or /pman disable) <Plugin name> - Disable plugin");
-				sender.sendMessage(ChatColor.AQUA + " - /pman download <FileName> <URL> - Download plugin");
-				sender.sendMessage(ChatColor.AQUA + " - /pman delete <(Current)FileName> <PluginName(or Backup file name)> - Delete(move) plugin.");
-				sender.sendMessage(ChatColor.AQUA + " - /pman restore <FileName> - Restore deleted plugin.");
-				sender.sendMessage(ChatColor.AQUA + " - /pman editor <Dir> <File> <Line(Count from 0)> <value> - Edit config.");
-				sender.sendMessage(ChatColor.AQUA + " - /pman viewer <Dir> <File> - View config.");
-				sender.sendMessage(ChatColor.AQUA + " - /pman update - Update this plugin.");
-				sender.sendMessage(ChatColor.AQUA + " - /pman usage <Command> - Usage of command.");
+				sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[v0.8.3] " + Lang.help + Lang.alpha + " -----");
+				sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
+				sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
+				sender.sendMessage(ChatColor.AQUA + " - /pman load <Plugin name or Plugin File> - " + Lang.pman_load_desc);
+				sender.sendMessage(ChatColor.AQUA + " - /pman unload(or /pman disable) <Plugin name> - " + Lang.pman_unload_desc);
+				sender.sendMessage(ChatColor.AQUA + " - /pman download <FileName> <URL> - " + Lang.pman_download_desc);
+				sender.sendMessage(ChatColor.AQUA + " - /pman delete <(Current)FileName> <PluginName(or Backup file name)> - " + Lang.pman_delete_desc);
+				sender.sendMessage(ChatColor.AQUA + " - /pman restore <FileName> - " + Lang.pman_restore_desc);
+				sender.sendMessage(ChatColor.AQUA + " - /pman editor <Dir> <File> <Line(Count from 0)> <value> - " + Lang.pman_editor_desc);
+				sender.sendMessage(ChatColor.AQUA + " - /pman viewer <Dir> <File> - " + Lang.pman_viewer_desc);
+				sender.sendMessage(ChatColor.AQUA + " - /pman update - " + Lang.pman_update_desc);
+				sender.sendMessage(ChatColor.AQUA + " - /pman usage <Command> - " + Lang.pman_usage_desc);
+				sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...> - Change language.");
+				sender.sendMessage(ChatColor.AQUA + " - /pman config reload - Reload config.");
 				sender.sendMessage(ChatColor.AQUA + " - BukkitDev(Project page): https://dev.bukkit.org/projects/pluginmanagement/");
 				sender.sendMessage(ChatColor.AQUA + " - Jenkins(Developer version): http://point.rht0910.tk:8080/job/PluginManager/");
 				sender.sendMessage(ChatColor.AQUA + " - Source code: https://github.com/rht0910/PluginManager/");
@@ -141,7 +152,7 @@ public final class Main extends JavaPlugin {
 					sender.sendMessage(ChatColor.RED + "Not enough args, cannot continue.");
 					return false;
 				}
-				Manager.getPluginUtil().RestorePlugin(sender, args[1]);
+				PluginUtils.RestorePlugin(sender, args[1]);
 			} else if(args[0].equalsIgnoreCase("delete")) {
 				if(sender instanceof Player) {
 					if(!sender.isOp()) {
@@ -161,11 +172,11 @@ public final class Main extends JavaPlugin {
 					sender.sendMessage(ChatColor.RED + "Not enough args, cannot continue.");
 					return false;
 				}
-				Manager.getPluginUtil().DeletePlugin(sender, args[1], args[2]);
+				PluginUtils.DeletePlugin(sender, args[1], args[2]);
 			} else if(args[0].equalsIgnoreCase("viewer")) {
 				Bukkit.getServer().getLogger().warning("Opening config viewer by " + sender.toString());
 				//if(args[2] == null || args[2] == "") {
-					Manager.getPluginUtil().ConfigViewer(sender, args[1], args[2]);
+					PluginUtils.ConfigViewer(sender, args[1], args[2]);
 				//} else {
 				//	Manager.getPluginUtil().ConfigViewer(sender, args[0], args[1], new Integer(args[2]));
 				//}
@@ -222,22 +233,36 @@ public final class Main extends JavaPlugin {
 					}
 				}
 			} else if(args[0].equalsIgnoreCase("usage")) {
-				Manager.getCommand().getUsageOfCmd(sender, args[1]);
+				tk.rht0910.plugin_manager.util.Command.getUsageOfCmd(sender, args[1]);
+			} else if(args[0].equalsIgnoreCase("config")) {
+				if(args[1].equalsIgnoreCase("language")) {
+					this.getConfig().set("language", args[2]);
+					this.saveConfig();
+					this.reloadConfig();
+					sender.sendMessage(ChatColor.GREEN + "Success! Set language to " + args[2]);
+				} else if(args[1].equalsIgnoreCase("reload")) {
+					this.reloadConfig();
+					sender.sendMessage(ChatColor.GREEN + "[PMan] Config reloaded");
+				} else {
+					sender.sendMessage("language以外の設定なんてありません。");
+				}
 			} else {
-				sender.sendMessage(ChatColor.RED + "Invalid args");
+				sender.sendMessage(ChatColor.RED + Lang.invalid_args);
 				//Manager.getCommand().ShowHelp(sender);
-				sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[v0.8] Help -----");
-				sender.sendMessage(ChatColor.RED + " ----- <Required> [Optional] - Information");
-				sender.sendMessage(ChatColor.AQUA + " - /pman help - Displays this.");
-				sender.sendMessage(ChatColor.AQUA + " - /pman load <Plugin name or Plugin File> - Load or Enable a plugin");
-				sender.sendMessage(ChatColor.AQUA + " - /pman unload(or /pman disable) <Plugin name> - Disable plugin");
-				sender.sendMessage(ChatColor.AQUA + " - /pman download <FileName> <URL> - Download plugin");
-				sender.sendMessage(ChatColor.AQUA + " - /pman delete <(Current)FileName> <PluginName(or Backup file name)> - Delete(move) plugin.");
-				sender.sendMessage(ChatColor.AQUA + " - /pman restore <FileName> - Restore deleted plugin.");
-				sender.sendMessage(ChatColor.AQUA + " - /pman editor <Dir> <File> <Line(Count from 0)> <value> - Edit config.");
-				sender.sendMessage(ChatColor.AQUA + " - /pman viewer <Dir> <File> - View config.");
-				sender.sendMessage(ChatColor.AQUA + " - /pman update - Update this plugin.");
-				sender.sendMessage(ChatColor.AQUA + " - /pman usage <Command> - Usage of command.");
+				sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[v0.8.3] " + Lang.help + Lang.alpha + " -----");
+				sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
+				sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
+				sender.sendMessage(ChatColor.AQUA + " - /pman load <Plugin name or Plugin File> - " + Lang.pman_load_desc);
+				sender.sendMessage(ChatColor.AQUA + " - /pman unload(or /pman disable) <Plugin name> - " + Lang.pman_unload_desc);
+				sender.sendMessage(ChatColor.AQUA + " - /pman download <FileName> <URL> - " + Lang.pman_download_desc);
+				sender.sendMessage(ChatColor.AQUA + " - /pman delete <(Current)FileName> <PluginName(or Backup file name)> - " + Lang.pman_delete_desc);
+				sender.sendMessage(ChatColor.AQUA + " - /pman restore <FileName> - " + Lang.pman_restore_desc);
+				sender.sendMessage(ChatColor.AQUA + " - /pman editor <Dir> <File> <Line(Count from 0)> <value> - " + Lang.pman_editor_desc);
+				sender.sendMessage(ChatColor.AQUA + " - /pman viewer <Dir> <File> - " + Lang.pman_viewer_desc);
+				sender.sendMessage(ChatColor.AQUA + " - /pman update - " + Lang.pman_update_desc);
+				sender.sendMessage(ChatColor.AQUA + " - /pman usage <Command> - " + Lang.pman_usage_desc);
+				sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...> - Change language.");
+				sender.sendMessage(ChatColor.AQUA + " - /pman config reload - Reload config.");
 				sender.sendMessage(ChatColor.AQUA + " - BukkitDev(Project page): https://dev.bukkit.org/projects/pluginmanagement/");
 				sender.sendMessage(ChatColor.AQUA + " - Jenkins(Developer version): http://point.rht0910.tk:8080/job/PluginManager/");
 				sender.sendMessage(ChatColor.AQUA + " - Source code: https://github.com/rht0910/PluginManager/");
