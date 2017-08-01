@@ -12,7 +12,7 @@ public class LanguageProvider {
 	public static Object load(String path, String def) {
 		FileConfiguration config = null;
 		InputStreamReader isr = null;
-		InputStream is = Manager.getMain().getClass().getResourceAsStream("language_" + Manager.getMain().getConfig().getString("language") + ".yml");
+		InputStream is = Main.is;
 		// Manager.getMain().getConfig().load(new File("language_" + Manager.getMain().getConfig().getString("language") + ".yml"));
 		try {
 			isr = new InputStreamReader(is, "UTF-8");
