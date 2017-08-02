@@ -9,10 +9,10 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 public class LanguageProvider {
-	public static Object load(String path, String def) {
+	public static String load(String path, String def) {
 		FileConfiguration config = null;
 		InputStreamReader isr = null;
-		InputStream is = Main.is;
+		InputStream is = Main.getInputStream();
 		// Manager.getMain().getConfig().load(new File("language_" + Manager.getMain().getConfig().getString("language") + ".yml"));
 		try {
 			isr = new InputStreamReader(is, "UTF-8");
@@ -22,6 +22,6 @@ public class LanguageProvider {
 			Bukkit.getLogger().severe("https://github.com/rht0910/PluginManager/issues/");
 		}
 		config = YamlConfiguration.loadConfiguration(isr);
-		return config.get(path, def);
+		return (String) config.get(path, def);
 	}
 }

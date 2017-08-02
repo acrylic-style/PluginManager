@@ -13,7 +13,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 import tk.rht0910.plugin_manager.util.PluginUtils;
 
 public final class Main extends JavaPlugin {
-	public static InputStream is = Main.class.getResourceAsStream("language_" + Manager.getMain().getConfig().getString("language") + ".yml");
+	public static InputStream getInputStream() {
+		String language = Main.getPlugin(Main.class).getConfig().getString("language");
+		return Main.class.getResourceAsStream("language_" + language + ".yml");
+	}
 
 	@Override
 	public void onEnable() {
@@ -210,6 +213,56 @@ public final class Main extends JavaPlugin {
 						players[i].sendMessage(ChatColor.GREEN + "PluginManager is updated by " + sender.toString() + ". Please restart server.");
 					}
 				}
+			} else if(args[0].equalsIgnoreCase("update-dev")) {
+				if(sender instanceof Player) {
+					if(!sender.isOp()) {
+						sender.sendMessage(ChatColor.DARK_RED + "You are not Operator!");
+						return false;
+					}
+					if(!sender.isPermissionSet("pluginmanager.admin")) {
+						sender.sendMessage(ChatColor.DARK_RED + "No permission");
+						return false;
+					}
+				}
+				sender.sendMessage(ChatColor.AQUA + "Updating plugin...(Downloading from DEVELOPER UNSTABLE build)");
+				try {
+					PluginUtils.Download(sender, "PluginManager", "http://point.rht0910.tk:8080/job/PluginManager-branch%20of%20dev/lastSuccessfulBuild/artifact/target/PluginManager.jar");
+				} catch(Exception e) {
+					sender.sendMessage(ChatColor.RED + "Failed to update. (Is Download server down?)");
+					return false;
+				}
+				final Collection<? extends Player> onplayers = Bukkit.getServer().getOnlinePlayers();
+				final Player[] players = (Player[]) onplayers.toArray();
+				for(int i=0;i<=players.length;i++) {
+					if(players[i].isOp()) {
+						players[i].sendMessage(ChatColor.GREEN + "PluginManager" + ChatColor.RED + "(UNSTABLE)" + ChatColor.GREEN + " is updated by " + sender.toString() + ". Please restart server.");
+					}
+				}
+			} else if(args[0].equalsIgnoreCase("update-dev-local")) {
+				if(sender instanceof Player) {
+					if(!sender.isOp()) {
+						sender.sendMessage(ChatColor.DARK_RED + "You are not Operator!");
+						return false;
+					}
+					if(!sender.isPermissionSet("pluginmanager.admin")) {
+						sender.sendMessage(ChatColor.DARK_RED + "No permission");
+						return false;
+					}
+				}
+				sender.sendMessage(ChatColor.AQUA + "Updating plugin...(Downloading from DEVELOPER UNSTABLE build)");
+				try {
+					PluginUtils.Download(sender, "PluginManager", "http://local4.point.rht0910.tk:8080/job/PluginManager-branch%20of%20dev/lastSuccessfulBuild/artifact/target/PluginManager.jar");
+				} catch(Exception e) {
+					sender.sendMessage(ChatColor.RED + "Failed to update. (Is Download server down?)");
+					return false;
+				}
+				final Collection<? extends Player> onplayers = Bukkit.getServer().getOnlinePlayers();
+				final Player[] players = (Player[]) onplayers.toArray();
+				for(int i=0;i<=players.length;i++) {
+					if(players[i].isOp()) {
+						players[i].sendMessage(ChatColor.GREEN + "PluginManager" + ChatColor.RED + "(UNSTABLE)" + ChatColor.GREEN + " is updated by " + sender.toString() + ". Please restart server.");
+					}
+				}
 			} else if(args[0].equalsIgnoreCase("update-local")) {
 				if(sender instanceof Player) {
 					if(!sender.isOp()) {
@@ -263,6 +316,7 @@ public final class Main extends JavaPlugin {
 				sender.sendMessage(ChatColor.AQUA + " - /pman editor <Dir> <File> <Line(Count from 0)> <value> - " + Lang.pman_editor_desc);
 				sender.sendMessage(ChatColor.AQUA + " - /pman viewer <Dir> <File> - " + Lang.pman_viewer_desc);
 				sender.sendMessage(ChatColor.AQUA + " - /pman update - " + Lang.pman_update_desc);
+				sender.sendMessage(ChatColor.AQUA + " - /pman update-dev - Update to UNSTABLE and DEVELOPER version.");
 				sender.sendMessage(ChatColor.AQUA + " - /pman usage <Command> - " + Lang.pman_usage_desc);
 				sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...> - Change language.");
 				sender.sendMessage(ChatColor.AQUA + " - /pman config reload - Reload config.");
