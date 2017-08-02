@@ -23,9 +23,10 @@ public final class Main extends JavaPlugin {
 		try {
 			Bukkit.getServer().getLogger().info("PluginManager is initializing...");
 			if(!this.getConfig().isSet("language")) {
-				this.getConfig().set("language", "en_US");
 				this.getConfig().options().copyDefaults(true);
-				//this.getConfig().options().copyDefaults(!this.getConfig().contains("language"));
+				this.saveConfig();
+			} else {
+				this.saveConfig();
 			}
 			Bukkit.getServer().getLogger().info("PluginManager is initialized!");
 		} catch(Exception e) {
