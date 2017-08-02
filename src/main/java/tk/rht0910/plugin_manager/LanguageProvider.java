@@ -17,11 +17,14 @@ public class LanguageProvider {
 		try {
 			isr = new InputStreamReader(is, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+			e.getCause().printStackTrace();
 			Bukkit.getLogger().severe("This error is unrecoverble error, please create ticket");
 			Bukkit.getLogger().severe("https://github.com/rht0910/PluginManager/issues/");
 		} catch (ExceptionInInitializerError | NullPointerException e) {
-			e.getCause().printStackTrace();
+			// e.getCause().printStackTrace();
+			e.printStackTrace();
+			Bukkit.getLogger().severe("This error is unrecoverble error, please create ticket");
+			Bukkit.getLogger().severe("https://github.com/rht0910/PluginManager/issues/");
 		}
 		config = YamlConfiguration.loadConfiguration(isr);
 		return (String) config.get(path, def);
