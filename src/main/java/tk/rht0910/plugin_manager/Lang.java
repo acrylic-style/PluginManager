@@ -1,6 +1,6 @@
 package tk.rht0910.plugin_manager;
 
-public class Lang {
+public final class Lang {
 	public static String help = (String) LanguageProvider.load("help", "Help");
 	public static String invalid_args = (String) LanguageProvider.load("invalid_args", "Invalid args");
 	public static String required = (String) LanguageProvider.load("requried", "Required");
@@ -18,5 +18,4 @@ public class Lang {
 	public static String pman_usage_desc = (String) LanguageProvider.load("pman_usage_desc", "Usage of command.");
 	public static String alpha = (String) LanguageProvider.load("alpha", "(ALPHA)");
 	public static String beta = (String) LanguageProvider.load("beta", "(BETA)");
-
 }
