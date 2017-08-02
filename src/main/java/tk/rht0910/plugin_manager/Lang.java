@@ -1,7 +1,7 @@
 package tk.rht0910.plugin_manager;
 
 public class Lang {
-	public static String help = (String) org.bukkit.ChatColor.translateAlternateColorCodes('&', (String)LanguageProvider.load("help", "Help"));
+	public static String help = (String) LanguageProvider.load("help", "Help");
 	public static String invalid_args = (String) LanguageProvider.load("invalid_args", "Invalid args");
 	public static String required = (String) LanguageProvider.load("requried", "Required");
 	public static String optional = (String) LanguageProvider.load("optional", "Optional");
