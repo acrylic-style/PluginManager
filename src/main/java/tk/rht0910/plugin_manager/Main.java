@@ -95,7 +95,7 @@ public final class Main extends JavaPlugin {
 				sender.sendMessage(ChatColor.AQUA + " - BukkitDev(Project page): https://dev.bukkit.org/projects/pluginmanagement/");
 				sender.sendMessage(ChatColor.AQUA + " - Jenkins(Developer version): http://point.rht0910.tk:8080/job/PluginManager/");
 				sender.sendMessage(ChatColor.AQUA + " - Source code: https://github.com/rht0910/PluginManager/");
-				} catch(ExceptionInInitializerError | NoClassDefFoundError e) {
+				} catch(Exception | Error e) {
 					e.printStackTrace();
 				}
 			} else if(args[0].equalsIgnoreCase("load")) {
