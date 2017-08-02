@@ -75,6 +75,7 @@ public final class Main extends JavaPlugin {
 				return true;
 			}
 			if(args[0].equalsIgnoreCase("help")) {
+				try {
 				//Manager.getCommand().ShowHelp(sender);
 				sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[v0.8.3] " + Lang.help + Lang.alpha + " -----");
 				sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
@@ -93,6 +94,9 @@ public final class Main extends JavaPlugin {
 				sender.sendMessage(ChatColor.AQUA + " - BukkitDev(Project page): https://dev.bukkit.org/projects/pluginmanagement/");
 				sender.sendMessage(ChatColor.AQUA + " - Jenkins(Developer version): http://point.rht0910.tk:8080/job/PluginManager/");
 				sender.sendMessage(ChatColor.AQUA + " - Source code: https://github.com/rht0910/PluginManager/");
+				} catch(ExceptionInInitializerError e) {
+					e.getCause().printStackTrace();
+				}
 			} else if(args[0].equalsIgnoreCase("load")) {
 				if(sender instanceof Player) {
 					if(!sender.isPermissionSet("pluginmanager.admin")) {
