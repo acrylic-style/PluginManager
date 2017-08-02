@@ -20,7 +20,7 @@ public class LanguageProvider {
 			e.printStackTrace();
 			Bukkit.getLogger().severe("This error is unrecoverble error, please create ticket");
 			Bukkit.getLogger().severe("https://github.com/rht0910/PluginManager/issues/");
-		} catch (ExceptionInInitializerError e) {
+		} catch (ExceptionInInitializerError | NullPointerException e) {
 			e.getCause().printStackTrace();
 		}
 		config = YamlConfiguration.loadConfiguration(isr);
