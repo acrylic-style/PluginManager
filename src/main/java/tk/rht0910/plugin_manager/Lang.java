@@ -1,5 +1,10 @@
 package tk.rht0910.plugin_manager;
 
+import java.io.File;
+import java.io.IOException;
+
+import com.google.common.io.Files;
+
 public final class Lang {
 	public static String help = null;
 	public static String invalid_args = null;
@@ -23,6 +28,7 @@ public final class Lang {
 	 * Initialize a class
 	 */
 	public static void initialize() {
+		readFolder();
 		 help = (String) LanguageProvider.load("help", "Help");
 		 invalid_args = (String) LanguageProvider.load("invalid_args", "Invalid args");
 		 required = (String) LanguageProvider.load("requried", "Required");
@@ -41,4 +47,41 @@ public final class Lang {
 		 alpha = (String) LanguageProvider.load("alpha", "(ALPHA)");
 		 beta = (String) LanguageProvider.load("beta", "(BETA)");
 	}
+
+	  /**
+	   * ディレクトリを再帰的に読む
+	   */
+	  public static void readFolder() {
+
+	    File[] files = Main.getPlugin(Main.class).getDataFolder().listFiles();
+	    if( files == null )
+	      return;
+	    for( File file : files ) {
+	      if( !file.exists() ) {
+	        continue;
+	      // else if( file.isDirectory() )
+	        // Nothing happened.
+	      } else if( file.isFile() && file.canRead() && file.getPath().endsWith(".yml") ) {
+	    	  File file2 = new File(Main.getPlugin(Main.class).getDataFolder(), file.getName());
+	    	  if(!file2.exists()) {
+	    		  if(!(file2.getName() == "plugin.yml")) {
+	    			  execute( file );
+	    		  }
+	    	  }
+	      }
+	    }
+	  }
+
+	  /**
+	   * ファイルの処理
+	   * @param filePath
+	   */
+	  public static void execute( File file ) {
+		  File file2 = new File(Main.getPlugin(Main.class).getDataFolder(), file.getName());
+	    try {
+			Files.copy(file, file2);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	  }
 }
