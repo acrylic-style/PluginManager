@@ -14,7 +14,6 @@ import tk.rht0910.plugin_manager.util.PluginUtils;
 
 public final class Main extends JavaPlugin {
 	public static InputStream getInputStream() {
-		Main.getPlugin(Main.class).reloadConfig();
 		String language = Main.getPlugin(Main.class).getConfig().getString("language");
 		return Main.class.getResourceAsStream("language_" + language + ".yml");
 	}
@@ -24,13 +23,17 @@ public final class Main extends JavaPlugin {
 		try {
 			Bukkit.getServer().getLogger().info("PluginManager is initializing...");
 			if(!this.getConfig().isSet("language")) {
+				Bukkit.getLogger().info("Copying default config...");
 				this.getConfig().options().copyDefaults(true);
 				this.saveConfig();
 			} else {
+				Bukkit.getLogger().info("Saving config...");
 				this.saveConfig();
 			}
+			this.reloadConfig();
+			Bukkit.getLogger().info("Saved config and reloaded config.");
 			Bukkit.getServer().getLogger().info("PluginManager is initialized!");
-		} catch(Exception e) {
+		} catch(Exception | Error e) {
 			Bukkit.getServer().getLogger().severe("Plugin initialize error! Disabling plugin... and Please see errors.");
 			e.printStackTrace();
 			Manager.getPluginUtil();
