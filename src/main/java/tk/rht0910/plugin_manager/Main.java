@@ -1,6 +1,5 @@
 package tk.rht0910.plugin_manager;
 
-import java.io.InputStream;
 import java.util.Collection;
 
 import org.bukkit.Bukkit;
@@ -13,9 +12,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import tk.rht0910.plugin_manager.util.PluginUtils;
 
 public final class Main extends JavaPlugin {
-	public static InputStream getInputStream() {
-		String language = Main.getPlugin(Main.class).getConfig().getString("language");
-		return Main.class.getResourceAsStream("language_" + language + ".yml");
+	public static String getLanguageCode() {
+		return Main.getPlugin(Main.class).getConfig().getString("language");
 	}
 
 	@Override
