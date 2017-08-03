@@ -13,6 +13,7 @@ import tk.rht0910.plugin_manager.util.Log;
 import tk.rht0910.plugin_manager.util.PluginUtils;
 
 public final class Main extends JavaPlugin {
+	public char altColorChar = '&';
 	public static String getLanguageCode() {
 		String getty = Main.getPlugin(Main.class).getConfig().getString("language");
 		return getty;
@@ -41,8 +42,8 @@ public final class Main extends JavaPlugin {
 	@Override
 	public void onLoad() {
 		try {
-			Bukkit.getServer().getLogger().info("Loading PluginManager v0.8.3...");
-			Bukkit.getServer().getLogger().info("Loaded PluginManager v0.8.3");
+			Bukkit.getServer().getLogger().info("Loading PluginManager v0.8.4...");
+			Bukkit.getServer().getLogger().info("Loaded PluginManager v0.8.4");
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().info("Unknown error: " + e);
 			e.printStackTrace();
@@ -68,7 +69,7 @@ public final class Main extends JavaPlugin {
 		if(command.getName().equalsIgnoreCase("pman")) {
 			if(sender instanceof Player) {
 				if(!sender.isOp()) {
-					sender.sendMessage(ChatColor.RED + "You're not operator!");
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.you_are_not_operator));
 				}
 			}
 			if(args.length == 0 || args.equals(null)) {
@@ -79,31 +80,32 @@ public final class Main extends JavaPlugin {
 			if(args[0].equalsIgnoreCase("help")) {
 				try {
 					Lang.use();
-				//Manager.getCommand().ShowHelp(sender);
-				sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[v0.8.3] " + Lang.help + Lang.alpha + " -----");
-				sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
-				sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
-				sender.sendMessage(ChatColor.AQUA + " - /pman load <Plugin name or Plugin File> - " + Lang.pman_load_desc);
-				sender.sendMessage(ChatColor.AQUA + " - /pman unload(or /pman disable) <Plugin name> - " + Lang.pman_unload_desc);
-				sender.sendMessage(ChatColor.AQUA + " - /pman download <FileName> <URL> - " + Lang.pman_download_desc);
-				sender.sendMessage(ChatColor.AQUA + " - /pman delete <(Current)FileName> <PluginName(or Backup file name)> - " + Lang.pman_delete_desc);
-				sender.sendMessage(ChatColor.AQUA + " - /pman restore <FileName> - " + Lang.pman_restore_desc);
-				sender.sendMessage(ChatColor.AQUA + " - /pman editor <Dir> <File> <Line(Count from 0)> <value> - " + Lang.pman_editor_desc);
-				sender.sendMessage(ChatColor.AQUA + " - /pman viewer <Dir> <File> - " + Lang.pman_viewer_desc);
-				sender.sendMessage(ChatColor.AQUA + " - /pman update - " + Lang.pman_update_desc);
-				sender.sendMessage(ChatColor.AQUA + " - /pman usage <Command> - " + Lang.pman_usage_desc);
-				sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...> - Change language.");
-				sender.sendMessage(ChatColor.AQUA + " - /pman config reload - Reload config.");
-				sender.sendMessage(ChatColor.AQUA + " - BukkitDev(Project page): https://dev.bukkit.org/projects/pluginmanagement/");
-				sender.sendMessage(ChatColor.AQUA + " - Jenkins(Developer version): http://point.rht0910.tk:8080/job/PluginManager/");
-				sender.sendMessage(ChatColor.AQUA + " - Source code: https://github.com/rht0910/PluginManager/");
+					//Manager.getCommand().ShowHelp(sender);
+					sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[v0.8.3] " + Lang.help + Lang.alpha + " -----");
+					sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
+					sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman load <Plugin name or Plugin File> - " + Lang.pman_load_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman unload(or /pman disable) <Plugin name> - " + Lang.pman_unload_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman download <FileName> <URL> - " + Lang.pman_download_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman delete <(Current)FileName> <PluginName(or Backup file name)> - " + Lang.pman_delete_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman restore <FileName> - " + Lang.pman_restore_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman editor <Dir> <File> <Line(Count from 0)> <value> - " + Lang.pman_editor_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman viewer <Dir> <File> - " + Lang.pman_viewer_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman update - " + Lang.pman_update_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman update-dev - Update to UNSTABLE and DEVELOPER version.");
+					sender.sendMessage(ChatColor.AQUA + " - /pman usage <Command> - " + Lang.pman_usage_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...> - " + Lang.pman_config_language);
+					sender.sendMessage(ChatColor.AQUA + " - /pman config reload - " + Lang.pman_config_reload);
+					sender.sendMessage(ChatColor.AQUA + " - " + Lang.project_page + ": https://dev.bukkit.org/projects/pluginmanagement/");
+					sender.sendMessage(ChatColor.AQUA + " - " + Lang.developer_version + ": http://point.rht0910.tk:8080/job/PluginManager/");
+					sender.sendMessage(ChatColor.AQUA + " - " + Lang.source_code + ": https://github.com/rht0910/PluginManager/");
 				} catch(Exception | Error e) {
 					e.printStackTrace();
 				}
 			} else if(args[0].equalsIgnoreCase("load")) {
 				if(sender instanceof Player) {
 					if(!sender.isPermissionSet("pluginmanager.admin")) {
-						sender.sendMessage(ChatColor.DARK_RED + "No permission");
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
 						return false;
 					}
 				}
@@ -116,7 +118,7 @@ public final class Main extends JavaPlugin {
 				if(sender instanceof Player) {
 					if(!sender.isPermissionSet("pluginmanager.admin")) {
 						Bukkit.getServer().getLogger().severe("No permission: /pman disable : " + sender.toString());
-						sender.sendMessage(ChatColor.DARK_RED + "No permission");
+						sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Lang.no_permission));
 						return false;
 					}
 				}
@@ -125,7 +127,7 @@ public final class Main extends JavaPlugin {
 				if(sender instanceof Player) {
 					if(!sender.isPermissionSet("pluginmanager.admin")) {
 						Bukkit.getServer().getLogger().severe("No permission: /pman unload : " + sender.toString());
-						sender.sendMessage(ChatColor.DARK_RED + "No permission");
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
 						return false;
 					}
 				}
@@ -133,56 +135,56 @@ public final class Main extends JavaPlugin {
 			} else if(args[0].equalsIgnoreCase("download")) {
 				if(sender instanceof Player) {
 					if(!sender.isOp()) {
-						sender.sendMessage(ChatColor.DARK_RED + "You are not Operator!");
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.you_are_not_operator));
 						return false;
 					}
 					if(!sender.isPermissionSet("pluginmanager.admin")) {
-						sender.sendMessage(ChatColor.DARK_RED + "No permission");
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
 						return false;
 					}
 				}
 				if(args[1] == null || args[2] == null) {
-					sender.sendMessage(ChatColor.RED + "Not enough args");
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.not_enough_args));
 					return false;
 				}
 				PluginUtils.Download(sender, args[1], args[2]);
 			} else if(args[0].equalsIgnoreCase("restore")) {
 				if(sender instanceof Player) {
 					if(!sender.isOp()) {
-						sender.sendMessage(ChatColor.DARK_RED + "You are not Operator!");
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.you_are_not_operator));
 						return false;
 					}
 					if(!sender.isPermissionSet("pluginmanager.admin")) {
-						sender.sendMessage(ChatColor.DARK_RED + "No permission");
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
 						return false;
 					}
 					if(!sender.isPermissionSet("pluginmanager.super-admin")) {
-						sender.sendMessage(ChatColor.DARK_RED + "No permission");
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
 						return false;
 					}
 				}
 				if(args[0] == null) {
-					sender.sendMessage(ChatColor.RED + "Not enough args, cannot continue.");
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.not_enough_args));
 					return false;
 				}
 				PluginUtils.RestorePlugin(sender, args[1]);
 			} else if(args[0].equalsIgnoreCase("delete")) {
 				if(sender instanceof Player) {
 					if(!sender.isOp()) {
-						sender.sendMessage(ChatColor.DARK_RED + "You are not Operator!");
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.you_are_not_operator));
 						return false;
 					}
 					if(!sender.isPermissionSet("pluginmanager.admin")) {
-						sender.sendMessage(ChatColor.DARK_RED + "No permission");
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
 						return false;
 					}
 					if(!sender.isPermissionSet("pluginmanager.super-admin")) {
-						sender.sendMessage(ChatColor.DARK_RED + "No permission");
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
 						return false;
 					}
 				}
 				if(args[1] == null || args[2] == null) {
-					sender.sendMessage(ChatColor.RED + "Not enough args, cannot continue.");
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.not_enough_args));
 					return false;
 				}
 				PluginUtils.DeletePlugin(sender, args[1], args[2]);
@@ -198,11 +200,11 @@ public final class Main extends JavaPlugin {
 			} else if(args[0].equalsIgnoreCase("update")) {
 				if(sender instanceof Player) {
 					if(!sender.isOp()) {
-						sender.sendMessage(ChatColor.DARK_RED + "You are not Operator!");
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.you_are_not_operator));
 						return false;
 					}
 					if(!sender.isPermissionSet("pluginmanager.admin")) {
-						sender.sendMessage(ChatColor.DARK_RED + "No permission");
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
 						return false;
 					}
 				}
@@ -223,11 +225,11 @@ public final class Main extends JavaPlugin {
 			} else if(args[0].equalsIgnoreCase("update-dev")) {
 				if(sender instanceof Player) {
 					if(!sender.isOp()) {
-						sender.sendMessage(ChatColor.DARK_RED + "You are not Operator!");
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.you_are_not_operator));
 						return false;
 					}
 					if(!sender.isPermissionSet("pluginmanager.admin")) {
-						sender.sendMessage(ChatColor.DARK_RED + "No permission");
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
 						return false;
 					}
 				}
@@ -248,11 +250,11 @@ public final class Main extends JavaPlugin {
 			} else if(args[0].equalsIgnoreCase("update-dev-local")) {
 				if(sender instanceof Player) {
 					if(!sender.isOp()) {
-						sender.sendMessage(ChatColor.DARK_RED + "You are not Operator!");
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.you_are_not_operator));
 						return false;
 					}
 					if(!sender.isPermissionSet("pluginmanager.admin")) {
-						sender.sendMessage(ChatColor.DARK_RED + "No permission");
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
 						return false;
 					}
 				}
@@ -273,11 +275,11 @@ public final class Main extends JavaPlugin {
 			} else if(args[0].equalsIgnoreCase("update-local")) {
 				if(sender instanceof Player) {
 					if(!sender.isOp()) {
-						sender.sendMessage(ChatColor.DARK_RED + "You are not Operator!");
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.you_are_not_operator));
 						return false;
 					}
 					if(!sender.isPermissionSet("pluginmanager.admin")) {
-						sender.sendMessage(ChatColor.DARK_RED + "No permission");
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
 						return false;
 					}
 				}
@@ -326,11 +328,11 @@ public final class Main extends JavaPlugin {
 				sender.sendMessage(ChatColor.AQUA + " - /pman update - " + Lang.pman_update_desc);
 				sender.sendMessage(ChatColor.AQUA + " - /pman update-dev - Update to UNSTABLE and DEVELOPER version.");
 				sender.sendMessage(ChatColor.AQUA + " - /pman usage <Command> - " + Lang.pman_usage_desc);
-				sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...> - Change language.");
-				sender.sendMessage(ChatColor.AQUA + " - /pman config reload - Reload config.");
-				sender.sendMessage(ChatColor.AQUA + " - BukkitDev(Project page): https://dev.bukkit.org/projects/pluginmanagement/");
-				sender.sendMessage(ChatColor.AQUA + " - Jenkins(Developer version): http://point.rht0910.tk:8080/job/PluginManager/");
-				sender.sendMessage(ChatColor.AQUA + " - Source code: https://github.com/rht0910/PluginManager/");
+				sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...> - " + Lang.pman_config_language);
+				sender.sendMessage(ChatColor.AQUA + " - /pman config reload - " + Lang.pman_config_reload);
+				sender.sendMessage(ChatColor.AQUA + " - " + Lang.project_page + ": https://dev.bukkit.org/projects/pluginmanagement/");
+				sender.sendMessage(ChatColor.AQUA + " - " + Lang.developer_version + ": http://point.rht0910.tk:8080/job/PluginManager/");
+				sender.sendMessage(ChatColor.AQUA + " - " + Lang.source_code + ": https://github.com/rht0910/PluginManager/");
 			}
 		}
 		} catch(Exception e) {

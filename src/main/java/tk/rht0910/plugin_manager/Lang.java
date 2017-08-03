@@ -20,6 +20,8 @@ public final class Lang {
 	public static String pman_editor_desc = null;
 	public static String pman_viewer_desc = null;
 	public static String pman_update_desc = null;
+	public static String pman_config_language = null;
+	public static String pman_config_reload = null;
 	public static String pman_usage_desc = null;
 	public static String alpha = null;
 	public static String beta = null;
@@ -60,6 +62,8 @@ public final class Lang {
 		 pman_editor_desc = (String) LanguageProvider.load("pman_editor_desc", "Edit a plugin config.");
 		 pman_viewer_desc = (String) LanguageProvider.load("pman_viewer_desc", "View a plugin config.");
 		 pman_update_desc = (String) LanguageProvider.load("pman_update_desc", "Update this plugin.");
+		 pman_config_language = (String) LanguageProvider.load("pman_config_language", "Change language");
+		 pman_config_reload = (String) LanguageProvider.load("pman_config_reload", "Reload config");
 		 pman_usage_desc = (String) LanguageProvider.load("pman_usage_desc", "Usage of command.");
 		 alpha = (String) LanguageProvider.load("alpha", "(ALPHA)");
 		 beta = (String) LanguageProvider.load("beta", "(BETA)");
