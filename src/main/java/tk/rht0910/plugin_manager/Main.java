@@ -14,6 +14,7 @@ import tk.rht0910.plugin_manager.util.PluginUtils;
 
 public final class Main extends JavaPlugin {
 	public static InputStream getInputStream() {
+		Main.getPlugin(Main.class).reloadConfig();
 		String language = Main.getPlugin(Main.class).getConfig().getString("language");
 		return Main.class.getResourceAsStream("language_" + language + ".yml");
 	}
@@ -77,6 +78,7 @@ public final class Main extends JavaPlugin {
 			}
 			if(args[0].equalsIgnoreCase("help")) {
 				try {
+					Lang.initialize();
 				//Manager.getCommand().ShowHelp(sender);
 				sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[v0.8.3] " + Lang.help + Lang.alpha + " -----");
 				sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
@@ -308,6 +310,7 @@ public final class Main extends JavaPlugin {
 					sender.sendMessage("language以外の設定なんてありません。");
 				}
 			} else {
+				Lang.initialize();
 				sender.sendMessage(ChatColor.RED + Lang.invalid_args);
 				//Manager.getCommand().ShowHelp(sender);
 				sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[v0.8.3] " + Lang.help + Lang.alpha + " -----");

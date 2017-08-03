@@ -1,6 +1,4 @@
-## Language file for PluginManager
-##
-
+---
 help: "Help"
 invalid_args: "Invalid args"
 required: "Required"
@@ -21,10 +19,10 @@ updating_plugin: "&aUpdating plugin..."
 success_update_plugin: "&5Plugin is updated by %s. Please reload."
 you_are_not_operator: "&cYou are not operator!"
 no_permission: "&cNo permission."
-opened_config_viewer: "Opened config viewer by %s" # Console log
+opened_config_viewer: "Opened config viewer by %s"
 not_enough_args: "&cNot enough argument, cannot continue."
 running_on: "&aPluginManager is running on %s"
-available_commands: "&aAvailable commands: /pman help"
+available_commands: '&aAvailable commands: /pman help'
 beta: "(BETA)"
 alpha: "(ALPHA)"
 project_page: "Project page"
