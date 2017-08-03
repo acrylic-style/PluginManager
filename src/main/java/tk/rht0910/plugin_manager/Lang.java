@@ -112,7 +112,7 @@ public final class Lang {
 		  Main.getPlugin(Main.class).saveResource("language_uk_UA.yml", true);
 		  Main.getPlugin(Main.class).saveResource("language_vi_VN.yml", true);
 		  Main.getPlugin(Main.class).saveResource("language_zh_CN.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_zh_CW.yml", true);
+		  Main.getPlugin(Main.class).saveResource("language_zh_TW.yml", true);
 		  /*InputStream is1 = Main.class.getClassLoader().getResourceAsStream("language_en_US.yml");
 		  InputStream is2 = Main.class.getClassLoader().getResourceAsStream("language_af_ZA.yml");
 		  InputStream is3 = Main.class.getClassLoader().getResourceAsStream("language_ar_SA.yml");
