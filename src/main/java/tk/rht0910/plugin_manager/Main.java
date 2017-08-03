@@ -9,27 +9,23 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import tk.rht0910.plugin_manager.util.Log;
 import tk.rht0910.plugin_manager.util.PluginUtils;
 
 public final class Main extends JavaPlugin {
 	public static String getLanguageCode() {
-		return Main.getPlugin(Main.class).getConfig().getString("language");
+		String getty = Main.getPlugin(Main.class).getConfig().getString("language");
+		return getty;
 	}
 
 	@Override
 	public void onEnable() {
 		try {
 			Bukkit.getServer().getLogger().info("PluginManager is initializing...");
-			if(!this.getConfig().isSet("language")) {
-				Bukkit.getLogger().info("Copying default config...");
-				this.getConfig().options().copyDefaults(true);
-				this.saveConfig();
-			} else {
-				Bukkit.getLogger().info("Saving config...");
-				this.saveConfig();
-			}
-			this.reloadConfig();
-			Bukkit.getLogger().info("Saved config and reloaded config.");
+			Log.info("Saving config...");
+			Main.this.getConfig().options().copyDefaults(true);
+			Main.this.saveConfig();
+			Bukkit.getLogger().info("Saved config.");
 			Bukkit.getServer().getLogger().info("PluginManager is initialized!");
 		} catch(Exception | Error e) {
 			Bukkit.getServer().getLogger().severe("Plugin initialize error! Disabling plugin... and Please see errors.");
