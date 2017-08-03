@@ -72,7 +72,7 @@ public final class Main extends JavaPlugin {
 				}
 			}
 			if(args.length == 0 || args.equals(null)) {
-				sender.sendMessage(ChatColor.translateAlternateColorCodes('&', String.format(Lang.running_on, "&a0.8.4")));
+				sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Lang.running_on));
 				sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Lang.available_commands));
 				return true;
 			}

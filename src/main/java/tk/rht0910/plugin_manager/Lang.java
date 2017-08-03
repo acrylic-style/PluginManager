@@ -48,7 +48,7 @@ public final class Lang {
 	public static void use() {
 		 help = (String) LanguageProvider.load("help", "Help");
 		 invalid_args = (String) LanguageProvider.load("invalid_args", "Invalid args");
-		 required = (String) LanguageProvider.load("requried", "Required");
+		 required = (String) LanguageProvider.load("required", "Required");
 		 optional = (String) LanguageProvider.load("optional", "Optional");
 		 information = (String) LanguageProvider.load("information", "Information");
 		 pman_help_desc = (String) LanguageProvider.load("pman_help_desc", "Display this.");
@@ -70,7 +70,7 @@ public final class Lang {
 		 no_permission = (String) LanguageProvider.load("no_permission", "");
 		 opened_config_viewer = (String) LanguageProvider.load("opened_config_viewer", "%s opened config viewer.");
 		 not_enough_args = (String) LanguageProvider.load("not_enough_args", "&cNot enough args");
-		 running_on = (String) LanguageProvider.load("running_on", "&bPluginManager is running on: %s");
+		 running_on = (String) LanguageProvider.load("running_on", "&bPluginManager is running on: " + "0.8.4");
 		 available_commands = (String) LanguageProvider.load("available_commands", "&bAvailable commands: '/pman help'");
 		 project_page = (String) LanguageProvider.load("project_page", "&b - Project page: %s");
 		 developer_version = (String) LanguageProvider.load("developer_version", "&b - Developer version: %s");
