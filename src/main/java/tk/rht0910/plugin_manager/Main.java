@@ -26,6 +26,9 @@ public final class Main extends JavaPlugin {
 			Main.this.getConfig().options().copyDefaults(true);
 			Main.this.saveConfig();
 			Bukkit.getLogger().info("Saved config.");
+			Log.info("Initializing Lang class...");
+			Lang.initialize();
+			Log.info("Initialized Lang class!");
 			Bukkit.getServer().getLogger().info("PluginManager is initialized!");
 		} catch(Exception | Error e) {
 			Bukkit.getServer().getLogger().severe("Plugin initialize error! Disabling plugin... and Please see errors.");
@@ -69,13 +72,13 @@ public final class Main extends JavaPlugin {
 				}
 			}
 			if(args.length == 0 || args.equals(null)) {
-				sender.sendMessage(ChatColor.AQUA + "PluginManager is running on " + ChatColor.GREEN + "version 0.8.3");
-				sender.sendMessage(ChatColor.AQUA + "Available commands: '/pman help'");
+				sender.sendMessage(ChatColor.translateAlternateColorCodes('&', String.format(Lang.running_on, "&a0.8.4")));
+				sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Lang.available_commands));
 				return true;
 			}
 			if(args[0].equalsIgnoreCase("help")) {
 				try {
-					Lang.initialize();
+					Lang.use();
 				//Manager.getCommand().ShowHelp(sender);
 				sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[v0.8.3] " + Lang.help + Lang.alpha + " -----");
 				sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
@@ -307,7 +310,7 @@ public final class Main extends JavaPlugin {
 					sender.sendMessage("language以外の設定なんてありません。");
 				}
 			} else {
-				Lang.initialize();
+				Lang.use();
 				sender.sendMessage(ChatColor.RED + Lang.invalid_args);
 				//Manager.getCommand().ShowHelp(sender);
 				sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[v0.8.3] " + Lang.help + Lang.alpha + " -----");
