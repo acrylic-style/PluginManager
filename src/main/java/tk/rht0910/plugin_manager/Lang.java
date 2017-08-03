@@ -87,7 +87,7 @@ public final class Lang {
 		  Main.getPlugin(Main.class).saveResource("language_af_ZA.yml", true);
 		  Main.getPlugin(Main.class).saveResource("language_ar_SA.yml", true);
 		  Main.getPlugin(Main.class).saveResource("language_ca_ES.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_ca_CZ.yml", true);
+		  Main.getPlugin(Main.class).saveResource("language_cs_CZ.yml", true);
 		  Main.getPlugin(Main.class).saveResource("language_da_DK.yml", true);
 		  Main.getPlugin(Main.class).saveResource("language_de_DE.yml", true);
 		  Main.getPlugin(Main.class).saveResource("language_el_GR.yml", true);
