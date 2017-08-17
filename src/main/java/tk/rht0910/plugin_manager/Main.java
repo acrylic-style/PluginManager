@@ -6,18 +6,23 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+//import org.bukkit.util.StringUtil;
 
 import tk.rht0910.plugin_manager.util.Log;
 import tk.rht0910.plugin_manager.util.PluginUtils;
 
-public final class Main extends JavaPlugin {
+public final class Main extends JavaPlugin implements TabCompleter {
+	//private static final String[] COMMANDS = {""};
 	public char altColorChar = '&';
 	public static String getLanguageCode() {
 		String getty = Main.getPlugin(Main.class).getConfig().getString("language");
 		return getty;
 	}
+
+
 
 	@Override
 	public void onEnable() {
@@ -42,8 +47,8 @@ public final class Main extends JavaPlugin {
 	@Override
 	public void onLoad() {
 		try {
-			Bukkit.getServer().getLogger().info("Loading PluginManager v0.8.4...");
-			Bukkit.getServer().getLogger().info("Loaded PluginManager v0.8.4");
+			Bukkit.getServer().getLogger().info("Loading PluginManager v0.8.5...");
+			Bukkit.getServer().getLogger().info("Loaded PluginManager v0.8.5");
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().info("Unknown error: " + e);
 			e.printStackTrace();
@@ -66,6 +71,7 @@ public final class Main extends JavaPlugin {
 
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		try {
+			Lang.use(); // Initialize variables
 		if(command.getName().equalsIgnoreCase("pman")) {
 			if(sender instanceof Player) {
 				if(!sender.isOp()) {
@@ -73,15 +79,14 @@ public final class Main extends JavaPlugin {
 				}
 			}
 			if(args.length == 0 || args.equals(null)) {
-				sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Lang.running_on));
+				sender.sendMessage(ChatColor.translateAlternateColorCodes('&', String.format(Lang.running_on, Lang.version)));
 				sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Lang.available_commands));
 				return true;
 			}
 			if(args[0].equalsIgnoreCase("help")) {
 				try {
-					Lang.use();
 					//Manager.getCommand().ShowHelp(sender);
-					sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[v0.8.3] " + Lang.help + Lang.alpha + " -----");
+					sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + Lang.alpha + " -----");
 					sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
 					sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman load <Plugin name or Plugin File> - " + Lang.pman_load_desc);
@@ -189,7 +194,7 @@ public final class Main extends JavaPlugin {
 				}
 				PluginUtils.DeletePlugin(sender, args[1], args[2]);
 			} else if(args[0].equalsIgnoreCase("viewer")) {
-				Bukkit.getServer().getLogger().warning("Opening config viewer by " + sender.toString());
+				Bukkit.getServer().getLogger().warning(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.opened_config_viewer, sender.toString())));
 				//if(args[2] == null || args[2] == "") {
 					PluginUtils.ConfigViewer(sender, args[1], args[2]);
 				//} else {
@@ -208,18 +213,18 @@ public final class Main extends JavaPlugin {
 						return false;
 					}
 				}
-				sender.sendMessage(ChatColor.AQUA + "Updating plugin...(Downloading from stable build)");
+				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.updating_plugin));
 				try {
 					PluginUtils.Download(sender, "PluginManager", "http://point.rht0910.tk:8080/job/PluginManager/lastSuccessfulBuild/artifact/target/PluginManager.jar");
 				} catch(Exception e) {
-					sender.sendMessage(ChatColor.RED + "Failed to update. (Is Download server down?)");
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.failed_update_plugin));
 					return false;
 				}
 				final Collection<? extends Player> onplayers = Bukkit.getServer().getOnlinePlayers();
 				final Player[] players = (Player[]) onplayers.toArray();
 				for(int i=0;i<=players.length;i++) {
 					if(players[i].isOp()) {
-						players[i].sendMessage(ChatColor.GREEN + "PluginManager is updated by " + sender.toString() + ". Please restart server.");
+						players[i].sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.success_update_plugin, "")));
 					}
 				}
 			} else if(args[0].equalsIgnoreCase("update-dev")) {
@@ -233,7 +238,7 @@ public final class Main extends JavaPlugin {
 						return false;
 					}
 				}
-				sender.sendMessage(ChatColor.AQUA + "Updating plugin...(Downloading from DEVELOPER UNSTABLE build)");
+				sender.sendMessage(ChatColor.RED + "Updating plugin...(Downloading from DEVELOPER UNSTABLE build)");
 				try {
 					PluginUtils.Download(sender, "PluginManager", "http://point.rht0910.tk:8080/job/PluginManager-branch%20of%20dev/lastSuccessfulBuild/artifact/target/PluginManager.jar");
 				} catch(Exception e) {
@@ -315,7 +320,7 @@ public final class Main extends JavaPlugin {
 				Lang.use();
 				sender.sendMessage(ChatColor.RED + Lang.invalid_args);
 				//Manager.getCommand().ShowHelp(sender);
-				sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[v0.8.3] " + Lang.help + Lang.alpha + " -----");
+				sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + Lang.alpha + " -----");
 				sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
 				sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
 				sender.sendMessage(ChatColor.AQUA + " - /pman load <Plugin name or Plugin File> - " + Lang.pman_load_desc);

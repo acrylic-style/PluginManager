@@ -23,6 +23,8 @@ public final class Lang {
 	public static String pman_config_language = null;
 	public static String pman_config_reload = null;
 	public static String pman_usage_desc = null;
+	public static String pman_version_desc = null;
+	public static String pman_version = null;
 	public static String alpha = null;
 	public static String beta = null;
 	public static String failed_update_plugin = null;
@@ -39,6 +41,12 @@ public final class Lang {
 	public static String source_code = null;
 	public static String starting_load_plugins = null;
 	public static String already_enabled = null;
+	public static String failed_load_plugin = null;
+	public static String success_load_plugin = null;
+	public static String error_occured = null;
+	public static String error_unload_plugin = null;
+	public static String unloaded_plugin = null;
+	public static String version = null;
 
 	/**
 	 * Initialize a class
@@ -81,6 +89,14 @@ public final class Lang {
 		 source_code = (String) LanguageProvider.load("source_code", "&b - Source code: %s");
 		 starting_load_plugins = (String) LanguageProvider.load("starting_load_plugins", "Starting load plugins in PluginManager...");
 		 already_enabled = (String) LanguageProvider.load("already_enabled", "&cPlugin is already enabled!");
+		 version = (String) LanguageProvider.load("version", "<version>");
+		 pman_version_desc = (String) LanguageProvider.load("pman_version_desc", "Shows plugin version.");
+		 pman_version = (String) LanguageProvider.load("pman_version", "&aPluginManaver:&b&n %s");
+		 failed_load_plugin = (String) LanguageProvider.load("failed_load_plugin", "&cCouldn't load plugin: %s");
+		 success_load_plugin = (String) LanguageProvider.load("success_load_plugin", "&aLoaded plugin: %s");
+		 error_occured = (String) LanguageProvider.load("error_occured", "&cAn error occured: %s");
+		 error_unload_plugin = (String) LanguageProvider.load("error_unload_plugin", "&cError while unloading plugin: %s");
+		 unloaded_plugin = (String) LanguageProvider.load("unloaded_plugin", "&aUnloaded plugin: %s");
 	}
 
 	  /**
