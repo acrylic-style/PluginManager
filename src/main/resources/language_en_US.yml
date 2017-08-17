@@ -34,9 +34,9 @@ developer_version: "Jenkins(Developer version)"
 source_code: "Source code"
 starting_load_plugins: "&aLoading plugin..."
 already_enabled: "&cThis plugin is already enabled!"
-failed_load_plugin: '&cCouldn''t load plugin: %s'
-success_load_plugin: '&aLoaded plugin: %s'
-error_occured: '&cAn error occured: %s'
-error_unload_plugin: '&cError while unloading plugin: %s'
-unloaded_plugin: '&aUnloaded plugin: %s'
+failed_load_plugin: "&cCouldn't load plugin: %s"
+success_load_plugin: "&aLoaded plugin: %s"
+error_occured: "&cAn error occured: %s"
+error_unload_plugin: "&cError while unloading plugin: %s"
+unloaded_plugin: "&aUnloaded plugin: %s"
 version: "0.8.5"

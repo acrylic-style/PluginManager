@@ -1,20 +1,12 @@
 package tk.rht0910.plugin_manager.util;
 
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Field;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -32,9 +24,13 @@ import org.bukkit.plugin.UnknownDependencyException;
 
 import com.google.common.io.Files;
 
+import tk.rht0910.plugin_manager.Lang;
 import tk.rht0910.plugin_manager.Manager;
+import tk.rht0910.plugin_manager.thread.AsyncDownload;
 
 public final class PluginUtils {
+	private static final char altColorChar = '&';
+
 	public void loadPlugin(CommandSender sender, Plugin plugin) {
 		loadPlugin(sender, plugin.getServer().getName());
 	}
@@ -42,7 +38,9 @@ public final class PluginUtils {
 	public static void loadPlugin(CommandSender sender, String plugin) {
 		//LoadPlugin.run();
 		try {
-			Bukkit.getServer().getLogger().warning("Starting plugins load via PluginManager...");
+			Lang.use();
+			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.starting_load_plugins));
+			Bukkit.getServer().getLogger().warning(ChatColor.translateAlternateColorCodes(altColorChar, Lang.starting_load_plugins));
 			File[] objFiles = (new File("plugins/")).listFiles();
 			if ( objFiles != null ) {
 				int trying = 0;
@@ -50,18 +48,11 @@ public final class PluginUtils {
 					if(trying == 0) {
 						trying = 1;
 					} else if(trying == 1) {
-						trying = 2;
-					} else if(trying == 2) {
-						trying = 3;
-					} else if(trying == 3) {
 						return;
 					}
 					File file = objFiles[i];
 					String file_str = plugin;
-					if(file_str.length() < 2) {
-						sender.sendMessage(ChatColor.RED + "Not allowed plugin file name length is 2 or older.");
-					}
-					Pattern p = Pattern.compile("\\w");
+					Pattern p = Pattern.compile(".");
 					Matcher m = p.matcher(file_str);
 					if(m.find()) {
 						int is = 0;
@@ -93,11 +84,11 @@ public final class PluginUtils {
 							e.printStackTrace();
 						} finally {
 							if(is == 1) {
-								sender.sendMessage(ChatColor.DARK_RED + "Failed to load plugin: " + plugin);
-								Bukkit.getServer().getLogger().severe("Load is failed! : Additional information: Args[0]: \"" + plugin + "\", Args[1]: \"not defined\" Player: \"" + sender.toString() + "\"(IP:" + sender.getServer().getIp() + ")");
+								sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.failed_load_plugin, plugin)));
+								Bukkit.getServer().getLogger().severe("Couldn't load plugin: Args[0]: \"" + plugin + "\", Args[1]: \"not defined\" Player: \"" + sender.toString() + "\"(IP:" + sender.getServer().getIp() + ")");
 							} else {
-								sender.sendMessage(ChatColor.GREEN + "Loaded plugin: " + plugin);
-								Bukkit.getServer().getLogger().info("Load is success! : Additional information: Args[0]: \"" + plugin + "\", Args[1]: \"not defined\" Player: \"" + sender.toString() + "\"(IP:" + sender.getServer().getIp() + ")");
+								sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.success_load_plugin, plugin)));
+								Bukkit.getServer().getLogger().info("Loaded plugin: Args[0]: \"" + plugin + "\", Args[1]: \"not defined\" Player: \"" + sender.toString() + "\"(IP:" + sender.getServer().getIp() + ")");
 							}
 						}
 					}
@@ -107,11 +98,10 @@ public final class PluginUtils {
 				Bukkit.getServer().getLogger().severe("Unknown error!:PluginUtils.java:loadPlugin(objFiles notfound, why?)");
 			}
 		} catch (Exception e) {
-			sender.sendMessage(ChatColor.RED + "An error occurred: " + e);
-			sender.sendMessage(ChatColor.RED + "Load failed. Error log to console.");
-			Bukkit.getServer().getLogger().severe("An error occurred: " + e);
+			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.error_occured, e)));
+			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.failed_load_plugin, plugin)));
+			Bukkit.getServer().getLogger().severe(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.error_occured, e)));
 			e.printStackTrace();
-			sender.sendMessage("Load failed: " + plugin);
 			return;
 		}
 		return;
@@ -123,6 +113,7 @@ public final class PluginUtils {
 
 	@SuppressWarnings({ "rawtypes", "unused" })
 	public static boolean unloadPlugin(CommandSender sender, String name) {
+		Lang.use();
 		/* Thank you for PlugMan Developers */
 		/* 399 */       Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin(name);
 		/*     */
@@ -168,39 +159,40 @@ public final class PluginUtils {
 		/* 441 */             commands = (Map)value.get(commandMap);
 		/*     */
 		/* 443 */          } catch (Exception e) {
-			sender.sendMessage(ChatColor.RED + "An error occurred: " + e + ". please see console log.");
+			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.error_occured));
 			e.printStackTrace();
 			return false;
 		} finally {
-			sender.sendMessage(ChatColor.GREEN + "Unloaded plugin: " + name);
+			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.unloaded_plugin, name)));
 		}
 		}
 		return true;
 	}
 
 	public static boolean EditConfigFile(CommandSender sender, String dir, String cfile, String vine, String strs) {
+		Lang.use();
 		if(!sender.isOp()) {
-			sender.sendMessage(ChatColor.RED + "You are not Operator!");
+			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.you_are_not_operator));
 			Bukkit.getServer().getLogger().severe("(operator)Tried to access Config editor by " + sender.toString());
 			return false;
 		}
 		if(!sender.hasPermission("pluginmanager.editor")) {
-			sender.sendMessage(ChatColor.RED + "You don't not have permission.");
+			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
 			Bukkit.getServer().getLogger().severe("(pluginmanager.editor)Tried to access Config editor by " + sender.toString());
 			return false;
 		}
 		if(!sender.hasPermission("pluginmanager.admin")) {
-			sender.sendMessage(ChatColor.RED + "You don't not have permission.");
+			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
 			Bukkit.getServer().getLogger().severe("(pluginmanager.admin)Tried to access Config editor by " + sender.toString());
 			return false;
 		}
 		if(!sender.hasPermission("pluginmanager.super-admin")) {
-			sender.sendMessage(ChatColor.RED + "You don't not have permission.");
+			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
 			Bukkit.getServer().getLogger().severe("(pluginmanager.super-admin)Tried to access Config editor by " + sender.toString());
 			return false;
 		}
 		if(!sender.hasPermission("pluginmanager.extra-admin")) {
-			sender.sendMessage(ChatColor.RED + "You don't not have permission.");
+			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
 			Bukkit.getServer().getLogger().severe("(pluginmanager.extra-admin)Tried to access Config editor by " + sender.toString());
 			return false;
 		}
@@ -447,35 +439,8 @@ public final class PluginUtils {
 	}
 
 	public static void Download(CommandSender sender, String file, String url) {
-		Bukkit.getLogger().info("------------------------------\n DOWNLOADING PLUGIN\n------------------------------\n");
-		long start = System.currentTimeMillis();
-		try {
-			sender.sendMessage(ChatColor.RED + "Downloading plugin" + ChatColor.BLACK + " '" + file + "(URL: " + url + ")' by " + sender.toString());
-			URL url2 = new URL(url);
-			HttpURLConnection conn = (HttpURLConnection) url2.openConnection();
-			conn.setAllowUserInteraction(false);
-			conn.setInstanceFollowRedirects(true);
-			conn.setRequestMethod("GET");
-			conn.connect();
-			@SuppressWarnings("unused")
-			int httpStatusCode = conn.getResponseCode();
-			//if(httpStatusCode != HttpURLConnection.HTTP_OK){ if(httpStatusCode != -1) {throw new Exception();} } // Input Stream
-			DataInputStream dataInStream = new DataInputStream( conn.getInputStream()); // Output Stream
-			DataOutputStream dataOutStream = new DataOutputStream( new BufferedOutputStream( new FileOutputStream("plugins/" + file + ".jar"))); // Read Data
-			byte[] b = new byte[4096]; int readByte = 0; while(-1 != (readByte = dataInStream.read(b))){ dataOutStream.write(b, 0, readByte); } // Close Stream
-			dataInStream.close(); dataOutStream.close();
-			sender.sendMessage(ChatColor.RED + "Downloaded plugin" + ChatColor.BLACK + " '" + file + "(URL: " + url + ")'");
-			} catch (FileNotFoundException e) { e.printStackTrace(); } catch (ProtocolException e) { e.printStackTrace(); } catch (MalformedURLException e) { e.printStackTrace(); } catch (IOException e) { e.printStackTrace(); } catch (Exception e) {
-				e.printStackTrace();
-				long stop = System.currentTimeMillis();
-				long total = start - stop;
-				Bukkit.getLogger().severe("------------------------------\n DOWNLOAD FAILURE\n-------------------------------\n Total time: " + total + "\n Finished at: \n" + stop + "\n------------------------------\n");
-				return;
-		}
-		long stop = System.currentTimeMillis();
-		long total = start - stop;
-		Bukkit.getLogger().severe("------------------------------\n DOWNLOAD SUCCESS\n-------------------------------\n Total time: " + total + "\n Finished at: \n" + stop + "\n------------------------------\n");
-		return;
+		AsyncDownload async_thread = new AsyncDownload(sender, file, url);
+		async_thread.start();
 	}
 }
 // Thank you for PlugMan developers.
