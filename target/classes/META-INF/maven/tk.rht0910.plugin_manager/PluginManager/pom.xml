@@ -3,7 +3,7 @@
   <groupId>tk.rht0910.plugin_manager</groupId>
   <artifactId>PluginManager</artifactId>
   <name>PluginManager</name>
-  <version>0.8.6</version>
+  <version>1.0</version>
      <build>
    <plugins>
      <plugin>

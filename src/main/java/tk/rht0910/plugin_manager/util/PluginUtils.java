@@ -17,7 +17,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.SimpleCommandMap;
-import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.UnknownDependencyException;
@@ -59,18 +58,18 @@ public final class PluginUtils {
 						try {
 							if(!Bukkit.getServer().getPluginManager().isPluginEnabled(Bukkit.getServer().getPluginManager().getPlugin(plugin))) {
 								if(!Bukkit.getServer().getPluginManager().isPluginEnabled(plugin)) {
-									Bukkit.getServer().getPluginManager().loadPlugin(file);
-									Plugin pm = Bukkit.getServer().getPluginManager().getPlugin(plugin);
-									if(!Bukkit.getServer().getPluginManager().isPluginEnabled(pm)) {
-										Bukkit.getServer().getPluginManager().enablePlugin(pm);
+									try {
+										Bukkit.getServer().getPluginManager().loadPlugin(file);
+									} catch(Exception | Error e) {
+										Log.error("Error while loading plugin: " + plugin + ", ignoring...");
+										e.printStackTrace();
 									}
+									Plugin pm = Bukkit.getServer().getPluginManager().getPlugin(plugin);
+									Bukkit.getServer().getPluginManager().enablePlugin(pm);
 								}
 							} else {
-								sender.sendMessage(ChatColor.RED + "This plugin is already enabled!");
+								sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.already_enabled));
 							}
-						} catch(InvalidPluginException e) {
-							e.printStackTrace();
-							is = 1;
 						} catch(NullPointerException e) {
 							e.printStackTrace();
 							is = 1;
@@ -79,7 +78,7 @@ public final class PluginUtils {
 							is = 1;
 						} catch(Exception e) {
 							if(is == 0) {
-								sender.sendMessage(ChatColor.RED + "An error occurred: [" + e + "]. unknown error");
+								sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.error_occured, e)));
 							}
 							e.printStackTrace();
 						} finally {
@@ -94,8 +93,8 @@ public final class PluginUtils {
 					}
 				}
 			} else {
-				sender.sendMessage(ChatColor.RED + "Unknown error!");
-				Bukkit.getServer().getLogger().severe("Unknown error!:PluginUtils.java:loadPlugin(objFiles notfound, why?)");
+				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.please_report_developer));
+				Bukkit.getServer().getLogger().severe(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.please_report_developer_catch, "objFiles not found")));
 			}
 		} catch (Exception e) {
 			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.error_occured, e)));
@@ -349,8 +348,8 @@ public final class PluginUtils {
 		try {
 			fw = new FileWriter(file);
 		} catch (IOException e) {
-			Bukkit.getServer().getLogger().severe("Cannot Edit config: [IOException. FileWriter object not created.] by " + sender.toString());
-			sender.sendMessage(ChatColor.RED + "Error!:IOException. FileWriter object not created.");
+			Bukkit.getServer().getLogger().severe(ChatColor.translateAlternateColorCodes(altColorChar, Lang.error_occured));
+			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.error_occured));
 			e.printStackTrace();
 		}
 		try {

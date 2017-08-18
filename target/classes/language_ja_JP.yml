@@ -39,4 +39,10 @@ success_load_plugin: '&aプラグインを読み込みました: %s'
 error_occured: '&cエラーが発生しました: %s'
 error_unload_plugin: '&cプラグインのアンロード中にエラーが発生しました: %s'
 unloaded_plugin: '&aプラグインをアンロードしました: %s'
-version: "0.8.5"
+reloading_config: "&a設定を再読み込みしています..."
+error_reload_config: '&c設定を再読み込み中にエラーが発生しました: PluginManager'
+reloaded_config: '&a設定を再読み込みしました: PluginManager'
+set_language: '&a言語を設定: language: %s'
+init_complete: "初期化が完了しました。"
+init_error: "初期化中にエラーが発生しました。プラグインを無効化中です、エラーを見てください。"
+version: "0.8.6"

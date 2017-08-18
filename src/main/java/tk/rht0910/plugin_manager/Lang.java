@@ -53,6 +53,11 @@ public final class Lang {
 	public static String version = null;
 	public static String init_complete = null;
 	public static String init_error = null;
+	public static String please_report_developer = null;
+	public static String please_report_developer_catch = null;
+	public static String continue_error = null;
+	public static String continue_error_catch = null;
+	public static String problem_case = null;
 
 	/**
 	 * Initialize a class
@@ -86,17 +91,17 @@ public final class Lang {
 		 updating_plugin = (String) LanguageProvider.load("updating_plugin", "&aUpdating plugin...");
 		 success_update_plugin = (String) LanguageProvider.load("success_update_plugin", "&aSuccess! Updated plugin, please reload.");
 		 you_are_not_operator = (String) LanguageProvider.load("you_are_not_operator", "&cYou are not Operator.");
-		 no_permission = (String) LanguageProvider.load("no_permission", "");
+		 no_permission = (String) LanguageProvider.load("no_permission", "&cYou don't have permission.");
 		 opened_config_viewer = (String) LanguageProvider.load("opened_config_viewer", "%s opened config viewer.");
 		 not_enough_args = (String) LanguageProvider.load("not_enough_args", "&cNot enough args");
-		 running_on = (String) LanguageProvider.load("running_on", "&bPluginManager is running on: " + "0.8.4");
+		 running_on = (String) LanguageProvider.load("running_on", "&bPluginManager is running on: %s");
 		 available_commands = (String) LanguageProvider.load("available_commands", "&bAvailable commands: '/pman help'");
 		 project_page = (String) LanguageProvider.load("project_page", "&b - Project page: %s");
 		 developer_version = (String) LanguageProvider.load("developer_version", "&b - Developer version: %s");
 		 source_code = (String) LanguageProvider.load("source_code", "&b - Source code: %s");
 		 starting_load_plugins = (String) LanguageProvider.load("starting_load_plugins", "Starting load plugins in PluginManager...");
 		 already_enabled = (String) LanguageProvider.load("already_enabled", "&cPlugin is already enabled!");
-		 version = (String) LanguageProvider.load("version", "<version>");
+		 version = (String) LanguageProvider.load("version", "1.0");
 		 pman_version_desc = (String) LanguageProvider.load("pman_version_desc", "Shows plugin version.");
 		 pman_version = (String) LanguageProvider.load("pman_version", "&aPluginManaver:&b&n %s");
 		 failed_load_plugin = (String) LanguageProvider.load("failed_load_plugin", "&cCouldn't load plugin: %s");
@@ -105,11 +110,16 @@ public final class Lang {
 		 error_unload_plugin = (String) LanguageProvider.load("error_unload_plugin", "&cError while unloading plugin: %s");
 		 unloaded_plugin = (String) LanguageProvider.load("unloaded_plugin", "&aUnloaded plugin: %s");
 		 reloading_config = (String) LanguageProvider.load("reloading_config", "&aReloading config...");
-		 error_reload_config = (String) LanguageProvider.load("", "&cError while reloading config: PluginManager");
+		 error_reload_config = (String) LanguageProvider.load("error_reload_config", "&cError while reloading config: PluginManager");
 		 reloaded_config = (String) LanguageProvider.load("reloaded_config", "&aReloaded config: PluginManager");
 		 set_language = (String) LanguageProvider.load("set_language", "Set config: language: %s");
 		 init_complete = LanguageProvider.load("init_complete", "Initialize complete.");
 		 init_error = LanguageProvider.load("init_error", "Error while initializing, disabling plugin, please see errors.");
+		 please_report_developer = LanguageProvider.load("please_report_developer", "&4Error cannot be resolved in user. Please report to developer!");
+		 please_report_developer_catch = LanguageProvider.load("please_report_developer_catch", "&4Error cannot be resolved in user. Please report to developer! : %s");
+		 continue_error = LanguageProvider.load("continue_error", "&4If you see error continuing? please report to developer!");
+		 continue_error_catch = LanguageProvider.load("continue_error_catch", "&4If you see error continuing? please report to developer!(Please tell to developer: %s)");
+		 problem_case = LanguageProvider.load("problem_case", "&b - In case of problems: %s");
 	}
 
 	  /**
