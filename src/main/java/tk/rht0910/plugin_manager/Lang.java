@@ -89,7 +89,7 @@ public final class Lang {
 		 no_permission = (String) LanguageProvider.load("no_permission", "");
 		 opened_config_viewer = (String) LanguageProvider.load("opened_config_viewer", "%s opened config viewer.");
 		 not_enough_args = (String) LanguageProvider.load("not_enough_args", "&cNot enough args");
-		 running_on = (String) LanguageProvider.load("running_on", "&bPluginManager is running on: " + "0.8.4");
+		 running_on = (String) LanguageProvider.load("running_on", "&bPluginManager is running on: ");
 		 available_commands = (String) LanguageProvider.load("available_commands", "&bAvailable commands: '/pman help'");
 		 project_page = (String) LanguageProvider.load("project_page", "&b - Project page: %s");
 		 developer_version = (String) LanguageProvider.load("developer_version", "&b - Developer version: %s");
