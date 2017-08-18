@@ -39,4 +39,10 @@ success_load_plugin: '&aLoaded plugin: %s'
 error_occured: '&cAn error occured: %s'
 error_unload_plugin: '&cError while unloading plugin: %s'
 unloaded_plugin: '&aUnloaded plugin: %s'
-version: "0.8.5"
+reloading_config: "&aReloading config..."
+error_reload_config: '&cError while reloading config: PluginManager'
+reloaded_config: '&aReloaded config: PluginManager'
+set_language: '&aSet config: language: %s'
+init_complete: "Initialize complete."
+init_error: "Error while initializing, disabling plugin, please see errors."
+version: "0.8.6"
