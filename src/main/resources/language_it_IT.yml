@@ -25,7 +25,7 @@ you_are_not_operator: "&cYou are not operator!"
 no_permission: "&cYou don't have permission."
 opened_config_viewer: "Opened config viewer by %s"
 not_enough_args: "&cNot enough argument, cannot continue."
-running_on: "&aPluginManager is running on %s"
+running_on: '&aPluginManager is running on: %s'
 available_commands: '&aAvailable commands: /pman help'
 beta: "(BETA)"
 alpha: "(ALPHA)"
@@ -45,4 +45,4 @@ reloaded_config: '&aReloaded config: PluginManager'
 set_language: '&aSet config: language: %s'
 init_complete: "Initialize complete."
 init_error: "Error while initializing, disabling plugin, please see errors."
-version: "0.8.6"
+version: "1.0"
