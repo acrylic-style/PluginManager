@@ -42,8 +42,8 @@ public final class Main extends JavaPlugin implements TabCompleter {
 	@Override
 	public void onLoad() {
 		try {
-			Bukkit.getServer().getLogger().info("Loading PluginManager v0.8.5...");
-			Bukkit.getServer().getLogger().info("Loaded PluginManager v0.8.5");
+			Bukkit.getServer().getLogger().info("Loading PluginManager v1.0...");
+			Bukkit.getServer().getLogger().info("Loaded PluginManager v1.0");
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().info("Unknown error: " + e);
 			e.printStackTrace();
@@ -58,10 +58,6 @@ public final class Main extends JavaPlugin implements TabCompleter {
 			Bukkit.getServer().getLogger().severe(ChatColor.DARK_RED + "Unknown error! Please see errors.");
 			e.printStackTrace();
 		}
-	}
-
-	public Main getInstance() {
-		return this;
 	}
 
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -81,7 +77,7 @@ public final class Main extends JavaPlugin implements TabCompleter {
 			if(args[0].equalsIgnoreCase("help")) {
 				try {
 					//Manager.getCommand().ShowHelp(sender);
-					sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + Lang.alpha + " -----");
+					sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + " -----");
 					sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
 					sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman load <Plugin name or Plugin File> - " + Lang.pman_load_desc);
@@ -168,7 +164,7 @@ public final class Main extends JavaPlugin implements TabCompleter {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.not_enough_args));
 					return false;
 				}
-				PluginUtils.RestorePlugin(sender, args[1]);
+				Manager.getPluginUtil().RestorePlugin(sender, args[1]);
 			} else if(args[0].equalsIgnoreCase("delete")) {
 				if(sender instanceof Player) {
 					if(!sender.isOp()) {
@@ -188,11 +184,11 @@ public final class Main extends JavaPlugin implements TabCompleter {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.not_enough_args));
 					return false;
 				}
-				PluginUtils.DeletePlugin(sender, args[1], args[2]);
+				Manager.getPluginUtil().DeletePlugin(sender, args[1], args[2]);
 			} else if(args[0].equalsIgnoreCase("viewer")) {
 				Bukkit.getServer().getLogger().warning(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.opened_config_viewer, sender.toString())));
 				//if(args[2] == null || args[2] == "") {
-					PluginUtils.ConfigViewer(sender, args[1], args[2]);
+					Manager.getPluginUtil().ConfigViewer(sender, args[1], args[2]);
 				//} else {
 				//	Manager.getPluginUtil().ConfigViewer(sender, args[0], args[1], new Integer(args[2]));
 				//}
@@ -303,7 +299,7 @@ public final class Main extends JavaPlugin implements TabCompleter {
 			} else if(args[0].equalsIgnoreCase("config")) {
 				try {
 					if(args[1] == null) {
-						sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + Lang.alpha + " -----");
+						sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + " -----");
 						sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
 						sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
 						sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...> - " + Lang.pman_config_language);
@@ -314,7 +310,7 @@ public final class Main extends JavaPlugin implements TabCompleter {
 						return true;
 					}
 					if(args[1] == "") {
-						sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + Lang.alpha + " -----");
+						sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + " -----");
 						sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
 						sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
 						sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...> - " + Lang.pman_config_language);
@@ -325,7 +321,7 @@ public final class Main extends JavaPlugin implements TabCompleter {
 						return true;
 					}
 				} catch (Exception | Error e) {
-					sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + Lang.alpha + " -----");
+					sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + " -----");
 					sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
 					sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...> - " + Lang.pman_config_language);
@@ -355,7 +351,7 @@ public final class Main extends JavaPlugin implements TabCompleter {
 				Lang.use();
 				sender.sendMessage(ChatColor.RED + Lang.invalid_args);
 				// Manager.getCommand().ShowHelp(sender);
-				sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + Lang.alpha + " -----");
+				sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + " -----");
 				sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
 				sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
 				sender.sendMessage(ChatColor.AQUA + " - /pman load <Plugin name or Plugin File> - " + Lang.pman_load_desc);

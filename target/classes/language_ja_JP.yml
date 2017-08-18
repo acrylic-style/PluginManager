@@ -25,13 +25,13 @@ you_are_not_operator: "&cあなたはオペレーターではありません！"
 no_permission: "&c権限がありません。"
 opened_config_viewer: "設定ビューアーが %s に開かれました。"
 not_enough_args: "&c引数が足りません。続行できません。"
-running_on: "&aPluginManagerを実行中: %s"
+running_on: '&aPluginManagerを実行中: %s'
 available_commands: '&a利用可能なコマンド: /pman help'
 beta: "(ベータ)"
 alpha: "(アルファ)"
-project_page: "BukkitDev(プロジェクトページ)"
-developer_version: "Jenkins(開発者バージョン)"
-source_code: "ソースコード"
+project_page: '&b - プロジェクトページ: %s'
+developer_version: '&b - 開発者バージョン: %s'
+source_code: '&b - ソースコード: %s'
 starting_load_plugins: "&aプラグインを読み込んでいます..."
 already_enabled: "&cこのプラグインはすでに有効です！"
 failed_load_plugin: '&cプラグインを読み込めませんでした: %s'
@@ -45,4 +45,9 @@ reloaded_config: '&a設定を再読み込みしました: PluginManager'
 set_language: '&a言語を設定: language: %s'
 init_complete: "初期化が完了しました。"
 init_error: "初期化中にエラーが発生しました。プラグインを無効化中です、エラーを見てください。"
-version: "0.8.6"
+continue_error: "&4継続的にエラーを見る場合は、開発者に報告してください！"
+continue_error_catch: '&4継続的にエラーを見る場合は、開発者に報告してください！(開発者にこの情報を伝えてください: %s)'
+please_report_developer: "&4このエラーはユーザーでは解決できません。開発者に報告してください！"
+please_report_developer_catch: '&4このエラーはユーザーでは解決できません。開発者に報告してください！開発者にこの情報を伝えてください: %s'
+problem_case: '&b - 問題が発生した場合: %s'
+version: "1.0"
