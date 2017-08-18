@@ -14,6 +14,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 //import org.bukkit.util.StringUtil;
 
+import tk.rht0910.plugin_manager.exception.CatchException;
 import tk.rht0910.plugin_manager.thread.VersionCheck;
 import tk.rht0910.plugin_manager.util.Log;
 import tk.rht0910.plugin_manager.util.PluginUtils;
@@ -33,8 +34,10 @@ public final class Main extends JavaPlugin implements TabCompleter {
 		try {
 			Main.this.getConfig().options().copyDefaults(true);
 			Main.this.saveConfig();
-			VersionCheck vc = new VersionCheck();
-			vc.start();
+			CatchException catchException = new CatchException();
+				Thread thread = new Thread(new VersionCheck(), "Thread-22");
+				thread.setUncaughtExceptionHandler(catchException);
+				thread.start();
 			Lang.initialize();
 			Bukkit.getServer().getLogger().info("[PluginManager] " + Lang.init_complete);
 		} catch(Exception | Error e) {
