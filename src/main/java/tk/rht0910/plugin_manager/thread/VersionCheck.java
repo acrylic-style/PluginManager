@@ -12,7 +12,7 @@ import tk.rht0910.plugin_manager.Manager;
 import tk.rht0910.plugin_manager.util.Log;
 
 public class VersionCheck extends Thread {
-	@SuppressWarnings("unused")
+	@SuppressWarnings({ "unused", "null" })
 	public void run() {
 		String line = null, response;
 		URL url = null;
@@ -24,8 +24,10 @@ public class VersionCheck extends Thread {
 		}
 		HttpURLConnection conn = null;
 		try {
+			conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.16232");
 			conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.16232");
+			Log.info("Version Checker: Status code: " + conn.getResponseCode());
 		} catch (IOException e2) {
 			e2.printStackTrace();
 		}
