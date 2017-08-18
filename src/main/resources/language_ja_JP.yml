@@ -50,4 +50,6 @@ continue_error_catch: '&4継続的にエラーを見る場合は、開発者に�
 please_report_developer: "&4このエラーはユーザーでは解決できません。開発者に報告してください！"
 please_report_developer_catch: '&4このエラーはユーザーでは解決できません。開発者に報告してください！開発者にこの情報を伝えてください: %s'
 problem_case: '&b - 問題が発生した場合: %s'
-version: "1.0"
+new_version_available: '&aNew version available for PluginManager: Current: %s, New: %s'
+new_version_available2: "&aRun &b/pman update &ato update."
+version: "1.1"
