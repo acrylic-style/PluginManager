@@ -42,8 +42,8 @@ public final class Main extends JavaPlugin implements TabCompleter {
 	@Override
 	public void onLoad() {
 		try {
-			Bukkit.getServer().getLogger().info("Loading PluginManager v0.8.5...");
-			Bukkit.getServer().getLogger().info("Loaded PluginManager v0.8.5");
+			Bukkit.getServer().getLogger().info("Loading PluginManager v1.0...");
+			Bukkit.getServer().getLogger().info("Loaded PluginManager v1.0");
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().info("Unknown error: " + e);
 			e.printStackTrace();
@@ -77,7 +77,7 @@ public final class Main extends JavaPlugin implements TabCompleter {
 			if(args[0].equalsIgnoreCase("help")) {
 				try {
 					//Manager.getCommand().ShowHelp(sender);
-					sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + Lang.alpha + " -----");
+					sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + " -----");
 					sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
 					sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman load <Plugin name or Plugin File> - " + Lang.pman_load_desc);
@@ -299,7 +299,7 @@ public final class Main extends JavaPlugin implements TabCompleter {
 			} else if(args[0].equalsIgnoreCase("config")) {
 				try {
 					if(args[1] == null) {
-						sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + Lang.alpha + " -----");
+						sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + " -----");
 						sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
 						sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
 						sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...> - " + Lang.pman_config_language);
@@ -310,7 +310,7 @@ public final class Main extends JavaPlugin implements TabCompleter {
 						return true;
 					}
 					if(args[1] == "") {
-						sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + Lang.alpha + " -----");
+						sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + " -----");
 						sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
 						sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
 						sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...> - " + Lang.pman_config_language);
@@ -321,7 +321,7 @@ public final class Main extends JavaPlugin implements TabCompleter {
 						return true;
 					}
 				} catch (Exception | Error e) {
-					sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + Lang.alpha + " -----");
+					sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + " -----");
 					sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
 					sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...> - " + Lang.pman_config_language);
@@ -351,7 +351,7 @@ public final class Main extends JavaPlugin implements TabCompleter {
 				Lang.use();
 				sender.sendMessage(ChatColor.RED + Lang.invalid_args);
 				// Manager.getCommand().ShowHelp(sender);
-				sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + Lang.alpha + " -----");
+				sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + " -----");
 				sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
 				sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
 				sender.sendMessage(ChatColor.AQUA + " - /pman load <Plugin name or Plugin File> - " + Lang.pman_load_desc);
