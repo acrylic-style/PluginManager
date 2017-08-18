@@ -299,6 +299,28 @@ public final class Main extends JavaPlugin implements TabCompleter {
 			} else if(args[0].equalsIgnoreCase("usage")) {
 				tk.rht0910.plugin_manager.util.Command.getUsageOfCmd(sender, args[1]);
 			} else if(args[0].equalsIgnoreCase("config")) {
+				if(args[1] == null) {
+					sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + Lang.alpha + " -----");
+					sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
+					sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...> - " + Lang.pman_config_language);
+					sender.sendMessage(ChatColor.AQUA + " - /pman config reload - " + Lang.pman_config_reload);
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.project_page, "https://dev.bukkit.org/projects/pluginmanagement/")));
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.developer_version, "http://point.rht0910.tk:8080/job/PluginManager/")));
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.source_code, "https://github.com/rht0910/PluginManager/")));
+					return true;
+				}
+				if(args[1] == "") {
+					sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + Lang.alpha + " -----");
+					sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
+					sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...> - " + Lang.pman_config_language);
+					sender.sendMessage(ChatColor.AQUA + " - /pman config reload - " + Lang.pman_config_reload);
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.project_page, "https://dev.bukkit.org/projects/pluginmanagement/")));
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.developer_version, "http://point.rht0910.tk:8080/job/PluginManager/")));
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.source_code, "https://github.com/rht0910/PluginManager/")));
+					return true;
+				}
 				if(args[1].equalsIgnoreCase("language")) {
 					this.getConfig().set("language", args[2]);
 					this.saveConfig();
@@ -314,15 +336,6 @@ public final class Main extends JavaPlugin implements TabCompleter {
 						return false;
 					}
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.reloaded_config));
-				} else {
-					sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + Lang.alpha + " -----");
-					sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
-					sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
-					sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...> - " + Lang.pman_config_language);
-					sender.sendMessage(ChatColor.AQUA + " - /pman config reload - " + Lang.pman_config_reload);
-					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.project_page, "https://dev.bukkit.org/projects/pluginmanagement/")));
-					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.developer_version, "http://point.rht0910.tk:8080/job/PluginManager/")));
-					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.source_code, "https://github.com/rht0910/PluginManager/")));
 				}
 			} else {
 				Lang.use();
