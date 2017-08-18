@@ -1,5 +1,4 @@
 ---
-
 help: "ヘルプ"
 invalid_args: "無効な引数"
 required: "必須"

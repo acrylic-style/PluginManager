@@ -1,0 +1,3 @@
+files:
+  - source: /src/main/resources/language_en_US.yml
+    translation: /src/main/resources/language_%locale_with_underscore%.yml
