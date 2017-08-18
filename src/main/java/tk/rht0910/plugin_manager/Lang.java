@@ -89,14 +89,14 @@ public final class Lang {
 		 no_permission = (String) LanguageProvider.load("no_permission", "");
 		 opened_config_viewer = (String) LanguageProvider.load("opened_config_viewer", "%s opened config viewer.");
 		 not_enough_args = (String) LanguageProvider.load("not_enough_args", "&cNot enough args");
-		 running_on = (String) LanguageProvider.load("running_on", "&bPluginManager is running on: ");
+		 running_on = (String) LanguageProvider.load("running_on", "&bPluginManager is running on: %s");
 		 available_commands = (String) LanguageProvider.load("available_commands", "&bAvailable commands: '/pman help'");
 		 project_page = (String) LanguageProvider.load("project_page", "&b - Project page: %s");
 		 developer_version = (String) LanguageProvider.load("developer_version", "&b - Developer version: %s");
 		 source_code = (String) LanguageProvider.load("source_code", "&b - Source code: %s");
 		 starting_load_plugins = (String) LanguageProvider.load("starting_load_plugins", "Starting load plugins in PluginManager...");
 		 already_enabled = (String) LanguageProvider.load("already_enabled", "&cPlugin is already enabled!");
-		 version = (String) LanguageProvider.load("version", "<version>");
+		 version = (String) LanguageProvider.load("version", "1.0");
 		 pman_version_desc = (String) LanguageProvider.load("pman_version_desc", "Shows plugin version.");
 		 pman_version = (String) LanguageProvider.load("pman_version", "&aPluginManaver:&b&n %s");
 		 failed_load_plugin = (String) LanguageProvider.load("failed_load_plugin", "&cCouldn't load plugin: %s");
