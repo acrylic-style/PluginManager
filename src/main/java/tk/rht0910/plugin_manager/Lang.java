@@ -53,6 +53,10 @@ public final class Lang {
 	public static String version = null;
 	public static String init_complete = null;
 	public static String init_error = null;
+	public static String please_report_developer = null;
+	public static String please_report_developer_catch = null;
+	public static String continue_error = null;
+	public static String continue_error_catch = null;
 
 	/**
 	 * Initialize a class
@@ -110,6 +114,10 @@ public final class Lang {
 		 set_language = (String) LanguageProvider.load("set_language", "Set config: language: %s");
 		 init_complete = LanguageProvider.load("init_complete", "Initialize complete.");
 		 init_error = LanguageProvider.load("init_error", "Error while initializing, disabling plugin, please see errors.");
+		 please_report_developer = LanguageProvider.load("please_report_developer", "&4Error cannot be resolved in user. Please report to developer!");
+		 please_report_developer_catch = LanguageProvider.load("please_report_developer_catch", "&4Error cannot be resolved in user. Please report to developer! : %s");
+		 continue_error = LanguageProvider.load("continue_error", "&4If you see error continuing? please report to developer!");
+		 continue_error_catch = LanguageProvider.load("continue_error_catch", "&4If you see error continuing? please report to developer!(Please tell to developer: %s)");
 	}
 
 	  /**

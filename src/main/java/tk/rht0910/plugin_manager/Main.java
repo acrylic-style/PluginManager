@@ -7,6 +7,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
+import org.bukkit.craftbukkit.libs.jline.internal.Log;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 //import org.bukkit.util.StringUtil;
@@ -374,6 +375,8 @@ public final class Main extends JavaPlugin implements TabCompleter {
 			}
 		}
 		} catch(Exception e) {
+			Log.error(ChatColor.translateAlternateColorCodes(altColorChar, Lang.error_occured));
+			Log.error(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.continue_error_catch, e)));
 			e.printStackTrace();
 		}
 		return true;
