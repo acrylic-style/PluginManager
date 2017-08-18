@@ -29,9 +29,9 @@ running_on: '&aPluginManagerを実行中: %s'
 available_commands: '&a利用可能なコマンド: /pman help'
 beta: "(ベータ)"
 alpha: "(アルファ)"
-project_page: "BukkitDev(プロジェクトページ)"
-developer_version: "Jenkins(開発者バージョン)"
-source_code: "ソースコード"
+project_page: '&b - Project page: %s'
+developer_version: '&b - Developer version: %s'
+source_code: '&b - Source code: %s'
 starting_load_plugins: "&aプラグインを読み込んでいます..."
 already_enabled: "&cこのプラグインはすでに有効です！"
 failed_load_plugin: '&cプラグインを読み込めませんでした: %s'
@@ -49,4 +49,5 @@ continue_error: "&4継続的にエラーを見る場合は、開発者に報告�
 continue_error_catch: '&4継続的にエラーを見る場合は、開発者に報告してください！(開発者にこの情報を伝えてください: %s)'
 please_report_developer: "&4このエラーはユーザーでは解決できません。開発者に報告してください！"
 please_report_developer_catch: '&4このエラーはユーザーでは解決できません。開発者に報告してください！開発者にこの情報を伝えてください: %s'
+problem_case: '&b - In case of problems: %s'
 version: "1.0"
