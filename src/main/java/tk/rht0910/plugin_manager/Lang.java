@@ -57,6 +57,7 @@ public final class Lang {
 	public static String please_report_developer_catch = null;
 	public static String continue_error = null;
 	public static String continue_error_catch = null;
+	public static String problem_case = null;
 
 	/**
 	 * Initialize a class
@@ -90,7 +91,7 @@ public final class Lang {
 		 updating_plugin = (String) LanguageProvider.load("updating_plugin", "&aUpdating plugin...");
 		 success_update_plugin = (String) LanguageProvider.load("success_update_plugin", "&aSuccess! Updated plugin, please reload.");
 		 you_are_not_operator = (String) LanguageProvider.load("you_are_not_operator", "&cYou are not Operator.");
-		 no_permission = (String) LanguageProvider.load("no_permission", "");
+		 no_permission = (String) LanguageProvider.load("no_permission", "&cYou don't have permission.");
 		 opened_config_viewer = (String) LanguageProvider.load("opened_config_viewer", "%s opened config viewer.");
 		 not_enough_args = (String) LanguageProvider.load("not_enough_args", "&cNot enough args");
 		 running_on = (String) LanguageProvider.load("running_on", "&bPluginManager is running on: %s");
@@ -118,6 +119,7 @@ public final class Lang {
 		 please_report_developer_catch = LanguageProvider.load("please_report_developer_catch", "&4Error cannot be resolved in user. Please report to developer! : %s");
 		 continue_error = LanguageProvider.load("continue_error", "&4If you see error continuing? please report to developer!");
 		 continue_error_catch = LanguageProvider.load("continue_error_catch", "&4If you see error continuing? please report to developer!(Please tell to developer: %s)");
+		 problem_case = LanguageProvider.load("problem_case", "&b - In case of problems: %s");
 	}
 
 	  /**
