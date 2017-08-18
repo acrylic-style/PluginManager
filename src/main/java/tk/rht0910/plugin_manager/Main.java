@@ -8,9 +8,13 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 //import org.bukkit.util.StringUtil;
 
+import tk.rht0910.plugin_manager.thread.VersionCheck;
 import tk.rht0910.plugin_manager.util.Log;
 import tk.rht0910.plugin_manager.util.PluginUtils;
 
@@ -29,6 +33,8 @@ public final class Main extends JavaPlugin implements TabCompleter {
 		try {
 			Main.this.getConfig().options().copyDefaults(true);
 			Main.this.saveConfig();
+			VersionCheck vc = new VersionCheck();
+			vc.start();
 			Lang.initialize();
 			Bukkit.getServer().getLogger().info("[PluginManager] " + Lang.init_complete);
 		} catch(Exception | Error e) {
@@ -42,8 +48,8 @@ public final class Main extends JavaPlugin implements TabCompleter {
 	@Override
 	public void onLoad() {
 		try {
-			Bukkit.getServer().getLogger().info("[PluginManager] Loading PluginManager v1.0...");
-			Bukkit.getServer().getLogger().info("[PluginManager] Loaded PluginManager v1.0");
+			Bukkit.getServer().getLogger().info("[PluginManager] Loading PluginManager v1.1 ...");
+			Bukkit.getServer().getLogger().info("[PluginManager] Loaded PluginManager v1.1");
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().info("[PluginManager] Unknown error: " + e);
 			e.printStackTrace();
@@ -332,7 +338,21 @@ public final class Main extends JavaPlugin implements TabCompleter {
 					return true;
 				}
 				if(args[1].equalsIgnoreCase("language")) {
-					this.getConfig().set("language", args[2]);
+					try {
+						this.getConfig().set("language", args[2]);
+					} catch(Exception | Error e) {
+						sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + " -----");
+						sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
+						sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
+						sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...> - " + Lang.pman_config_language);
+						sender.sendMessage(ChatColor.AQUA + " - /pman config reload - " + Lang.pman_config_reload);
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.project_page, "https://dev.bukkit.org/projects/pluginmanagement/")));
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.developer_version, "http://point.rht0910.tk:8080/job/PluginManager/")));
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.source_code, "https://github.com/rht0910/PluginManager/")));
+						Log.warn(Lang.error_occured);
+						e.printStackTrace();
+						return true;
+					}
 					this.saveConfig();
 					this.reloadConfig();
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.set_language, args[2])));
@@ -377,5 +397,15 @@ public final class Main extends JavaPlugin implements TabCompleter {
 			e.printStackTrace();
 		}
 		return true;
+	}
+
+	@EventHandler(priority = EventPriority.HIGH)
+	public void onPlayerJoin(PlayerJoinEvent event) {
+		if(event.getPlayer().isOp()) {
+			if(Manager.is_available_new_version == true) {
+				String[] message = {Lang.new_version_available, Lang.new_version_available2};
+				event.getPlayer().sendMessage(message);
+			}
+		}
 	}
 }
