@@ -1,0 +1,48 @@
+---
+help: "ヘルプ"
+invalid_args: "無効な引数"
+required: "必須"
+optional: "オプション"
+information: "情報"
+pman_help_desc: "これを表示"
+pman_load_desc: "プラグインを読み込みます。"
+pman_unload_desc: "プラグインをアンロードします。"
+pman_download_desc: "プラグインをダウンロードします。"
+pman_delete_desc: "プラグインを削除します。"
+pman_restore_desc: "削除されたプラグインを復元します。"
+pman_editor_desc: "プラグインの設定を編集"
+pman_viewer_desc: "プラグインの設定を見る"
+pman_update_desc: "このプラグインを更新する"
+pman_config_language: "言語を変更"
+pman_config_reload: "設定を再読み込み"
+pman_usage_desc: "コマンドの使用方法"
+pman_version_desc: "プラグインのバージョンを表示します。"
+pman_version: "&aPluginManager:&b&n %s"
+failed_update_plugin: "&c更新に失敗しました(サーバーダウン？)"
+updating_plugin: "&aプラグインをアップデート中..."
+success_update_plugin: "&5プラグインは %s によって更新されました。再読み込みしてください！"
+you_are_not_operator: "&cあなたはオペレーターではありません！"
+no_permission: "&c権限がありません。"
+opened_config_viewer: "設定ビューアーが %s に開かれました。"
+not_enough_args: "&c引数が足りません。続行できません。"
+running_on: "&aPluginManagerを実行中: %s"
+available_commands: '&a利用可能なコマンド: /pman help'
+beta: "(ベータ)"
+alpha: "(アルファ)"
+project_page: "BukkitDev(プロジェクトページ)"
+developer_version: "Jenkins(開発者バージョン)"
+source_code: "ソースコード"
+starting_load_plugins: "&aプラグインを読み込んでいます..."
+already_enabled: "&cこのプラグインはすでに有効です！"
+failed_load_plugin: '&cプラグインを読み込めませんでした: %s'
+success_load_plugin: '&aプラグインを読み込みました: %s'
+error_occured: '&cエラーが発生しました: %s'
+error_unload_plugin: '&cプラグインのアンロード中にエラーが発生しました: %s'
+unloaded_plugin: '&aプラグインをアンロードしました: %s'
+reloading_config: "&a設定を再読み込みしています..."
+error_reload_config: '&c設定を再読み込み中にエラーが発生しました: PluginManager'
+reloaded_config: '&a設定を再読み込みしました: PluginManager'
+set_language: '&a言語を設定: language: %s'
+init_complete: "初期化が完了しました。"
+init_error: "初期化中にエラーが発生しました。プラグインを無効化中です、エラーを見てください。"
+version: "0.8.6"
