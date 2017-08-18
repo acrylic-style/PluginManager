@@ -45,4 +45,8 @@ reloaded_config: '&a設定を再読み込みしました: PluginManager'
 set_language: '&a言語を設定: language: %s'
 init_complete: "初期化が完了しました。"
 init_error: "初期化中にエラーが発生しました。プラグインを無効化中です、エラーを見てください。"
+continue_error: "&4If you see error continuing? please report to developer!"
+continue_error_catch: '&4If you see error continuing? please report to developer!(Please tell to developer: %s)'
+please_report_developer: "&4Error cannot be resolved in user. Please report to developer!"
+please_report_developer_catch: '&4Error cannot be resolved in user. Please report to developer! Please tell to developer: %s'
 version: "1.0"
