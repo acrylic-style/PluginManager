@@ -25,7 +25,7 @@ you_are_not_operator: "&cあなたはオペレーターではありません！"
 no_permission: "&c権限がありません。"
 opened_config_viewer: "設定ビューアーが %s に開かれました。"
 not_enough_args: "&c引数が足りません。続行できません。"
-running_on: "&aPluginManagerを実行中: %s"
+running_on: '&aPluginManager is running on: %s'
 available_commands: '&a利用可能なコマンド: /pman help'
 beta: "(ベータ)"
 alpha: "(アルファ)"
@@ -45,4 +45,4 @@ reloaded_config: '&a設定を再読み込みしました: PluginManager'
 set_language: '&a言語を設定: language: %s'
 init_complete: "初期化が完了しました。"
 init_error: "初期化中にエラーが発生しました。プラグインを無効化中です、エラーを見てください。"
-version: "0.8.6"
+version: "1.0"
