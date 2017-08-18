@@ -58,6 +58,8 @@ public final class Lang {
 	public static String continue_error = null;
 	public static String continue_error_catch = null;
 	public static String problem_case = null;
+	public static String new_version_available = null;
+	public static String new_version_available2 = null;
 
 	/**
 	 * Initialize a class
@@ -120,10 +122,12 @@ public final class Lang {
 		 continue_error = LanguageProvider.load("continue_error", "&4If you see error continuing? please report to developer!");
 		 continue_error_catch = LanguageProvider.load("continue_error_catch", "&4If you see error continuing? please report to developer!(Please tell to developer: %s)");
 		 problem_case = LanguageProvider.load("problem_case", "&b - In case of problems: %s");
+		 new_version_available = LanguageProvider.load("new_version_available", "&aNew version available for PluginManager: Current: %s, New: %s");
+		 new_version_available2 = LanguageProvider.load("new_version_available2", "&aRun &b/pman update &ato update.");
 	}
 
 	  /**
-	   * ディレクトリを再帰的に読む(old description)
+	   * Copy files
 	   */
 	  public static void readFolder() {
 		  Main.getPlugin(Main.class).saveResource("language_en_US.yml", true);
