@@ -29,9 +29,9 @@ running_on: '&aPluginManager is running on: %s'
 available_commands: '&aAvailable commands: /pman help'
 beta: "(BETA)"
 alpha: "(ALPHA)"
-project_page: "BukkitDev(Project page)"
-developer_version: "Jenkins(Developer version)"
-source_code: "Source code"
+project_page: '&b - Project page: %s'
+developer_version: '&b - Developer version: %s'
+source_code: '&b - Source code: %s'
 starting_load_plugins: "&aLoading plugin..."
 already_enabled: "&cThis plugin is already enabled!"
 failed_load_plugin: '&cCouldn''t load plugin: %s'
@@ -49,4 +49,5 @@ continue_error: "&4If you see error continuing? please report to developer!"
 continue_error_catch: '&4If you see error continuing? please report to developer!(Please tell to developer: %s)'
 please_report_developer: "&4Error cannot be resolved in user. Please report to developer!"
 please_report_developer_catch: '&4Error cannot be resolved in user. Please report to developer! Please tell to developer: %s'
+problem_case: '&b - In case of problems: %s'
 version: "1.0"
