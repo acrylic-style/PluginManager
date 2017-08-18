@@ -13,13 +13,18 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
-public class HttpComponentsHttpClient {
+public class HttpComponentsHttpClient extends Thread {
+	private static String URI = "";
+
+	public HttpComponentsHttpClient(String URI) {
+		HttpComponentsHttpClient.URI = URI;
+	}
+
     public static void main(String[] args) {
-        executeGet(args[0]);
         executePost(args[0]);
     }
 
-    public static boolean executeGet(String URI) {
+    public void run() {
         System.out.println("===== HTTP GET Start =====");
 
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
@@ -36,11 +41,11 @@ public class HttpComponentsHttpClient {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            return false;
+            return;
         }
 
         System.out.println("===== HTTP GET End =====");
-        return true;
+        return;
     }
 
     public static void executePost(String URI) {

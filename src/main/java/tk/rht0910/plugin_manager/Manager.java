@@ -14,6 +14,7 @@ public final class Manager {
 	private static Command command;
 	private static CommandSender sender;
 	private static Main main;
+	public static Boolean is_available_new_version = false;
 
 	static {
 		pluginUtils = new PluginUtils();
