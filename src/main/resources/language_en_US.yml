@@ -46,8 +46,9 @@ set_language: '&aSet config: language: %s'
 init_complete: "Initialize complete."
 init_error: "Error while initializing, disabling plugin, please see errors."
 continue_error: "&4If you see error continuing? please report to developer!"
-continue_error_catch: "&4If you see error continuing? please report to developer!(Please tell to developer: %s)"
+continue_error_catch: '&4If you see error continuing? please report to developer!(Please tell to developer: %s)'
 please_report_developer: "&4Error cannot be resolved in user. Please report to developer!"
-please_report_developer_catch: "&4Error cannot be resolved in user. Please report to developer! Please tell to developer: %s"
+please_report_developer_catch: '&4Error cannot be resolved in user. Please report to developer! Please tell to developer: %s'
+problem_case: '&b - In case of problems: %s'
 problem_case: "&b - In case of problems: %s"
 version: "1.0"
