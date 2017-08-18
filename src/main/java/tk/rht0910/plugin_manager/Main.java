@@ -30,9 +30,9 @@ public final class Main extends JavaPlugin implements TabCompleter {
 			Main.this.getConfig().options().copyDefaults(true);
 			Main.this.saveConfig();
 			Lang.initialize();
-			Bukkit.getServer().getLogger().info(Lang.init_complete);
+			Bukkit.getServer().getLogger().info("[PluginManager] " + Lang.init_complete);
 		} catch(Exception | Error e) {
-			Bukkit.getServer().getLogger().severe(Lang.init_error);
+			Bukkit.getServer().getLogger().severe("[PluginManager] " + Lang.init_error);
 			e.printStackTrace();
 			Manager.getPluginUtil();
 			PluginUtils.unloadPlugin(null, "PluginManager");
@@ -42,10 +42,10 @@ public final class Main extends JavaPlugin implements TabCompleter {
 	@Override
 	public void onLoad() {
 		try {
-			Bukkit.getServer().getLogger().info("Loading PluginManager v1.0...");
-			Bukkit.getServer().getLogger().info("Loaded PluginManager v1.0");
+			Bukkit.getServer().getLogger().info("[PluginManager] Loading PluginManager v1.0...");
+			Bukkit.getServer().getLogger().info("[PluginManager] Loaded PluginManager v1.0");
 		} catch(Exception e) {
-			Bukkit.getServer().getLogger().info("Unknown error: " + e);
+			Bukkit.getServer().getLogger().info("[PluginManager] Unknown error: " + e);
 			e.printStackTrace();
 		}
 	}
@@ -55,7 +55,7 @@ public final class Main extends JavaPlugin implements TabCompleter {
 		try {
 		Bukkit.getServer().getLogger().info("[PluginManager] PluginManager is disabled!");
 		} catch(Exception e) {
-			Bukkit.getServer().getLogger().severe(ChatColor.DARK_RED + "Unknown error! Please see errors.");
+			Bukkit.getServer().getLogger().severe(ChatColor.DARK_RED + "[PluginManager] Unknown error! Please see errors.");
 			e.printStackTrace();
 		}
 	}
