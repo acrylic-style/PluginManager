@@ -5,7 +5,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
 import tk.rht0910.plugin_manager.Lang;
-import tk.rht0910.plugin_manager.Manager;
 
 public final class Command {
 	public boolean showHelp(CommandSender sender) {
@@ -57,7 +56,7 @@ public final class Command {
 	public static boolean getUsageOfCmd(CommandSender sender, String cmd) {
 		try {
 			String usage = Bukkit.getPluginCommand(cmd).getUsage();
-			Manager.getSender(sender).sendMessage(usage);
+			sender.sendMessage(usage);
 		} catch(Exception e) {
 			sender.sendMessage("Can't show usage of command.(Command not found)");
 			e.printStackTrace();

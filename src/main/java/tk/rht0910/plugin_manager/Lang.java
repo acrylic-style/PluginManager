@@ -46,13 +46,20 @@ public final class Lang {
 	public static String error_occured = null;
 	public static String error_unload_plugin = null;
 	public static String unloaded_plugin = null;
+	public static String reloading_config = null;
+	public static String error_reload_config = null;
+	public static String reloaded_config = null;
+	public static String set_language = null;
 	public static String version = null;
+	public static String init_complete = null;
+	public static String init_error = null;
 
 	/**
 	 * Initialize a class
 	 */
 	public static void initialize() {
 		readFolder();
+		use();
 	}
 
 	public static void use() {
@@ -97,6 +104,12 @@ public final class Lang {
 		 error_occured = (String) LanguageProvider.load("error_occured", "&cAn error occured: %s");
 		 error_unload_plugin = (String) LanguageProvider.load("error_unload_plugin", "&cError while unloading plugin: %s");
 		 unloaded_plugin = (String) LanguageProvider.load("unloaded_plugin", "&aUnloaded plugin: %s");
+		 reloading_config = (String) LanguageProvider.load("reloading_config", "&aReloading config...");
+		 error_reload_config = (String) LanguageProvider.load("", "&cError while reloading config: PluginManager");
+		 reloaded_config = (String) LanguageProvider.load("reloaded_config", "&aReloaded config: PluginManager");
+		 set_language = (String) LanguageProvider.load("set_language", "Set config: language: %s");
+		 init_complete = LanguageProvider.load("init_complete", "Initialize complete.");
+		 init_error = LanguageProvider.load("init_error", "Error while initializing, disabling plugin, please see errors.");
 	}
 
 	  /**
