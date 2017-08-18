@@ -53,7 +53,7 @@ public final class Command {
 		return true;
 	}
 
-	public boolean getUsageOfCmd(CommandSender sender, String cmd) {
+	public static boolean getUsageOfCmd(CommandSender sender, String cmd) {
 		try {
 			String usageof = Bukkit.getPluginCommand(cmd).getUsage();
 			String cmd2 = cmd.replaceFirst("/", "");
