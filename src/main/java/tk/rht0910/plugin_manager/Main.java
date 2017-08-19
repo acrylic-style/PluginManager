@@ -24,7 +24,7 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 	//private static final String[] COMMANDS = {""};
 	public char altColorChar = '&';
 	public static Boolean is_available_new_version = false;
-	public static String current = Lang.version;
+	public static String current = "";
 	public static String newv = "";
 
 	public static String getLanguageCode() {
@@ -46,6 +46,7 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 				thread.start();
 				getServer().getPluginManager().registerEvents(this, this);
 			Lang.initialize();
+			current = Lang.version;
 			Bukkit.getServer().getLogger().info("[PluginManager] " + Lang.init_complete);
 		} catch(Exception | Error e) {
 			Bukkit.getServer().getLogger().severe("[PluginManager] " + Lang.init_error);
