@@ -14,9 +14,6 @@ public final class Manager {
 	private static Command command;
 	private static CommandSender sender;
 	private static Main main;
-	public static Boolean is_available_new_version = false;
-	public static String current = Lang.version;
-	public static String newv = "";
 
 	static {
 		pluginUtils = new PluginUtils();

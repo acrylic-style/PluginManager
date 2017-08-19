@@ -8,7 +8,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import tk.rht0910.plugin_manager.Lang;
-import tk.rht0910.plugin_manager.Manager;
+import tk.rht0910.plugin_manager.Main;
 import tk.rht0910.plugin_manager.util.Log;
 
 public class VersionCheck implements Runnable {
@@ -47,8 +47,8 @@ public class VersionCheck implements Runnable {
 
 		if(Lang.version.compareTo(line) == -1) {
 			Log.info("New version available: " + line);
-			Manager.is_available_new_version = true;
-			Manager.newv = line;
+			Main.is_available_new_version = true;
+			Main.newv = line;
 			return;
 		} else {
 			Log.info("No updates found.");

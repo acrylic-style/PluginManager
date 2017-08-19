@@ -23,6 +23,10 @@ import tk.rht0910.plugin_manager.util.PluginUtils;
 public final class Main extends JavaPlugin implements TabCompleter, Listener {
 	//private static final String[] COMMANDS = {""};
 	public char altColorChar = '&';
+	public static Boolean is_available_new_version = false;
+	public static String current = Lang.version;
+	public static String newv = "";
+
 	public static String getLanguageCode() {
 		String getty = Main.getPlugin(Main.class).getConfig().getString("language");
 		if(getty == "" || getty == null) {
@@ -411,19 +415,9 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 		Log.info("Event attached to " + event.getPlayer().getName() + ", EventPriority: HIGHEST, EventHandler: On");
 		if(event.getPlayer().isOp() == true) {
 			Log.info(event.getPlayer().getName() + " is OP!");
-			Manager manager = null;
-			try {
-				manager = new Manager();
-			} catch(NoClassDefFoundError e) {
-				Log.error(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.please_report_developer_catch, e)));
-				e.getCause().printStackTrace();
-			} catch(Exception | Error e) {
-				Log.error(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.please_report_developer_catch, e)));
-				e.printStackTrace();
-			}
-			if(manager.is_available_new_version == true) {
+			if(this.is_available_new_version == true) {
 				Log.info("New version found, notifing...");
-				String new_version_available3 = ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.new_version_available, manager.current, manager.newv));
+				String new_version_available3 = ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.new_version_available, this.current, this.newv));
 				String new_version_available4 = ChatColor.translateAlternateColorCodes(altColorChar, Lang.new_version_available2);
 				event.getPlayer().sendMessage(new_version_available3);
 				event.getPlayer().sendMessage(new_version_available4);
