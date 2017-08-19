@@ -50,6 +50,14 @@ continue_error_catch: '&4If you see error continuing? please report to developer
 please_report_developer: "&4Error cannot be resolved in user. Please report to developer!"
 please_report_developer_catch: '&4Error cannot be resolved in user. Please report to developer! Please tell to developer: %s'
 problem_case: '&b - In case of problems: %s'
-new_version_available: "&aNew version available for PluginManager: Current: %s, New: %s"
+new_version_available: '&aNew version available for PluginManager: Current: %s, New: %s'
 new_version_available2: "&aRun &b/pman update &ato update."
+started_version_check: "&aRunning version check..."
+already_checking: "&cAlready version checking!"
+version_check_complete1: "&aVersion check complete."
+version_check_complete_update_no: "&aNo updates found."
+version_check_complete_update1: "&aUpdate found!"
+version_check_complete_update2: "&bCurrent: %s"
+version_check_complete_update3: "&eNew: %s"
+version_check_complete_update4: "&aRun &b/pman update&a to update."
 version: "1.1"

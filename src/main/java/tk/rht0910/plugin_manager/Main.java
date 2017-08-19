@@ -10,6 +10,7 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 //import org.bukkit.util.StringUtil;
@@ -19,15 +20,20 @@ import tk.rht0910.plugin_manager.thread.VersionCheck;
 import tk.rht0910.plugin_manager.util.Log;
 import tk.rht0910.plugin_manager.util.PluginUtils;
 
-public final class Main extends JavaPlugin implements TabCompleter {
+public final class Main extends JavaPlugin implements TabCompleter, Listener {
 	//private static final String[] COMMANDS = {""};
 	public char altColorChar = '&';
+	public static Boolean is_available_new_version = false;
+	public static String current = "";
+	public static String newv = "";
+
 	public static String getLanguageCode() {
 		String getty = Main.getPlugin(Main.class).getConfig().getString("language");
+		if(getty == "" || getty == null) {
+			getty = "en_US";
+		}
 		return getty;
 	}
-
-
 
 	@Override
 	public void onEnable() {
@@ -35,10 +41,12 @@ public final class Main extends JavaPlugin implements TabCompleter {
 			Main.this.getConfig().options().copyDefaults(true);
 			Main.this.saveConfig();
 			CatchException catchException = new CatchException();
-				Thread thread = new Thread(new VersionCheck(), "Thread-22");
+				VersionCheck thread = new VersionCheck(false, null);
 				thread.setUncaughtExceptionHandler(catchException);
 				thread.start();
+				getServer().getPluginManager().registerEvents(this, this);
 			Lang.initialize();
+			current = Lang.version;
 			Bukkit.getServer().getLogger().info("[PluginManager] " + Lang.init_complete);
 		} catch(Exception | Error e) {
 			Bukkit.getServer().getLogger().severe("[PluginManager] " + Lang.init_error);
@@ -370,6 +378,9 @@ public final class Main extends JavaPlugin implements TabCompleter {
 					}
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.reloaded_config));
 				}
+			} else if(args[0].equalsIgnoreCase("check")) {
+				VersionCheck vc = new VersionCheck(true, sender);
+				vc.start();
 			} else {
 				Lang.use();
 				sender.sendMessage(ChatColor.RED + Lang.invalid_args);
@@ -402,12 +413,18 @@ public final class Main extends JavaPlugin implements TabCompleter {
 		return true;
 	}
 
-	@EventHandler(priority = EventPriority.HIGH)
+	@SuppressWarnings("static-access")
+	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerJoin(PlayerJoinEvent event) {
-		if(event.getPlayer().isOp()) {
-			if(Manager.is_available_new_version == true) {
-				String[] message = {Lang.new_version_available, Lang.new_version_available2};
-				event.getPlayer().sendMessage(message);
+		Log.info("Event attached to " + event.getPlayer().getName() + ", EventPriority: HIGHEST, EventHandler: On");
+		if(event.getPlayer().isOp() == true) {
+			Log.info(event.getPlayer().getName() + " is OP!");
+			if(this.is_available_new_version == true) {
+				Log.info("New version found, notifing...");
+				String new_version_available3 = ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.new_version_available, this.current, this.newv));
+				String new_version_available4 = ChatColor.translateAlternateColorCodes(altColorChar, Lang.new_version_available2);
+				event.getPlayer().sendMessage(new_version_available3);
+				event.getPlayer().sendMessage(new_version_available4);
 			}
 		}
 	}

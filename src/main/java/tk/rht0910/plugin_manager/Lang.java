@@ -60,6 +60,14 @@ public final class Lang {
 	public static String problem_case = null;
 	public static String new_version_available = null;
 	public static String new_version_available2 = null;
+	public static String started_version_check = null;
+	public static String already_checking = null;
+	public static String version_check_complete1 = null;
+	public static String version_check_complete_update_no = null;
+	public static String version_check_complete_update1 = null;
+	public static String version_check_complete_update2 = null;
+	public static String version_check_complete_update3 = null;
+	public static String version_check_complete_update4 = null;
 
 	/**
 	 * Initialize a class
@@ -124,6 +132,14 @@ public final class Lang {
 		 problem_case = LanguageProvider.load("problem_case", "&b - In case of problems: %s");
 		 new_version_available = LanguageProvider.load("new_version_available", "&aNew version available for PluginManager: Current: %s, New: %s");
 		 new_version_available2 = LanguageProvider.load("new_version_available2", "&aRun &b/pman update &ato update.");
+		 started_version_check = LanguageProvider.load("started_version_check", "&aRunning version check...");
+		 already_checking = LanguageProvider.load("already_checking", "&cAlready version checking!");
+		 version_check_complete1 = LanguageProvider.load("version_check_complete1", "&aVersion check complete.");
+		 version_check_complete_update_no = LanguageProvider.load("version_check_complete1", "&aNo updates found.");
+		 version_check_complete_update1 = LanguageProvider.load("version_check_complete_update1", "&aUpdate found!");
+		 version_check_complete_update2 = LanguageProvider.load("version_check_complete_update2", "&bCurrent: %s");
+		 version_check_complete_update3 = LanguageProvider.load("version_check_complete_update3", "&eNew: %s");
+		 version_check_complete_update4 = LanguageProvider.load("version_check_complete_update4", "&aRun &b/pman update&a to update.");
 	}
 
 	  /**
@@ -160,176 +176,6 @@ public final class Lang {
 		  Main.getPlugin(Main.class).saveResource("language_vi_VN.yml", true);
 		  Main.getPlugin(Main.class).saveResource("language_zh_CN.yml", true);
 		  Main.getPlugin(Main.class).saveResource("language_zh_TW.yml", true);
-		  /*InputStream is1 = Main.class.getClassLoader().getResourceAsStream("language_en_US.yml");
-		  InputStream is2 = Main.class.getClassLoader().getResourceAsStream("language_af_ZA.yml");
-		  InputStream is3 = Main.class.getClassLoader().getResourceAsStream("language_ar_SA.yml");
-		  InputStream is4 = Main.class.getClassLoader().getResourceAsStream("language_ca_ES.yml");
-		  InputStream is5 = Main.class.getClassLoader().getResourceAsStream("language_ca_CZ.yml");
-		  InputStream is6 = Main.class.getClassLoader().getResourceAsStream("language_da_DK.yml");
-		  InputStream is7 = Main.class.getClassLoader().getResourceAsStream("language_de_DE.yml");
-		  InputStream is8 = Main.class.getClassLoader().getResourceAsStream("language_el_GR.yml");
-		  InputStream is9 = Main.class.getClassLoader().getResourceAsStream("language_es_ES.yml");
-		  InputStream is10 = Main.class.getClassLoader().getResourceAsStream("language_fi_FI.yml");
-		  InputStream is11 = Main.class.getClassLoader().getResourceAsStream("language_fr_FR.yml");
-		  InputStream is12 = Main.class.getClassLoader().getResourceAsStream("language_he_IL.yml");
-		  InputStream is13 = Main.class.getClassLoader().getResourceAsStream("language_hu_HU.yml");
-		  InputStream is14 = Main.class.getClassLoader().getResourceAsStream("language_it_IT.yml");
-		  InputStream is15 = Main.class.getClassLoader().getResourceAsStream("language_ja_JP.yml");
-		  InputStream is16 = Main.class.getClassLoader().getResourceAsStream("language_ko_KR.yml");
-		  InputStream is17 = Main.class.getClassLoader().getResourceAsStream("language_nl_NL.yml");
-		  InputStream is18 = Main.class.getClassLoader().getResourceAsStream("language_no_NO.yml");
-		  InputStream is19 = Main.class.getClassLoader().getResourceAsStream("language_pl_PL.yml");
-		  InputStream is20 = Main.class.getClassLoader().getResourceAsStream("language_pt_BR.yml");
-		  InputStream is21 = Main.class.getClassLoader().getResourceAsStream("language_pt_PT.yml");
-		  InputStream is22 = Main.class.getClassLoader().getResourceAsStream("language_ro_RO.yml");
-		  InputStream is23 = Main.class.getClassLoader().getResourceAsStream("language_ru_RU.yml");
-		  InputStream is24 = Main.class.getClassLoader().getResourceAsStream("language_sr_SP.yml");
-		  InputStream is25 = Main.class.getClassLoader().getResourceAsStream("language_sv_SE.yml");
-		  InputStream is26 = Main.class.getClassLoader().getResourceAsStream("language_tr_TR.yml");
-		  InputStream is27 = Main.class.getClassLoader().getResourceAsStream("language_uk_UA.yml");
-		  InputStream is28 = Main.class.getClassLoader().getResourceAsStream("language_vi_VN.yml");
-		  InputStream is29 = Main.class.getClassLoader().getResourceAsStream("language_zh_CN.yml");
-		  InputStream is30 = Main.class.getClassLoader().getResourceAsStream("language_zh_CW.yml");
-		  try {
-			  FileOutputStream fos1 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_en_US.yml"));
-			  FileOutputStream fos2 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_af_ZA.yml"));
-			  FileOutputStream fos3 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_ar_SA.yml"));
-			  FileOutputStream fos4 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_ca_ES.yml"));
-			  FileOutputStream fos5 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_ca_CZ.yml"));
-			  FileOutputStream fos6 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_da_DK.yml"));
-			  FileOutputStream fos7 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_de_DE.yml"));
-			  FileOutputStream fos8 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_el_GR.yml"));
-			  FileOutputStream fos9 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_es_ES.yml"));
-			  FileOutputStream fos10 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_fi_FI.yml"));
-			  FileOutputStream fos11 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_fr_FR.yml"));
-			  FileOutputStream fos12 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_he_IL.yml"));
-			  FileOutputStream fos13 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_hu_HU.yml"));
-			  FileOutputStream fos14 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_it_IT.yml"));
-			  FileOutputStream fos15 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_ja_JP.yml"));
-			  FileOutputStream fos16 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_ko_KR.yml"));
-			  FileOutputStream fos17 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_nl_NL.yml"));
-			  FileOutputStream fos18 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_no_NO.yml"));
-			  FileOutputStream fos19 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_pl_PL.yml"));
-			  FileOutputStream fos20 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_pt_BR.yml"));
-			  FileOutputStream fos21 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_pt_PT.yml"));
-			  FileOutputStream fos22 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_ro_RO.yml"));
-			  FileOutputStream fos23 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_ru_RU.yml"));
-			  FileOutputStream fos24 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_sr_SP.yml"));
-			  FileOutputStream fos25 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_sv_SE.yml"));
-			  FileOutputStream fos26 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_tr_TR.yml"));
-			  FileOutputStream fos27 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_uk_UA.yml"));
-			  FileOutputStream fos28 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_vi_VN.yml"));
-			  FileOutputStream fos29 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_zh_CN.yml"));
-			  FileOutputStream fos30 = new FileOutputStream(new File(Main.getPlugin(Main.class).getDataFolder(), "language_zh_CW.yml"));
-			  IOUtils.copy(is1, fos1);
-			  IOUtils.copy(is2, fos2);
-			  IOUtils.copy(is3, fos3);
-			  IOUtils.copy(is4, fos4);
-			  IOUtils.copy(is5, fos5);
-			  IOUtils.copy(is6, fos6);
-			  IOUtils.copy(is7, fos7);
-			  IOUtils.copy(is8, fos8);
-			  IOUtils.copy(is9, fos9);
-			  IOUtils.copy(is10, fos10);
-			  IOUtils.copy(is11, fos11);
-			  IOUtils.copy(is12, fos12);
-			  IOUtils.copy(is13, fos13);
-			  IOUtils.copy(is14, fos14);
-			  IOUtils.copy(is15, fos15);
-			  IOUtils.copy(is16, fos16);
-			  IOUtils.copy(is17, fos17);
-			  IOUtils.copy(is18, fos18);
-			  IOUtils.copy(is19, fos19);
-			  IOUtils.copy(is20, fos20);
-			  IOUtils.copy(is21, fos21);
-			  IOUtils.copy(is22, fos22);
-			  IOUtils.copy(is23, fos23);
-			  IOUtils.copy(is24, fos24);
-			  IOUtils.copy(is25, fos25);
-			  IOUtils.copy(is26, fos26);
-			  IOUtils.copy(is27, fos27);
-			  IOUtils.copy(is28, fos28);
-			  IOUtils.copy(is29, fos29);
-			  IOUtils.copy(is30, fos30);
-			  IOUtils.closeQuietly(is1);
-			  IOUtils.closeQuietly(fos1);
-			  IOUtils.closeQuietly(is2);
-			  IOUtils.closeQuietly(fos2);
-			  IOUtils.closeQuietly(is3);
-			  IOUtils.closeQuietly(fos3);
-			  IOUtils.closeQuietly(is4);
-			  IOUtils.closeQuietly(fos4);
-			  IOUtils.closeQuietly(is5);
-			  IOUtils.closeQuietly(fos5);
-			  IOUtils.closeQuietly(is6);
-			  IOUtils.closeQuietly(fos6);
-			  IOUtils.closeQuietly(is7);
-			  IOUtils.closeQuietly(fos7);
-			  IOUtils.closeQuietly(is8);
-			  IOUtils.closeQuietly(fos8);
-			  IOUtils.closeQuietly(is9);
-			  IOUtils.closeQuietly(fos9);
-			  IOUtils.closeQuietly(is10);
-			  IOUtils.closeQuietly(fos10);
-			  IOUtils.closeQuietly(is11);
-			  IOUtils.closeQuietly(fos11);
-			  IOUtils.closeQuietly(is12);
-			  IOUtils.closeQuietly(fos12);
-			  IOUtils.closeQuietly(is13);
-			  IOUtils.closeQuietly(fos13);
-			  IOUtils.closeQuietly(is14);
-			  IOUtils.closeQuietly(fos14);
-			  IOUtils.closeQuietly(is15);
-			  IOUtils.closeQuietly(fos15);
-			  IOUtils.closeQuietly(is16);
-			  IOUtils.closeQuietly(fos16);
-			  IOUtils.closeQuietly(is17);
-			  IOUtils.closeQuietly(fos17);
-			  IOUtils.closeQuietly(is18);
-			  IOUtils.closeQuietly(fos18);
-			  IOUtils.closeQuietly(is19);
-			  IOUtils.closeQuietly(fos19);
-			  IOUtils.closeQuietly(is20);
-			  IOUtils.closeQuietly(fos20);
-			  IOUtils.closeQuietly(is21);
-			  IOUtils.closeQuietly(fos21);
-			  IOUtils.closeQuietly(is22);
-			  IOUtils.closeQuietly(fos22);
-			  IOUtils.closeQuietly(is23);
-			  IOUtils.closeQuietly(fos23);
-			  IOUtils.closeQuietly(is24);
-			  IOUtils.closeQuietly(fos24);
-			  IOUtils.closeQuietly(is25);
-			  IOUtils.closeQuietly(fos25);
-			  IOUtils.closeQuietly(is26);
-			  IOUtils.closeQuietly(fos26);
-			  IOUtils.closeQuietly(is27);
-			  IOUtils.closeQuietly(fos27);
-			  IOUtils.closeQuietly(is28);
-			  IOUtils.closeQuietly(fos28);
-			  IOUtils.closeQuietly(is29);
-			  IOUtils.closeQuietly(fos29);
-			  IOUtils.closeQuietly(is30);
-			  IOUtils.closeQuietly(fos30);
-
-		} catch (Exception | Error e) {
-			e.printStackTrace();
-		}
-/*
-	    File[] files = {
-	    		new File("")
-	    		};
-	    if( files == null )
-	      return;
-	    for( File file : files ) {
-	      if( !file.exists() ) {
-	        continue;
-	      // else if( file.isDirectory() )
-	        // Nothing happened.
-	      } else if( file.isFile() && file.canRead() && file.getPath().endsWith(".yml") ) {
-	    		  execute( file );
-	      }
-	    }*/
 	  }
 
 	  /**
