@@ -26,7 +26,6 @@ public class VersionCheck implements Runnable {
 		try {
 			conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.16232");
-			Log.info("Version Checker: Status code: " + conn.getResponseCode());
 		} catch (IOException e2) {
 			e2.printStackTrace();
 		}
@@ -40,6 +39,7 @@ public class VersionCheck implements Runnable {
 			while (rd.readLine() != null) {
 			    line += rd.readLine();
 			}
+			Log.info("Version Checker: Status code: " + conn.getResponseCode() + ", Get: " + line);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
