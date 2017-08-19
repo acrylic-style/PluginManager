@@ -12,9 +12,10 @@ import tk.rht0910.plugin_manager.Manager;
 import tk.rht0910.plugin_manager.util.Log;
 
 public class VersionCheck implements Runnable {
-	@SuppressWarnings({ "unused" })
+	@SuppressWarnings({ })
 	public void run() {
-		String line = null, response;
+		String response = null;
+		String line = null;
 		URL url = null;
 		try {
 			Log.info("Async version checking...");
@@ -36,8 +37,8 @@ public class VersionCheck implements Runnable {
 			e1.printStackTrace();
 		}
 		try {
-			while (rd.readLine() != null) {
-			    line += rd.readLine();
+			while ((response = rd.readLine()) != null) {
+			    line += response;
 			}
 			Log.info("Version Checker: Status code: " + conn.getResponseCode() + ", Get: " + line);
 		} catch (IOException e) {
