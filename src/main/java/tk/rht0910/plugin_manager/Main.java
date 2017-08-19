@@ -41,7 +41,7 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 			Main.this.getConfig().options().copyDefaults(true);
 			Main.this.saveConfig();
 			CatchException catchException = new CatchException();
-				Thread thread = new Thread(new VersionCheck(), "Thread-22");
+				VersionCheck thread = new VersionCheck(false, null);
 				thread.setUncaughtExceptionHandler(catchException);
 				thread.start();
 				getServer().getPluginManager().registerEvents(this, this);
@@ -378,6 +378,9 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 					}
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.reloaded_config));
 				}
+			} else if(args[0].equalsIgnoreCase("check")) {
+				VersionCheck vc = new VersionCheck(true, sender);
+				vc.start();
 			} else {
 				Lang.use();
 				sender.sendMessage(ChatColor.RED + Lang.invalid_args);

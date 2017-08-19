@@ -60,6 +60,14 @@ public final class Lang {
 	public static String problem_case = null;
 	public static String new_version_available = null;
 	public static String new_version_available2 = null;
+	public static String started_version_check = null;
+	public static String already_checking = null;
+	public static String version_check_complete1 = null;
+	public static String version_check_complete_update_no = null;
+	public static String version_check_complete_update1 = null;
+	public static String version_check_complete_update2 = null;
+	public static String version_check_complete_update3 = null;
+	public static String version_check_complete_update4 = null;
 
 	/**
 	 * Initialize a class
@@ -124,6 +132,14 @@ public final class Lang {
 		 problem_case = LanguageProvider.load("problem_case", "&b - In case of problems: %s");
 		 new_version_available = LanguageProvider.load("new_version_available", "&aNew version available for PluginManager: Current: %s, New: %s");
 		 new_version_available2 = LanguageProvider.load("new_version_available2", "&aRun &b/pman update &ato update.");
+		 started_version_check = LanguageProvider.load("started_version_check", "&aRunning version check...");
+		 already_checking = LanguageProvider.load("already_checking", "&cAlready version checking!");
+		 version_check_complete1 = LanguageProvider.load("version_check_complete1", "&aVersion check complete.");
+		 version_check_complete_update_no = LanguageProvider.load("version_check_complete1", "&aNo updates found.");
+		 version_check_complete_update1 = LanguageProvider.load("version_check_complete_update1", "&aUpdate found!");
+		 version_check_complete_update2 = LanguageProvider.load("version_check_complete_update2", "&bCurrent: %s");
+		 version_check_complete_update3 = LanguageProvider.load("version_check_complete_update3", "&eNew: %s");
+		 version_check_complete_update4 = LanguageProvider.load("version_check_complete_update4", "&aRun &b/pman update&a to update.");
 	}
 
 	  /**
