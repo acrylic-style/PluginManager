@@ -411,7 +411,16 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 		Log.info("Event attached to " + event.getPlayer().getName() + ", EventPriority: HIGHEST, EventHandler: On");
 		if(event.getPlayer().isOp() == true) {
 			Log.info(event.getPlayer().getName() + " is OP!");
-			Manager manager = new Manager();
+			Manager manager = null;
+			try {
+				manager = new Manager();
+			} catch(NoClassDefFoundError e) {
+				Log.error(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.please_report_developer_catch, e)));
+				e.getCause().printStackTrace();
+			} catch(Exception | Error e) {
+				Log.error(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.please_report_developer_catch, e)));
+				e.printStackTrace();
+			}
 			if(manager.is_available_new_version == true) {
 				Log.info("New version found, notifing...");
 				String new_version_available3 = ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.new_version_available, manager.current, manager.newv));
