@@ -53,4 +53,12 @@ please_report_developer_catch: '&4このエラーはユーザーでは解決で�
 problem_case: '&b - 問題が発生した場合: %s'
 new_version_available: '&aPluginManagerの新しいバージョンが利用可能です: 現在のバージョン: %s、新バージョン: %s'
 new_version_available2: "&b/pman update&a を実行して更新できます。"
+started_version_check: "&aバージョンチェックを実行中..."
+already_checking: "&cバージョンチェックはすでに実行中です！"
+version_check_complete1: "&aバージョンチェックが完了しました。"
+version_check_complete_update_no: "&aアップデートはありません。"
+version_check_complete_update1: "&aアップデートがありました。"
+version_check_complete_update2: '&b現在: %s'
+version_check_complete_update3: '&e新バージョン: %s'
+version_check_complete_update4: "&b/pman update&a で更新できます。"
 version: "1.1"
