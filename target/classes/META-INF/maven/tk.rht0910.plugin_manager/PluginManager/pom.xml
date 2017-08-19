@@ -3,7 +3,7 @@
   <groupId>tk.rht0910.plugin_manager</groupId>
   <artifactId>PluginManager</artifactId>
   <name>PluginManager</name>
-  <version>1.0</version>
+  <version>1.1</version>
      <build>
    <plugins>
      <plugin>
@@ -23,6 +23,11 @@
     </repository>
  </repositories>
  <dependencies>
+        <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.3.1</version>
+    </dependency>
  <dependency>
     <groupId>org.apache.commons</groupId>
     <artifactId>commons-io</artifactId>
