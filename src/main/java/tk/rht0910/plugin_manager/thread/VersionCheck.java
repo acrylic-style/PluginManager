@@ -8,13 +8,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import tk.rht0910.plugin_manager.Lang;
-import tk.rht0910.plugin_manager.Manager;
+import tk.rht0910.plugin_manager.Main;
 import tk.rht0910.plugin_manager.util.Log;
 
-public class VersionCheck extends Thread {
-	@SuppressWarnings({ "unused", "null" })
+public class VersionCheck implements Runnable {
 	public void run() {
-		String line = null, response;
+		String response = null;
+		String line = null;
 		URL url = null;
 		try {
 			Log.info("Async version checking...");
@@ -24,10 +24,8 @@ public class VersionCheck extends Thread {
 		}
 		HttpURLConnection conn = null;
 		try {
-			conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.16232");
 			conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.16232");
-			Log.info("Version Checker: Status code: " + conn.getResponseCode());
 		} catch (IOException e2) {
 			e2.printStackTrace();
 		}
@@ -38,16 +36,19 @@ public class VersionCheck extends Thread {
 			e1.printStackTrace();
 		}
 		try {
-			while (rd.readLine() != null) {
-			    line += rd.readLine();
+			while ((response = rd.readLine()) != null) {
+			    line += response;
 			}
+			line = line.replaceAll("null", "");
+			Log.info("Version Checker: Status code: " + conn.getResponseCode() + ", Get: " + line);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 		if(Lang.version.compareTo(line) == -1) {
 			Log.info("New version available: " + line);
-			Manager.is_available_new_version = true;
+			Main.is_available_new_version = true;
+			Main.newv = line;
 			return;
 		} else {
 			Log.info("No updates found.");
