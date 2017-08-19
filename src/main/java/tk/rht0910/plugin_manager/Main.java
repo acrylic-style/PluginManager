@@ -402,14 +402,17 @@ public final class Main extends JavaPlugin implements TabCompleter {
 		return true;
 	}
 
-	@EventHandler(priority = EventPriority.HIGH)
+	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerJoin(PlayerJoinEvent event) {
+		Log.info("Event attached to " + event.getPlayer().getName() + ", EventPriority: HIGHEST, EventHandler: On");
 		if(event.getPlayer().isOp() == true) {
+			Log.info(event.getPlayer().getName() + "is OP!");
 			if(Manager.is_available_new_version == true) {
+				Log.info("New version found, notifing...");
 				String new_version_available3 = ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.new_version_available, Manager.current, Manager.newv));
 				String new_version_available4 = ChatColor.translateAlternateColorCodes(altColorChar, Lang.new_version_available2);
-				String[] message = {new_version_available3, new_version_available4};
-				event.getPlayer().sendMessage(message);
+				event.getPlayer().sendMessage(new_version_available3);
+				event.getPlayer().sendMessage(new_version_available4);
 			}
 		}
 	}
