@@ -48,6 +48,7 @@ public class VersionCheck implements Runnable {
 		if(Lang.version.compareTo(line) == -1) {
 			Log.info("New version available: " + line);
 			Manager.is_available_new_version = true;
+			Manager.newv = line;
 			return;
 		} else {
 			Log.info("No updates found.");

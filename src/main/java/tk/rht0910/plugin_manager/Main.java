@@ -404,9 +404,11 @@ public final class Main extends JavaPlugin implements TabCompleter {
 
 	@EventHandler(priority = EventPriority.HIGH)
 	public void onPlayerJoin(PlayerJoinEvent event) {
-		if(event.getPlayer().isOp()) {
+		if(event.getPlayer().isOp() == true) {
 			if(Manager.is_available_new_version == true) {
-				String[] message = {Lang.new_version_available, Lang.new_version_available2};
+				String new_version_available3 = ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.new_version_available, Manager.current, Manager.newv));
+				String new_version_available4 = ChatColor.translateAlternateColorCodes(altColorChar, Lang.new_version_available2);
+				String[] message = {new_version_available3, new_version_available4};
 				event.getPlayer().sendMessage(message);
 			}
 		}
