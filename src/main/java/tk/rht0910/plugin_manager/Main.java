@@ -405,14 +405,16 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 		return true;
 	}
 
+	@SuppressWarnings("static-access")
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Log.info("Event attached to " + event.getPlayer().getName() + ", EventPriority: HIGHEST, EventHandler: On");
 		if(event.getPlayer().isOp() == true) {
-			Log.info(event.getPlayer().getName() + "is OP!");
-			if(Manager.is_available_new_version == true) {
+			Log.info(event.getPlayer().getName() + " is OP!");
+			Manager manager = new Manager();
+			if(manager.is_available_new_version == true) {
 				Log.info("New version found, notifing...");
-				String new_version_available3 = ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.new_version_available, Manager.current, Manager.newv));
+				String new_version_available3 = ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.new_version_available, manager.current, manager.newv));
 				String new_version_available4 = ChatColor.translateAlternateColorCodes(altColorChar, Lang.new_version_available2);
 				event.getPlayer().sendMessage(new_version_available3);
 				event.getPlayer().sendMessage(new_version_available4);
