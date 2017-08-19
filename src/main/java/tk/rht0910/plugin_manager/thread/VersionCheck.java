@@ -24,13 +24,6 @@ public class VersionCheck extends Thread implements Runnable {
 	}
 
 	public void run() {
-		if(Main.vcheck_lock == true) {
-			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.already_checking));
-			Log.error(ChatColor.translateAlternateColorCodes(altColorChar, Lang.already_checking));
-			return;
-		} else {
-			Main.vcheck_lock = true;
-		}
 		String response = null;
 		String line = null;
 		URL url = null;
@@ -68,16 +61,16 @@ public class VersionCheck extends Thread implements Runnable {
 			Log.info("New version available: " + line);
 			Main.is_available_new_version = true;
 			Main.newv = line;
-			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update1));
-			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.version_check_complete_update2, Main.current)));
-			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.version_check_complete_update3, line)));
-			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update4));
-			Main.vcheck_lock = false;
+			if(player == true) {
+				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update1));
+				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.version_check_complete_update2, Main.current)));
+				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.version_check_complete_update3, line)));
+				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update4));
+			}
 			return;
 		} else {
 			Log.info("No updates found.");
-			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update_no));
-			Main.vcheck_lock = false;
+			if(player == true) {sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update_no));}
 			return;
 		}
 	}
