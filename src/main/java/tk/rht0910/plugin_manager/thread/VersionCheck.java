@@ -39,7 +39,7 @@ public class VersionCheck implements Runnable {
 			while ((response = rd.readLine()) != null) {
 			    line += response;
 			}
-			line.replaceAll("null", "");
+			line = line.replaceAll("null", "");
 			Log.info("Version Checker: Status code: " + conn.getResponseCode() + ", Get: " + line);
 		} catch (IOException e) {
 			e.printStackTrace();
