@@ -7,17 +7,29 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
+
 import tk.rht0910.plugin_manager.Lang;
 import tk.rht0910.plugin_manager.Main;
 import tk.rht0910.plugin_manager.util.Log;
 
-public class VersionCheck implements Runnable {
+public class VersionCheck extends Thread implements Runnable {
+	private static Boolean player = false;
+	private static CommandSender sender = null;
+	private static final char altColorChar = '&';
+	public VersionCheck(Boolean byPlayer, CommandSender sender) {
+		VersionCheck.player = byPlayer;
+		VersionCheck.sender = sender;
+	}
+
 	public void run() {
 		String response = null;
 		String line = null;
 		URL url = null;
 		try {
-			Log.info("Async version checking...");
+			Log.info(ChatColor.translateAlternateColorCodes(altColorChar, Lang.started_version_check));
+			if(player == true) {sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.started_version_check));}
 			url = new URL("https://api.rht0910.tk/pluginmanager_version");
 		} catch (MalformedURLException e3) {
 			e3.printStackTrace();
@@ -49,9 +61,14 @@ public class VersionCheck implements Runnable {
 			Log.info("New version available: " + line);
 			Main.is_available_new_version = true;
 			Main.newv = line;
+			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update1));
+			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.version_check_complete_update2, line)));
+			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.version_check_complete_update3, Main.current)));
+			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update4));
 			return;
 		} else {
 			Log.info("No updates found.");
+			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update_no));
 		}
 
 		return;
