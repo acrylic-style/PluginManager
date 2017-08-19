@@ -10,6 +10,7 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 //import org.bukkit.util.StringUtil;
@@ -19,7 +20,7 @@ import tk.rht0910.plugin_manager.thread.VersionCheck;
 import tk.rht0910.plugin_manager.util.Log;
 import tk.rht0910.plugin_manager.util.PluginUtils;
 
-public final class Main extends JavaPlugin implements TabCompleter {
+public final class Main extends JavaPlugin implements TabCompleter, Listener {
 	//private static final String[] COMMANDS = {""};
 	public char altColorChar = '&';
 	public static String getLanguageCode() {
@@ -30,8 +31,6 @@ public final class Main extends JavaPlugin implements TabCompleter {
 		return getty;
 	}
 
-
-
 	@Override
 	public void onEnable() {
 		try {
@@ -41,6 +40,7 @@ public final class Main extends JavaPlugin implements TabCompleter {
 				Thread thread = new Thread(new VersionCheck(), "Thread-22");
 				thread.setUncaughtExceptionHandler(catchException);
 				thread.start();
+				getServer().getPluginManager().registerEvents(this, this);
 			Lang.initialize();
 			Bukkit.getServer().getLogger().info("[PluginManager] " + Lang.init_complete);
 		} catch(Exception | Error e) {
