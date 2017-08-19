@@ -68,6 +68,7 @@ public final class Lang {
 	public static String version_check_complete_update2 = null;
 	public static String version_check_complete_update3 = null;
 	public static String version_check_complete_update4 = null;
+	public static String pman_check_desc = null;
 
 	/**
 	 * Initialize a class
@@ -140,6 +141,7 @@ public final class Lang {
 		 version_check_complete_update2 = LanguageProvider.load("version_check_complete_update2", "&bCurrent: %s");
 		 version_check_complete_update3 = LanguageProvider.load("version_check_complete_update3", "&eNew: %s");
 		 version_check_complete_update4 = LanguageProvider.load("version_check_complete_update4", "&aRun &b/pman update&a to update.");
+		 pman_check_desc = LanguageProvider.load("pman_check_desc", "Check version manually.");
 	}
 
 	  /**

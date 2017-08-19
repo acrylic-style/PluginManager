@@ -16,6 +16,7 @@ pman_update_desc: "このプラグインを更新する"
 pman_config_language: "言語を変更"
 pman_config_reload: "設定を再読み込み"
 pman_usage_desc: "コマンドの使用方法"
+pman_check_desc: "手動でバージョンをチェックします。"
 pman_version_desc: "プラグインのバージョンを表示します。"
 pman_version: "&aPluginManager:&b&n %s"
 failed_update_plugin: "&c更新に失敗しました(サーバーダウン？)"
@@ -51,5 +52,5 @@ please_report_developer: "&4このエラーはユーザーでは解決できま�
 please_report_developer_catch: '&4このエラーはユーザーでは解決できません。開発者に報告してください！開発者にこの情報を伝えてください: %s'
 problem_case: '&b - 問題が発生した場合: %s'
 new_version_available: '&aPluginManagerの新しいバージョンが利用可能です: 現在のバージョン: %s、新バージョン: %s'
-new_version_available2: "&a/pman update&aを実行して更新できます。"
+new_version_available2: "&b/pman update&a を実行して更新できます。"
 version: "1.1"
