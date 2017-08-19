@@ -24,6 +24,9 @@ public final class Main extends JavaPlugin implements TabCompleter {
 	public char altColorChar = '&';
 	public static String getLanguageCode() {
 		String getty = Main.getPlugin(Main.class).getConfig().getString("language");
+		if(getty == "" || getty == null) {
+			getty = "en_US";
+		}
 		return getty;
 	}
 
