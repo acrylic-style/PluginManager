@@ -60,8 +60,8 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 	@Override
 	public void onLoad() {
 		try {
-			Bukkit.getServer().getLogger().info("[PluginManager] Loading PluginManager v1.2 ...");
-			Bukkit.getServer().getLogger().info("[PluginManager] Loaded PluginManager v1.2");
+			Bukkit.getServer().getLogger().info("[PluginManager] Loading PluginManager v1.2.1 ...");
+			Bukkit.getServer().getLogger().info("[PluginManager] Loaded PluginManager v1.2.1");
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().info("[PluginManager] Unknown error: " + e);
 			e.printStackTrace();
