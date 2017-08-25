@@ -61,4 +61,4 @@ version_check_complete_update1: "&aアップデートがありました。"
 version_check_complete_update2: '&b現在: %s'
 version_check_complete_update3: '&e新バージョン: %s'
 version_check_complete_update4: "&b/pman update&a で更新できます。"
-version: "1.1"
+version: "1.2.1"

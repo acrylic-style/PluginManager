@@ -112,7 +112,7 @@ public final class Lang {
 		 source_code = (String) LanguageProvider.load("source_code", "&b - Source code: %s");
 		 starting_load_plugins = (String) LanguageProvider.load("starting_load_plugins", "Starting load plugins in PluginManager...");
 		 already_enabled = (String) LanguageProvider.load("already_enabled", "&cPlugin is already enabled!");
-		 version = (String) LanguageProvider.load("version", "1.0");
+		 version = (String) LanguageProvider.load("version", "1.2.1");
 		 pman_version_desc = (String) LanguageProvider.load("pman_version_desc", "Shows plugin version.");
 		 pman_version = (String) LanguageProvider.load("pman_version", "&aPluginManaver:&b&n %s");
 		 failed_load_plugin = (String) LanguageProvider.load("failed_load_plugin", "&cCouldn't load plugin: %s");

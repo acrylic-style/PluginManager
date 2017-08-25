@@ -61,4 +61,4 @@ version_check_complete_update1: "&aZnaleziono aktualizację!"
 version_check_complete_update2: '&bCurrent: %s'
 version_check_complete_update3: '&eNew: %s'
 version_check_complete_update4: "&aWpisz &b/pman update&a aby aktualizować."
-version: "1.1"
+version: "1.2.1"
