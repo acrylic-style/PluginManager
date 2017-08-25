@@ -1,7 +1,7 @@
 
 # PluginManager
 
-Jenkins (Dev version): <a href="http://point.rht0910.tk:8080/job/PluginManager"><img src="http://point.rht0910.tk:8080/job/PluginManager/badge/icon"></a>
+Jenkins (Dev version): <a href="https://ci.rht0910.tk/job/PluginManager"><img src="https://ci.rht0910.tk/job/PluginManager/badge/icon"></a>
 
 TravisCI: [![Build Status](https://travis-ci.org/rht0910/PluginManager.svg?branch=master)](https://travis-ci.org/rht0910/PluginManager)
 
