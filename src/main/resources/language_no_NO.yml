@@ -21,15 +21,15 @@ pman_version_desc: "Viser pluginversjon."
 pman_version: "&aPluginManager:&b&n %s"
 failed_update_plugin: "&cKunne ikke oppdatere(Er serveren nede?)"
 updating_plugin: "&aOppdaterer plugin..."
-success_update_plugin: "&5Plugin is updated by %s . Please reload!"
+success_update_plugin: "&5Plugin er oppdatert av %s. Vennligst last inn på nytt!"
 you_are_not_operator: "&cDu er ikke en operatør!"
-no_permission: "&cYou don't have permission."
+no_permission: "&cDu har ikke tillatelse."
 opened_config_viewer: "Opened config viewer by %s"
 not_enough_args: "&cNot enough argument, cannot continue."
 running_on: '&aPluginManager is running on: %s'
 available_commands: '&aAvailable commands: /pman help'
 beta: "(BETA)"
-alpha: "(ALPHA)"
+alpha: "(ALFA)"
 project_page: '&b - Project page: %s'
 developer_version: '&b - Developer version: %s'
 source_code: '&b - Source code: %s'
@@ -54,11 +54,11 @@ problem_case: '&b - In case of problems: %s'
 new_version_available: '&aNew version available for PluginManager: Current: %s, New: %s'
 new_version_available2: "&aRun &b/pman update &ato update."
 started_version_check: "&aRunning version check..."
-already_checking: "&cAlready version checking!"
-version_check_complete1: "&aVersion check complete."
-version_check_complete_update_no: "&aNo updates found."
-version_check_complete_update1: "&aUpdate found!"
-version_check_complete_update2: '&bCurrent: %s'
-version_check_complete_update3: '&eNew: %s'
-version_check_complete_update4: "&aRun &b/pman update&a to update."
+already_checking: "&cSjekker allerede versjon!"
+version_check_complete1: "&aVellykket sjekket versjon."
+version_check_complete_update_no: "&aIngen oppdateringer funnet."
+version_check_complete_update1: "&aOppdatering funnet!"
+version_check_complete_update2: '&bNåværende: %s'
+version_check_complete_update3: '&eNy: %s'
+version_check_complete_update4: "&aKjør &b/pman update&a for å oppdatere."
 version: "1.2.1"
