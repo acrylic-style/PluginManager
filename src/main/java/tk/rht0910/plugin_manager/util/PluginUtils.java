@@ -60,8 +60,9 @@ public final class PluginUtils {
 								if(!Bukkit.getServer().getPluginManager().isPluginEnabled(plugin)) {
 									try {
 										Bukkit.getServer().getPluginManager().loadPlugin(file);
+										Bukkit.getServer().getPluginManager().loadPlugin(new File(file + ".jar"));
 									} catch(Exception | Error e) {
-										Log.error("Error while loading plugin: " + plugin + ", ignoring...");
+										Log.error("Error while loading plugin: " + plugin + ", errors dumped below:");
 										e.printStackTrace();
 									}
 									Plugin pm = Bukkit.getServer().getPluginManager().getPlugin(plugin);
@@ -156,6 +157,7 @@ public final class PluginUtils {
 		/* 439 */             Field value = SimpleCommandMap.class.getDeclaredField("knownCommands");
 		/* 440 */             value.setAccessible(true);
 		/* 441 */             commands = (Map)value.get(commandMap);
+		commands.remove((Map) value.get(commandMap));
 		/*     */
 		/* 443 */          } catch (Exception e) {
 			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.error_occured));
@@ -377,7 +379,7 @@ public final class PluginUtils {
 		/*     */       }
 		/* 379 */    }
 
-	public void DeletePlugin(CommandSender sender, String filename, String pluginName) {
+	public static void DeletePlugin(CommandSender sender, String filename, String pluginName) {
 		File file = new File("plugins/" + filename + ".jar");
 		if(file.exists()) {
 			if(Bukkit.getServer().getPluginManager().isPluginEnabled(Bukkit.getServer().getPluginManager().getPlugin(pluginName))) {
@@ -403,7 +405,7 @@ public final class PluginUtils {
 					try {
 						Files.move(file, to);
 						sender.sendMessage("Successfully Remove plugin by " + sender.toString());
-						sender.sendMessage("Successfully Remove plugin. To restore plugin, Please enter command: '/restore " + pluginName + "'");
+						sender.sendMessage("Successfully Remove plugin. To restore plugin, Please enter command: '/pman restore " + pluginName + "'");
 					} catch (IOException e) {
 						Bukkit.getServer().getPluginManager().enablePlugin(Bukkit.getServer().getPluginManager().getPlugin(pluginName));
 						sender.sendMessage("Unexpected error occurred.");
@@ -425,13 +427,13 @@ public final class PluginUtils {
 		}
 	}
 
-	public void RestorePlugin(CommandSender sender, String pluginName) {
+	public static void RestorePlugin(CommandSender sender, String pluginName) {
 		File from = new File("plugins/plugins_backup/" + pluginName + ".jar");
 		File to = new File("plugins/" + pluginName + ".jar");
 		try {
 			Files.move(from, to);
 			sender.sendMessage(ChatColor.GREEN + "Successfully Restore plugin by " + sender.toString());
-			sender.sendMessage(ChatColor.GREEN + "Successfully Restore plugin. To Load and enable: /load " + pluginName);
+			sender.sendMessage(ChatColor.GREEN + "Successfully Restore plugin. To Load and enable: /pman load " + pluginName);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

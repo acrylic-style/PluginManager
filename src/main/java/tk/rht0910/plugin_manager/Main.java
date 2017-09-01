@@ -26,11 +26,13 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 	public static Boolean is_available_new_version = false;
 	public static String current = "";
 	public static String newv = "";
+	public static Boolean warning = false;
 
 	public static String getLanguageCode() {
 		String getty = Main.getPlugin(Main.class).getConfig().getString("language");
 		if(getty == "" || getty == null) {
 			getty = "en_US";
+			warning = true;
 		}
 		return getty;
 	}
@@ -59,8 +61,8 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 	@Override
 	public void onLoad() {
 		try {
-			Bukkit.getServer().getLogger().info("[PluginManager] Loading PluginManager v1.2.1 ...");
-			Bukkit.getServer().getLogger().info("[PluginManager] Loaded PluginManager v1.2.1");
+			Bukkit.getServer().getLogger().info("[PluginManager] Loading PluginManager v1.2.2 ...");
+			Bukkit.getServer().getLogger().info("[PluginManager] Loaded PluginManager v1.2.2");
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().info("[PluginManager] Unknown error: " + e);
 			e.printStackTrace();
@@ -114,6 +116,9 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.developer_version, "http://point.rht0910.tk:8080/job/PluginManager/")));
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.source_code, "https://github.com/rht0910/PluginManager/")));
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.problem_case, "https://github.com/rht0910/PluginManager/issues/")));
+					if(warning == true) {
+
+					}
 				} catch(Exception | Error e) {
 					e.printStackTrace();
 				}
@@ -182,7 +187,7 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.not_enough_args));
 					return false;
 				}
-				Manager.getPluginUtil().RestorePlugin(sender, args[1]);
+				PluginUtils.RestorePlugin(sender, args[1]);
 			} else if(args[0].equalsIgnoreCase("delete")) {
 				if(sender instanceof Player) {
 					if(!sender.isOp()) {
@@ -202,7 +207,7 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.not_enough_args));
 					return false;
 				}
-				Manager.getPluginUtil().DeletePlugin(sender, args[1], args[2]);
+				PluginUtils.DeletePlugin(sender, args[1], args[2]);
 			} else if(args[0].equalsIgnoreCase("viewer")) {
 				Bukkit.getServer().getLogger().warning(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.opened_config_viewer, sender.toString())));
 				//if(args[2] == null || args[2] == "") {
@@ -432,6 +437,8 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 				String new_version_available4 = ChatColor.translateAlternateColorCodes(altColorChar, Lang.new_version_available2);
 				event.getPlayer().sendMessage(new_version_available3);
 				event.getPlayer().sendMessage(new_version_available4);
+			} else {
+
 			}
 		}
 	}
