@@ -38,4 +38,8 @@ public class Log {
 	public static void finest(String msg) {
 		Bukkit.getLogger().finest("[PluginManager] " + msg);
 	}
+
+	public static void debug(String msg) {
+		Bukkit.getLogger().info("[PluginManager] [DEBUG] " + msg);
+	}
 }

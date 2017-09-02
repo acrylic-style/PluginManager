@@ -69,6 +69,15 @@ public final class Lang {
 	public static String version_check_complete_update3 = null;
 	public static String version_check_complete_update4 = null;
 	public static String pman_check_desc = null;
+	public static String start_dl_plugin = null;
+	public static String url = null;
+	public static String file = null;
+	public static String download_failed = null;
+	public static String download_success = null;
+	public static String total_time = null;
+	public static String finished_time = null;
+	public static String start_time = null;
+	public static String warning_lang_invalid = null;
 
 	/**
 	 * Initialize a class
@@ -112,7 +121,7 @@ public final class Lang {
 		 source_code = (String) LanguageProvider.load("source_code", "&b - Source code: %s");
 		 starting_load_plugins = (String) LanguageProvider.load("starting_load_plugins", "Starting load plugins in PluginManager...");
 		 already_enabled = (String) LanguageProvider.load("already_enabled", "&cPlugin is already enabled!");
-		 version = (String) LanguageProvider.load("version", "1.0");
+		 version = (String) LanguageProvider.load("version", "1.2.1");
 		 pman_version_desc = (String) LanguageProvider.load("pman_version_desc", "Shows plugin version.");
 		 pman_version = (String) LanguageProvider.load("pman_version", "&aPluginManaver:&b&n %s");
 		 failed_load_plugin = (String) LanguageProvider.load("failed_load_plugin", "&cCouldn't load plugin: %s");
@@ -142,6 +151,15 @@ public final class Lang {
 		 version_check_complete_update3 = LanguageProvider.load("version_check_complete_update3", "&eNew: %s");
 		 version_check_complete_update4 = LanguageProvider.load("version_check_complete_update4", "&aRun &b/pman update&a to update.");
 		 pman_check_desc = LanguageProvider.load("pman_check_desc", "Check version manually.");
+		 start_dl_plugin = LanguageProvider.load("start_dl_plugin", "&aStarted downloading plugin.");
+		 url = LanguageProvider.load("url", "&bURL: %s");
+		 file = LanguageProvider.load("file", "&bFilename: %s");
+		 download_failed = LanguageProvider.load("download_failed", "&cFailed to download. Server down or wrong url.");
+		 download_success = LanguageProvider.load("download_success", "&aSuccessfully download.");
+		 total_time = LanguageProvider.load("total_time", "&bTotal time: %s");
+		 finished_time = LanguageProvider.load("finished_time", "&bFinished time: %s");
+		 warning_lang_invalid = LanguageProvider.load("warning_lang_invalid", "&cWarning: Invalid properties 'language' in config. Please set (again) language.");
+		 start_time = LanguageProvider.load("start_time", "&bStart time: %s");
 	}
 
 	  /**

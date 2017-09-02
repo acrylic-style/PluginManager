@@ -1,6 +1,6 @@
 name: PluginManager
 main: tk.rht0910.plugin_manager.Main
-version: 1.1
+version: 1.2.2
 
 commands:
    pman:
