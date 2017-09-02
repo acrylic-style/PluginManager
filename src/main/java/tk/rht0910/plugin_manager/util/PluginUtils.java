@@ -10,8 +10,6 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -30,11 +28,11 @@ import tk.rht0910.plugin_manager.thread.AsyncDownload;
 public final class PluginUtils {
 	private static final char altColorChar = '&';
 
-	public void loadPlugin(CommandSender sender, Plugin plugin) {
-		loadPlugin(sender, plugin.getServer().getName());
+	public void loadPlugin(CommandSender sender, Plugin plugin, String file) {
+		loadPlugin(sender, plugin.getServer().getName(), file);
 	}
 
-	public static void loadPlugin(CommandSender sender, String plugin) {
+	public static void loadPlugin(CommandSender sender, String plugin, String file) {
 		//LoadPlugin.run();
 		try {
 			Lang.use();
@@ -49,17 +47,18 @@ public final class PluginUtils {
 					} else if(trying == 1) {
 						return;
 					}
-					File file = objFiles[i];
-					String file_str = plugin;
-					Pattern p = Pattern.compile(".");
-					Matcher m = p.matcher(file_str);
-					if(m.find()) {
+					File file2 = //objFiles[i];
+							new File("plugins/" + file);
+					//String file_str = plugin;
+					//Pattern p = Pattern.compile(".");
+					//Matcher m = p.matcher(file_str);
+					//if(m.find()) {
 						int is = 0;
 						try {
 							if(!Bukkit.getServer().getPluginManager().isPluginEnabled(Bukkit.getServer().getPluginManager().getPlugin(plugin))) {
 								if(!Bukkit.getServer().getPluginManager().isPluginEnabled(plugin)) {
 									try {
-										Bukkit.getServer().getPluginManager().loadPlugin(file);
+										Bukkit.getServer().getPluginManager().loadPlugin(file2);
 										Bukkit.getServer().getPluginManager().loadPlugin(new File(file + ".jar"));
 									} catch(Exception | Error e) {
 										Log.error("Error while loading plugin: " + plugin + ", errors dumped below:");
@@ -93,10 +92,10 @@ public final class PluginUtils {
 						}
 					}
 				}
-			} else {
-				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.please_report_developer));
-				Bukkit.getServer().getLogger().severe(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.please_report_developer_catch, "objFiles not found")));
-			}
+			//} else {
+				//sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.please_report_developer));
+				//Bukkit.getServer().getLogger().severe(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.please_report_developer_catch, "objFiles not found")));
+			//}
 		} catch (Exception e) {
 			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.error_occured, e)));
 			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.failed_load_plugin, plugin)));
@@ -263,7 +262,7 @@ public final class PluginUtils {
 	//	return ConfigViewer(sender, configDir, configFile, null);
 	//}
 
-	public boolean ConfigViewer(CommandSender sender, String configDir, String configFile/*, Integer line_option) {*/ ) {
+	public static boolean ConfigViewer(CommandSender sender, String configDir, String configFile/*, Integer line_option) {*/ ) {
 		if(configDir == null) {
 			Manager.getCommand().showHelp(sender);
 		}
@@ -374,7 +373,7 @@ public final class PluginUtils {
 		/* 375 */       if(plugin != null) {
 			Bukkit.getServer().getLogger().info("Reloading plugin: " + plugin.toString());
 		/* 376 */          unloadPlugin(sender, plugin);
-		/* 377 */          loadPlugin(sender, plugin);
+		/* 377 */          loadPlugin(sender, plugin, plugin.toString());
 		Bukkit.getServer().getLogger().info("Reloaded plugin: " + plugin.toString());
 		/*     */       }
 		/* 379 */    }
