@@ -64,12 +64,12 @@ version_check_complete_update4: "&b/pman update&a で更新できます。"
 start_dl_plugin: "&aプラグインのダウンロードを開始しました。"
 url: '&bURL: %s'
 file: '&bファイルの名前: %s'
-download_failed: "&cFailed to download. Server down or wrong url."
-download_success: "&aSuccessfully download."
-total_time: '&bTotal time: %s'
-finished_time: '&bFinished time: %s'
-start_time: '&bStart time: %s'
-warning_lang_invalid: '&cWarning: Invalid properties ''language'' in config. Please set (again) language.'
-unknown_args: '&bUnknown arg: %s'
-cant_show_usage: "&cCan't show usage of command."
+download_failed: "&cダウンロードに失敗しました。サーバーが落ちているか、URLが間違っています。"
+download_success: "&aダウンロードに成功しました。"
+total_time: '&b合計時間: %s'
+finished_time: '&b終了時間: %s'
+start_time: '&b開始時間: %s'
+warning_lang_invalid: '&c注意: 無効なプロパティ: configの中の ''language''。 (もう一回) 言語を設定してください。'
+unknown_args: '&b不明な引数: %s'
+cant_show_usage: "&cコマンドの使用例を表示できません。"
 version: "1.2.2"
