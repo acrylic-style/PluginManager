@@ -279,13 +279,15 @@ public final class PluginUtils {
 		String arg2 = configFile;
 		String[] args = marg.split(",");
 		Integer line_option = null;
+		try {
 		for(int i=0; i<=args.length; i++) {
 			if(args[i].contains("l:")) { // l : line
 				line_option = new Integer(args[i].replaceAll("l:", ""));
 			} else {
-				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.unknown_args + ": " + args[i]));
+				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.unknown_args, args[i])));
 			}
 		}
+		} catch(NullPointerException ignoore) {/* - Abort - */}
 		BufferedReader br = null;
 		File file = null;
 		file = new File("plugins/" + arg1 + "/" + arg2 + ".yml");
