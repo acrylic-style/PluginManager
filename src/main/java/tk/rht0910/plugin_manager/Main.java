@@ -383,6 +383,7 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 					}
 					this.saveConfig();
 					this.reloadConfig();
+					warning = false;
 					Lang.use();
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.set_language, args[2])));
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.reloaded_config));
@@ -390,6 +391,7 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.reloading_config));
 					try {
 						this.reloadConfig();
+						warning = false;
 						Lang.use();
 					} catch (Exception | Error e) {
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.error_reload_config));
