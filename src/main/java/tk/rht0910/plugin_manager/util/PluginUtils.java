@@ -59,9 +59,15 @@ public final class PluginUtils {
 								if(!Bukkit.getServer().getPluginManager().isPluginEnabled(plugin)) {
 									try {
 										Bukkit.getServer().getPluginManager().loadPlugin(file2);
-										Bukkit.getServer().getPluginManager().loadPlugin(new File(file + ".jar"));
 									} catch(Exception | Error e) {
-										Log.error("Error while loading plugin: " + plugin + ", errors dumped below:");
+										Log.error("Error while loading plugin: " + plugin + "(" + file2 + "), errors dumped below:");
+										e.printStackTrace();
+									}
+
+									try {
+										Bukkit.getServer().getPluginManager().loadPlugin(new File(file2 + ".jar"));
+									} catch(Exception | Error e) {
+										Log.error("Error while loading plugin: " + plugin + "(" + file2 + ".jar), errors dumped below:");
 										e.printStackTrace();
 									}
 									Plugin pm = Bukkit.getServer().getPluginManager().getPlugin(plugin);
@@ -262,7 +268,7 @@ public final class PluginUtils {
 	//	return ConfigViewer(sender, configDir, configFile, null);
 	//}
 
-	public static boolean ConfigViewer(CommandSender sender, String configDir, String configFile/*, Integer line_option) {*/ ) {
+	public static boolean ConfigViewer(CommandSender sender, String configDir, String configFile, String marg) {
 		if(configDir == null) {
 			Manager.getCommand().showHelp(sender);
 		}
@@ -271,6 +277,15 @@ public final class PluginUtils {
 		}
 		String arg1 = configDir;
 		String arg2 = configFile;
+		String[] args = marg.split(",");
+		Integer line_option = null;
+		for(int i=0; i<=args.length; i++) {
+			if(args[i].contains("l:")) {
+				line_option = new Integer(args[i]);
+			} else {
+				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.unknown_args + ": " + args[i]));
+			}
+		}
 		BufferedReader br = null;
 		File file = null;
 		file = new File("plugins/" + arg1 + "/" + arg2 + ".yml");
@@ -314,13 +329,15 @@ public final class PluginUtils {
 							return false;
 						}
 					}
-				/*if(line_option != null) {
+				if(line_option != null) {
 					try {
 						for(int i=0; i<=list.size(); i++) {
 							if(i != line_option) {
 								list.remove(i);
+								continue;
 							} else {
 								list.set(0, (String) list.toArray()[line_option]);
+								break;
 							}
 						}
 					} finally {
@@ -330,7 +347,7 @@ public final class PluginUtils {
 							e.printStackTrace();
 						}
 					}
-				}*/
+				}
 				Object[] arg = list.toArray();
 				for(int i=0;i<=arg.length;i++) {
 					sender.sendMessage("[" + i + "] " + arg[i]);

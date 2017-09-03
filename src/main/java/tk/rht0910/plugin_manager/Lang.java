@@ -6,16 +6,59 @@ import java.io.IOException;
 import com.google.common.io.Files;
 
 public final class Lang {
+	/**
+	 * "Help".
+	 */
 	public static String help = null;
+
+	/**
+	 * "Invalid args".
+	 */
 	public static String invalid_args = null;
+
+	/**
+	 * "Required".
+	 */
 	public static String required = null;
+
+	/**
+	 * "Optional".
+	 */
 	public static String optional = null;
+
+	/**
+	 * "Information".
+	 */
 	public static String information = null;
+
+	/**
+	 * Description of /pman help
+	 */
 	public static String pman_help_desc = null;
+
+	/**
+	 * Description of /pman load
+	 */
 	public static String pman_load_desc = null;
+
+	/**
+	 * Description of /pman unload
+	 */
 	public static String pman_unload_desc = null;
+
+	/**
+	 * Description of /pman download
+	 */
 	public static String pman_download_desc = null;
+
+	/**
+	 * Description of /pman delete
+	 */
 	public static String pman_delete_desc = null;
+
+	/**
+	 * Description of /pman restore
+	 */
 	public static String pman_restore_desc = null;
 	public static String pman_editor_desc = null;
 	public static String pman_viewer_desc = null;
@@ -78,6 +121,8 @@ public final class Lang {
 	public static String finished_time = null;
 	public static String start_time = null;
 	public static String warning_lang_invalid = null;
+	public static String unknown_args = null;
+	public static String cant_show_usage = null;
 
 	/**
 	 * Initialize a class
@@ -160,10 +205,13 @@ public final class Lang {
 		 finished_time = LanguageProvider.load("finished_time", "&bFinished time: %s");
 		 warning_lang_invalid = LanguageProvider.load("warning_lang_invalid", "&cWarning: Invalid properties 'language' in config. Please set (again) language.");
 		 start_time = LanguageProvider.load("start_time", "&bStart time: %s");
+		 unknown_args = LanguageProvider.load("unknown_args", "&bUnknown arg: %s");
+		 cant_show_usage = LanguageProvider.load("cant_show_usage", "&cCan't show usage of command.");
 	}
 
 	  /**
-	   * Copy files
+	   * Copy files.<br>
+	   * Work on enabling plugin
 	   */
 	  public static void readFolder() {
 		  Main.getPlugin(Main.class).saveResource("language_en_US.yml", true);

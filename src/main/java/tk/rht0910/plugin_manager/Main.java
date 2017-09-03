@@ -3,6 +3,7 @@ package tk.rht0910.plugin_manager;
 import java.util.Collection;
 import java.util.Locale;
 
+import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -44,7 +45,7 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 			Main.this.getConfig().options().copyDefaults(true);
 			Main.this.saveConfig();
 			CatchException catchException = new CatchException();
-				Thread thread = new Thread(new VersionCheck(null, null), "Thread-22");
+				Thread thread = new Thread(new VersionCheck(null, null), "Version checker");
 				thread.setUncaughtExceptionHandler(catchException);
 				thread.start();
 				getServer().getPluginManager().registerEvents(this, this);
@@ -116,9 +117,6 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.developer_version, "http://point.rht0910.tk:8080/job/PluginManager/")));
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.source_code, "https://github.com/rht0910/PluginManager/")));
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.problem_case, "https://github.com/rht0910/PluginManager/issues/")));
-					if(warning == true) {
-
-					}
 				} catch(Exception | Error e) {
 					e.printStackTrace();
 				}
@@ -210,11 +208,11 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 				PluginUtils.DeletePlugin(sender, args[1], args[2]);
 			} else if(args[0].equalsIgnoreCase("viewer")) {
 				Bukkit.getServer().getLogger().warning(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.opened_config_viewer, sender.toString())));
-				//if(args[2] == null || args[2] == "") {
-					PluginUtils.ConfigViewer(sender, args[1], args[2]);
-				//} else {
-				//	Manager.getPluginUtil().ConfigViewer(sender, args[0], args[1], new Integer(args[2]));
-				//}
+				if(StringUtils.isEmpty(args[3])) {
+					PluginUtils.ConfigViewer(sender, args[1], args[2], "");
+				} else {
+					PluginUtils.ConfigViewer(sender, args[1], args[2], args[3]);
+				}
 			} else if(args[0].equalsIgnoreCase("editor")) {
 				PluginUtils.EditConfigFile(sender, args[1], args[2], args[3], args[4]);
 			} else if(args[0].equalsIgnoreCase("update")) {
@@ -415,6 +413,9 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.developer_version, "http://point.rht0910.tk:8080/job/PluginManager/")));
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.source_code, "https://github.com/rht0910/PluginManager/")));
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.problem_case, "https://github.com/rht0910/PluginManager/issues/")));
+			}
+			if(warning == true) {
+				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.warning_lang_invalid));
 			}
 		}
 		} catch(Exception e) {
