@@ -10,8 +10,6 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -30,11 +28,11 @@ import tk.rht0910.plugin_manager.thread.AsyncDownload;
 public final class PluginUtils {
 	private static final char altColorChar = '&';
 
-	public void loadPlugin(CommandSender sender, Plugin plugin) {
-		loadPlugin(sender, plugin.getServer().getName());
+	public void loadPlugin(CommandSender sender, Plugin plugin, String file) {
+		loadPlugin(sender, plugin.getServer().getName(), file);
 	}
 
-	public static void loadPlugin(CommandSender sender, String plugin) {
+	public static void loadPlugin(CommandSender sender, String plugin, String file) {
 		//LoadPlugin.run();
 		try {
 			Lang.use();
@@ -49,19 +47,27 @@ public final class PluginUtils {
 					} else if(trying == 1) {
 						return;
 					}
-					File file = objFiles[i];
-					String file_str = plugin;
-					Pattern p = Pattern.compile(".");
-					Matcher m = p.matcher(file_str);
-					if(m.find()) {
+					File file2 = //objFiles[i];
+							new File("plugins/" + file);
+					//String file_str = plugin;
+					//Pattern p = Pattern.compile(".");
+					//Matcher m = p.matcher(file_str);
+					//if(m.find()) {
 						int is = 0;
 						try {
 							if(!Bukkit.getServer().getPluginManager().isPluginEnabled(Bukkit.getServer().getPluginManager().getPlugin(plugin))) {
 								if(!Bukkit.getServer().getPluginManager().isPluginEnabled(plugin)) {
 									try {
-										Bukkit.getServer().getPluginManager().loadPlugin(file);
+										Bukkit.getServer().getPluginManager().loadPlugin(file2);
 									} catch(Exception | Error e) {
-										Log.error("Error while loading plugin: " + plugin + ", ignoring...");
+										Log.error("Error while loading plugin: " + plugin + "(" + file2 + "), errors dumped below:");
+										e.printStackTrace();
+									}
+
+									try {
+										Bukkit.getServer().getPluginManager().loadPlugin(new File(file2 + ".jar"));
+									} catch(Exception | Error e) {
+										Log.error("Error while loading plugin: " + plugin + "(" + file2 + ".jar), errors dumped below:");
 										e.printStackTrace();
 									}
 									Plugin pm = Bukkit.getServer().getPluginManager().getPlugin(plugin);
@@ -92,10 +98,10 @@ public final class PluginUtils {
 						}
 					}
 				}
-			} else {
-				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.please_report_developer));
-				Bukkit.getServer().getLogger().severe(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.please_report_developer_catch, "objFiles not found")));
-			}
+			//} else {
+				//sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.please_report_developer));
+				//Bukkit.getServer().getLogger().severe(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.please_report_developer_catch, "objFiles not found")));
+			//}
 		} catch (Exception e) {
 			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.error_occured, e)));
 			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.failed_load_plugin, plugin)));
@@ -156,6 +162,7 @@ public final class PluginUtils {
 		/* 439 */             Field value = SimpleCommandMap.class.getDeclaredField("knownCommands");
 		/* 440 */             value.setAccessible(true);
 		/* 441 */             commands = (Map)value.get(commandMap);
+		commands.remove((Map) value.get(commandMap));
 		/*     */
 		/* 443 */          } catch (Exception e) {
 			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.error_occured));
@@ -261,7 +268,7 @@ public final class PluginUtils {
 	//	return ConfigViewer(sender, configDir, configFile, null);
 	//}
 
-	public boolean ConfigViewer(CommandSender sender, String configDir, String configFile/*, Integer line_option) {*/ ) {
+	public static boolean ConfigViewer(CommandSender sender, String configDir, String configFile, String marg) {
 		if(configDir == null) {
 			Manager.getCommand().showHelp(sender);
 		}
@@ -270,6 +277,17 @@ public final class PluginUtils {
 		}
 		String arg1 = configDir;
 		String arg2 = configFile;
+		String[] args = marg.split(",");
+		Integer line_option = null;
+		try {
+		for(int i=0; i<=args.length; i++) {
+			if(args[i].contains("l:")) { // l : line
+				line_option = new Integer(args[i].replaceAll("l:", ""));
+			} else {
+				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.unknown_args, args[i])));
+			}
+		}
+		} catch(NullPointerException | ArrayIndexOutOfBoundsException ignoore) {/* - Abort - */}
 		BufferedReader br = null;
 		File file = null;
 		file = new File("plugins/" + arg1 + "/" + arg2 + ".yml");
@@ -298,6 +316,24 @@ public final class PluginUtils {
 				}
 				List<String> list = new ArrayList<String>();
 				String str;
+				if(line_option != null) {
+					try {
+						for(int i=0; i<=list.size(); i++) {
+							if(i != line_option) {
+								list.remove(i);
+							} else {
+								list.set(0, (String) list.toArray()[line_option]);
+							}
+						}
+					} catch(Exception | Error ignored) {
+					} finally {
+						try {
+							br.close();
+						} catch(IOException e) {
+							e.printStackTrace();
+						}
+					}
+				} else {
 					try {
 						while((str = br.readLine()) != null){
 							list.add(str);
@@ -313,27 +349,12 @@ public final class PluginUtils {
 							return false;
 						}
 					}
-				/*if(line_option != null) {
-					try {
-						for(int i=0; i<=list.size(); i++) {
-							if(i != line_option) {
-								list.remove(i);
-							} else {
-								list.set(0, (String) list.toArray()[line_option]);
-							}
-						}
-					} finally {
-						try {
-							br.close();
-						} catch(IOException e) {
-							e.printStackTrace();
-						}
-					}
-				}*/
+				}
 				Object[] arg = list.toArray();
 				for(int i=0;i<=arg.length;i++) {
 					sender.sendMessage("[" + i + "] " + arg[i]);
 				}
+				//Object[] arg = list.toArray();
 				return true;
 			} else {
 				sender.sendMessage(ChatColor.RED + "Selected File is Directory, cannot continue.");
@@ -372,12 +393,12 @@ public final class PluginUtils {
 		/* 375 */       if(plugin != null) {
 			Bukkit.getServer().getLogger().info("Reloading plugin: " + plugin.toString());
 		/* 376 */          unloadPlugin(sender, plugin);
-		/* 377 */          loadPlugin(sender, plugin);
+		/* 377 */          loadPlugin(sender, plugin, plugin.toString());
 		Bukkit.getServer().getLogger().info("Reloaded plugin: " + plugin.toString());
 		/*     */       }
 		/* 379 */    }
 
-	public void DeletePlugin(CommandSender sender, String filename, String pluginName) {
+	public static void DeletePlugin(CommandSender sender, String filename, String pluginName) {
 		File file = new File("plugins/" + filename + ".jar");
 		if(file.exists()) {
 			if(Bukkit.getServer().getPluginManager().isPluginEnabled(Bukkit.getServer().getPluginManager().getPlugin(pluginName))) {
@@ -403,7 +424,7 @@ public final class PluginUtils {
 					try {
 						Files.move(file, to);
 						sender.sendMessage("Successfully Remove plugin by " + sender.toString());
-						sender.sendMessage("Successfully Remove plugin. To restore plugin, Please enter command: '/restore " + pluginName + "'");
+						sender.sendMessage("Successfully Remove plugin. To restore plugin, Please enter command: '/pman restore " + pluginName + "'");
 					} catch (IOException e) {
 						Bukkit.getServer().getPluginManager().enablePlugin(Bukkit.getServer().getPluginManager().getPlugin(pluginName));
 						sender.sendMessage("Unexpected error occurred.");
@@ -425,13 +446,13 @@ public final class PluginUtils {
 		}
 	}
 
-	public void RestorePlugin(CommandSender sender, String pluginName) {
+	public static void RestorePlugin(CommandSender sender, String pluginName) {
 		File from = new File("plugins/plugins_backup/" + pluginName + ".jar");
 		File to = new File("plugins/" + pluginName + ".jar");
 		try {
 			Files.move(from, to);
 			sender.sendMessage(ChatColor.GREEN + "Successfully Restore plugin by " + sender.toString());
-			sender.sendMessage(ChatColor.GREEN + "Successfully Restore plugin. To Load and enable: /load " + pluginName);
+			sender.sendMessage(ChatColor.GREEN + "Successfully Restore plugin. To Load and enable: /pman load " + pluginName);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

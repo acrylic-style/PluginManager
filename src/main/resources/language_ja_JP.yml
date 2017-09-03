@@ -61,4 +61,15 @@ version_check_complete_update1: "&aアップデートがありました。"
 version_check_complete_update2: '&b現在: %s'
 version_check_complete_update3: '&e新バージョン: %s'
 version_check_complete_update4: "&b/pman update&a で更新できます。"
-version: "1.2.1"
+start_dl_plugin: "&aプラグインのダウンロードを開始しました。"
+url: '&bURL: %s'
+file: '&bファイルの名前: %s'
+download_failed: "&cダウンロードに失敗しました。サーバーが落ちているか、URLが間違っています。"
+download_success: "&aダウンロードに成功しました。"
+total_time: '&b合計時間: %s'
+finished_time: '&b終了時間: %s'
+start_time: '&b開始時間: %s'
+warning_lang_invalid: '&c注意: 無効なプロパティ: configの中の ''language''。 (もう一回) 言語を設定してください。'
+unknown_args: '&b不明な引数: %s'
+cant_show_usage: "&cコマンドの使用例を表示できません。"
+version: "1.2.2"
