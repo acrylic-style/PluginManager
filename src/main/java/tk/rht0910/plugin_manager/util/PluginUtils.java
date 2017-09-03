@@ -287,7 +287,7 @@ public final class PluginUtils {
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.unknown_args, args[i])));
 			}
 		}
-		} catch(NullPointerException ignoore) {/* - Abort - */}
+		} catch(NullPointerException | ArrayIndexOutOfBoundsException ignoore) {/* - Abort - */}
 		BufferedReader br = null;
 		File file = null;
 		file = new File("plugins/" + arg1 + "/" + arg2 + ".yml");
