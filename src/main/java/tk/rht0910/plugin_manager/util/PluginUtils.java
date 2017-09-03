@@ -281,7 +281,7 @@ public final class PluginUtils {
 		Integer line_option = null;
 		for(int i=0; i<=args.length; i++) {
 			if(args[i].contains("l:")) { // l : line
-				line_option = new Integer(args[i]);
+				line_option = new Integer(args[i].replaceAll("l:", ""));
 			} else {
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.unknown_args + ": " + args[i]));
 			}
