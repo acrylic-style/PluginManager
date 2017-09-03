@@ -1,6 +1,7 @@
 package tk.rht0910.plugin_manager;
 
 import java.util.Collection;
+import java.util.Locale;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -31,7 +32,7 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 	public static String getLanguageCode() {
 		String getty = Main.getPlugin(Main.class).getConfig().getString("language");
 		if(getty == "" || getty == null) {
-			getty = "en_US";
+			getty = Locale.getDefault().toString();
 			warning = true;
 		}
 		return getty;
@@ -61,7 +62,6 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 	@Override
 	public void onLoad() {
 		try {
-			Bukkit.getServer().getLogger().info("[PluginManager] Loading PluginManager v1.2.2 ...");
 			Bukkit.getServer().getLogger().info("[PluginManager] Loaded PluginManager v1.2.2");
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().info("[PluginManager] Unknown error: " + e);
