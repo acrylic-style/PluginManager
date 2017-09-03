@@ -69,8 +69,8 @@ public class AsyncDownload extends Thread {
 		String stop_time = Calendar.YEAR + "/" + Calendar.MONTH + "/" + Calendar.DAY_OF_MONTH + ":" + Calendar.HOUR_OF_DAY + ":" + Calendar.MINUTE + ":" + Calendar.SECOND + "." + Calendar.MILLISECOND;
 		long stop = System.currentTimeMillis();
 		long total = stop - start;
-		Log.info(Lang.download_failed);
-		sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.download_failed));
+		Log.info(Lang.download_success);
+		sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.download_success));
 		sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.start_time, start_time)));
 		sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.total_time, total)));
 		sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.finished_time, stop_time)));
