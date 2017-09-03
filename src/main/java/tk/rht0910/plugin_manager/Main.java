@@ -208,10 +208,16 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 				PluginUtils.DeletePlugin(sender, args[1], args[2]);
 			} else if(args[0].equalsIgnoreCase("viewer")) {
 				Bukkit.getServer().getLogger().warning(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.opened_config_viewer, sender.toString())));
-				if(StringUtils.isEmpty(args[3])) {
+				try {
+					if(StringUtils.isEmpty(args[3])) {
+						PluginUtils.ConfigViewer(sender, args[1], args[2], "");
+					} else {
+						PluginUtils.ConfigViewer(sender, args[1], args[2], args[3]);
+					}
+				} catch(Exception | Error e) {
 					PluginUtils.ConfigViewer(sender, args[1], args[2], "");
-				} else {
-					PluginUtils.ConfigViewer(sender, args[1], args[2], args[3]);
+					Log.severe(Lang.error_occured);
+					e.getCause().printStackTrace();
 				}
 			} else if(args[0].equalsIgnoreCase("editor")) {
 				PluginUtils.EditConfigFile(sender, args[1], args[2], args[3], args[4]);
@@ -377,12 +383,14 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 					}
 					this.saveConfig();
 					this.reloadConfig();
+					Lang.use();
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.set_language, args[2])));
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.reloaded_config));
 				} else if(args[1].equalsIgnoreCase("reload")) {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.reloading_config));
 					try {
 						this.reloadConfig();
+						Lang.use();
 					} catch (Exception | Error e) {
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.error_reload_config));
 						return false;

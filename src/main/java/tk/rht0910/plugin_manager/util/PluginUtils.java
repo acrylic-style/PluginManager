@@ -316,6 +316,24 @@ public final class PluginUtils {
 				}
 				List<String> list = new ArrayList<String>();
 				String str;
+				if(line_option != null) {
+					try {
+						for(int i=0; i<=list.size(); i++) {
+							if(i != line_option) {
+								list.remove(i);
+							} else {
+								list.set(0, (String) list.toArray()[line_option]);
+							}
+						}
+					} catch(Exception | Error ignored) {
+					} finally {
+						try {
+							br.close();
+						} catch(IOException e) {
+							e.printStackTrace();
+						}
+					}
+				} else {
 					try {
 						while((str = br.readLine()) != null){
 							list.add(str);
@@ -331,29 +349,12 @@ public final class PluginUtils {
 							return false;
 						}
 					}
-				if(line_option != null) {
-					try {
-						for(int i=0; i<=list.size(); i++) {
-							if(i != line_option) {
-								list.remove(i);
-								continue;
-							} else {
-								list.set(0, (String) list.toArray()[line_option]);
-								break;
-							}
-						}
-					} finally {
-						try {
-							br.close();
-						} catch(IOException e) {
-							e.printStackTrace();
-						}
-					}
 				}
 				Object[] arg = list.toArray();
 				for(int i=0;i<=arg.length;i++) {
 					sender.sendMessage("[" + i + "] " + arg[i]);
 				}
+				//Object[] arg = list.toArray();
 				return true;
 			} else {
 				sender.sendMessage(ChatColor.RED + "Selected File is Directory, cannot continue.");
