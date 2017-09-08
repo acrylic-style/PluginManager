@@ -1,24 +1,24 @@
-package tk.rht0910.plugin_manager;
+package tk.rht0910.plugin_manager.util;
 
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
+import tk.rht0910.plugin_manager.PluginManager;
+import tk.rht0910.plugin_manager.command.Command;
 import tk.rht0910.plugin_manager.exception.ThrowUncaughtException;
 import tk.rht0910.plugin_manager.exception.UncaughtException;
-import tk.rht0910.plugin_manager.util.Command;
-import tk.rht0910.plugin_manager.util.PluginUtils;
 
 public final class Manager {
 	private static PluginUtils pluginUtils;
 	private static Command command;
 	private static CommandSender sender;
-	private static Main main;
+	private static PluginManager main;
 
 	static {
 		pluginUtils = new PluginUtils();
 		command = new Command();
-		main = new Main();
+		main = new PluginManager();
 	}
 
 	public static PluginUtils getPluginUtil() {
@@ -63,7 +63,7 @@ public final class Manager {
 		} catch(Exception e) {e.printStackTrace();return Manager.getSender(sender) instanceof ConsoleCommandSender;}
 	}
 
-	public static Main getMain() {
+	public static PluginManager getMain() {
 		try {
 			return main;
 		} catch(Exception e) {e.printStackTrace();return main;}

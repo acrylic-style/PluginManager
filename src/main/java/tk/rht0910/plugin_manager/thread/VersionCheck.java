@@ -10,8 +10,8 @@ import java.net.URL;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
-import tk.rht0910.plugin_manager.Lang;
-import tk.rht0910.plugin_manager.Main;
+import tk.rht0910.plugin_manager.PluginManager;
+import tk.rht0910.plugin_manager.language.Lang;
 import tk.rht0910.plugin_manager.util.Log;
 
 public class VersionCheck extends Thread implements Runnable {
@@ -21,6 +21,11 @@ public class VersionCheck extends Thread implements Runnable {
 	public VersionCheck(Boolean byPlayer, CommandSender sender) {
 		VersionCheck.player = byPlayer;
 		VersionCheck.sender = sender;
+	}
+
+	public VersionCheck() {
+		VersionCheck.player = null;
+		VersionCheck.sender = null;
 	}
 
 	public void run() {
@@ -38,8 +43,10 @@ public class VersionCheck extends Thread implements Runnable {
 		try {
 			conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.16232");
+			Log.info("Connection opened to https://api.rht0910.tk/pluginmanager_version");
 		} catch (IOException e2) {
 			e2.printStackTrace();
+			Log.error("failed to open connection.");
 		}
 		BufferedReader rd = null;
 		try {
@@ -59,11 +66,11 @@ public class VersionCheck extends Thread implements Runnable {
 
 		if(Lang.version.compareTo(line) == -1) {
 			Log.info("New version available: " + line);
-			Main.is_available_new_version = true;
-			Main.newv = line;
+			PluginManager.is_available_new_version = true;
+			PluginManager.newv = line;
 			if(player == true) {
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update1));
-				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.version_check_complete_update2, Main.current)));
+				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.version_check_complete_update2, PluginManager.current)));
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.version_check_complete_update3, line)));
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update4));
 			}

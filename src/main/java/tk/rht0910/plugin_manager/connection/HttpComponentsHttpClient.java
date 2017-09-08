@@ -1,4 +1,4 @@
-package tk.rht0910.plugin_manager.util;
+package tk.rht0910.plugin_manager.connection;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

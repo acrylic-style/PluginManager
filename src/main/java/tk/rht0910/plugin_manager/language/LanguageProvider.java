@@ -1,9 +1,11 @@
-package tk.rht0910.plugin_manager;
+package tk.rht0910.plugin_manager.language;
 
 import java.io.File;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+
+import tk.rht0910.plugin_manager.PluginManager;
 
 public class LanguageProvider {
 	public static String load(String path, String def) {
@@ -23,7 +25,7 @@ public class LanguageProvider {
 			Bukkit.getLogger().severe("This error is unrecoverble error, please create ticket");
 			Bukkit.getLogger().severe("https://github.com/rht0910/PluginManager/issues/");
 		}*/
-		config = YamlConfiguration.loadConfiguration(new File(Main.getPlugin(Main.class).getDataFolder(), "language_" + Main.getLanguageCode() + ".yml"));
+		config = YamlConfiguration.loadConfiguration(new File(PluginManager.getPlugin(PluginManager.class).getDataFolder(), "language_" + PluginManager.getLanguageCode() + ".yml"));
 		return (String) config.get(path, def);
 	}
 }

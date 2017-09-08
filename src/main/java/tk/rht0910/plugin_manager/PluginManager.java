@@ -18,11 +18,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 //import org.bukkit.util.StringUtil;
 
 import tk.rht0910.plugin_manager.exception.CatchException;
+import tk.rht0910.plugin_manager.language.Lang;
 import tk.rht0910.plugin_manager.thread.VersionCheck;
 import tk.rht0910.plugin_manager.util.Log;
+import tk.rht0910.plugin_manager.util.Manager;
 import tk.rht0910.plugin_manager.util.PluginUtils;
 
-public final class Main extends JavaPlugin implements TabCompleter, Listener {
+public final class PluginManager extends JavaPlugin implements TabCompleter, Listener {
 	//private static final String[] COMMANDS = {""};
 	public char altColorChar = '&';
 	public static Boolean is_available_new_version = false;
@@ -31,8 +33,8 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 	public static Boolean warning = false;
 
 	public static String getLanguageCode() {
-		String getty = Main.getPlugin(Main.class).getConfig().getString("language");
-		if(getty == "" || getty == null) {
+		String getty = PluginManager.getPlugin(PluginManager.class).getConfig().getString("language");
+		if(getty == "" || getty == null || !getty.contains("_")) {
 			getty = Locale.getDefault().toString();
 			warning = true;
 		}
@@ -42,8 +44,8 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 	@Override
 	public void onEnable() {
 		try {
-			Main.this.getConfig().options().copyDefaults(true);
-			Main.this.saveConfig();
+			PluginManager.this.getConfig().options().copyDefaults(true);
+			PluginManager.this.saveConfig();
 			CatchException catchException = new CatchException();
 				Thread thread = new Thread(new VersionCheck(null, null), "");
 				thread.setUncaughtExceptionHandler(catchException);
@@ -63,7 +65,7 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 	@Override
 	public void onLoad() {
 		try {
-			Bukkit.getServer().getLogger().info("[PluginManager] Loaded PluginManager v1.2.2");
+			Bukkit.getServer().getLogger().info("[PluginManager] Loaded PluginManager v1.2.3");
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().info("[PluginManager] Unknown error: " + e);
 			e.printStackTrace();
@@ -322,7 +324,7 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 					}
 				}
 			} else if(args[0].equalsIgnoreCase("usage")) {
-				tk.rht0910.plugin_manager.util.Command.getUsageOfCmd(sender, args[1]);
+				tk.rht0910.plugin_manager.command.Command.getUsageOfCmd(sender, args[1]);
 			} else if(args[0].equalsIgnoreCase("check")) {
 				VersionCheck vc = new VersionCheck(true, sender);
 				vc.start();

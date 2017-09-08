@@ -21,8 +21,7 @@ import org.bukkit.plugin.UnknownDependencyException;
 
 import com.google.common.io.Files;
 
-import tk.rht0910.plugin_manager.Lang;
-import tk.rht0910.plugin_manager.Manager;
+import tk.rht0910.plugin_manager.language.Lang;
 import tk.rht0910.plugin_manager.thread.AsyncDownload;
 
 public final class PluginUtils {

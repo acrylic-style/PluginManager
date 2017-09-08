@@ -1,9 +1,9 @@
 name: PluginManager
-main: tk.rht0910.plugin_manager.Main
-version: 1.2.2
+main: tk.rht0910.plugin_manager.PluginManager
+version: 1.2.3
 
 commands:
    pman:
-      description: Root command in PluginManager.
+      description: Root command the PluginManager.
       usage: /<command> [args]
       permission: pluginmanager.help
