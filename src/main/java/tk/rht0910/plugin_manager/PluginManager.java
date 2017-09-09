@@ -152,6 +152,15 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					}
 				}
 				PluginUtils.unloadPlugin(sender, args[1]);
+			} else if(args[0].equalsIgnoreCase("reload")) {
+				if(sender instanceof Player) {
+					if(!sender.isPermissionSet("pluginmanager.admin")) {
+						Bukkit.getServer().getLogger().severe("No permission: /pman reload : " + sender.toString());
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
+						return false;
+					}
+				}
+				PluginUtils.reloadPlugin(sender, args[1]);
 			} else if(args[0].equalsIgnoreCase("download")) {
 				if(sender instanceof Player) {
 					if(!sender.isOp()) {

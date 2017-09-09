@@ -125,6 +125,9 @@ public final class Lang {
 	public static String warning_lang_invalid = null;
 	public static String unknown_args = null;
 	public static String cant_show_usage = null;
+	public static String reloading_plugin = null;
+	public static String reloaded_plugin = null;
+	public static String reloading_plugin_error = null;
 
 	/**
 	 * Initialize a class
@@ -168,7 +171,7 @@ public final class Lang {
 		 source_code = (String) LanguageProvider.load("source_code", "&b - Source code: %s");
 		 starting_load_plugins = (String) LanguageProvider.load("starting_load_plugins", "Starting load plugins in PluginManager...");
 		 already_enabled = (String) LanguageProvider.load("already_enabled", "&cPlugin is already enabled!");
-		 version = (String) LanguageProvider.load("version", "1.2.2");
+		 version = (String) LanguageProvider.load("version", "1.2.3");
 		 pman_version_desc = (String) LanguageProvider.load("pman_version_desc", "Shows plugin version.");
 		 pman_version = (String) LanguageProvider.load("pman_version", "&aPluginManaver:&b&n %s");
 		 failed_load_plugin = (String) LanguageProvider.load("failed_load_plugin", "&cCouldn't load plugin: %s");
@@ -209,6 +212,9 @@ public final class Lang {
 		 start_time = LanguageProvider.load("start_time", "&bStart time: %s");
 		 unknown_args = LanguageProvider.load("unknown_args", "&bUnknown arg: %s");
 		 cant_show_usage = LanguageProvider.load("cant_show_usage", "&cCan't show usage of command.");
+		 reloading_plugin = LanguageProvider.load("reloading_plugin", "&aReloading plugin %s ...");
+		 reloaded_plugin = LanguageProvider.load("reloaded_plugin", "&aReloaded plugin: %s");
+		 reloading_plugin_error = LanguageProvider.load("reloading_plugin_error", "&cError while reloading plugin: %s");
 	}
 
 	  /**
