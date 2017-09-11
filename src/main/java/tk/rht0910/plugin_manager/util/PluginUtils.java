@@ -21,8 +21,7 @@ import org.bukkit.plugin.UnknownDependencyException;
 
 import com.google.common.io.Files;
 
-import tk.rht0910.plugin_manager.Lang;
-import tk.rht0910.plugin_manager.Manager;
+import tk.rht0910.plugin_manager.language.Lang;
 import tk.rht0910.plugin_manager.thread.AsyncDownload;
 
 public final class PluginUtils {
@@ -30,6 +29,18 @@ public final class PluginUtils {
 
 	public void loadPlugin(CommandSender sender, Plugin plugin, String file) {
 		loadPlugin(sender, plugin.getServer().getName(), file);
+	}
+
+	public static boolean enablePluginSilent(String plugin) {
+		try {
+			Plugin Bplugin = Bukkit.getPluginManager().getPlugin(plugin);
+			Bukkit.getPluginManager().enablePlugin(Bplugin);
+			return true;
+		} catch(Throwable e) {
+			Log.severe(Lang.error_occured);
+			e.getCause().printStackTrace();
+			return false;
+		}
 	}
 
 	public static void loadPlugin(CommandSender sender, String plugin, String file) {
@@ -389,7 +400,7 @@ public final class PluginUtils {
 			}
 		}
 	}
-	/*     */    public void reload(CommandSender sender, Plugin plugin, String[] args) {
+	/*     */    public void reload(CommandSender sender, Plugin plugin) {
 		/* 375 */       if(plugin != null) {
 			Bukkit.getServer().getLogger().info("Reloading plugin: " + plugin.toString());
 		/* 376 */          unloadPlugin(sender, plugin);
@@ -397,6 +408,23 @@ public final class PluginUtils {
 		Bukkit.getServer().getLogger().info("Reloaded plugin: " + plugin.toString());
 		/*     */       }
 		/* 379 */    }
+
+	public static void reloadPlugin(CommandSender sender, String plugin) {
+		if(plugin != null) {
+			try {
+				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.reloading_plugin, plugin)));
+				unloadPlugin(sender, plugin);
+				if(enablePluginSilent(plugin)) {
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.reloaded_plugin, plugin)));
+				} else {
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.reloading_plugin_error, plugin)));
+				}
+			} catch(Throwable e) {
+				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.error_occured, e)));
+				e.printStackTrace();
+			}
+		}
+	}
 
 	public static void DeletePlugin(CommandSender sender, String filename, String pluginName) {
 		File file = new File("plugins/" + filename + ".jar");

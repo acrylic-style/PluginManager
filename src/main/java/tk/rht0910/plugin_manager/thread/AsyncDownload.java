@@ -15,7 +15,7 @@ import java.util.Calendar;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
-import tk.rht0910.plugin_manager.Lang;
+import tk.rht0910.plugin_manager.language.Lang;
 import tk.rht0910.plugin_manager.util.Log;
 
 public class AsyncDownload extends Thread {

@@ -1,9 +1,11 @@
-package tk.rht0910.plugin_manager;
+package tk.rht0910.plugin_manager.language;
 
 import java.io.File;
 import java.io.IOException;
 
 import com.google.common.io.Files;
+
+import tk.rht0910.plugin_manager.PluginManager;
 
 public final class Lang {
 	/**
@@ -123,6 +125,9 @@ public final class Lang {
 	public static String warning_lang_invalid = null;
 	public static String unknown_args = null;
 	public static String cant_show_usage = null;
+	public static String reloading_plugin = null;
+	public static String reloaded_plugin = null;
+	public static String reloading_plugin_error = null;
 
 	/**
 	 * Initialize a class
@@ -166,7 +171,7 @@ public final class Lang {
 		 source_code = (String) LanguageProvider.load("source_code", "&b - Source code: %s");
 		 starting_load_plugins = (String) LanguageProvider.load("starting_load_plugins", "Starting load plugins in PluginManager...");
 		 already_enabled = (String) LanguageProvider.load("already_enabled", "&cPlugin is already enabled!");
-		 version = (String) LanguageProvider.load("version", "1.2.2");
+		 version = (String) LanguageProvider.load("version", "1.2.3");
 		 pman_version_desc = (String) LanguageProvider.load("pman_version_desc", "Shows plugin version.");
 		 pman_version = (String) LanguageProvider.load("pman_version", "&aPluginManaver:&b&n %s");
 		 failed_load_plugin = (String) LanguageProvider.load("failed_load_plugin", "&cCouldn't load plugin: %s");
@@ -207,6 +212,9 @@ public final class Lang {
 		 start_time = LanguageProvider.load("start_time", "&bStart time: %s");
 		 unknown_args = LanguageProvider.load("unknown_args", "&bUnknown arg: %s");
 		 cant_show_usage = LanguageProvider.load("cant_show_usage", "&cCan't show usage of command.");
+		 reloading_plugin = LanguageProvider.load("reloading_plugin", "&aReloading plugin %s ...");
+		 reloaded_plugin = LanguageProvider.load("reloaded_plugin", "&aReloaded plugin: %s");
+		 reloading_plugin_error = LanguageProvider.load("reloading_plugin_error", "&cError while reloading plugin: %s");
 	}
 
 	  /**
@@ -214,36 +222,36 @@ public final class Lang {
 	   * Work on enabling plugin
 	   */
 	  public static void readFolder() {
-		  Main.getPlugin(Main.class).saveResource("language_en_US.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_af_ZA.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_ar_SA.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_ca_ES.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_cs_CZ.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_da_DK.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_de_DE.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_el_GR.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_es_ES.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_fi_FI.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_fr_FR.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_he_IL.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_hu_HU.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_it_IT.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_ja_JP.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_ko_KR.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_nl_NL.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_no_NO.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_pl_PL.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_pt_BR.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_pt_PT.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_ro_RO.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_ru_RU.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_sr_SP.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_sv_SE.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_tr_TR.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_uk_UA.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_vi_VN.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_zh_CN.yml", true);
-		  Main.getPlugin(Main.class).saveResource("language_zh_TW.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_en_US.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_af_ZA.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_ar_SA.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_ca_ES.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_cs_CZ.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_da_DK.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_de_DE.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_el_GR.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_es_ES.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_fi_FI.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_fr_FR.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_he_IL.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_hu_HU.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_it_IT.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_ja_JP.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_ko_KR.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_nl_NL.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_no_NO.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_pl_PL.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_pt_BR.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_pt_PT.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_ro_RO.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_ru_RU.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_sr_SP.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_sv_SE.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_tr_TR.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_uk_UA.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_vi_VN.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_zh_CN.yml", true);
+		  PluginManager.getPlugin(PluginManager.class).saveResource("language_zh_TW.yml", true);
 	  }
 
 	  /**
@@ -251,7 +259,7 @@ public final class Lang {
 	   * @param filePath
 	   */
 	  public static void execute( File file ) {
-		  File file2 = new File(Main.getPlugin(Main.class).getDataFolder(), file.getName());
+		  File file2 = new File(PluginManager.getPlugin(PluginManager.class).getDataFolder(), file.getName());
 	    try {
 			if(!file2.exists()) {
 				Files.copy(file, file2);

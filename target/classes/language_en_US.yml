@@ -70,6 +70,9 @@ total_time: '&bTotal time: %s'
 finished_time: '&bFinished time: %s'
 start_time: '&bStart time: %s'
 warning_lang_invalid: '&cWarning: Invalid properties ''language'' in config. Please set (again) language.'
-unknown_args: "&bUnknown arg: %s"
+unknown_args: '&bUnknown arg: %s'
 cant_show_usage: "&cCan't show usage of command."
-version: "1.2.2"
+reloading_plugin: "&aReloading plugin: %s ..."
+reloaded_plugin: "&aReloaded plugin: %s"
+reloading_plugin_error: "&cError while reloading plugin: %s"
+version: "1.2.3"
