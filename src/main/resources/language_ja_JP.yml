@@ -72,7 +72,7 @@ start_time: '&b開始時間: %s'
 warning_lang_invalid: '&c注意: 無効なプロパティ: configの中の ''language''。 (もう一回) 言語を設定してください。'
 unknown_args: '&b不明な引数: %s'
 cant_show_usage: "&cコマンドの使用例を表示できません。"
-reloading_plugin: '&aReloading plugin: %s ...'
+reloading_plugin: '&aプラグインを再読み込みしています: %s ...'
 reloaded_plugin: '&aReloaded plugin: %s'
 reloading_plugin_error: '&cError while reloading plugin: %s'
 version: "1.2.3"
