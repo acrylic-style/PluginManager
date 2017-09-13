@@ -293,9 +293,9 @@ public final class PluginUtils {
 		try {
 		for(int i=0; i<=args.length; i++) {
 			if(args[i].contains("l:")) { // l : line
-				String line_debug = args[i].replaceAll("l:", "");
-				Log.debug(line_debug);
-				line_option = new Integer(line_debug);
+				// String line_debug = args[i].replaceAll("l:", "");
+				Log.debug(args[i].replaceAll("l:", ""));
+				line_option = new Integer(args[i].replaceAll("l:", ""));
 			} else {
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.unknown_args, args[i])));
 			}

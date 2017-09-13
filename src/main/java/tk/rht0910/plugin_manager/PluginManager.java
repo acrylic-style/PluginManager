@@ -228,6 +228,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 				} catch(Exception | Error e) {
 					// PluginUtils.ConfigViewer(sender, args[1], args[2], "");
 					Log.severe(Lang.error_occured);
+					e.printStackTrace();
 					e.getCause().printStackTrace();
 				}
 			} else if(args[0].equalsIgnoreCase("editor")) {
@@ -443,7 +444,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.warning_lang_invalid));
 			}
 		}
-		} catch(Exception e) {
+		} catch(Throwable e) {
 			Log.error(ChatColor.translateAlternateColorCodes(altColorChar, Lang.error_occured));
 			Log.error(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.continue_error_catch, e)));
 			e.printStackTrace();
