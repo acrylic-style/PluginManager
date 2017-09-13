@@ -293,7 +293,9 @@ public final class PluginUtils {
 		try {
 		for(int i=0; i<=args.length; i++) {
 			if(args[i].contains("l:")) { // l : line
-				line_option = new Integer(args[i].replaceAll("l:", ""));
+				String line_debug = args[i].replaceAll("l:", "");
+				Log.debug(line_debug);
+				line_option = new Integer(line_debug);
 			} else {
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.unknown_args, args[i])));
 			}
@@ -327,13 +329,14 @@ public final class PluginUtils {
 				}
 				List<String> list = new ArrayList<String>();
 				String str;
-				if(line_option != null) {
+				if(line_option != null ) {
 					try {
 						for(int i=0; i<=list.size(); i++) {
 							if(i != line_option) {
 								list.remove(i);
 							} else {
 								list.set(0, (String) list.toArray()[line_option]);
+								continue;
 							}
 						}
 					} catch(Exception | Error ignored) {

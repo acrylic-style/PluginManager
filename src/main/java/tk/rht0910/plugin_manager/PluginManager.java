@@ -3,7 +3,6 @@ package tk.rht0910.plugin_manager;
 import java.util.Collection;
 import java.util.Locale;
 
-import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -104,11 +103,12 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman load <Plugin name> <PluginFile> - " + Lang.pman_load_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman unload(or /pman disable) <Plugin name> - " + Lang.pman_unload_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman reload <Plugin> - " + Lang.pman_reload_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman download <FileName> <URL> - " + Lang.pman_download_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman delete <PluginFileName> <PluginName(or Backup file name)> - " + Lang.pman_delete_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman restore <FileName> - " + Lang.pman_restore_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman editor <Dir> <File> <Line(Count from 0)> <value> - " + Lang.pman_editor_desc);
-					sender.sendMessage(ChatColor.AQUA + " - /pman viewer <Dir> <File> - " + Lang.pman_viewer_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman viewer <Dir> <File> [options] - " + Lang.pman_viewer_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman update - " + Lang.pman_update_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman update-dev - Update to UNSTABLE and DEVELOPER version.");
 					sender.sendMessage(ChatColor.AQUA + " - /pman usage <Command> - " + Lang.pman_usage_desc);
@@ -192,7 +192,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 						return false;
 					}
 				}
-				if(args[0] == null) {
+				if(args.length < 2) {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.not_enough_args));
 					return false;
 				}
@@ -212,7 +212,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 						return false;
 					}
 				}
-				if(args[1] == null || args[2] == null) {
+				if(args.length < 3) {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.not_enough_args));
 					return false;
 				}
@@ -220,17 +220,21 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 			} else if(args[0].equalsIgnoreCase("viewer")) {
 				Bukkit.getServer().getLogger().warning(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.opened_config_viewer, sender.toString())));
 				try {
-					if(StringUtils.isEmpty(args[3])) {
+					if(args.length < 3) {
 						PluginUtils.ConfigViewer(sender, args[1], args[2], "");
 					} else {
 						PluginUtils.ConfigViewer(sender, args[1], args[2], args[3]);
 					}
 				} catch(Exception | Error e) {
-					PluginUtils.ConfigViewer(sender, args[1], args[2], "");
+					// PluginUtils.ConfigViewer(sender, args[1], args[2], "");
 					Log.severe(Lang.error_occured);
 					e.getCause().printStackTrace();
 				}
 			} else if(args[0].equalsIgnoreCase("editor")) {
+				if(args.length < 5) {
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.not_enough_args));
+					return false;
+				}
 				PluginUtils.EditConfigFile(sender, args[1], args[2], args[3], args[4]);
 			} else if(args[0].equalsIgnoreCase("update")) {
 				if(sender instanceof Player) {
