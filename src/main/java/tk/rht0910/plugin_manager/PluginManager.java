@@ -3,7 +3,6 @@ package tk.rht0910.plugin_manager;
 import java.util.Collection;
 import java.util.Locale;
 
-import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -18,11 +17,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 //import org.bukkit.util.StringUtil;
 
 import tk.rht0910.plugin_manager.exception.CatchException;
+import tk.rht0910.plugin_manager.language.Lang;
 import tk.rht0910.plugin_manager.thread.VersionCheck;
 import tk.rht0910.plugin_manager.util.Log;
+import tk.rht0910.plugin_manager.util.Manager;
 import tk.rht0910.plugin_manager.util.PluginUtils;
 
-public final class Main extends JavaPlugin implements TabCompleter, Listener {
+public final class PluginManager extends JavaPlugin implements TabCompleter, Listener {
 	//private static final String[] COMMANDS = {""};
 	public char altColorChar = '&';
 	public static Boolean is_available_new_version = false;
@@ -31,8 +32,8 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 	public static Boolean warning = false;
 
 	public static String getLanguageCode() {
-		String getty = Main.getPlugin(Main.class).getConfig().getString("language");
-		if(getty == "" || getty == null) {
+		String getty = PluginManager.getPlugin(PluginManager.class).getConfig().getString("language");
+		if(getty == "" || getty == null || !getty.contains("_")) {
 			getty = Locale.getDefault().toString();
 			warning = true;
 		}
@@ -42,8 +43,8 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 	@Override
 	public void onEnable() {
 		try {
-			Main.this.getConfig().options().copyDefaults(true);
-			Main.this.saveConfig();
+			PluginManager.this.getConfig().options().copyDefaults(true);
+			PluginManager.this.saveConfig();
 			CatchException catchException = new CatchException();
 				Thread thread = new Thread(new VersionCheck(null, null), "");
 				thread.setUncaughtExceptionHandler(catchException);
@@ -63,7 +64,7 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 	@Override
 	public void onLoad() {
 		try {
-			Bukkit.getServer().getLogger().info("[PluginManager] Loaded PluginManager v1.2.2");
+			Bukkit.getServer().getLogger().info("[PluginManager] Loaded PluginManager v1.2.3");
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().info("[PluginManager] Unknown error: " + e);
 			e.printStackTrace();
@@ -87,6 +88,7 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 			if(sender instanceof Player) {
 				if(!sender.isOp()) {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.you_are_not_operator));
+					return false;
 				}
 			}
 			if(args.length == 0 || args.equals(null)) {
@@ -102,11 +104,12 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 					sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman load <Plugin name> <PluginFile> - " + Lang.pman_load_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman unload(or /pman disable) <Plugin name> - " + Lang.pman_unload_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman reload <Plugin> - " + Lang.pman_reload_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman download <FileName> <URL> - " + Lang.pman_download_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman delete <PluginFileName> <PluginName(or Backup file name)> - " + Lang.pman_delete_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman restore <FileName> - " + Lang.pman_restore_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman editor <Dir> <File> <Line(Count from 0)> <value> - " + Lang.pman_editor_desc);
-					sender.sendMessage(ChatColor.AQUA + " - /pman viewer <Dir> <File> - " + Lang.pman_viewer_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman viewer <Dir> <File> [options] - " + Lang.pman_viewer_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman update - " + Lang.pman_update_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman update-dev - Update to UNSTABLE and DEVELOPER version.");
 					sender.sendMessage(ChatColor.AQUA + " - /pman usage <Command> - " + Lang.pman_usage_desc);
@@ -150,6 +153,15 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 					}
 				}
 				PluginUtils.unloadPlugin(sender, args[1]);
+			} else if(args[0].equalsIgnoreCase("reload")) {
+				if(sender instanceof Player) {
+					if(!sender.isPermissionSet("pluginmanager.admin")) {
+						Bukkit.getServer().getLogger().severe("No permission: /pman reload : " + sender.toString());
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
+						return false;
+					}
+				}
+				PluginUtils.reloadPlugin(sender, args[1]);
 			} else if(args[0].equalsIgnoreCase("download")) {
 				if(sender instanceof Player) {
 					if(!sender.isOp()) {
@@ -181,7 +193,7 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 						return false;
 					}
 				}
-				if(args[0] == null) {
+				if(args.length < 2) {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.not_enough_args));
 					return false;
 				}
@@ -201,7 +213,7 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 						return false;
 					}
 				}
-				if(args[1] == null || args[2] == null) {
+				if(args.length < 3) {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.not_enough_args));
 					return false;
 				}
@@ -209,17 +221,22 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 			} else if(args[0].equalsIgnoreCase("viewer")) {
 				Bukkit.getServer().getLogger().warning(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.opened_config_viewer, sender.toString())));
 				try {
-					if(StringUtils.isEmpty(args[3])) {
+					if(args.length < 3) {
 						PluginUtils.ConfigViewer(sender, args[1], args[2], "");
 					} else {
 						PluginUtils.ConfigViewer(sender, args[1], args[2], args[3]);
 					}
 				} catch(Exception | Error e) {
-					PluginUtils.ConfigViewer(sender, args[1], args[2], "");
+					// PluginUtils.ConfigViewer(sender, args[1], args[2], "");
 					Log.severe(Lang.error_occured);
+					e.printStackTrace();
 					e.getCause().printStackTrace();
 				}
 			} else if(args[0].equalsIgnoreCase("editor")) {
+				if(args.length < 5) {
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.not_enough_args));
+					return false;
+				}
 				PluginUtils.EditConfigFile(sender, args[1], args[2], args[3], args[4]);
 			} else if(args[0].equalsIgnoreCase("update")) {
 				if(sender instanceof Player) {
@@ -322,7 +339,7 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 					}
 				}
 			} else if(args[0].equalsIgnoreCase("usage")) {
-				tk.rht0910.plugin_manager.util.Command.getUsageOfCmd(sender, args[1]);
+				tk.rht0910.plugin_manager.command.Command.getUsageOfCmd(sender, args[1]);
 			} else if(args[0].equalsIgnoreCase("check")) {
 				VersionCheck vc = new VersionCheck(true, sender);
 				vc.start();
@@ -428,7 +445,7 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.warning_lang_invalid));
 			}
 		}
-		} catch(Exception e) {
+		} catch(Throwable e) {
 			Log.error(ChatColor.translateAlternateColorCodes(altColorChar, Lang.error_occured));
 			Log.error(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.continue_error_catch, e)));
 			e.printStackTrace();
@@ -443,7 +460,7 @@ public final class Main extends JavaPlugin implements TabCompleter, Listener {
 		if(event.getPlayer().isOp() == true) {
 			Log.info(event.getPlayer().getName() + " is OP!");
 			if(this.is_available_new_version == true) {
-				Log.info("New version found, notifing...");
+				Log.info("New version found, notifying...");
 				String new_version_available3 = ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.new_version_available, this.current, this.newv));
 				String new_version_available4 = ChatColor.translateAlternateColorCodes(altColorChar, Lang.new_version_available2);
 				event.getPlayer().sendMessage(new_version_available3);

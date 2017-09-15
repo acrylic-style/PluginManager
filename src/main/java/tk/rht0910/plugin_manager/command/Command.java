@@ -1,10 +1,10 @@
-package tk.rht0910.plugin_manager.util;
+package tk.rht0910.plugin_manager.command;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
-import tk.rht0910.plugin_manager.Lang;
+import tk.rht0910.plugin_manager.language.Lang;
 
 public final class Command {
 	public boolean showHelp(CommandSender sender) {
