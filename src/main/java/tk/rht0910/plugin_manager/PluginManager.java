@@ -50,6 +50,14 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 				thread.setUncaughtExceptionHandler(catchException);
 				thread.start();
 				getServer().getPluginManager().registerEvents(this, this);
+				try {
+					Log.info("+++ Test start +++");
+					Manager.getMain();
+					Log.info("+++ test success +++");
+				} catch(Throwable e) {
+					e.getCause().printStackTrace();
+					Log.info("+++ Test failed +++");
+				}
 			Lang.initialize();
 			current = Lang.version;
 			Bukkit.getServer().getLogger().info("[PluginManager] " + Lang.init_complete);

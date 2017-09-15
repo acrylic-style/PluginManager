@@ -10,16 +10,10 @@ import tk.rht0910.plugin_manager.exception.ThrowUncaughtException;
 import tk.rht0910.plugin_manager.exception.UncaughtException;
 
 public final class Manager {
-	private static PluginUtils pluginUtils;
-	private static Command command;
+	private static PluginUtils pluginUtils = new PluginUtils();
+	private static Command command = new Command();
 	private static CommandSender sender;
-	private static PluginManager main;
-
-	static {
-		pluginUtils = new PluginUtils();
-		command = new Command();
-		main = new PluginManager();
-	}
+	private static PluginManager main = new PluginManager();
 
 	public static PluginUtils getPluginUtil() {
 		try {
