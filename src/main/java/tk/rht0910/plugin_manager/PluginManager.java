@@ -88,6 +88,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 			if(sender instanceof Player) {
 				if(!sender.isOp()) {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.you_are_not_operator));
+					return false;
 				}
 			}
 			if(args.length == 0 || args.equals(null)) {
@@ -459,7 +460,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 		if(event.getPlayer().isOp() == true) {
 			Log.info(event.getPlayer().getName() + " is OP!");
 			if(this.is_available_new_version == true) {
-				Log.info("New version found, notifing...");
+				Log.info("New version found, notifying...");
 				String new_version_available3 = ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.new_version_available, this.current, this.newv));
 				String new_version_available4 = ChatColor.translateAlternateColorCodes(altColorChar, Lang.new_version_available2);
 				event.getPlayer().sendMessage(new_version_available3);
