@@ -17,6 +17,10 @@
    </plugins>
  </build>
   <repositories>
+    <repository>
+  	<id>tomeito-repo</id>
+  	<url>https://rht0910.tk/maven/</url>
+  </repository>
    <repository>
       <id>spigot-repo</id>
       <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
@@ -45,6 +49,11 @@
 <artifactId>bukkit</artifactId>
 <version>1.8-R0.1-SNAPSHOT</version>
 <scope>provided</scope>
+</dependency>
+<dependency>
+<groupId>tk.rht0910</groupId>
+<artifactId>TomeitoLib</artifactId>
+<version>0.1</version>
 </dependency>
  </dependencies>
 </project>

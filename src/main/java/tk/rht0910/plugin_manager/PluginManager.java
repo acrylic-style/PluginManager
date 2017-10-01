@@ -5,6 +5,7 @@ import java.util.Locale;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
@@ -14,14 +15,13 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
-//import org.bukkit.util.StringUtil;
 
 import tk.rht0910.plugin_manager.exception.CatchException;
 import tk.rht0910.plugin_manager.language.Lang;
 import tk.rht0910.plugin_manager.thread.VersionCheck;
-import tk.rht0910.plugin_manager.util.Log;
 import tk.rht0910.plugin_manager.util.Manager;
 import tk.rht0910.plugin_manager.util.PluginUtils;
+import tk.rht0910.tomeito_core.utils.Log;
 
 public final class PluginManager extends JavaPlugin implements TabCompleter, Listener {
 	//private static final String[] COMMANDS = {""};
@@ -403,6 +403,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.source_code, "https://github.com/rht0910/PluginManager/")));
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.problem_case, "https://github.com/rht0910/PluginManager/issues/")));
 						Log.warn(Lang.error_occured);
+
 						e.printStackTrace();
 						return true;
 					}
@@ -410,6 +411,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					this.reloadConfig();
 					warning = false;
 					Lang.use();
+
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.set_language, args[2])));
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.reloaded_config));
 				} else if(args[1].equalsIgnoreCase("reload")) {
@@ -424,6 +426,11 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					}
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.reloaded_config));
 				}
+			} else if(args[0].equalsIgnoreCase("sun")) {
+				World world = Bukkit.getWorld(Bukkit.getPlayer(sender.getName()).getWorld().getName());
+				world.setStorm(false);
+				world.setThundering(false);
+				world.setWeatherDuration(Integer.MAX_VALUE);
 			} else {
 				Lang.use();
 				sender.sendMessage(ChatColor.RED + Lang.invalid_args);
