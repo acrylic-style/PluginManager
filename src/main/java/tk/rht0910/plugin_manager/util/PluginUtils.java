@@ -17,12 +17,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.SimpleCommandMap;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
-import org.bukkit.plugin.UnknownDependencyException;
 
 import com.google.common.io.Files;
 
 import tk.rht0910.plugin_manager.language.Lang;
 import tk.rht0910.plugin_manager.thread.AsyncDownload;
+import tk.rht0910.plugin_manager.thread.LoadPlugin;
 import tk.rht0910.tomeito_core.utils.Log;
 
 public final class PluginUtils {
@@ -45,7 +45,9 @@ public final class PluginUtils {
 	}
 
 	public static void loadPlugin(CommandSender sender, String plugin, String file) {
-		//LoadPlugin.run();
+		Thread lp = new Thread(new LoadPlugin(sender, plugin, file));
+		lp.start();
+		/*/LoadPlugin.run();
 		try {
 			Lang.use();
 			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.starting_load_plugins));
@@ -121,7 +123,7 @@ public final class PluginUtils {
 			e.printStackTrace();
 			return;
 		}
-		return;
+		return;*/
 	}
 
 	public boolean unloadPlugin(CommandSender sender, Plugin plugin) {

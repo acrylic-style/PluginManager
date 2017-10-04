@@ -62,6 +62,8 @@ public class VersionCheck extends Thread implements Runnable {
 			Log.info("Version Checker: Status code: " + conn.getResponseCode() + ", Get: " + line);
 		} catch (IOException e) {
 			e.printStackTrace();
+			Log.error(String.format(Lang.error_occured, "Failed to open connection or invalid response code: " + e));
+			sender.sendMessage(String.format(Lang.error_occured, e));
 		}
 
 		if(Lang.version.compareTo(line) == -1) {
