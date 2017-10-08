@@ -1,6 +1,6 @@
 ---
 help: "Ayuda"
-invalid_args: "Invalid args"
+invalid_args: "Args no válido"
 required: "Obligatorio"
 optional: "Opcional"
 information: "Información"
@@ -15,25 +15,25 @@ pman_viewer_desc: "Ver una configuración de plugin"
 pman_update_desc: "Actualización de este plugin."
 pman_config_language: "Cambiar idioma"
 pman_config_reload: "Cargar configuración"
-pman_usage_desc: "Usage of command."
-pman_check_desc: "Check version manually."
-pman_reload_desc: "Reload a plugin."
-pman_version_desc: "Shows plugin version."
+pman_usage_desc: "Uso del comando."
+pman_check_desc: "Compruebe la versión del manual."
+pman_reload_desc: "Cargar un plugin."
+pman_version_desc: "Muestra la versión plugin."
 pman_version: "&aPluginManager:&b&n %s"
 failed_update_plugin: "&cFailed to update(Is server down?)"
-updating_plugin: "&aUpdating plugin..."
+updating_plugin: "&ael plugin Updating..."
 success_update_plugin: "&5Plugin is updated by %s . Please reload!"
-you_are_not_operator: "&cYou are not operator!"
-no_permission: "&cYou don't have permission."
-opened_config_viewer: "Opened config viewer by %s"
+you_are_not_operator: "&cYou no son operador!"
+no_permission: "&cYou no tiene permiso."
+opened_config_viewer: "Visor de configuración abierta por %s"
 not_enough_args: "&cNot enough argument, cannot continue."
-running_on: '&aPluginManager is running on: %s'
+running_on: '&aPluginManager se está ejecutando en: %s'
 available_commands: '&aAvailable commands: /pman help'
 beta: "(BETA)"
-alpha: "(ALPHA)"
-project_page: '&b - Project page: %s'
+alpha: "(ALFA)"
+project_page: '&b - página del proyecto: %s'
 developer_version: '&b - Developer version: %s'
-source_code: '&b - Source code: %s'
+source_code: '&bb - código fuente: %s'
 starting_load_plugins: "&aLoading plugin..."
 already_enabled: "&cThis plugin is already enabled!"
 failed_load_plugin: '&cCouldn''t load plugin: %s'
@@ -45,8 +45,8 @@ reloading_config: "&aReloading config..."
 error_reload_config: '&cError while reloading config: PluginManager'
 reloaded_config: '&aReloaded config: PluginManager'
 set_language: '&aSet config: language: %s'
-init_complete: "Initialize complete."
-init_error: "Error while initializing, disabling plugin, please see errors."
+init_complete: "Completa la inicialización."
+init_error: "Error al inicializar, desactivar el plugin, consulte errores."
 continue_error: "&4If you see error continuing? please report to developer!"
 continue_error_catch: '&4If you see error continuing? please report to developer!(Please tell to developer: %s)'
 please_report_developer: "&4Error cannot be resolved in user. Please report to developer!"
@@ -69,7 +69,7 @@ download_failed: "&cFailed to download. Server down or wrong url."
 download_success: "&aSuccessfully download."
 total_time: '&bTotal time: %s'
 finished_time: '&bFinished time: %s'
-start_time: '&bStart time: %s'
+start_time: '&bInicio tiempo: %s'
 warning_lang_invalid: '&cWarning: Invalid properties ''language'' in config. Please set (again) language.'
 unknown_args: '&bUnknown arg: %s'
 cant_show_usage: "&cCan't show usage of command."
