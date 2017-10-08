@@ -24,15 +24,15 @@ failed_update_plugin: "&cFailed to update(Is server down?)"
 updating_plugin: "&aUpdating plugin..."
 success_update_plugin: "&5Plugin is updated by %s . Please reload!"
 you_are_not_operator: "&cYou are not operator!"
-no_permission: "&cYou don't have permission."
-opened_config_viewer: "Opened config viewer by %s"
+no_permission: "&cDu hast keine Rechte."
+opened_config_viewer: "Geöffnete Config Viewer von %s"
 not_enough_args: "&cNot enough argument, cannot continue."
 running_on: '&aPluginManager is running on: %s'
 available_commands: '&aAvailable commands: /pman help'
 beta: "(BETA)"
 alpha: "(ALPHA)"
-project_page: '&b - Project page: %s'
-developer_version: '&b - Developer version: %s'
+project_page: '&b - Projektseite: %s'
+developer_version: '&b - Entwickler-Version: %s'
 source_code: '&b - Source code: %s'
 starting_load_plugins: "&aLoading plugin..."
 already_enabled: "&cThis plugin is already enabled!"
@@ -46,7 +46,7 @@ error_reload_config: '&cError while reloading config: PluginManager'
 reloaded_config: '&aReloaded config: PluginManager'
 set_language: '&aSet config: language: %s'
 init_complete: "Initialize complete."
-init_error: "Error while initializing, disabling plugin, please see errors."
+init_error: "Fehler beim initialisieren, Plugin, deaktivieren finden Sie in Fehler."
 continue_error: "&4If you see error continuing? please report to developer!"
 continue_error_catch: '&4If you see error continuing? please report to developer!(Please tell to developer: %s)'
 please_report_developer: "&4Error cannot be resolved in user. Please report to developer!"
