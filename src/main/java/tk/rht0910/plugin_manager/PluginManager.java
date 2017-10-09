@@ -100,11 +100,11 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 				// /pman <TAB>
 				return Arrays.asList("load", "unload", "reload", "help", "disable", "download", "delete", "restore", "update", "update-dev", "editor",
 						"viewer", "usage", "check", "config");
-			} else if(args[0].length() == 1) {
+			/*} else if(args[0].length() == 1) {
 				return Arrays.asList("af_ZA", "ar_SA", "ca_ES", "cs_CZ", "da_DK", "de_DE", "el_GR", "en_US", "es_ES", "fi_FI", "fr_FR",
 						"he_IL", "hu_HU", "it_IT", "ja_JP", "ko_KR", "nl_NL", "no_NO", "pl_PL", "pt_BR", "pt_PT", "ro_RO", "ru_RU", "sr_SP",
 						"sv_SE", "tr_TR", "uk_UA", "vi_VN", "zh_CN", "zh_TW");
-			} else {
+			*/} else {
 				// Correct first input string
 
 				// /pman <HERE>
@@ -142,64 +142,84 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					if("reload".startsWith(args[1])) {
 						return Collections.singletonList("reload");
 					} else if("language".startsWith(args[1])) {
-						if("af_ZA".startsWith(args[2])) {
-							return Collections.singletonList("af_ZA");
-						} else if("ar_SA".startsWith(args[2])) {
-							return Collections.singletonList("ar_SA");
-						} else if("ca_ES".startsWith(args[2])) {
-							return Collections.singletonList("ca_ES");
-						} else if("cs_CZ".startsWith(args[2])) {
-							return Collections.singletonList("cs_CZ");
-						} else if("da_DK".startsWith(args[2])) {
-							return Collections.singletonList("da_DK");
-						} else if("de_DE".startsWith(args[2])) {
-							return Collections.singletonList("de_DE");
-						} else if("el_GR".startsWith(args[2])) {
-							return Collections.singletonList("el_GR");
-						} else if("en_US".startsWith(args[2])) {
-							return Collections.singletonList("en_US");
-						} else if("es_ES".startsWith(args[2])) {
-							return Collections.singletonList("fi_FI");
-						} else if("fr_FR".startsWith(args[2])) {
-							return Collections.singletonList("fr_FR");
-						} else if("hr_IL".startsWith(args[2])) {
-							return Collections.singletonList("hu_HU");
-						} else if("it_IT".startsWith(args[2])) {
-							return Collections.singletonList("it_IT");
-						} else if("ja_JP".startsWith(args[2])) {
-							return Collections.singletonList("ja_JP");
-						} else if("ko_KR".startsWith(args[2])) {
-							return Collections.singletonList("ko_KR");
-						} else if("nl_NL".startsWith(args[2])) {
-							return Collections.singletonList("nl_NL");
-						} else if("no_NO".startsWith(args[2])) {
-							return Collections.singletonList("no_NO");
-						} else if("pl_PL".startsWith(args[2])) {
-							return Collections.singletonList("pl_PL");
-						} else if("pt_BR".startsWith(args[2])) {
-							return Collections.singletonList("pt_BR");
-						} else if("pt_PT".startsWith(args[2])) {
-							return Collections.singletonList("pt_PT");
-						} else if("ro_RO".startsWith(args[2])) {
-							return Collections.singletonList("ro_RO");
-						} else if("ru_RU".startsWith(args[2])) {
-							return Collections.singletonList("ru_RU");
-						} else if("sr_SP".startsWith(args[2])) {
-							return Collections.singletonList("sr_SP");
-						} else if("sv_SE".startsWith(args[2])) {
-							return Collections.singletonList("sv_SE");
-						} else if("tr_TR".startsWith(args[2])) {
-							return Collections.singletonList("tr_TR");
-						} else if("uk_UA".startsWith(args[2])) {
-							return Collections.singletonList("vi_VN");
-						} else if("zh_CN".startsWith(args[2])) {
-							return Collections.singletonList("zh_CN");
-						} else if("zh_TW".startsWith(args[2])) {
-							return Collections.singletonList("zh_TW");
-						}
 						return Collections.singletonList("language");
+					} else {
+						return Collections.singletonList("config");
 					}
-					return Collections.singletonList("config");
+				}
+			}
+		} else if(args.length == 2) {
+			if(args[0] == "config") {
+				if(args[1] == "language") {
+					if(args[2].length() == 0) {
+						return Arrays.asList("af_ZA", "ar_SA", "ca_ES", "cs_CZ", "da_DK", "de_DE", "el_GR", "en_US", "es_ES", "fi_FI", "fr_FR",
+								"he_IL", "hu_HU", "it_IT", "ja_JP", "ko_KR", "nl_NL", "no_NO", "pl_PL", "pt_BR", "pt_PT", "ro_RO", "ru_RU", "sr_SP",
+								"sv_SE", "tr_TR", "uk_UA", "vi_VN", "zh_CN", "zh_TW");
+					}
+					
+					if("af_ZA".startsWith(args[2])) {
+						return Collections.singletonList("af_ZA");
+					} else if("ar_SA".startsWith(args[2])) {
+						return Collections.singletonList("ar_SA");
+					} else if("ca_ES".startsWith(args[2])) {
+						return Collections.singletonList("ca_ES");
+					} else if("cs_CZ".startsWith(args[2])) {
+						return Collections.singletonList("cs_CZ");
+					} else if("da_DK".startsWith(args[2])) {
+						return Collections.singletonList("da_DK");
+					} else if("de_DE".startsWith(args[2])) {
+						return Collections.singletonList("de_DE");
+					} else if("el_GR".startsWith(args[2])) {
+						return Collections.singletonList("el_GR");
+					} else if("en_US".startsWith(args[2])) {
+						return Collections.singletonList("en_US");
+					} else if("es_ES".startsWith(args[2])) {
+						return Collections.singletonList("fi_FI");
+					} else if("fr_FR".startsWith(args[2])) {
+						return Collections.singletonList("fr_FR");
+					} else if("hr_IL".startsWith(args[2])) {
+						return Collections.singletonList("hu_HU");
+					} else if("it_IT".startsWith(args[2])) {
+						return Collections.singletonList("it_IT");
+					} else if("ja_JP".startsWith(args[2])) {
+						return Collections.singletonList("ja_JP");
+					} else if("ko_KR".startsWith(args[2])) {
+						return Collections.singletonList("ko_KR");
+					} else if("nl_NL".startsWith(args[2])) {
+						return Collections.singletonList("nl_NL");
+					} else if("no_NO".startsWith(args[2])) {
+						return Collections.singletonList("no_NO");
+					} else if("pl_PL".startsWith(args[2])) {
+						return Collections.singletonList("pl_PL");
+					} else if("pt_BR".startsWith(args[2])) {
+						return Collections.singletonList("pt_BR");
+					} else if("pt_PT".startsWith(args[2])) {
+						return Collections.singletonList("pt_PT");
+					} else if("ro_RO".startsWith(args[2])) {
+						return Collections.singletonList("ro_RO");
+					} else if("ru_RU".startsWith(args[2])) {
+						return Collections.singletonList("ru_RU");
+					} else if("sr_SP".startsWith(args[2])) {
+						return Collections.singletonList("sr_SP");
+					} else if("sv_SE".startsWith(args[2])) {
+						return Collections.singletonList("sv_SE");
+					} else if("tr_TR".startsWith(args[2])) {
+						return Collections.singletonList("tr_TR");
+					} else if("uk_UA".startsWith(args[2])) {
+						return Collections.singletonList("vi_VN");
+					} else if("zh_CN".startsWith(args[2])) {
+						return Collections.singletonList("zh_CN");
+					} else if("zh_TW".startsWith(args[2])) {
+						return Collections.singletonList("zh_TW");
+					}
+				}
+				if(args[1].length() == 0) {
+					return Arrays.asList("reload", "language");
+				}
+				if("reload".startsWith(args[1])) {
+					return Collections.singletonList("reload");
+				} else if("language".startsWith(args[1])) {
+					return Collections.singletonList("language");
 				}
 			}
 		}
