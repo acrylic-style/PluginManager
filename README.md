@@ -11,3 +11,6 @@ Project page: https://dev.bukkit.org/projects/pluginmanagement
 
 
 
+# Issues
+* In enable-testing: Could not initialize class: tk.rht0910.plugin_manager.utils.Manager
+* /pman viewer <Dir> <Filename> [Options]: option is not working

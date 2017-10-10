@@ -12,7 +12,7 @@ import org.bukkit.command.CommandSender;
 
 import tk.rht0910.plugin_manager.PluginManager;
 import tk.rht0910.plugin_manager.language.Lang;
-import tk.rht0910.plugin_manager.util.Log;
+import tk.rht0910.tomeito_core.utils.Log;
 
 public class VersionCheck extends Thread implements Runnable {
 	private static Boolean player = false;
@@ -62,6 +62,8 @@ public class VersionCheck extends Thread implements Runnable {
 			Log.info("Version Checker: Status code: " + conn.getResponseCode() + ", Get: " + line);
 		} catch (IOException e) {
 			e.printStackTrace();
+			Log.error(String.format(Lang.error_occured, "Failed to open connection or invalid response code: " + e));
+			sender.sendMessage(String.format(Lang.error_occured, e));
 		}
 
 		if(Lang.version.compareTo(line) == -1) {

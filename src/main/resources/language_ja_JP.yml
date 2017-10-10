@@ -17,6 +17,7 @@ pman_config_language: "言語を変更"
 pman_config_reload: "設定を再読み込み"
 pman_usage_desc: "コマンドの使用方法"
 pman_check_desc: "手動でバージョンをチェックします。"
+pman_reload_desc: "プラグインを再読み込みします。"
 pman_version_desc: "プラグインのバージョンを表示します。"
 pman_version: "&aPluginManager:&b&n %s"
 failed_update_plugin: "&c更新に失敗しました(サーバーダウン？)"
@@ -75,4 +76,4 @@ cant_show_usage: "&cコマンドの使用例を表示できません。"
 reloading_plugin: '&aプラグインを再読み込みしています: %s ...'
 reloaded_plugin: '&aプラグインを再読み込みしました: %s'
 reloading_plugin_error: '&cプラグインの再読み込み中にエラーが発生しました: %s'
-version: "1.2.3"
+version: "1.4"

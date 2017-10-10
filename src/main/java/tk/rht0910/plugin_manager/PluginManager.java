@@ -1,10 +1,14 @@
 package tk.rht0910.plugin_manager;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
@@ -14,14 +18,13 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
-//import org.bukkit.util.StringUtil;
 
 import tk.rht0910.plugin_manager.exception.CatchException;
 import tk.rht0910.plugin_manager.language.Lang;
 import tk.rht0910.plugin_manager.thread.VersionCheck;
-import tk.rht0910.plugin_manager.util.Log;
 import tk.rht0910.plugin_manager.util.Manager;
 import tk.rht0910.plugin_manager.util.PluginUtils;
+import tk.rht0910.tomeito_core.utils.Log;
 
 public final class PluginManager extends JavaPlugin implements TabCompleter, Listener {
 	//private static final String[] COMMANDS = {""};
@@ -50,6 +53,14 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 				thread.setUncaughtExceptionHandler(catchException);
 				thread.start();
 				getServer().getPluginManager().registerEvents(this, this);
+				try {
+					Log.info("+++ Test start +++");
+					Manager.getCommand();
+					Log.info("+++ Test success +++");
+				} catch(Throwable e) {
+					e.getCause().printStackTrace();
+					Log.info("+++ Test failed +++");
+				}
 			Lang.initialize();
 			current = Lang.version;
 			Bukkit.getServer().getLogger().info("[PluginManager] " + Lang.init_complete);
@@ -64,7 +75,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 	@Override
 	public void onLoad() {
 		try {
-			Bukkit.getServer().getLogger().info("[PluginManager] Loaded PluginManager v1.2.3");
+			Bukkit.getServer().getLogger().info("[PluginManager] Loaded PluginManager v1.4");
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().info("[PluginManager] Unknown error: " + e);
 			e.printStackTrace();
@@ -79,6 +90,134 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 			Bukkit.getServer().getLogger().severe(ChatColor.DARK_RED + "[PluginManager] Unknown error! Please see errors.");
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+		if(!command.getName().equalsIgnoreCase("pman")) return super.onTabComplete(sender, command, alias, args);
+		if(args.length == 1) {
+			if(args[0].length() == 0) { // Until /pman
+				// /pman <TAB>
+				return Arrays.asList("load", "unload", "reload", "help", "disable", "download", "delete", "restore", "update", "update-dev", "editor",
+						"viewer", "usage", "check", "config");
+			/*} else if(args[0].length() == 1) {
+				return Arrays.asList("af_ZA", "ar_SA", "ca_ES", "cs_CZ", "da_DK", "de_DE", "el_GR", "en_US", "es_ES", "fi_FI", "fr_FR",
+						"he_IL", "hu_HU", "it_IT", "ja_JP", "ko_KR", "nl_NL", "no_NO", "pl_PL", "pt_BR", "pt_PT", "ro_RO", "ru_RU", "sr_SP",
+						"sv_SE", "tr_TR", "uk_UA", "vi_VN", "zh_CN", "zh_TW");
+			*/} else {
+				// Correct first input string
+
+				// /pman <HERE>
+				// Example: /pman l <TAB> -> /pman load (Auto tab completed)
+				if ("load".startsWith(args[0])) {
+					return Collections.singletonList("load");
+				} else if ("unload".startsWith(args[0])) {
+					return Collections.singletonList("unload");
+				} else if("help".startsWith(args[0])) {
+					return Collections.singletonList("help");
+				} else if("reload".startsWith(args[0])) {
+					return Collections.singletonList("reload");
+				} else if("disable".startsWith(args[0])) {
+					return Collections.singletonList("disable");
+				} else if("download".startsWith(args[0])) {
+					return Collections.singletonList("download");
+				} else if("delete".startsWith(args[0])) {
+					return Collections.singletonList("delete");
+				} else if("restore".startsWith(args[0])) {
+					return Collections.singletonList("restore");
+				} else if("update".startsWith(args[0])) {
+					return Collections.singletonList("update");
+				} else if("update-dev".startsWith(args[0])) {
+					return Collections.singletonList("update-dev");
+				} else if("editor".startsWith(args[0])) {
+					return Collections.singletonList("editor");
+				} else if("viewer".startsWith(args[0])) {
+					return Collections.singletonList("viewer");
+				} else if("usage".startsWith(args[0])) {
+					return Collections.singletonList("usage");
+				} else if("check".startsWith(args[0])) {
+					return Collections.singletonList("check");
+				} else if("config".startsWith(args[0])) {
+					return Collections.singletonList("config");
+				}
+			}
+		} else if(args.length == 2) {
+			if(args[0] == "config") {
+				if(args[1] == "language") {
+					if(args[2].length() == 0) {
+						return Arrays.asList("af_ZA", "ar_SA", "ca_ES", "cs_CZ", "da_DK", "de_DE", "el_GR", "en_US", "es_ES", "fi_FI", "fr_FR",
+								"he_IL", "hu_HU", "it_IT", "ja_JP", "ko_KR", "nl_NL", "no_NO", "pl_PL", "pt_BR", "pt_PT", "ro_RO", "ru_RU", "sr_SP",
+								"sv_SE", "tr_TR", "uk_UA", "vi_VN", "zh_CN", "zh_TW");
+					} else {
+						if("af_ZA".startsWith(args[2])) {
+							return Collections.singletonList("af_ZA");
+						} else if("ar_SA".startsWith(args[2])) {
+							return Collections.singletonList("ar_SA");
+						} else if("ca_ES".startsWith(args[2])) {
+							return Collections.singletonList("ca_ES");
+						} else if("cs_CZ".startsWith(args[2])) {
+							return Collections.singletonList("cs_CZ");
+						} else if("da_DK".startsWith(args[2])) {
+							return Collections.singletonList("da_DK");
+						} else if("de_DE".startsWith(args[2])) {
+							return Collections.singletonList("de_DE");
+						} else if("el_GR".startsWith(args[2])) {
+							return Collections.singletonList("el_GR");
+						} else if("en_US".startsWith(args[2])) {
+							return Collections.singletonList("en_US");
+						} else if("es_ES".startsWith(args[2])) {
+							return Collections.singletonList("fi_FI");
+						} else if("fr_FR".startsWith(args[2])) {
+							return Collections.singletonList("fr_FR");
+						} else if("hr_IL".startsWith(args[2])) {
+							return Collections.singletonList("hu_HU");
+						} else if("it_IT".startsWith(args[2])) {
+							return Collections.singletonList("it_IT");
+						} else if("ja_JP".startsWith(args[2])) {
+							return Collections.singletonList("ja_JP");
+						} else if("ko_KR".startsWith(args[2])) {
+							return Collections.singletonList("ko_KR");
+						} else if("nl_NL".startsWith(args[2])) {
+							return Collections.singletonList("nl_NL");
+						} else if("no_NO".startsWith(args[2])) {
+							return Collections.singletonList("no_NO");
+						} else if("pl_PL".startsWith(args[2])) {
+							return Collections.singletonList("pl_PL");
+						} else if("pt_BR".startsWith(args[2])) {
+							return Collections.singletonList("pt_BR");
+						} else if("pt_PT".startsWith(args[2])) {
+							return Collections.singletonList("pt_PT");
+						} else if("ro_RO".startsWith(args[2])) {
+							return Collections.singletonList("ro_RO");
+						} else if("ru_RU".startsWith(args[2])) {
+							return Collections.singletonList("ru_RU");
+						} else if("sr_SP".startsWith(args[2])) {
+							return Collections.singletonList("sr_SP");
+						} else if("sv_SE".startsWith(args[2])) {
+							return Collections.singletonList("sv_SE");
+						} else if("tr_TR".startsWith(args[2])) {
+							return Collections.singletonList("tr_TR");
+						} else if("uk_UA".startsWith(args[2])) {
+							return Collections.singletonList("vi_VN");
+						} else if("zh_CN".startsWith(args[2])) {
+							return Collections.singletonList("zh_CN");
+						} else if("zh_TW".startsWith(args[2])) {
+							return Collections.singletonList("zh_TW");
+						}
+					}
+				}
+				if(args[1].length() == 0) {
+					return Arrays.asList("reload", "language");
+				}
+				if("reload".startsWith(args[1])) {
+					return Collections.singletonList("reload");
+				} else if("language".startsWith(args[1])) {
+					return Collections.singletonList("language");
+				}
+			}
+		}
+		// Calling JavaPlugin#onTabComplete()
+		return super.onTabComplete(sender, command, alias, args);
 	}
 
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -395,6 +534,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.source_code, "https://github.com/rht0910/PluginManager/")));
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.problem_case, "https://github.com/rht0910/PluginManager/issues/")));
 						Log.warn(Lang.error_occured);
+
 						e.printStackTrace();
 						return true;
 					}
@@ -402,6 +542,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					this.reloadConfig();
 					warning = false;
 					Lang.use();
+
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.set_language, args[2])));
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.reloaded_config));
 				} else if(args[1].equalsIgnoreCase("reload")) {
@@ -416,6 +557,11 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					}
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.reloaded_config));
 				}
+			} else if(args[0].equalsIgnoreCase("sun")) {
+				World world = Bukkit.getWorld(Bukkit.getPlayer(sender.getName()).getWorld().getName());
+				world.setStorm(false);
+				world.setThundering(false);
+				world.setWeatherDuration(Integer.MAX_VALUE);
 			} else {
 				Lang.use();
 				sender.sendMessage(ChatColor.RED + Lang.invalid_args);

@@ -1,9 +1,9 @@
 ---
-help: "Help"
+help: "Yardım"
 invalid_args: "Invalid args"
-required: "Required"
-optional: "Optional"
-information: "Information"
+required: "Gerekli"
+optional: "İsteğe bağlı"
+information: "Bilgi"
 pman_help_desc: "Display this."
 pman_load_desc: "Load a plugin."
 pman_unload_desc: "Unload a plugin."
@@ -17,6 +17,7 @@ pman_config_language: "Change language"
 pman_config_reload: "Reload config"
 pman_usage_desc: "Usage of command."
 pman_check_desc: "Check version manually."
+pman_reload_desc: "Reload a plugin."
 pman_version_desc: "Shows plugin version."
 pman_version: "&aPluginManager:&b&n %s"
 failed_update_plugin: "&cFailed to update(Is server down?)"
@@ -75,4 +76,4 @@ cant_show_usage: "&cCan't show usage of command."
 reloading_plugin: '&aReloading plugin: %s ...'
 reloaded_plugin: '&aReloaded plugin: %s'
 reloading_plugin_error: '&cError while reloading plugin: %s'
-version: "1.2.3"
+version: "1.4"
