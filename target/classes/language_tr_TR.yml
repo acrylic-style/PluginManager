@@ -1,9 +1,9 @@
 ---
-help: "Help"
+help: "Yardım"
 invalid_args: "Invalid args"
-required: "Required"
-optional: "Optional"
-information: "Information"
+required: "Gerekli"
+optional: "İsteğe bağlı"
+information: "Bilgi"
 pman_help_desc: "Display this."
 pman_load_desc: "Load a plugin."
 pman_unload_desc: "Unload a plugin."
