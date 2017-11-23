@@ -33,7 +33,7 @@ beta: "(BETA)"
 alpha: "(ALFA)"
 project_page: '&b - página del proyecto: %s'
 developer_version: '&b - Developer version: %s'
-source_code: '&bb - código fuente: %s'
+source_code: '&b - código fuente: %s'
 starting_load_plugins: "&aLoading plugin..."
 already_enabled: "&cThis plugin is already enabled!"
 failed_load_plugin: '&cCouldn''t load plugin: %s'
