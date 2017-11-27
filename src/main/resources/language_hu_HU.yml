@@ -48,32 +48,32 @@ set_language: '&aA konfig nyelv beállítva: %s'
 init_complete: "Inicializálása befejezve."
 init_error: "Hiba történt a beépülő modul inicializálásakor, letiltva a hibákat."
 continue_error: "&4Ha a hiba továbbra is fennáll? Kérjük, jelentse a fejlesztőnek!"
-continue_error_catch: '&4If you see error continuing? please report to developer!(Please tell to developer: %s)'
-please_report_developer: "&4Error cannot be resolved in user. Please report to developer!"
-please_report_developer_catch: '&4Error cannot be resolved in user. Please report to developer! Please tell to developer: %s'
-problem_case: '&b - In case of problems: %s'
-new_version_available: '&aNew version available for PluginManager: Current: %s, New: %s'
-new_version_available2: "&aRun &b/pman update &ato update."
-started_version_check: "&aRunning version check..."
-already_checking: "&cAlready version checking!"
-version_check_complete1: "&aVersion check complete."
-version_check_complete_update_no: "&aNo updates found."
-version_check_complete_update1: "&aUpdate found!"
-version_check_complete_update2: '&bCurrent: %s'
-version_check_complete_update3: '&eNew: %s'
-version_check_complete_update4: "&aRun &b/pman update&a to update."
-start_dl_plugin: "&aStarted downloading plugin."
+continue_error_catch: '&4Ha a hiba továbbra is fennáll? Kérjük, jelentse a fejlesztőnek! (Kérjük, mondja meg a fejlesztőnek: %s)'
+please_report_developer: "&4A hiba nem oldható meg a felhasználóban. Kérjük, jelentkezzen a fejlesztőnek!"
+please_report_developer_catch: '&4A hiba nem oldható meg a felhasználóban. Kérjük, jelentkezzen a fejlesztőnek! Kérjük, mondja meg a fejlesztőnek: %s'
+problem_case: '&b - Problémák esetén: %s'
+new_version_available: '&aÚj verzió elérhető a PluginManager számára: Jelenlegi: %s, Új: %s'
+new_version_available2: "&aFuttasd a &b/pman update &aa frissítéshez."
+started_version_check: "&aA verziók ellenőrzése..."
+already_checking: "&cMár verzióellenőrzés van!"
+version_check_complete1: "&aA verzió ellenőrzés befejezve."
+version_check_complete_update_no: "&aNincs frissítés."
+version_check_complete_update1: "&aFrissítés található!"
+version_check_complete_update2: '&bJelenlegi: %s'
+version_check_complete_update3: '&eÚj: %s'
+version_check_complete_update4: "&aFuttasd a &b/pman update&a a frissítéshez."
+start_dl_plugin: "&aA plugin letöltése elkezdve."
 url: '&bURL: %s'
-file: '&bFilename: %s'
-download_failed: "&cFailed to download. Server down or wrong url."
-download_success: "&aSuccessfully download."
-total_time: '&bTotal time: %s'
-finished_time: '&bFinished time: %s'
-start_time: '&bStart time: %s'
-warning_lang_invalid: '&cWarning: Invalid properties ''language'' in config. Please set (again) language.'
-unknown_args: '&bUnknown arg: %s'
-cant_show_usage: "&cCan't show usage of command."
-reloading_plugin: '&aReloading plugin: %s ...'
-reloaded_plugin: '&aReloaded plugin: %s'
-reloading_plugin_error: '&cError while reloading plugin: %s'
+file: '&bFájl név: %s'
+download_failed: "&cNem sikerült letölteni. Szerver lefelé vagy rossz url."
+download_success: "&aA letöltés sikeres."
+total_time: '&bTeljes idő: %s'
+finished_time: '&bBefejeződött idő: %s'
+start_time: '&bKezdési idő: %s'
+warning_lang_invalid: '&cFigyelmeztetés: Érvénytelen tulajdonságok ''nyelv'' a konfigurációban. Kérjük, állítsa be (ismét) a nyelvet.'
+unknown_args: '&bIsmeretlen argumentum: %s'
+cant_show_usage: "&cA parancs használatát nem lehet megjeleníteni."
+reloading_plugin: '&aA plugin újratöltése: %s ...'
+reloaded_plugin: '&aA plugin újratöltve: %s'
+reloading_plugin_error: '&cA plugin újratöltése közben hiba történt: %s'
 version: "1.4"
