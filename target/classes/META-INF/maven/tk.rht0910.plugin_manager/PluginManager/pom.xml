@@ -4,17 +4,17 @@
   <artifactId>PluginManager</artifactId>
   <name>PluginManager</name>
   <version>1.4</version>
-     <build>
-   <plugins>
-     <plugin>
-       <groupId>org.apache.maven.plugins</groupId>
-       <artifactId>maven-compiler-plugin</artifactId>
-       <configuration>
-         <source>1.7</source>
-         <target>1.7</target>
-       </configuration>
-     </plugin>
-     <plugin>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+        </configuration>
+      </plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
         <version>3.1.0</version>
