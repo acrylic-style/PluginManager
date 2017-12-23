@@ -38,12 +38,12 @@ starting_load_plugins: "& aUpdating плагин..."
 already_enabled: "Этот плагин уже установлен."
 failed_load_plugin: '& загрузки плагин cCouldn''t: %s'
 success_load_plugin: '& плагин aLoaded: %s'
-error_occured: '&cAn error occured: %s'
-error_unload_plugin: '&cError while unloading plugin: %s'
-unloaded_plugin: '&aUnloaded plugin: %s'
-reloading_config: "&aReloading config..."
-error_reload_config: '&cError while reloading config: PluginManager'
-reloaded_config: '&aReloaded config: PluginManager'
+error_occured: '&cКритическая ошибка!'
+error_unload_plugin: Ошибка при обновлении плагина %s
+unloaded_plugin: '& плагин aLoaded: %s'
+reloading_config: "& aReloading config..."
+error_reload_config: '& cError во время перезагрузки конфигурации: PluginManager'
+reloaded_config: '& aReloaded config: PluginManager'
 set_language: '&aSet config: language: %s'
 init_complete: "Initialize complete."
 init_error: "Error while initializing, disabling plugin, please see errors."
@@ -57,7 +57,7 @@ new_version_available2: "&aRun &b/pman update &ato update."
 started_version_check: "&aRunning version check..."
 already_checking: "&cAlready version checking!"
 version_check_complete1: "&aVersion check complete."
-version_check_complete_update_no: "&aNo updates found."
+version_check_complete_update_no: "Свежих обновлений нет"
 version_check_complete_update1: "&aUpdate found!"
 version_check_complete_update2: '&bCurrent: %s'
 version_check_complete_update3: '&eNew: %s'
@@ -73,7 +73,7 @@ start_time: '&bStart time: %s'
 warning_lang_invalid: '&cWarning: Invalid properties ''language'' in config. Please set (again) language.'
 unknown_args: '&bUnknown arg: %s'
 cant_show_usage: "&cCan't show usage of command."
-reloading_plugin: '&aReloading plugin: %s ...'
-reloaded_plugin: '&aReloaded plugin: %s'
-reloading_plugin_error: '&cError while reloading plugin: %s'
+reloading_plugin: '& плагин aLoaded: %s'
+reloaded_plugin: '& плагин aLoaded: %s'
+reloading_plugin_error: Ошибка при обновлении плагина %s
 version: "1.4"
