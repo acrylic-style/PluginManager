@@ -45,34 +45,34 @@ reloading_config: "& aReloading config..."
 error_reload_config: '& cError во время перезагрузки конфигурации: PluginManager'
 reloaded_config: '& aReloaded config: PluginManager'
 set_language: '&aSet config: language: %s'
-init_complete: "Initialize complete."
-init_error: "Error while initializing, disabling plugin, please see errors."
-continue_error: "&4If you see error continuing? please report to developer!"
-continue_error_catch: '&4If you see error continuing? please report to developer!(Please tell to developer: %s)'
-please_report_developer: "&4Error cannot be resolved in user. Please report to developer!"
-please_report_developer_catch: '&4Error cannot be resolved in user. Please report to developer! Please tell to developer: %s'
-problem_case: '&b - In case of problems: %s'
-new_version_available: '&aNew version available for PluginManager: Current: %s, New: %s'
-new_version_available2: "&aRun &b/pman update &ato update."
-started_version_check: "&aRunning version check..."
-already_checking: "&cAlready version checking!"
-version_check_complete1: "&aVersion check complete."
+init_complete: "Полная инициализация."
+init_error: "Ошибка при инициализации, Отключение плагина, смотрите ошибки."
+continue_error: "& 4If вы видите ошибка продолжение? Пожалуйста, сообщите разработчику!"
+continue_error_catch: '& 4If вы видите ошибка продолжение? Пожалуйста, сообщите разработчику! (Пожалуйста, сообщите разработчику: %s)'
+please_report_developer: "& 4Error не могут быть разрешены в пользователя. Пожалуйста, сообщите разработчику!"
+please_report_developer_catch: '& 4Error не могут быть разрешены в пользователя. Пожалуйста, сообщите разработчику! Пожалуйста, сообщите разработчику: %s'
+problem_case: '& b - в случае проблем: %s'
+new_version_available: '& Заново версия доступна для PluginManager: текущий: %s, New: %s'
+new_version_available2: "& Арун & b/pman обновление & АТО обновление."
+started_version_check: "& Проверка версии aRunning..."
+already_checking: "& Проверка версии cAlready!"
+version_check_complete1: "& Отвращение проверить полный."
 version_check_complete_update_no: "Свежих обновлений нет"
-version_check_complete_update1: "&aUpdate found!"
-version_check_complete_update2: '&bCurrent: %s'
-version_check_complete_update3: '&eNew: %s'
-version_check_complete_update4: "&aRun &b/pman update&a to update."
-start_dl_plugin: "&aStarted downloading plugin."
-url: '&bURL: %s'
-file: '&bFilename: %s'
-download_failed: "&cFailed to download. Server down or wrong url."
-download_success: "&aSuccessfully download."
-total_time: '&bTotal time: %s'
-finished_time: '&bFinished time: %s'
-start_time: '&bStart time: %s'
-warning_lang_invalid: '&cWarning: Invalid properties ''language'' in config. Please set (again) language.'
-unknown_args: '&bUnknown arg: %s'
-cant_show_usage: "&cCan't show usage of command."
+version_check_complete_update1: "& aUpdate нашли!"
+version_check_complete_update2: '& bCurrent: %s'
+version_check_complete_update3: '& Возрождайте: %s'
+version_check_complete_update4: "& Арун & b/pman обновление & для обновления."
+start_dl_plugin: "& aStarted загрузки плагина."
+url: '& Берл: %s'
+file: '& bFilename: %s'
+download_failed: "& cFailed для скачивания. Сервер вниз или неправильный URL-адрес."
+download_success: "& aSuccessfully загрузки."
+total_time: '& bTotal время: %s'
+finished_time: '& bFinished время: %s'
+start_time: '& bTotal время: %s'
+warning_lang_invalid: '& cWarning: недопустимые свойства «язык» в файле config. Пожалуйста установите (опять же) язык.'
+unknown_args: '& bUnknown arg: %s'
+cant_show_usage: "& cCan't показать использование команды."
 reloading_plugin: '& плагин aLoaded: %s'
 reloaded_plugin: '& плагин aLoaded: %s'
 reloading_plugin_error: Ошибка при обновлении плагина %s
