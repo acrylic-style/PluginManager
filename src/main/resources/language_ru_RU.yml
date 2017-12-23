@@ -1,18 +1,18 @@
 ---
-help: "Help"
-invalid_args: "Invalid args"
-required: "Required"
-optional: "Optional"
+help: "Помощь"
+invalid_args: "Недопустимые аргументы"
+required: "Обязательно"
+optional: "Дополнительно"
 information: "Information"
-pman_help_desc: "Display this."
-pman_load_desc: "Load a plugin."
-pman_unload_desc: "Unload a plugin."
-pman_download_desc: "Download a plugin."
-pman_delete_desc: "Remove a plugin."
-pman_restore_desc: "Restore a removed plugin."
-pman_editor_desc: "Edit a plugin config"
-pman_viewer_desc: "View a plugin config"
-pman_update_desc: "Update this plugin."
+pman_help_desc: "Отображает это сообщение!"
+pman_load_desc: "Обновить плагин"
+pman_unload_desc: "Обновить плагин"
+pman_download_desc: "Download the plugin"
+pman_delete_desc: "Удаление плагина"
+pman_restore_desc: "Восстановите удаленные плагин."
+pman_editor_desc: "Редактирование конфигурации плагина"
+pman_viewer_desc: "Редактирование конфигурации плагина"
+pman_update_desc: "Обновите этот плагин."
 pman_config_language: "Измените язык"
 pman_config_reload: "Перезагрузить конфигурационный"
 pman_usage_desc: "Использование: /<команда>"
@@ -23,21 +23,21 @@ pman_version: "& aPluginManager:&b&n %s"
 failed_update_plugin: "& cFailed обновить (это сервер вниз?)"
 updating_plugin: "& aUpdating плагин..."
 success_update_plugin: "& 5Plugin обновляется по %s. Перезагрузите!"
-you_are_not_operator: "&cYou are not operator!"
-no_permission: "&cYou don't have permission."
-opened_config_viewer: "Opened config viewer by %s"
-not_enough_args: "&cNot enough argument, cannot continue."
-running_on: '&aPluginManager is running on: %s'
-available_commands: '&aAvailable commands: /pman help'
-beta: "(BETA)"
-alpha: "(ALPHA)"
-project_page: '&b - Project page: %s'
-developer_version: '&b - Developer version: %s'
-source_code: '&b - Source code: %s'
-starting_load_plugins: "&aLoading plugin..."
-already_enabled: "&cThis plugin is already enabled!"
-failed_load_plugin: '&cCouldn''t load plugin: %s'
-success_load_plugin: '&aLoaded plugin: %s'
+you_are_not_operator: "& cYou являются не оператор!"
+no_permission: "Недостаточно прав!"
+opened_config_viewer: "Просмотр открытых config по %s"
+not_enough_args: "& ТНОК достаточно аргумент, не может продолжаться."
+running_on: '& aPluginManager работает на: %s'
+available_commands: '& aAvailable команды: /pman помощь'
+beta: "(БЕТА-ВЕРСИЯ)"
+alpha: "(АЛЬФА)"
+project_page: '& b - странице проекта: %s'
+developer_version: '& b - разработчик версия: %s'
+source_code: '& b - исходный код: %s'
+starting_load_plugins: "& aUpdating плагин..."
+already_enabled: "Этот плагин уже установлен."
+failed_load_plugin: '& загрузки плагин cCouldn''t: %s'
+success_load_plugin: '& плагин aLoaded: %s'
 error_occured: '&cAn error occured: %s'
 error_unload_plugin: '&cError while unloading plugin: %s'
 unloaded_plugin: '&aUnloaded plugin: %s'
