@@ -2,7 +2,7 @@
 help: "Помощь"
 invalid_args: "Недопустимые аргументы"
 required: "обязательно"
-optional: "Не обязательное для заполнения"
+optional: "Дополнительно"
 information: "Информация о структуре таблицы"
 pman_help_desc: "Отображает это сообщение!"
 pman_load_desc: "Download the plugin"
