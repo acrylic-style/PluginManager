@@ -62,6 +62,7 @@ version_check_complete_update1: "&aFrissítés található!"
 version_check_complete_update2: '&bJelenlegi: %s'
 version_check_complete_update3: '&eÚj: %s'
 version_check_complete_update4: "&aFuttasd a &b/pman update&a a frissítéshez."
+selected_directory: "&cSelected File is Directory, cannot continue."
 start_dl_plugin: "&aA plugin letöltése elkezdve."
 url: '&bURL: %s'
 file: '&bFájl név: %s'
