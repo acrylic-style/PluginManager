@@ -62,6 +62,7 @@ version_check_complete_update1: "&aアップデートがありました。"
 version_check_complete_update2: '&b現在: %s'
 version_check_complete_update3: '&e新バージョン: %s'
 version_check_complete_update4: "&b/pman update&a で更新できます。"
+selected_directory: "&cSelected File is Directory, cannot continue."
 start_dl_plugin: "&aプラグインのダウンロードを開始しました。"
 url: '&bURL: %s'
 file: '&bファイルの名前: %s'
