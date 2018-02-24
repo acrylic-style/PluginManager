@@ -113,6 +113,7 @@ public final class Lang {
 	public static String version_check_complete_update2 = null;
 	public static String version_check_complete_update3 = null;
 	public static String version_check_complete_update4 = null;
+	public static String selected_directory = null;
 	public static String pman_check_desc = null;
 	public static String start_dl_plugin = null;
 	public static String url = null;
@@ -201,6 +202,7 @@ public final class Lang {
 		 version_check_complete_update2 = LanguageProvider.load("version_check_complete_update2", "&bCurrent: %s");
 		 version_check_complete_update3 = LanguageProvider.load("version_check_complete_update3", "&eNew: %s");
 		 version_check_complete_update4 = LanguageProvider.load("version_check_complete_update4", "&aRun &b/pman update&a to update.");
+		 selected_directory = LanguageProvider.load("selected_directory", "&cSelected File is Directory, cannot continue.");
 		 pman_check_desc = LanguageProvider.load("pman_check_desc", "Check version manually.");
 		 start_dl_plugin = LanguageProvider.load("start_dl_plugin", "&aStarted downloading plugin.");
 		 url = LanguageProvider.load("url", "&bURL: %s");

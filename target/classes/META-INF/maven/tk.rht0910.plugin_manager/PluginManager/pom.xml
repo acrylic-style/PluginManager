@@ -33,10 +33,32 @@
     </plugins>
   </build>
   <repositories>
-    <repository>
+       <repository>
+            <id>PluginManager</id>
+            <name>PluginManager Repository</name>
+            <url>http://local4.point.rht0910.tk:8081/repository/PluginManager/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>tomeito-lib</id>
+            <name>tomeito-lib Repository</name>
+            <url>http://local4.point.rht0910.tk:8081/repository/tomeito-lib/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    <!-- repository>
       <id>tomeito-repo</id>
       <url>https://rht0910.tk/maven/</url>
-    </repository>
+    </repository -->
     <repository>
       <id>spigot-repo</id>
       <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
@@ -72,9 +94,24 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>tk.rht0910</groupId>
-      <artifactId>TomeitoLib</artifactId>
-      <version>1.0</version>
+      <groupId>tk.rht0910.tomeito_core</groupId>
+      <artifactId>tomeito-lib</artifactId>
+      <version>0.0.1</version>
     </dependency>
   </dependencies>
+      <pluginRepositories>
+        <pluginRepository>
+            <id>PluginManager</id>
+            <name>PluginManager Repo</name>
+            <url>http://local4.point.rht0910.tk:8081/repository/PluginManager/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <distributionManagement>
+        <repository>
+            <id>PluginManager</id>
+            <name>PluginManager Repo</name>
+            <url>http://local4.point.rht0910.tk:8081/repository/PluginManager/</url>
+        </repository>
+    </distributionManagement>
 </project>

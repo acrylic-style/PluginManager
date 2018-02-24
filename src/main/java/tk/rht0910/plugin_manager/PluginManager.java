@@ -352,7 +352,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 			} else if(args[0].equalsIgnoreCase("viewer")) {
 				Bukkit.getServer().getLogger().warning(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.opened_config_viewer, sender.toString())));
 				try {
-					if(args.length < 3) {
+					if(args.length < 3 || args.length <= 2) {
 						PluginUtils.ConfigViewer(sender, args[1], args[2], "");
 					} else {
 						PluginUtils.ConfigViewer(sender, args[1], args[2], args[3]);
