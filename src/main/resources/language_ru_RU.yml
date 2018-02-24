@@ -39,7 +39,7 @@ already_enabled: "Этот плагин уже установлен."
 failed_load_plugin: '& загрузки плагин cCouldn''t: %s'
 success_load_plugin: '& плагин aLoaded: %s'
 error_occured: '&cКритическая ошибка!'
-error_unload_plugin: Ошибка при обновлении плагина %s
+error_unload_plugin: 'Ошибка при обновлении плагина %s'
 unloaded_plugin: '& плагин aLoaded: %s'
 reloading_config: "& aReloading config..."
 error_reload_config: '& cError во время перезагрузки конфигурации: PluginManager'
@@ -62,6 +62,7 @@ version_check_complete_update1: "& aUpdate нашли!"
 version_check_complete_update2: '& bCurrent: %s'
 version_check_complete_update3: '& Возрождайте: %s'
 version_check_complete_update4: "& Арун & b/pman обновление & для обновления."
+selected_directory: "&cSelected File is Directory, cannot continue."
 start_dl_plugin: "& aStarted загрузки плагина."
 url: '& Берл: %s'
 file: '& bFilename: %s'
@@ -75,5 +76,5 @@ unknown_args: '& bUnknown arg: %s'
 cant_show_usage: "& cCan't показать использование команды."
 reloading_plugin: '& плагин aLoaded: %s'
 reloaded_plugin: '& плагин aLoaded: %s'
-reloading_plugin_error: Ошибка при обновлении плагина %s
+reloading_plugin_error: 'Ошибка при обновлении плагина %s'
 version: "1.4"
