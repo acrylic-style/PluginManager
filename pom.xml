@@ -36,7 +36,7 @@
        <repository>
             <id>PluginManager</id>
             <name>PluginManager Repository</name>
-            <url>http://local4.point.rht0910.tk:8081/repository/PluginManager/</url>
+            <url>https://repo.rht0910.tk/repository/PluginManager/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
@@ -47,7 +47,7 @@
         <repository>
             <id>tomeito-lib</id>
             <name>tomeito-lib Repository</name>
-            <url>http://local4.point.rht0910.tk:8081/repository/tomeito-lib/</url>
+            <url>https://repo.rht0910.tk/repository/tomeito-lib/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
@@ -103,7 +103,7 @@
         <pluginRepository>
             <id>PluginManager</id>
             <name>PluginManager Repo</name>
-            <url>http://local4.point.rht0910.tk:8081/repository/PluginManager/</url>
+            <url>https://repo.rht0910.tk/repository/PluginManager/</url>
         </pluginRepository>
     </pluginRepositories>
 
@@ -111,7 +111,7 @@
         <repository>
             <id>PluginManager</id>
             <name>PluginManager Repo</name>
-            <url>http://local4.point.rht0910.tk:8081/repository/PluginManager/</url>
+            <url>https://repo.rht0910.tk/repository/PluginManager/</url>
         </repository>
     </distributionManagement>
 </project>
