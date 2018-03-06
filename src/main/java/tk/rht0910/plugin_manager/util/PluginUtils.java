@@ -143,7 +143,7 @@ public final class PluginUtils {
 	@SuppressWarnings({ "rawtypes", "unused" })
 	public static boolean unloadPlugin(CommandSender sender, String name) {
 		Lang.use();
-		/* Thank you for PlugMan Developers */
+		/* Thanks for PlugMan Developers */
 		/* 399 */       Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin(name);
 		/*     */
 		/* 401 */       PluginManager pluginManager = Bukkit.getServer().getPluginManager();
@@ -282,7 +282,7 @@ public final class PluginUtils {
 				Object[] arg = list.toArray();
 				FileWrite(sender, arg, file);
 			} else {
-				sender.sendMessage(ChatColor.RED + "Selected File is Directory, cannot continue.");
+				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.selected_directory));
 			}
 		}
 		return true;
