@@ -62,6 +62,7 @@ version_check_complete_update1: "&aUpdate found!"
 version_check_complete_update2: '&bCurrent: %s'
 version_check_complete_update3: '&eNew: %s'
 version_check_complete_update4: "&aRun &b/pman update&a to update."
+selected_directory: "&cSelected File is Directory, cannot continue."
 start_dl_plugin: "&aStarted downloading plugin."
 url: '&bURL: %s'
 file: '&bFilename: %s'
