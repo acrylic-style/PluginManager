@@ -33,6 +33,17 @@
     </plugins>
   </build>
   <repositories>
+      <repository>
+        <id>rht0910-central</id>
+        <name>rht0910's maven central[proxy]</name>
+        <url>https://repo.rht0910.tk/repository/maven-central/</url>
+        <releases>
+            <enabled>true</enabled>
+        </releases>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+    </repository>
        <repository>
             <id>PluginManager</id>
             <name>PluginManager Repository</name>
