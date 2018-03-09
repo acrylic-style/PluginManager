@@ -17,6 +17,7 @@ pman_config_language: "Zmień język"
 pman_config_reload: "Reload config"
 pman_usage_desc: "Usage of command."
 pman_check_desc: "Sprawdź wersję manualnie."
+pman_reload_desc: "Reload a plugin."
 pman_version_desc: "Wyświetl wersje pluginu."
 pman_version: "&aPluginManager:&b&n %s"
 failed_update_plugin: "&cFailed to update(Is server down?)"
@@ -61,6 +62,7 @@ version_check_complete_update1: "&aZnaleziono aktualizację!"
 version_check_complete_update2: '&bCurrent: %s'
 version_check_complete_update3: '&eNew: %s'
 version_check_complete_update4: "&aWpisz &b/pman update&a aby aktualizować."
+selected_directory: "&cSelected File is Directory, cannot continue."
 start_dl_plugin: "&aStarted downloading plugin."
 url: '&bURL: %s'
 file: '&bFilename: %s'
@@ -72,4 +74,7 @@ start_time: '&bStart time: %s'
 warning_lang_invalid: '&cWarning: Invalid properties ''language'' in config. Please set (again) language.'
 unknown_args: '&bUnknown arg: %s'
 cant_show_usage: "&cCan't show usage of command."
-version: "1.2.3"
+reloading_plugin: '&aReloading plugin: %s ...'
+reloaded_plugin: '&aReloaded plugin: %s'
+reloading_plugin_error: '&cError while reloading plugin: %s'
+version: "1.4"

@@ -23,6 +23,7 @@ import com.google.common.io.Files;
 
 import tk.rht0910.plugin_manager.language.Lang;
 import tk.rht0910.plugin_manager.thread.AsyncDownload;
+import tk.rht0910.tomeito_core.utils.Log;
 
 public final class PluginUtils {
 	private static final char altColorChar = '&';
@@ -31,6 +32,11 @@ public final class PluginUtils {
 		loadPlugin(sender, plugin.getServer().getName(), file);
 	}
 
+	/**
+	 * Used only as reload plugin.
+	 * @param plugin
+	 * @return if success returns true, otherize returns false
+	 */
 	public static boolean enablePluginSilent(String plugin) {
 		try {
 			Plugin Bplugin = Bukkit.getPluginManager().getPlugin(plugin);
@@ -43,8 +49,13 @@ public final class PluginUtils {
 		}
 	}
 
+	/**
+	 * Load a plugin as asynchronous.
+	 * @param sender CommandSender(Player, Console) : CommandSender
+	 * @param plugin Plugin : String
+	 * @param file Plugin file : String
+	 */
 	public static void loadPlugin(CommandSender sender, String plugin, String file) {
-		//LoadPlugin.run();
 		try {
 			Lang.use();
 			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.starting_load_plugins));
@@ -121,6 +132,8 @@ public final class PluginUtils {
 			return;
 		}
 		return;
+		//Thread lp = new Thread(new LoadPlugin(sender, plugin, file));
+		//lp.start();
 	}
 
 	public boolean unloadPlugin(CommandSender sender, Plugin plugin) {
@@ -130,7 +143,7 @@ public final class PluginUtils {
 	@SuppressWarnings({ "rawtypes", "unused" })
 	public static boolean unloadPlugin(CommandSender sender, String name) {
 		Lang.use();
-		/* Thank you for PlugMan Developers */
+		/* Thanks for PlugMan Developers */
 		/* 399 */       Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin(name);
 		/*     */
 		/* 401 */       PluginManager pluginManager = Bukkit.getServer().getPluginManager();
@@ -269,7 +282,7 @@ public final class PluginUtils {
 				Object[] arg = list.toArray();
 				FileWrite(sender, arg, file);
 			} else {
-				sender.sendMessage(ChatColor.RED + "Selected File is Directory, cannot continue.");
+				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.selected_directory));
 			}
 		}
 		return true;
@@ -293,6 +306,8 @@ public final class PluginUtils {
 		try {
 		for(int i=0; i<=args.length; i++) {
 			if(args[i].contains("l:")) { // l : line
+				// String line_debug = args[i].replaceAll("l:", "");
+				Log.debug(args[i].replaceAll("l:", ""));
 				line_option = new Integer(args[i].replaceAll("l:", ""));
 			} else {
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.unknown_args, args[i])));
@@ -327,13 +342,14 @@ public final class PluginUtils {
 				}
 				List<String> list = new ArrayList<String>();
 				String str;
-				if(line_option != null) {
+				if(line_option != null ) {
 					try {
 						for(int i=0; i<=list.size(); i++) {
 							if(i != line_option) {
 								list.remove(i);
 							} else {
 								list.set(0, (String) list.toArray()[line_option]);
+								continue;
 							}
 						}
 					} catch(Exception | Error ignored) {

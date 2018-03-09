@@ -113,6 +113,7 @@ public final class Lang {
 	public static String version_check_complete_update2 = null;
 	public static String version_check_complete_update3 = null;
 	public static String version_check_complete_update4 = null;
+	public static String selected_directory = null;
 	public static String pman_check_desc = null;
 	public static String start_dl_plugin = null;
 	public static String url = null;
@@ -128,6 +129,7 @@ public final class Lang {
 	public static String reloading_plugin = null;
 	public static String reloaded_plugin = null;
 	public static String reloading_plugin_error = null;
+	public static String pman_reload_desc = null;
 
 	/**
 	 * Initialize a class
@@ -171,7 +173,7 @@ public final class Lang {
 		 source_code = (String) LanguageProvider.load("source_code", "&b - Source code: %s");
 		 starting_load_plugins = (String) LanguageProvider.load("starting_load_plugins", "Starting load plugins in PluginManager...");
 		 already_enabled = (String) LanguageProvider.load("already_enabled", "&cPlugin is already enabled!");
-		 version = (String) LanguageProvider.load("version", "1.2.3");
+		 version = (String) LanguageProvider.load("version", "1.3.1"); // TODO: Update in every version up
 		 pman_version_desc = (String) LanguageProvider.load("pman_version_desc", "Shows plugin version.");
 		 pman_version = (String) LanguageProvider.load("pman_version", "&aPluginManaver:&b&n %s");
 		 failed_load_plugin = (String) LanguageProvider.load("failed_load_plugin", "&cCouldn't load plugin: %s");
@@ -200,6 +202,7 @@ public final class Lang {
 		 version_check_complete_update2 = LanguageProvider.load("version_check_complete_update2", "&bCurrent: %s");
 		 version_check_complete_update3 = LanguageProvider.load("version_check_complete_update3", "&eNew: %s");
 		 version_check_complete_update4 = LanguageProvider.load("version_check_complete_update4", "&aRun &b/pman update&a to update.");
+		 selected_directory = LanguageProvider.load("selected_directory", "&cSelected File is Directory, cannot continue.");
 		 pman_check_desc = LanguageProvider.load("pman_check_desc", "Check version manually.");
 		 start_dl_plugin = LanguageProvider.load("start_dl_plugin", "&aStarted downloading plugin.");
 		 url = LanguageProvider.load("url", "&bURL: %s");
@@ -215,6 +218,7 @@ public final class Lang {
 		 reloading_plugin = LanguageProvider.load("reloading_plugin", "&aReloading plugin %s ...");
 		 reloaded_plugin = LanguageProvider.load("reloaded_plugin", "&aReloaded plugin: %s");
 		 reloading_plugin_error = LanguageProvider.load("reloading_plugin_error", "&cError while reloading plugin: %s");
+		 pman_reload_desc = LanguageProvider.load("pman_reload_desc", "Reload a plugin.");
 	}
 
 	  /**
