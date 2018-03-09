@@ -77,4 +77,4 @@ cant_show_usage: "&cコマンドの使用例を表示できません。"
 reloading_plugin: '&aプラグインを再読み込みしています: %s ...'
 reloaded_plugin: '&aプラグインを再読み込みしました: %s'
 reloading_plugin_error: '&cプラグインの再読み込み中にエラーが発生しました: %s'
-version: "1.4.1"
+version: "\"1.4.1"
