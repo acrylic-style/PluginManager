@@ -25,6 +25,11 @@ import tk.rht0910.plugin_manager.language.Lang;
 import tk.rht0910.plugin_manager.thread.AsyncDownload;
 import tk.rht0910.tomeito_core.utils.Log;
 
+/**
+ *
+ * Used by PluginManager class.
+ *
+ */
 public final class PluginUtils {
 	private static final char altColorChar = '&';
 

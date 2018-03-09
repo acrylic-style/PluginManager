@@ -6,6 +6,11 @@ import org.bukkit.command.CommandSender;
 
 import tk.rht0910.plugin_manager.language.Lang;
 
+/**
+ *
+ * The command list of sh*t
+ *
+ */
 public final class Command {
 	public boolean showHelp(CommandSender sender) {
 		Lang.use();
