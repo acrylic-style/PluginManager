@@ -77,4 +77,4 @@ cant_show_usage: "&cA parancs használatát nem lehet megjeleníteni."
 reloading_plugin: '&aA plugin újratöltése: %s ...'
 reloaded_plugin: '&aA plugin újratöltve: %s'
 reloading_plugin_error: '&cA plugin újratöltése közben hiba történt: %s'
-version: "1.4"
+version: "1.4.1"
