@@ -3,7 +3,7 @@
 
 Jenkins (Release Build): [![Build Status](https://ci.rht0910.tk/job/PluginManager/badge/icon)](https://ci.rht0910.tk/jenkins/job/PluginManager/)
 
-Jenkins (Development Build): [![Build Status](https://ci.rht0910.tk/job/PluginManager-dev/badge/icon)](https://ci.rht0910.tk/jenkins/job/PluginManager/)
+Jenkins (Development Build): [![Build Status](https://ci.rht0910.tk/job/PluginManager-dev/badge/icon)](https://ci.rht0910.tk/jenkins/job/PluginManager-dev/)
 
 TravisCI: [![Build Status](https://travis-ci.org/rht0910/PluginManager.svg?branch=master)](https://travis-ci.org/rht0910/PluginManager)
 
