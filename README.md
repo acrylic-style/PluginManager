@@ -1,7 +1,9 @@
 
 # PluginManager
 
-Jenkins (Dev version): <a href="https://ci.rht0910.tk/job/PluginManager"><img src="https://ci.rht0910.tk/job/PluginManager/badge/icon"></a>
+Jenkins (Release Build): [![Build Status](https://ci.rht0910.tk/job/PluginManager/badge/icon)](https://ci.rht0910.tk/jenkins/job/PluginManager/)
+
+Jenkins (Development Build): [![Build Status](https://ci.rht0910.tk/job/PluginManager-dev/badge/icon)](https://ci.rht0910.tk/jenkins/job/PluginManager/)
 
 TravisCI: [![Build Status](https://travis-ci.org/rht0910/PluginManager.svg?branch=master)](https://travis-ci.org/rht0910/PluginManager)
 
@@ -12,5 +14,4 @@ Project page: https://dev.bukkit.org/projects/pluginmanagement
 
 
 # Issues
-* In enable-testing: Could not initialize class: tk.rht0910.plugin_manager.utils.Manager
-* /pman viewer <Dir> <Filename> [Options]: option is not working
+* Manager class not used But i don't know when to use it.
