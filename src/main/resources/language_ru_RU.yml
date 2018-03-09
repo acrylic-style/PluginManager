@@ -77,4 +77,4 @@ cant_show_usage: "& cCan't показать использование кома�
 reloading_plugin: '& плагин aLoaded: %s'
 reloaded_plugin: '& плагин aLoaded: %s'
 reloading_plugin_error: 'Ошибка при обновлении плагина %s'
-version: "\"1.4.1"
+version: '1.4.1'
