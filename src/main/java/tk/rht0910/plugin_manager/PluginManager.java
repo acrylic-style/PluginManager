@@ -69,7 +69,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 		try {
 			Bukkit.getServer().getLogger().info("[PluginManager] Loaded PluginManager v1.4");
 		} catch(Exception e) {
-			Bukkit.getServer().getLogger().info("[PluginManager] Unknown error: " + e);
+			Bukkit.getServer().getLogger().info("[PluginManager] Got Unknown error: " + e);
 			e.printStackTrace();
 		}
 	}
@@ -382,7 +382,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 				}
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.updating_plugin));
 				try {
-					PluginUtils.Download(sender, "PluginManager", "http://point.rht0910.tk:8080/job/PluginManager/lastSuccessfulBuild/artifact/target/PluginManager.jar");
+					PluginUtils.Download(sender, "PluginManager", "https://ci.rht0910.tk/job/PluginManager/lastSuccessfulBuild/artifact/target/PluginManager.jar");
 				} catch(Exception e) {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.failed_update_plugin));
 					return false;
@@ -405,59 +405,9 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 						return false;
 					}
 				}
-				sender.sendMessage(ChatColor.RED + "Updating plugin...(Downloading from DEVELOPER UNSTABLE build)");
+				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.updating_plugin));
 				try {
-					PluginUtils.Download(sender, "PluginManager", "http://point.rht0910.tk:8080/job/PluginManager-branch%20of%20dev/lastSuccessfulBuild/artifact/target/PluginManager.jar");
-				} catch(Exception e) {
-					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.failed_update_plugin));
-					return false;
-				}
-				final Collection<? extends Player> onplayers = Bukkit.getServer().getOnlinePlayers();
-				final Player[] players = (Player[]) onplayers.toArray();
-				for(int i=0;i<=players.length;i++) {
-					if(players[i].isOp()) {
-						players[i].sendMessage(ChatColor.GREEN + "PluginManager" + ChatColor.RED + "(UNSTABLE)" + ChatColor.GREEN + " is updated by " + sender.toString() + ". Please restart server.");
-					}
-				}
-			} else if(args[0].equalsIgnoreCase("update-dev-local")) {
-				if(sender instanceof Player) {
-					if(!sender.isOp()) {
-						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.you_are_not_operator));
-						return false;
-					}
-					if(!sender.isPermissionSet("pluginmanager.admin")) {
-						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
-						return false;
-					}
-				}
-				sender.sendMessage(ChatColor.AQUA + "Updating plugin...(Downloading from DEVELOPER UNSTABLE build)");
-				try {
-					PluginUtils.Download(sender, "PluginManager", "http://local4.point.rht0910.tk:8080/job/PluginManager-branch%20of%20dev/lastSuccessfulBuild/artifact/target/PluginManager.jar");
-				} catch(Exception e) {
-					sender.sendMessage(ChatColor.RED + "Failed to update. (Is Download server down?)");
-					return false;
-				}
-				final Collection<? extends Player> onplayers = Bukkit.getServer().getOnlinePlayers();
-				final Player[] players = (Player[]) onplayers.toArray();
-				for(int i=0;i<=players.length;i++) {
-					if(players[i].isOp()) {
-						players[i].sendMessage(ChatColor.GREEN + "PluginManager" + ChatColor.RED + "(UNSTABLE)" + ChatColor.GREEN + " is updated by " + sender.toString() + ". Please restart server.");
-					}
-				}
-			} else if(args[0].equalsIgnoreCase("update-local")) {
-				if(sender instanceof Player) {
-					if(!sender.isOp()) {
-						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.you_are_not_operator));
-						return false;
-					}
-					if(!sender.isPermissionSet("pluginmanager.admin")) {
-						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
-						return false;
-					}
-				}
-				sender.sendMessage(ChatColor.AQUA + "Updating plugin...(Downloading from stable build)");
-				try {
-					PluginUtils.Download(sender, "PluginManager", "http://local4.point.rht0910.tk:8080/job/PluginManager/lastSuccessfulBuild/artifact/target/PluginManager.jar");
+					PluginUtils.Download(sender, "PluginManager", "https://ci.rht0910.tk/job/PluginManager-dev/lastSuccessfulBuild/artifact/target/PluginManager.jar");
 				} catch(Exception e) {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.failed_update_plugin));
 					return false;
