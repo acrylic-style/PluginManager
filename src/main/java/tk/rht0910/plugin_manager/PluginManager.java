@@ -26,6 +26,11 @@ import tk.rht0910.plugin_manager.util.Manager;
 import tk.rht0910.plugin_manager.util.PluginUtils;
 import tk.rht0910.tomeito_core.utils.Log;
 
+/**
+ *
+ * The Perfect Plugin Manager
+ *
+ */
 public final class PluginManager extends JavaPlugin implements TabCompleter, Listener {
 	//private static final String[] COMMANDS = {""};
 	public char altColorChar = '&';
@@ -49,7 +54,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 			PluginManager.this.getConfig().options().copyDefaults(true);
 			PluginManager.this.saveConfig();
 			CatchException catchException = new CatchException();
-				Thread thread = new Thread(new VersionCheck(null, null), "");
+				Thread thread = new Thread(new VersionCheck(null, null, "https://api.rht0910.tk/pluginmanager_version"), "");
 				thread.setUncaughtExceptionHandler(catchException);
 				thread.start();
 				getServer().getPluginManager().registerEvents(this, this);
@@ -91,7 +96,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 			if(args[0].length() == 0) { // Until /pman
 				// /pman <TAB>
 				return Arrays.asList("load", "unload", "reload", "help", "disable", "download", "delete", "restore", "update", "update-dev", "editor",
-						"viewer", "usage", "check", "config");
+						"viewer", "usage", "check", "config", "check-dev");
 			/*} else if(args[0].length() == 1) {
 				return Arrays.asList("af_ZA", "ar_SA", "ca_ES", "cs_CZ", "da_DK", "de_DE", "el_GR", "en_US", "es_ES", "fi_FI", "fr_FR",
 						"he_IL", "hu_HU", "it_IT", "ja_JP", "ko_KR", "nl_NL", "no_NO", "pl_PL", "pt_BR", "pt_PT", "ro_RO", "ru_RU", "sr_SP",
@@ -129,6 +134,8 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					return Collections.singletonList("usage");
 				} else if("check".startsWith(args[0])) {
 					return Collections.singletonList("check");
+				} else if("check-dev".startsWith(args[0])) {
+					return Collections.singletonList("check-dev");
 				} else if("config".startsWith(args[0])) {
 					return Collections.singletonList("config");
 				}
@@ -231,24 +238,25 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 				try {
 					//Manager.getCommand().ShowHelp(sender);
 					sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + " -----");
-					sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
-					sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
-					sender.sendMessage(ChatColor.AQUA + " - /pman load <Plugin name> <PluginFile> - " + Lang.pman_load_desc);
-					sender.sendMessage(ChatColor.AQUA + " - /pman unload(or /pman disable) <Plugin name> - " + Lang.pman_unload_desc);
-					sender.sendMessage(ChatColor.AQUA + " - /pman reload <Plugin> - " + Lang.pman_reload_desc);
-					sender.sendMessage(ChatColor.AQUA + " - /pman download <FileName> <URL> - " + Lang.pman_download_desc);
+					sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "]   - " + Lang.information);
+					sender.sendMessage(ChatColor.AQUA + " - /pman help                                             - " + Lang.pman_help_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman load <Plugin name> <PluginFile>                  - " + Lang.pman_load_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman unload(or /pman disable) <Plugin name>           - " + Lang.pman_unload_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman reload <Plugin>                                  - " + Lang.pman_reload_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman download <FileName> <URL>                        - " + Lang.pman_download_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman delete <PluginFileName> <PluginName(or Backup file name)> - " + Lang.pman_delete_desc);
-					sender.sendMessage(ChatColor.AQUA + " - /pman restore <FileName> - " + Lang.pman_restore_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman restore <FileName>                               - " + Lang.pman_restore_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman editor <Dir> <File> <Line(Count from 0)> <value> - " + Lang.pman_editor_desc);
-					sender.sendMessage(ChatColor.AQUA + " - /pman viewer <Dir> <File> [options] - " + Lang.pman_viewer_desc);
-					sender.sendMessage(ChatColor.AQUA + " - /pman update - " + Lang.pman_update_desc);
-					sender.sendMessage(ChatColor.AQUA + " - /pman update-dev - Update to UNSTABLE and DEVELOPER version.");
-					sender.sendMessage(ChatColor.AQUA + " - /pman usage <Command> - " + Lang.pman_usage_desc);
-					sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...> - " + Lang.pman_config_language);
-					sender.sendMessage(ChatColor.AQUA + " - /pman config reload - " + Lang.pman_config_reload);
-					sender.sendMessage(ChatColor.AQUA + " - /pman check - " + Lang.pman_check_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman viewer <Dir> <File> [options]                    - " + Lang.pman_viewer_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman update                                           - " + Lang.pman_update_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman update-dev                                       - Update to UNSTABLE and DEVELOPER version.");
+					sender.sendMessage(ChatColor.AQUA + " - /pman usage <Command>                                  - " + Lang.pman_usage_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...>              - " + Lang.pman_config_language);
+					sender.sendMessage(ChatColor.AQUA + " - /pman config reload                                    - " + Lang.pman_config_reload);
+					sender.sendMessage(ChatColor.AQUA + " - /pman check                                            - " + Lang.pman_check_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman check-dev                                        - " + Lang.pman_check_desc + ChatColor.RED + "(dev)");
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.project_page, "https://dev.bukkit.org/projects/pluginmanagement/")));
-					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.developer_version, "http://point.rht0910.tk:8080/job/PluginManager/")));
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.developer_version, "http://ci.rht0910.tk/job/PluginManager/")));
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.source_code, "https://github.com/rht0910/PluginManager/")));
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.problem_case, "https://github.com/rht0910/PluginManager/issues/")));
 				} catch(Exception | Error e) {
@@ -422,8 +430,11 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 			} else if(args[0].equalsIgnoreCase("usage")) {
 				tk.rht0910.plugin_manager.command.Command.getUsageOfCmd(sender, args[1]);
 			} else if(args[0].equalsIgnoreCase("check")) {
-				VersionCheck vc = new VersionCheck(true, sender);
+				VersionCheck vc = new VersionCheck(true, sender, "https://api.rht0910.tk/pluginmanager_version", "");
 				vc.start();
+			} else if(args[0].equalsIgnoreCase("check-dev")) {
+				VersionCheck vcd = new VersionCheck(true, sender, "https://api.rht0910.tk/pluginmanager_dev_version", "(dev)");
+				vcd.start();
 			} else if(args[0].equalsIgnoreCase("config")) {
 				try {
 					if(args[1] == null) {
