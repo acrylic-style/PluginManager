@@ -12,6 +12,7 @@ import org.bukkit.command.CommandSender;
 
 import tk.rht0910.plugin_manager.PluginManager;
 import tk.rht0910.plugin_manager.language.Lang;
+import tk.rht0910.plugin_manager.util.StringTool;
 import tk.rht0910.tomeito_core.utils.Log;
 
 public class VersionCheck extends Thread implements Runnable {
@@ -66,7 +67,7 @@ public class VersionCheck extends Thread implements Runnable {
 			sender.sendMessage(String.format(Lang.error_occured, e));
 		}
 
-		if(Lang.version.compareTo(line) == -1) {
+		if(StringTool.toVersion(Lang.version).compareTo(StringTool.toVersion(line)) == -1) {
 			Log.info("New version available: " + line);
 			PluginManager.is_available_new_version = true;
 			PluginManager.newv = line;

@@ -4,7 +4,7 @@
   <groupId>tk.rht0910.plugin_manager</groupId>
   <artifactId>PluginManager</artifactId>
   <name>PluginManager</name>
-  <version>1.4</version>
+  <version>1.4.1</version>
   <build>
     <plugins>
       <plugin>
@@ -35,13 +35,23 @@
     <repository>
       <releases />
       <snapshots />
-      <id>PluginManager</id>
-      <name>PluginManager Repository</name>
-      <url>http://local4.point.rht0910.tk:8081/repository/PluginManager/</url>
+      <id>rht0910-central</id>
+      <name>rht0910's maven central[proxy]</name>
+      <url>https://repo.rht0910.tk/repository/maven-central/</url>
     </repository>
     <repository>
-      <id>tomeito-repo</id>
-      <url>https://rht0910.tk/maven/</url>
+      <releases />
+      <snapshots />
+      <id>PluginManager</id>
+      <name>PluginManager Repository</name>
+      <url>https://repo.rht0910.tk/repository/PluginManager/</url>
+    </repository>
+    <repository>
+      <releases />
+      <snapshots />
+      <id>tomeito-lib</id>
+      <name>tomeito-lib Repository</name>
+      <url>https://repo.rht0910.tk/repository/tomeito-lib/</url>
     </repository>
     <repository>
       <id>spigot-repo</id>
@@ -52,7 +62,7 @@
     <pluginRepository>
       <id>PluginManager</id>
       <name>PluginManager Repo</name>
-      <url>http://local4.point.rht0910.tk:8081/repository/PluginManager/</url>
+      <url>https://repo.rht0910.tk/repository/PluginManager/</url>
     </pluginRepository>
   </pluginRepositories>
   <dependencies>
@@ -127,7 +137,7 @@
     <repository>
       <id>PluginManager</id>
       <name>PluginManager Repo</name>
-      <url>http://local4.point.rht0910.tk:8081/repository/PluginManager/</url>
+      <url>https://repo.rht0910.tk/repository/PluginManager/</url>
     </repository>
   </distributionManagement>
 </project>
