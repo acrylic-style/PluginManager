@@ -36,6 +36,7 @@ developer_version: '&b - 開発者バージョン: %s'
 source_code: '&b - ソースコード: %s'
 starting_load_plugins: "&aプラグインを読み込んでいます..."
 already_enabled: "&cこのプラグインはすでに有効です！"
+already_disabled: "&cThis plugin is already disabled!"
 failed_load_plugin: '&cプラグインを読み込めませんでした: %s'
 success_load_plugin: '&aプラグインを読み込みました: %s'
 error_occured: '&cエラーが発生しました: %s'
@@ -77,4 +78,4 @@ cant_show_usage: "&cコマンドの使用例を表示できません。"
 reloading_plugin: '&aプラグインを再読み込みしています: %s ...'
 reloaded_plugin: '&aプラグインを再読み込みしました: %s'
 reloading_plugin_error: '&cプラグインの再読み込み中にエラーが発生しました: %s'
-version: '1.4.1'
+version: '1.4.2'
