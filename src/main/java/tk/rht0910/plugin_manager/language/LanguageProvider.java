@@ -12,4 +12,9 @@ public class LanguageProvider {
 		FileConfiguration config = YamlConfiguration.loadConfiguration(new File(PluginManager.getPlugin(PluginManager.class).getDataFolder(), "language_" + PluginManager.getLanguageCode() + ".yml"));
 		return (String) config.get(path, def);
 	}
+
+	public static String loadVersion() {
+		FileConfiguration config = YamlConfiguration.loadConfiguration(new File(PluginManager.getPlugin(PluginManager.class).getDataFolder(), "version.yml"));
+		return (String) config.get("version");
+	}
 }

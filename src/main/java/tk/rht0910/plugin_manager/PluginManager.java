@@ -72,7 +72,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 	@Override
 	public void onLoad() {
 		try {
-			Bukkit.getServer().getLogger().info("[PluginManager] Loaded PluginManager v1.4.1");
+			Bukkit.getServer().getLogger().info("[PluginManager] Loaded PluginManager v1.4.2.2");
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().info("[PluginManager] Got Unknown error: " + e);
 			e.printStackTrace();
