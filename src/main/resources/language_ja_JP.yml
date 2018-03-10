@@ -59,6 +59,7 @@ started_version_check: "&aバージョンチェックを実行中..."
 already_checking: "&cバージョンチェックはすでに実行中です！"
 version_check_complete1: "&aバージョンチェックが完了しました。"
 version_check_complete_update_no: "&aアップデートはありません。"
+version_check_complete_update5: "&aRun &b/pman update-dev&a to update."
 version_check_complete_update1: "&aアップデートがありました。"
 version_check_complete_update2: '&b現在: %s'
 version_check_complete_update3: '&e新バージョン: %s'
@@ -78,4 +79,3 @@ cant_show_usage: "&cコマンドの使用例を表示できません。"
 reloading_plugin: '&aプラグインを再読み込みしています: %s ...'
 reloaded_plugin: '&aプラグインを再読み込みしました: %s'
 reloading_plugin_error: '&cプラグインの再読み込み中にエラーが発生しました: %s'
-version: '1.4.2.1'
