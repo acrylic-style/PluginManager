@@ -230,6 +230,7 @@ public final class Lang {
 	   * Work on enabling plugin
 	   */
 	  public static void readFolder() {
+		  PluginManager.getPlugin(PluginManager.class).saveResource("version.yml", true);
 		  PluginManager.getPlugin(PluginManager.class).saveResource("language_en_US.yml", true);
 		  PluginManager.getPlugin(PluginManager.class).saveResource("language_af_ZA.yml", true);
 		  PluginManager.getPlugin(PluginManager.class).saveResource("language_ar_SA.yml", true);
