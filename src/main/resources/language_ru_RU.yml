@@ -1,79 +1,79 @@
 ---
-help: "Help"
-invalid_args: "Invalid args"
-required: "Required"
-optional: "Optional"
-information: "Information"
-pman_help_desc: "Display this."
-pman_load_desc: "Load a plugin."
-pman_unload_desc: "Unload a plugin."
-pman_download_desc: "Download a plugin."
-pman_delete_desc: "Remove a plugin."
-pman_restore_desc: "Restore a removed plugin."
-pman_editor_desc: "Edit a plugin config"
-pman_viewer_desc: "View a plugin config"
-pman_update_desc: "Update this plugin."
-pman_config_language: "Change language"
-pman_config_reload: "Reload config"
-pman_usage_desc: "Usage of command."
-pman_check_desc: "Check version manually."
-pman_reload_desc: "Reload a plugin."
-pman_version_desc: "Shows plugin version."
-pman_version: "&aPluginManager:&b&n %s"
-failed_update_plugin: "&cFailed to update(Is server down?)"
-updating_plugin: "&aUpdating plugin..."
-success_update_plugin: "&5Plugin is updated by %s . Please reload!"
-you_are_not_operator: "&cYou are not operator!"
-no_permission: "&cYou don't have permission."
-opened_config_viewer: "Opened config viewer by %s"
-not_enough_args: "&cNot enough argument, cannot continue."
-running_on: '&aPluginManager is running on: %s'
-available_commands: '&aAvailable commands: /pman help'
-beta: "(BETA)"
-alpha: "(ALPHA)"
-project_page: '&b - Project page: %s'
-developer_version: '&b - Developer version: %s'
-source_code: '&b - Source code: %s'
-starting_load_plugins: "&aLoading plugin..."
-already_enabled: "&cThis plugin is already enabled!"
-failed_load_plugin: '&cCouldn''t load plugin: %s'
-success_load_plugin: '&aLoaded plugin: %s'
-error_occured: '&cAn error occured: %s'
-error_unload_plugin: '&cError while unloading plugin: %s'
-unloaded_plugin: '&aUnloaded plugin: %s'
-reloading_config: "&aReloading config..."
-error_reload_config: '&cError while reloading config: PluginManager'
-reloaded_config: '&aReloaded config: PluginManager'
+help: "Помощь"
+invalid_args: "Недопустимые аргументы"
+required: "обязательно"
+optional: "Дополнительно"
+information: "Информация о структуре таблицы"
+pman_help_desc: "Отображает это сообщение!"
+pman_load_desc: "Download the plugin"
+pman_unload_desc: "Download the plugin"
+pman_download_desc: "Download the plugin"
+pman_delete_desc: "Удаление плагина"
+pman_restore_desc: "Восстановите удаленные плагин."
+pman_editor_desc: "Редактирование конфигурации плагина"
+pman_viewer_desc: "Редактирование конфигурации плагина"
+pman_update_desc: "Обновите этот плагин."
+pman_config_language: "Измените язык"
+pman_config_reload: "Перезагрузить конфигурационный"
+pman_usage_desc: "Использование: /<команда>"
+pman_check_desc: "Проверьте версию вручную."
+pman_reload_desc: "Обновить плагин"
+pman_version_desc: "Показывает версию плагина."
+pman_version: "& aPluginManager:&b&n %s"
+failed_update_plugin: "& cFailed обновить (это сервер вниз?)"
+updating_plugin: "& aUpdating плагин..."
+success_update_plugin: "& 5Plugin обновляется по %s. Перезагрузите!"
+you_are_not_operator: "& cYou являются не оператор!"
+no_permission: "Недостаточно прав!"
+opened_config_viewer: "Просмотр открытых config по %s"
+not_enough_args: "& ТНОК достаточно аргумент, не может продолжаться."
+running_on: '& aPluginManager работает на: %s'
+available_commands: '& aAvailable команды: /pman помощь'
+beta: "(БЕТА-ВЕРСИЯ)"
+alpha: "(АЛЬФА)"
+project_page: '& b - странице проекта: %s'
+developer_version: '& b - разработчик версия: %s'
+source_code: '& b - исходный код: %s'
+starting_load_plugins: "& aUpdating плагин..."
+already_enabled: "Этот плагин уже установлен."
+failed_load_plugin: '& загрузки плагин cCouldn''t: %s'
+success_load_plugin: '& плагин aLoaded: %s'
+error_occured: '&cКритическая ошибка!'
+error_unload_plugin: 'Ошибка при обновлении плагина %s'
+unloaded_plugin: '& плагин aLoaded: %s'
+reloading_config: "& aReloading config..."
+error_reload_config: '& cError во время перезагрузки конфигурации: PluginManager'
+reloaded_config: '& aReloaded config: PluginManager'
 set_language: '&aSet config: language: %s'
-init_complete: "Initialize complete."
-init_error: "Error while initializing, disabling plugin, please see errors."
-continue_error: "&4If you see error continuing? please report to developer!"
-continue_error_catch: '&4If you see error continuing? please report to developer!(Please tell to developer: %s)'
-please_report_developer: "&4Error cannot be resolved in user. Please report to developer!"
-please_report_developer_catch: '&4Error cannot be resolved in user. Please report to developer! Please tell to developer: %s'
-problem_case: '&b - In case of problems: %s'
-new_version_available: '&aNew version available for PluginManager: Current: %s, New: %s'
-new_version_available2: "&aRun &b/pman update &ato update."
-started_version_check: "&aRunning version check..."
-already_checking: "&cAlready version checking!"
-version_check_complete1: "&aVersion check complete."
-version_check_complete_update_no: "&aNo updates found."
-version_check_complete_update1: "&aUpdate found!"
-version_check_complete_update2: '&bCurrent: %s'
-version_check_complete_update3: '&eNew: %s'
-version_check_complete_update4: "&aRun &b/pman update&a to update."
-start_dl_plugin: "&aStarted downloading plugin."
-url: '&bURL: %s'
-file: '&bFilename: %s'
-download_failed: "&cFailed to download. Server down or wrong url."
-download_success: "&aSuccessfully download."
-total_time: '&bTotal time: %s'
-finished_time: '&bFinished time: %s'
-start_time: '&bStart time: %s'
-warning_lang_invalid: '&cWarning: Invalid properties ''language'' in config. Please set (again) language.'
-unknown_args: '&bUnknown arg: %s'
-cant_show_usage: "&cCan't show usage of command."
-reloading_plugin: '&aReloading plugin: %s ...'
-reloaded_plugin: '&aReloaded plugin: %s'
-reloading_plugin_error: '&cError while reloading plugin: %s'
-version: "1.4"
+init_complete: "Полная инициализация."
+init_error: "Ошибка при инициализации, Отключение плагина, смотрите ошибки."
+continue_error: "& 4If вы видите ошибка продолжение? Пожалуйста, сообщите разработчику!"
+continue_error_catch: '& 4If вы видите ошибка продолжение? Пожалуйста, сообщите разработчику! (Пожалуйста, сообщите разработчику: %s)'
+please_report_developer: "& 4Error не могут быть разрешены в пользователя. Пожалуйста, сообщите разработчику!"
+please_report_developer_catch: '& 4Error не могут быть разрешены в пользователя. Пожалуйста, сообщите разработчику! Пожалуйста, сообщите разработчику: %s'
+problem_case: '& b - в случае проблем: %s'
+new_version_available: '& Заново версия доступна для PluginManager: текущий: %s, New: %s'
+new_version_available2: "& Арун & b/pman обновление & АТО обновление."
+started_version_check: "& Проверка версии aRunning..."
+already_checking: "& Проверка версии cAlready!"
+version_check_complete1: "& Отвращение проверить полный."
+version_check_complete_update_no: "Свежих обновлений нет"
+version_check_complete_update1: "& aUpdate нашли!"
+version_check_complete_update2: '& bCurrent: %s'
+version_check_complete_update3: '& Возрождайте: %s'
+version_check_complete_update4: "& Арун & b/pman обновление & для обновления."
+selected_directory: "&cSelected File is Directory, cannot continue."
+start_dl_plugin: "& aStarted загрузки плагина."
+url: '& Берл: %s'
+file: '& bFilename: %s'
+download_failed: "& cFailed для скачивания. Сервер вниз или неправильный URL-адрес."
+download_success: "& aSuccessfully загрузки."
+total_time: '& bTotal время: %s'
+finished_time: '& bFinished время: %s'
+start_time: '& bTotal время: %s'
+warning_lang_invalid: '& cWarning: недопустимые свойства «язык» в файле config. Пожалуйста установите (опять же) язык.'
+unknown_args: '& bUnknown arg: %s'
+cant_show_usage: "& cCan't показать использование команды."
+reloading_plugin: '& плагин aLoaded: %s'
+reloaded_plugin: '& плагин aLoaded: %s'
+reloading_plugin_error: 'Ошибка при обновлении плагина %s'

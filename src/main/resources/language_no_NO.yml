@@ -62,6 +62,7 @@ version_check_complete_update1: "&aOppdatering funnet!"
 version_check_complete_update2: '&bNåværende: %s'
 version_check_complete_update3: '&eNy: %s'
 version_check_complete_update4: "&aKjør &b/pman update&a for å oppdatere."
+selected_directory: "&cSelected File is Directory, cannot continue."
 start_dl_plugin: "&aStarted downloading plugin."
 url: '&bURL: %s'
 file: '&bFilename: %s'
@@ -76,4 +77,3 @@ cant_show_usage: "&cCan't show usage of command."
 reloading_plugin: '&aReloading plugin: %s ...'
 reloaded_plugin: '&aReloaded plugin: %s'
 reloading_plugin_error: '&cError while reloading plugin: %s'
-version: "1.4"

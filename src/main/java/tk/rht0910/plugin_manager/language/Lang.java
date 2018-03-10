@@ -86,6 +86,7 @@ public final class Lang {
 	public static String source_code = null;
 	public static String starting_load_plugins = null;
 	public static String already_enabled = null;
+	public static String already_disabled = null;
 	public static String failed_load_plugin = null;
 	public static String success_load_plugin = null;
 	public static String error_occured = null;
@@ -113,6 +114,8 @@ public final class Lang {
 	public static String version_check_complete_update2 = null;
 	public static String version_check_complete_update3 = null;
 	public static String version_check_complete_update4 = null;
+	public static String version_check_complete_update5 = null;
+	public static String selected_directory = null;
 	public static String pman_check_desc = null;
 	public static String start_dl_plugin = null;
 	public static String url = null;
@@ -171,8 +174,9 @@ public final class Lang {
 		 developer_version = (String) LanguageProvider.load("developer_version", "&b - Developer version: %s");
 		 source_code = (String) LanguageProvider.load("source_code", "&b - Source code: %s");
 		 starting_load_plugins = (String) LanguageProvider.load("starting_load_plugins", "Starting load plugins in PluginManager...");
-		 already_enabled = (String) LanguageProvider.load("already_enabled", "&cPlugin is already enabled!");
-		 version = (String) LanguageProvider.load("version", "1.3.1"); // TODO: Update in every version up
+		 already_enabled = (String) LanguageProvider.load("already_enabled", "&cThis plugin is already enabled!");
+		 already_disabled = LanguageProvider.load("already_disabled", "&cThis plugin is already disabled!");
+		 version = (String) LanguageProvider.loadVersion();
 		 pman_version_desc = (String) LanguageProvider.load("pman_version_desc", "Shows plugin version.");
 		 pman_version = (String) LanguageProvider.load("pman_version", "&aPluginManaver:&b&n %s");
 		 failed_load_plugin = (String) LanguageProvider.load("failed_load_plugin", "&cCouldn't load plugin: %s");
@@ -201,6 +205,8 @@ public final class Lang {
 		 version_check_complete_update2 = LanguageProvider.load("version_check_complete_update2", "&bCurrent: %s");
 		 version_check_complete_update3 = LanguageProvider.load("version_check_complete_update3", "&eNew: %s");
 		 version_check_complete_update4 = LanguageProvider.load("version_check_complete_update4", "&aRun &b/pman update&a to update.");
+		 version_check_complete_update5 = LanguageProvider.load("version_check_complete_update5", "&aRun &b/pman update-dev&a to update.");
+		 selected_directory = LanguageProvider.load("selected_directory", "&cSelected File is Directory, cannot continue.");
 		 pman_check_desc = LanguageProvider.load("pman_check_desc", "Check version manually.");
 		 start_dl_plugin = LanguageProvider.load("start_dl_plugin", "&aStarted downloading plugin.");
 		 url = LanguageProvider.load("url", "&bURL: %s");
@@ -224,6 +230,7 @@ public final class Lang {
 	   * Work on enabling plugin
 	   */
 	  public static void readFolder() {
+		  PluginManager.getPlugin(PluginManager.class).saveResource("version.yml", true);
 		  PluginManager.getPlugin(PluginManager.class).saveResource("language_en_US.yml", true);
 		  PluginManager.getPlugin(PluginManager.class).saveResource("language_af_ZA.yml", true);
 		  PluginManager.getPlugin(PluginManager.class).saveResource("language_ar_SA.yml", true);

@@ -1,7 +1,9 @@
 
 # PluginManager
 
-Jenkins (Dev version): <a href="http://point.rht0910.tk:8080/job/PluginManager"><img src="http://point.rht0910.tk:8080/job/PluginManager/badge/icon"></a>
+Jenkins (Release Build): [![Build Status](https://ci.rht0910.tk/job/PluginManager/badge/icon)](https://ci.rht0910.tk/job/PluginManager/)
+
+Jenkins (Development Build): [![Build Status](https://ci.rht0910.tk/job/PluginManager-dev/badge/icon)](https://ci.rht0910.tk/job/PluginManager-dev/)
 
 TravisCI: [![Build Status](https://travis-ci.org/rht0910/PluginManager.svg?branch=master)](https://travis-ci.org/rht0910/PluginManager)
 
@@ -11,6 +13,6 @@ Project page: https://dev.bukkit.org/projects/pluginmanagement
 
 
 
-# Issues
-* In enable-testing: Could not initialize class: tk.rht0910.plugin_manager.utils.Manager
-* /pman viewer <Dir> <Filename> [Options]: option is not working
+## Commands
+| Command | Description |
+| ---------------------- | --------------------------------- |
