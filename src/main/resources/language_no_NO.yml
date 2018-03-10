@@ -59,6 +59,7 @@ started_version_check: "&aRunning version check..."
 already_checking: "&cSjekker allerede versjon!"
 version_check_complete1: "&aVellykket sjekket versjon."
 version_check_complete_update_no: "&aIngen oppdateringer funnet."
+version_check_complete_update5: "&aRun &b/pman update-dev&a to update."
 version_check_complete_update1: "&aOppdatering funnet!"
 version_check_complete_update2: '&bNåværende: %s'
 version_check_complete_update3: '&eNy: %s'
@@ -78,4 +79,3 @@ cant_show_usage: "&cCan't show usage of command."
 reloading_plugin: '&aReloading plugin: %s ...'
 reloaded_plugin: '&aReloaded plugin: %s'
 reloading_plugin_error: '&cError while reloading plugin: %s'
-version: '1.4.2.1'
