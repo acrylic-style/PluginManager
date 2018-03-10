@@ -86,6 +86,7 @@ public final class Lang {
 	public static String source_code = null;
 	public static String starting_load_plugins = null;
 	public static String already_enabled = null;
+	public static String already_disabled = null;
 	public static String failed_load_plugin = null;
 	public static String success_load_plugin = null;
 	public static String error_occured = null;
@@ -172,8 +173,9 @@ public final class Lang {
 		 developer_version = (String) LanguageProvider.load("developer_version", "&b - Developer version: %s");
 		 source_code = (String) LanguageProvider.load("source_code", "&b - Source code: %s");
 		 starting_load_plugins = (String) LanguageProvider.load("starting_load_plugins", "Starting load plugins in PluginManager...");
-		 already_enabled = (String) LanguageProvider.load("already_enabled", "&cPlugin is already enabled!");
-		 version = (String) LanguageProvider.load("version", "1.3.1"); // TODO: Update in every version up
+		 already_enabled = (String) LanguageProvider.load("already_enabled", "&cThis plugin is already enabled!");
+		 already_disabled = LanguageProvider.load("already_disabled", "&cThis plugin is already disabled!");
+		 version = (String) LanguageProvider.load("version", "1.4.2"); // TODO: Update in every version up
 		 pman_version_desc = (String) LanguageProvider.load("pman_version_desc", "Shows plugin version.");
 		 pman_version = (String) LanguageProvider.load("pman_version", "&aPluginManaver:&b&n %s");
 		 failed_load_plugin = (String) LanguageProvider.load("failed_load_plugin", "&cCouldn't load plugin: %s");

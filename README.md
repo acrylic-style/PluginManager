@@ -13,5 +13,6 @@ Project page: https://dev.bukkit.org/projects/pluginmanagement
 
 
 
-# Issues
-* Manager class not used But i don't know when to use it.
+## Commands
+| Command | Description |
+| ---------------------- | --------------------------------- |

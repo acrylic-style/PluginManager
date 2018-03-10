@@ -6,18 +6,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.SimpleCommandMap;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginManager;
-import org.bukkit.plugin.UnknownDependencyException;
 
 import com.google.common.io.Files;
 
@@ -33,8 +28,8 @@ import tk.rht0910.tomeito_core.utils.Log;
 public final class PluginUtils {
 	private static final char altColorChar = '&';
 
-	public void loadPlugin(CommandSender sender, Plugin plugin, String file) {
-		loadPlugin(sender, plugin.getServer().getName(), file);
+	public void loadPlugin(CommandSender sender, Plugin plugin) {
+		loadPlugin(sender, plugin.getServer().getName());
 	}
 
 	/**
@@ -55,80 +50,35 @@ public final class PluginUtils {
 	}
 
 	/**
-	 * Load a plugin as asynchronous.
+	 * Load a plugin.
 	 * @param sender CommandSender(Player, Console) : CommandSender
 	 * @param plugin Plugin : String
 	 * @param file Plugin file : String
 	 */
-	public static void loadPlugin(CommandSender sender, String plugin, String file) {
+	public static void loadPlugin(CommandSender sender, String plugin) {
 		try {
 			Lang.use();
 			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.starting_load_plugins));
 			Bukkit.getServer().getLogger().warning(ChatColor.translateAlternateColorCodes(altColorChar, Lang.starting_load_plugins));
-			File[] objFiles = (new File("plugins/")).listFiles();
-			if ( objFiles != null ) {
-				int trying = 0;
-				for(int i=0; i< objFiles.length; i++ ) {
-					if(trying == 0) {
-						trying = 1;
-					} else if(trying == 1) {
-						return;
-					}
-					File file2 = //objFiles[i];
-							new File("plugins/" + file);
-					//String file_str = plugin;
-					//Pattern p = Pattern.compile(".");
-					//Matcher m = p.matcher(file_str);
-					//if(m.find()) {
-						int is = 0;
+			if(!Bukkit.getPluginManager().isPluginEnabled(plugin)) {
+				File[] files = new File(new File(".").getAbsolutePath()).listFiles();
+				for(int i = 0; i < files.length; i++) {
+					File file = files[i];
+					String filename = file.getName();
+					if(filename.startsWith(plugin)) {
 						try {
-							if(!Bukkit.getServer().getPluginManager().isPluginEnabled(Bukkit.getServer().getPluginManager().getPlugin(plugin))) {
-								if(!Bukkit.getServer().getPluginManager().isPluginEnabled(plugin)) {
-									try {
-										Bukkit.getServer().getPluginManager().loadPlugin(file2);
-									} catch(Exception | Error e) {
-										Log.error("Error while loading plugin: " + plugin + "(" + file2 + "), errors dumped below:");
-										e.printStackTrace();
-									}
-
-									try {
-										Bukkit.getServer().getPluginManager().loadPlugin(new File(file2 + ".jar"));
-									} catch(Exception | Error e) {
-										Log.error("Error while loading plugin: " + plugin + "(" + file2 + ".jar), errors dumped below:");
-										e.printStackTrace();
-									}
-									Plugin pm = Bukkit.getServer().getPluginManager().getPlugin(plugin);
-									Bukkit.getServer().getPluginManager().enablePlugin(pm);
-								}
-							} else {
-								sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.already_enabled));
-							}
-						} catch(NullPointerException e) {
-							e.printStackTrace();
-							is = 1;
-						} catch(UnknownDependencyException e) {
-							e.printStackTrace();
-							is = 1;
+							Bukkit.getPluginManager().loadPlugin(file.getAbsoluteFile());
+							Bukkit.getPluginManager().enablePlugin(Bukkit.getPluginManager().getPlugin(plugin));
 						} catch(Exception e) {
-							if(is == 0) {
-								sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.error_occured, e)));
-							}
+							sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.error_occured));
 							e.printStackTrace();
-						} finally {
-							if(is == 1) {
-								sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.failed_load_plugin, plugin)));
-								Bukkit.getServer().getLogger().severe("Couldn't load plugin: Args[0]: \"" + plugin + "\", Args[1]: \"not defined\" Player: \"" + sender.toString() + "\"(IP:" + sender.getServer().getIp() + ")");
-							} else {
-								sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.success_load_plugin, plugin)));
-								Bukkit.getServer().getLogger().info("Loaded plugin: Args[0]: \"" + plugin + "\", Args[1]: \"not defined\" Player: \"" + sender.toString() + "\"(IP:" + sender.getServer().getIp() + ")");
-							}
 						}
 					}
 				}
-			//} else {
-				//sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.please_report_developer));
-				//Bukkit.getServer().getLogger().severe(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.please_report_developer_catch, "objFiles not found")));
-			//}
+			} else {
+				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.already_enabled));
+				Log.warn(ChatColor.translateAlternateColorCodes(altColorChar, Lang.already_enabled) + ": " + plugin);
+			}
 		} catch (Exception e) {
 			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.error_occured, e)));
 			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.failed_load_plugin, plugin)));
@@ -137,69 +87,26 @@ public final class PluginUtils {
 			return;
 		}
 		return;
-		//Thread lp = new Thread(new LoadPlugin(sender, plugin, file));
-		//lp.start();
 	}
 
 	public boolean unloadPlugin(CommandSender sender, Plugin plugin) {
 		return unloadPlugin(sender, plugin.getServer().getName());
 	}
 
-	@SuppressWarnings({ "rawtypes", "unused" })
 	public static boolean unloadPlugin(CommandSender sender, String name) {
 		Lang.use();
-		/* Thanks for PlugMan Developers */
-		/* 399 */       Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin(name);
-		/*     */
-		/* 401 */       PluginManager pluginManager = Bukkit.getServer().getPluginManager();
-		/*     */
-		/* 403 */       SimpleCommandMap commandMap = null;
-		/*     */
-		/* 405 */       List plugins = null;
-		/*     */
-		/* 407 */       Map names = null;
-		/* 408 */       Map commands = null;
-		/* 409 */       Map listeners = null;
-		/* 411 */       boolean reloadlisteners = true;
-		/*     */
-		/* 413 */       if(pluginManager != null) {
-		/*     */
-		/* 415 */          pluginManager.disablePlugin(plugin);
-		/*     */
-		/*     */
-		/*     */          try {
-		/* 419 */             Field cl = Bukkit.getServer().getPluginManager().getClass().getDeclaredField("plugins");
-		/* 420 */             cl.setAccessible(true);
-		/* 421 */             plugins = (List)cl.get(pluginManager);
-		/*     */
-		/* 423 */             Field ex = Bukkit.getServer().getPluginManager().getClass().getDeclaredField("lookupNames");
-		/* 424 */             ex.setAccessible(true);
-		/* 425 */             names = (Map)ex.get(pluginManager);
-		/*     */             Field c;
-		/*     */             try {
-		/* 428 */                c = Bukkit.getServer().getPluginManager().getClass().getDeclaredField("listeners");
-		/* 429 */                c.setAccessible(true);
-		/* 430 */                listeners = (Map)c.get(pluginManager);
-		/* 431 */             } catch (Exception arg13) {
-		/* 432 */                reloadlisteners = false;
-		/*     */             }
-		/*     */
-		/* 435 */             c = Bukkit.getServer().getPluginManager().getClass().getDeclaredField("commandMap");
-		/* 436 */             c.setAccessible(true);
-		/* 437 */             commandMap = (SimpleCommandMap)c.get(pluginManager);
-		/*     */
-		/* 439 */             Field value = SimpleCommandMap.class.getDeclaredField("knownCommands");
-		/* 440 */             value.setAccessible(true);
-		/* 441 */             commands = (Map)value.get(commandMap);
-		commands.remove((Map) value.get(commandMap));
-		/*     */
-		/* 443 */          } catch (Exception e) {
-			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.error_occured));
+		try {
+			if(Bukkit.getPluginManager().isPluginEnabled(name)) {
+				Bukkit.getPluginManager().disablePlugin(Bukkit.getPluginManager().getPlugin(name));
+			} else {
+				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.already_disabled));
+			}
+		} catch(Exception e) {
+			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.please_report_developer_catch, e)));
+			Log.error(ChatColor.translateAlternateColorCodes(altColorChar, Lang.please_report_developer));
 			e.printStackTrace();
-			return false;
-		} finally {
-			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.unloaded_plugin, name)));
-		}
+			Log.error("Caused by:");
+			e.getCause().printStackTrace();
 		}
 		return true;
 	}
@@ -425,7 +332,7 @@ public final class PluginUtils {
 		/* 375 */       if(plugin != null) {
 			Bukkit.getServer().getLogger().info("Reloading plugin: " + plugin.toString());
 		/* 376 */          unloadPlugin(sender, plugin);
-		/* 377 */          loadPlugin(sender, plugin, plugin.toString());
+		/* 377 */          loadPlugin(sender, plugin);
 		Bukkit.getServer().getLogger().info("Reloaded plugin: " + plugin.toString());
 		/*     */       }
 		/* 379 */    }
@@ -512,4 +419,3 @@ public final class PluginUtils {
 		async_thread.start();
 	}
 }
-// Thank you for PlugMan developers.
