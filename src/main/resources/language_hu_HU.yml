@@ -36,6 +36,7 @@ developer_version: '&b - Fejlesztői verzió: %s'
 source_code: '&b - Forráskód: %s'
 starting_load_plugins: "&aA plugin betöltése..."
 already_enabled: "&cEz a plugin már engedélyezve!"
+already_disabled: "&cThis plugin is already disabled!"
 failed_load_plugin: '&cNem lehet betölteni a plugint: %s'
 success_load_plugin: '&aPlugin betöltve: %s'
 error_occured: '&cHiba lépett fel: %s'
@@ -58,6 +59,7 @@ started_version_check: "&aA verziók ellenőrzése..."
 already_checking: "&cMár verzióellenőrzés van!"
 version_check_complete1: "&aA verzió ellenőrzés befejezve."
 version_check_complete_update_no: "&aNincs frissítés."
+version_check_complete_update5: "&aRun &b/pman update-dev&a to update."
 version_check_complete_update1: "&aFrissítés található!"
 version_check_complete_update2: '&bJelenlegi: %s'
 version_check_complete_update3: '&eÚj: %s'
