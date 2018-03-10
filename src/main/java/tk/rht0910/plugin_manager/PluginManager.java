@@ -281,9 +281,9 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.not_enough_args));
 					return false;
 				} else if(args.length == 2) {
-					PluginUtils.loadPlugin(sender, args[0]);
+					PluginUtils.loadPlugin(sender, args[1]);
 				} else if(args.length > 3) {
-					PluginUtils.loadPlugin(sender, args[0]);
+					PluginUtils.loadPlugin(sender, args[1]);
 					sender.sendMessage(ChatColor.YELLOW + "Note: Two arguments are not supported. Use /pman load <Plugin>");
 				}
 			} else if(args[0].equalsIgnoreCase("disable")) {
