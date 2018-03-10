@@ -98,6 +98,11 @@ public class VersionCheck extends Thread implements Runnable {
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update4));
 			}
 			return;
+		} else if(StringTool.toVersion(Lang.version).compareTo(StringTool.toVersion(line)) == 1) {
+			Log.info("Oh you're a time traveller!");
+			if(player) {
+				sender.sendMessage("Hello Time Traveller!");
+			}
 		} else {
 			Log.info("No updates found.");
 			if(player == true) {sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update_no));}
