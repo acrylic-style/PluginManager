@@ -36,6 +36,7 @@ developer_version: '&b - Developer version: %s'
 source_code: '&b - Kod źródłowy: %s'
 starting_load_plugins: "&aWczytywanie pluginu..."
 already_enabled: "&cPlugin jest już włączony!"
+already_disabled: "&cThis plugin is already disabled!"
 failed_load_plugin: '&cNie można załadować pluginu: %s'
 success_load_plugin: '&aZaładowany plugin: %s'
 error_occured: '&cWystąpił błąd: %s'
@@ -58,6 +59,7 @@ started_version_check: "&aSprawdzanie wersji w toku..."
 already_checking: "&cAlready version checking!"
 version_check_complete1: "&aSprawdzanie wersji zakończone."
 version_check_complete_update_no: "&aBrak dostępnych aktualizacji."
+version_check_complete_update5: "&aRun &b/pman update-dev&a to update."
 version_check_complete_update1: "&aZnaleziono aktualizację!"
 version_check_complete_update2: '&bCurrent: %s'
 version_check_complete_update3: '&eNew: %s'
@@ -77,4 +79,3 @@ cant_show_usage: "&cCan't show usage of command."
 reloading_plugin: '&aReloading plugin: %s ...'
 reloaded_plugin: '&aReloaded plugin: %s'
 reloading_plugin_error: '&cError while reloading plugin: %s'
-version: '1.4.1'
