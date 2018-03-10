@@ -63,28 +63,44 @@ public final class PluginUtils {
 			Log.info("Checking for plugin is enabled...");
 			if(!Bukkit.getPluginManager().isPluginEnabled(plugin)) {
 				Log.info("The plugin is not enabled, starting load...");
-				Plugin loadedornot = Bukkit.getPluginManager().loadPlugin(new File(".").getAbsoluteFile());
-				Log.info("AbsolutePath: " + new File("./plugins").getAbsolutePath());
+				Plugin loadedornot = Bukkit.getPluginManager().loadPlugin(new File("./plugins/" + plugin + ".jar").getAbsoluteFile());
+				Log.info("AbsolutePath: " + new File("./plugins/").getAbsolutePath());
+				Log.info("Loading: " + new File("./plugins/" + plugin + ".jar").getAbsolutePath());
 				if(loadedornot != null) {
 					Bukkit.getPluginManager().enablePlugin(loadedornot);
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.success_load_plugin));
+					Log.info("Successfully enabled plugin.");
+					return;
+				} else {
+					Log.info("Cannot load.(File not found)");
 				}
-				File[] files = new File("./plugins").getAbsoluteFile().listFiles();
+				Log.info("Checking for plugins folder...");
+				File[] files = new File("./plugins/").getAbsoluteFile().listFiles();
 				for(int i = 0; i < files.length; i++) {
 					File file = files[i];
 					String filename = file.getName();
 					if(filename.startsWith(plugin)) {
 						try {
+							Log.info("Loading: " + file.getAbsolutePath());
 							Plugin loaded = Bukkit.getPluginManager().loadPlugin(file.getAbsoluteFile());
 							if(loaded != null) {
 								Bukkit.getPluginManager().enablePlugin(loaded);
 								sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.success_load_plugin));
+								Log.info("Plugin loaded");
+								return;
+							} else {
+								Log.info("Returned null, continue...");
 							}
 						} catch(Exception e) {
 							sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.error_occured));
 							e.printStackTrace();
 						}
 					}
+				}
+				Log.info("loop exited!");
+				if(Bukkit.getPluginManager().isPluginEnabled(plugin)) {
+					Log.warn("But not enabled plugin!");
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.failed_load_plugin));
 				}
 			} else {
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.already_enabled));
