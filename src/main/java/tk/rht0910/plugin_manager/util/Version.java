@@ -1,5 +1,7 @@
 package tk.rht0910.plugin_manager.util;
 
+import tk.rht0910.tomeito_core.utils.Log;
+
 public class Version implements Comparable<Version> {
 
     private String version;
@@ -10,10 +12,14 @@ public class Version implements Comparable<Version> {
 
     public Version(String version) {
         if(version == null)
-            throw new IllegalArgumentException("Version can not be null");
-        if(!version.matches("[0-9]+(\\.[0-9]+)*"))
-            throw new IllegalArgumentException("Invalid version format");
-        this.version = version;
+            throw new IllegalArgumentException("Version cannot be null(This is development problem)");
+        if(version.matches("[0-9]+(\\.[0-9]+)*")) {
+        	this.version = version;
+
+        } else {
+        	Log.error("Regular Expression does not match. version: [\"" + version + "\"] RegEx:[\"[0-9]+(\\.[0-9]+)*\"]");
+        	throw new IllegalArgumentException("Invalid version format! (This is development problem)");
+        }
     }
 
     @Override public int compareTo(Version that) {

@@ -77,4 +77,4 @@ cant_show_usage: "&cCan't show usage of command."
 reloading_plugin: '&aReloading plugin: %s ...'
 reloaded_plugin: '&aReloaded plugin: %s'
 reloading_plugin_error: '&cError while reloading plugin: %s'
-version: "1.4.1"
+

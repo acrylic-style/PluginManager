@@ -36,7 +36,7 @@ developer_version: '&b - 開発者バージョン: %s'
 source_code: '&b - ソースコード: %s'
 starting_load_plugins: "&aプラグインを読み込んでいます..."
 already_enabled: "&cこのプラグインはすでに有効です！"
-already_disabled: "&cThis plugin is already disabled!"
+already_disabled: "&cこのプラグインはすでに無効です！"
 failed_load_plugin: '&cプラグインを読み込めませんでした: %s'
 success_load_plugin: '&aプラグインを読み込みました: %s'
 error_occured: '&cエラーが発生しました: %s'
