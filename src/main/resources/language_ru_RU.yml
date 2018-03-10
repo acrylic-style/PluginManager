@@ -36,6 +36,7 @@ developer_version: '& b - разработчик версия: %s'
 source_code: '& b - исходный код: %s'
 starting_load_plugins: "& aUpdating плагин..."
 already_enabled: "Этот плагин уже установлен."
+already_disabled: "&cThis plugin is already disabled!"
 failed_load_plugin: '& загрузки плагин cCouldn''t: %s'
 success_load_plugin: '& плагин aLoaded: %s'
 error_occured: '&cКритическая ошибка!'
@@ -58,6 +59,7 @@ started_version_check: "& Проверка версии aRunning..."
 already_checking: "& Проверка версии cAlready!"
 version_check_complete1: "& Отвращение проверить полный."
 version_check_complete_update_no: "Свежих обновлений нет"
+version_check_complete_update5: "&aRun &b/pman update-dev&a to update."
 version_check_complete_update1: "& aUpdate нашли!"
 version_check_complete_update2: '& bCurrent: %s'
 version_check_complete_update3: '& Возрождайте: %s'
@@ -77,4 +79,3 @@ cant_show_usage: "& cCan't показать использование кома�
 reloading_plugin: '& плагин aLoaded: %s'
 reloaded_plugin: '& плагин aLoaded: %s'
 reloading_plugin_error: 'Ошибка при обновлении плагина %s'
-

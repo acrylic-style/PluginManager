@@ -59,6 +59,7 @@ started_version_check: "&aバージョンチェックを実行中..."
 already_checking: "&cバージョンチェックはすでに実行中です！"
 version_check_complete1: "&aバージョンチェックが完了しました。"
 version_check_complete_update_no: "&aアップデートはありません。"
+version_check_complete_update5: "&aRun &b/pman update-dev&a to update."
 version_check_complete_update1: "&aアップデートがありました。"
 version_check_complete_update2: '&b現在: %s'
 version_check_complete_update3: '&e新バージョン: %s'
