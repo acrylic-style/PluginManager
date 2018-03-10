@@ -547,6 +547,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 				sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...> - " + Lang.pman_config_language);
 				sender.sendMessage(ChatColor.AQUA + " - /pman config reload - " + Lang.pman_config_reload);
 				sender.sendMessage(ChatColor.AQUA + " - /pman check - " + Lang.pman_check_desc);
+				sender.sendMessage(ChatColor.AQUA + " - /pman check-dev - " + Lang.pman_check_desc + ChatColor.RED + "(dev)");
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.project_page, "https://dev.bukkit.org/projects/pluginmanagement/")));
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.developer_version, "http://point.rht0910.tk:8080/job/PluginManager/")));
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.source_code, "https://github.com/rht0910/PluginManager/")));
