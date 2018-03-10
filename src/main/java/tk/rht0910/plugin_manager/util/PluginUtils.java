@@ -64,12 +64,12 @@ public final class PluginUtils {
 			if(!Bukkit.getPluginManager().isPluginEnabled(plugin)) {
 				Log.info("The plugin is not enabled, starting load...");
 				Plugin loadedornot = Bukkit.getPluginManager().loadPlugin(new File(".").getAbsoluteFile());
-				Log.info("AbsolutePath: " + new File(".").getAbsolutePath());
+				Log.info("AbsolutePath: " + new File("./plugins").getAbsolutePath());
 				if(loadedornot != null) {
 					Bukkit.getPluginManager().enablePlugin(loadedornot);
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.success_load_plugin));
 				}
-				File[] files = new File(".").getAbsoluteFile().listFiles();
+				File[] files = new File("./plugins").getAbsoluteFile().listFiles();
 				for(int i = 0; i < files.length; i++) {
 					File file = files[i];
 					String filename = file.getName();
