@@ -82,9 +82,17 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 	@Override
 	public void onDisable() {
 		try {
-		Bukkit.getServer().getLogger().info("[PluginManager] PluginManager is disabled!");
+			Bukkit.getServer().getLogger().info("[PluginManager] Disabling PluginManager");
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().severe(ChatColor.DARK_RED + "[PluginManager] Unknown error! Please see errors.");
+			e.printStackTrace();
+		}
+		try {
+			current = null;
+			newv = null;
+			warning = null;
+			is_available_new_version = null;
+		} catch (Throwable e) {
 			e.printStackTrace();
 		}
 	}
