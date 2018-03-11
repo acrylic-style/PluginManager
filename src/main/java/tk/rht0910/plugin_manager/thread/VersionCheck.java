@@ -86,31 +86,37 @@ public class VersionCheck extends Thread implements Runnable {
 			Log.error(String.format(Lang.error_occured, "Failed to open connection or invalid response code: " + e));
 			sender.sendMessage(String.format(Lang.error_occured, e));
 		}
-
-		if(StringTool.toVersion(Lang.version).compareTo(StringTool.toVersion(line)) == -1) {
-			Log.info("New version available: " + line);
-			PluginManager.is_available_new_version = true;
-			PluginManager.newv = line;
-			if(player == true) {
-				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update1));
-				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.version_check_complete_update2, PluginManager.current)));
-				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.version_check_complete_update3, line + ChatColor.RED + edition)));
-				if(edition == "(dev)") {
-					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update5));
-				} else {
-					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update4));
+		try {
+			if(StringTool.toVersion(Lang.version).compareTo(StringTool.toVersion(line)) == -1) {
+				Log.info("New version available: " + line);
+				PluginManager.is_available_new_version = true;
+				PluginManager.newv = line;
+				if(player == true) {
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update1));
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.version_check_complete_update2, PluginManager.current)));
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.version_check_complete_update3, line + ChatColor.RED + edition)));
+					if(edition == "(dev)") {
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update5));
+					} else {
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update4));
+					}
 				}
+				return;
+			} else if(StringTool.toVersion(Lang.version).compareTo(StringTool.toVersion(line)) == 1) {
+				Log.info("Oh you're a time traveller!");
+				if(player) {
+					sender.sendMessage("Hello Time Traveller!");
+				}
+			} else {
+				Log.info("No updates found.");
+				if(player == true) {sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update_no));}
+				return;
 			}
-			return;
-		} else if(StringTool.toVersion(Lang.version).compareTo(StringTool.toVersion(line)) == 1) {
-			Log.info("Oh you're a time traveller!");
-			if(player) {
-				sender.sendMessage("Hello Time Traveller!");
-			}
-		} else {
-			Log.info("No updates found.");
-			if(player == true) {sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update_no));}
-			return;
+		} catch(IllegalArgumentException iae) {
+			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.continue_error_catch, iae)));
+			Log.error(ChatColor.translateAlternateColorCodes(altColorChar, Lang.error_occured));
+			iae.printStackTrace();
+			iae.getCause().printStackTrace();
 		}
 	}
 }

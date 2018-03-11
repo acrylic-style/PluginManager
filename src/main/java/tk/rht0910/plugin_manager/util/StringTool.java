@@ -1,7 +1,7 @@
 package tk.rht0910.plugin_manager.util;
 
 public class StringTool {
-	public static Version toVersion(String version) {
+	public static Version toVersion(String version) throws IllegalArgumentException {
 		return new Version(version);
 	}
 
