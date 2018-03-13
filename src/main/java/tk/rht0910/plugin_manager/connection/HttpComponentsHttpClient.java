@@ -14,7 +14,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 public class HttpComponentsHttpClient extends Thread {
-	private static String URI = "";
+	private static String URI;
 
 	public HttpComponentsHttpClient(String URI) {
 		HttpComponentsHttpClient.URI = URI;
@@ -28,8 +28,6 @@ public class HttpComponentsHttpClient extends Thread {
         System.out.println("===== HTTP GET Start =====");
 
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
-        // もしくは
-        // try (CloseableHttpClient httpClient = HttpClientBuilder.create().build()) {
             HttpGet getMethod = new HttpGet(URI);
 
             try (CloseableHttpResponse response = httpClient.execute(getMethod)) {

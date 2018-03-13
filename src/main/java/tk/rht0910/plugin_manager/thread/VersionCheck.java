@@ -16,10 +16,10 @@ import tk.rht0910.plugin_manager.util.StringTool;
 import tk.rht0910.tomeito_core.utils.Log;
 
 public class VersionCheck extends Thread implements Runnable {
-	private static Boolean player = false;
-	private static CommandSender sender = null;
-	private static URL formalurl = null;
-	private static String edition = "";
+	private static Boolean player;
+	private static CommandSender sender;
+	private static URL formalurl;
+	private static String edition;
 	private static final char altColorChar = '&';
 	public VersionCheck(Boolean byPlayer, CommandSender sender, String url) {
 		VersionCheck.player = byPlayer;
@@ -58,7 +58,7 @@ public class VersionCheck extends Thread implements Runnable {
 		String line = null;
 		URL url = null;
 		Log.info(ChatColor.translateAlternateColorCodes(altColorChar, Lang.started_version_check) + ChatColor.RED + edition);
-		if(player == true) {sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.started_version_check) + ChatColor.RED + edition);}
+		if(player) {sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.started_version_check) + ChatColor.RED + edition);}
 		url = formalurl;
 		HttpURLConnection conn = null;
 		try {
@@ -91,11 +91,11 @@ public class VersionCheck extends Thread implements Runnable {
 				Log.info("New version available: " + line);
 				PluginManager.is_available_new_version = true;
 				PluginManager.newv = line;
-				if(player == true) {
+				if(player) {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update1));
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.version_check_complete_update2, PluginManager.current)));
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.version_check_complete_update3, line + ChatColor.RED + edition)));
-					if(edition == "(dev)") {
+					if(edition.equals("(dev)")) {
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update5));
 					} else {
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update4));
@@ -109,7 +109,7 @@ public class VersionCheck extends Thread implements Runnable {
 				}
 			} else {
 				Log.info("No updates found.");
-				if(player == true) {sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update_no));}
+				if(player) {sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update_no));}
 				return;
 			}
 		} catch(IllegalArgumentException iae) {
