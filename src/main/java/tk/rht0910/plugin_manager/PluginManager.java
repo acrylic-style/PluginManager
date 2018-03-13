@@ -1,6 +1,7 @@
 package tk.rht0910.plugin_manager;
 
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -23,6 +24,7 @@ import tk.rht0910.plugin_manager.language.Lang;
 import tk.rht0910.plugin_manager.thread.VersionCheck;
 import tk.rht0910.plugin_manager.util.Manager;
 import tk.rht0910.plugin_manager.util.PluginUtils;
+import tk.rht0910.plugin_manager.util.StringTool;
 import tk.rht0910.tomeito_core.utils.Log;
 
 /**
@@ -52,8 +54,25 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 	@Override
 	public void onEnable() {
 		try {
-			PluginManager.this.getConfig().options().copyDefaults(true);
-			PluginManager.this.saveConfig();
+			Log.info("Checking Bukkit version");
+			Calendar cal1 = Calendar.getInstance();
+			Calendar cal2 = Calendar.getInstance();
+			cal1.set(4,01);
+			String version = Bukkit.getVersion();
+			if(StringTool.toVersion("1.8").compareTo(StringTool.toVersion(version)) == 1) {
+				Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
+				Log.warn("Your server version(" + version + ") is not supported!");
+				Log.warn("We recommended update " + version + " to 1.8 or later!");
+				Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
+			}
+			if(StringTool.toVersion("1.12.2").compareTo(StringTool.toVersion(version)) == -1) {
+				Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
+				Log.warn("Your server version(" + version + ") is not supported!");
+				Log.warn("We recommended downgrade " + version + " to 1.12.2 or older!");
+				Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
+			}
+			this.getConfig().options().copyDefaults(true);
+			this.saveConfig();
 			CatchException catchException = new CatchException();
 				Thread thread = new Thread(new VersionCheck(null, null, "https://api.rht0910.tk/pluginmanager_version"), "");
 				thread.setUncaughtExceptionHandler(catchException);
