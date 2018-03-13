@@ -40,7 +40,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 
 	public static String getLanguageCode() {
 		String getty = PluginManager.getPlugin(PluginManager.class).getConfig().getString("language");
-		if(Arrays.asList("af_ZA", "ar_SA", "ca_ES", "cs_CZ", "da_DK", "de_DE", "el_GR", "en_US", "es_ES", "fi_FI", "fr_FR",
+		if(!Arrays.asList("af_ZA", "ar_SA", "ca_ES", "cs_CZ", "da_DK", "de_DE", "el_GR", "en_US", "es_ES", "fi_FI", "fr_FR",
 				"he_IL", "hu_HU", "it_IT", "ja_JP", "ko_KR", "nl_NL", "no_NO", "pl_PL", "pt_BR", "pt_PT", "ro_RO", "ru_RU", "sr_SP",
 				"sv_SE", "tr_TR", "uk_UA", "vi_VN", "zh_CN", "zh_TW").contains(getty)) {
 			getty = Locale.getDefault().toString();
