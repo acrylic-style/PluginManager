@@ -1,7 +1,6 @@
 package tk.rht0910.plugin_manager;
 
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -30,6 +29,8 @@ import tk.rht0910.tomeito_core.utils.Log;
 /**
  *
  * The Perfect Plugin Manager
+ * <br/><br/>
+ * <b>Note: Do not use extends for this class.</b>
  *
  */
 public final class PluginManager extends JavaPlugin implements TabCompleter, Listener {
@@ -54,10 +55,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 	@Override
 	public void onEnable() {
 		try {
-			Log.info("Checking Bukkit version");
-			Calendar cal1 = Calendar.getInstance();
-			Calendar cal2 = Calendar.getInstance();
-			cal1.set(4,01);
+			Log.info("Checking bukkit version");
 			String version = Bukkit.getVersion();
 			if(StringTool.toVersion("1.8").compareTo(StringTool.toVersion(version)) == 1) {
 				Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
@@ -92,7 +90,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 	@Override
 	public void onLoad() {
 		try {
-			Bukkit.getServer().getLogger().info("[PluginManager] Loaded PluginManager v1.4.2.2");
+			Bukkit.getServer().getLogger().info("[PluginManager] Loaded PluginManager v1.4.2.3");
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().info("[PluginManager] Got Unknown error: " + e);
 			e.printStackTrace();
