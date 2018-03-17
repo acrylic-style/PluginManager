@@ -89,7 +89,7 @@
     </dependency>
   </dependencies>
       <pluginRepositories>
-              <pluginRepository>
+        <pluginRepository>
             <id>maven-public-direct</id>
             <url>https://direct.repo.rht0910.tk/repository/maven-public/</url>
         </pluginRepository>
