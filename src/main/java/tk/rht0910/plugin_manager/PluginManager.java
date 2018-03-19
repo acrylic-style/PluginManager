@@ -73,7 +73,6 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 				}
 			} catch(Throwable e) {
 				Log.error("Version comparation failed!");
-				Log.error(Lang.format(Lang.please_report_developer_catch, e));
 				e.printStackTrace();
 			}
 			this.getConfig().options().copyDefaults(true);
