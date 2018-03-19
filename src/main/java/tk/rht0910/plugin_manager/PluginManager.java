@@ -23,7 +23,6 @@ import tk.rht0910.plugin_manager.language.Lang;
 import tk.rht0910.plugin_manager.thread.VersionCheck;
 import tk.rht0910.plugin_manager.util.Manager;
 import tk.rht0910.plugin_manager.util.PluginUtils;
-import tk.rht0910.plugin_manager.util.StringTool;
 import tk.rht0910.tomeito_core.utils.Log;
 
 /**
@@ -55,9 +54,10 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 	@Override
 	public void onEnable() {
 		try {
+			/*
 			Log.info("Checking bukkit version");
 			try {
-				String version = Bukkit.getServer().getClass().getPackage().getName().substring(Bukkit.getServer().getClass().getPackage().getName().lastIndexOf('n') + 1);
+				//String version = Bukkit.getServer().getClass().getPackage().getName().substring(Bukkit.getServer().getClass().getPackage().getName().lastIndexOf('n') + 1);
 				// String version = Bukkit.getBukkitVersion();
 				if(StringTool.toVersion("1.8").compareTo(StringTool.toVersion(version)) == 1) {
 					Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
@@ -74,7 +74,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 			} catch(Throwable e) {
 				Log.error("Version comparation failed!");
 				e.printStackTrace();
-			}
+			}*/
 			this.getConfig().options().copyDefaults(true);
 			this.saveConfig();
 			CatchException catchException = new CatchException();
