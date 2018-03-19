@@ -56,7 +56,8 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 	public void onEnable() {
 		try {
 			Log.info("Checking bukkit version");
-			String version = Bukkit.getVersion();
+			// String version = Bukkit.getServer().getClass().getPackage().getName().substring(Bukkit.getServer().getClass().getPackage().getName().lastIndexOf('n') + 1);
+			String version = Bukkit.getBukkitVersion();
 			if(StringTool.toVersion("1.8").compareTo(StringTool.toVersion(version)) == 1) {
 				Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
 				Log.warn("Your server version(" + version + ") is not supported!");
