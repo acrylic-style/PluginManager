@@ -521,7 +521,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 				if(args[1].equalsIgnoreCase("language")) {
 					try {
 						this.getConfig().set("language", args[2]);
-					} catch(Exception | Error e) {
+					} catch(Throwable e) {
 						sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + " -----");
 						sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
 						sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
