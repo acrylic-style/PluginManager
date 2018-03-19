@@ -284,7 +284,7 @@ public final class Lang {
 			return ChatColor.translateAlternateColorCodes('&', string);
 		}
 
-		public static String format(String string, String format) {
+		public static String format(String string, Object... format) {
 			return ChatColor.translateAlternateColorCodes('&', String.format(string, format));
 		}
 }

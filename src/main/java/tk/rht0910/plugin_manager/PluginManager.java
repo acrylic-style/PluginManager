@@ -56,19 +56,25 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 	public void onEnable() {
 		try {
 			Log.info("Checking bukkit version");
-			String version = Bukkit.getServer().getClass().getPackage().getName().substring(Bukkit.getServer().getClass().getPackage().getName().lastIndexOf('n') + 1);
-			// String version = Bukkit.getBukkitVersion();
-			if(StringTool.toVersion("1.8").compareTo(StringTool.toVersion(version)) == 1) {
-				Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
-				Log.warn("Your server version(" + version + ") is not supported!");
-				Log.warn("We recommended update " + version + " to 1.8 or later!");
-				Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
-			}
-			if(StringTool.toVersion("1.12.2").compareTo(StringTool.toVersion(version)) == -1) {
-				Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
-				Log.warn("Your server version(" + version + ") is not supported!");
-				Log.warn("We recommended downgrade " + version + " to 1.12.2 or older!");
-				Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
+			try {
+				String version = Bukkit.getServer().getClass().getPackage().getName().substring(Bukkit.getServer().getClass().getPackage().getName().lastIndexOf('n') + 1);
+				// String version = Bukkit.getBukkitVersion();
+				if(StringTool.toVersion("1.8").compareTo(StringTool.toVersion(version)) == 1) {
+					Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
+					Log.warn("Your server version(" + version + ") is not supported!");
+					Log.warn("We recommended update " + version + " to 1.8 or later!");
+					Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
+				}
+				if(StringTool.toVersion("1.12.2").compareTo(StringTool.toVersion(version)) == -1) {
+					Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
+					Log.warn("Your server version(" + version + ") is not supported!");
+					Log.warn("We recommended downgrade " + version + " to 1.12.2 or older!");
+					Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
+				}
+			} catch(Throwable e) {
+				Log.error("Version comparation failed!");
+				Log.error(Lang.format(Lang.please_report_developer_catch, e));
+				e.printStackTrace();
 			}
 			this.getConfig().options().copyDefaults(true);
 			this.saveConfig();
