@@ -74,6 +74,5 @@ public class AsyncDownload extends Thread {
 		sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.start_time, start_time)));
 		sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.total_time, total)));
 		sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.finished_time, stop_time)));
-		return;
 	}
 }

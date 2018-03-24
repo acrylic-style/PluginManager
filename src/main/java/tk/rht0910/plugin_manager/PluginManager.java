@@ -8,7 +8,6 @@ import java.util.Locale;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
@@ -29,6 +28,8 @@ import tk.rht0910.tomeito_core.utils.Log;
 /**
  *
  * The Perfect Plugin Manager
+ * <br/><br/>
+ * <b>Note: Do not use extends for this class.</b>
  *
  */
 public final class PluginManager extends JavaPlugin implements TabCompleter, Listener {
@@ -41,7 +42,9 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 
 	public static String getLanguageCode() {
 		String getty = PluginManager.getPlugin(PluginManager.class).getConfig().getString("language");
-		if(getty == "" || getty == null || !getty.contains("_")) {
+		if(!Arrays.asList("af_ZA", "ar_SA", "ca_ES", "cs_CZ", "da_DK", "de_DE", "el_GR", "en_US", "es_ES", "fi_FI", "fr_FR",
+				"he_IL", "hu_HU", "it_IT", "ja_JP", "ko_KR", "nl_NL", "no_NO", "pl_PL", "pt_BR", "pt_PT", "ro_RO", "ru_RU", "sr_SP",
+				"sv_SE", "tr_TR", "uk_UA", "vi_VN", "zh_CN", "zh_TW").contains(getty)) {
 			getty = Locale.getDefault().toString();
 			warning = true;
 		}
@@ -51,8 +54,29 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 	@Override
 	public void onEnable() {
 		try {
-			PluginManager.this.getConfig().options().copyDefaults(true);
-			PluginManager.this.saveConfig();
+			/*
+			Log.info("Checking bukkit version");
+			try {
+				//String version = Bukkit.getServer().getClass().getPackage().getName().substring(Bukkit.getServer().getClass().getPackage().getName().lastIndexOf('n') + 1);
+				// String version = Bukkit.getBukkitVersion();
+				if(StringTool.toVersion("1.8").compareTo(StringTool.toVersion(version)) == 1) {
+					Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
+					Log.warn("Your server version(" + version + ") is not supported!");
+					Log.warn("We recommended update " + version + " to 1.8 or later!");
+					Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
+				}
+				if(StringTool.toVersion("1.12.2").compareTo(StringTool.toVersion(version)) == -1) {
+					Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
+					Log.warn("Your server version(" + version + ") is not supported!");
+					Log.warn("We recommended downgrade " + version + " to 1.12.2 or older!");
+					Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
+				}
+			} catch(Throwable e) {
+				Log.error("Version comparation failed!");
+				e.printStackTrace();
+			}*/
+			this.getConfig().options().copyDefaults(true);
+			this.saveConfig();
 			CatchException catchException = new CatchException();
 				Thread thread = new Thread(new VersionCheck(null, null, "https://api.rht0910.tk/pluginmanager_version"), "");
 				thread.setUncaughtExceptionHandler(catchException);
@@ -72,7 +96,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 	@Override
 	public void onLoad() {
 		try {
-			Bukkit.getServer().getLogger().info("[PluginManager] Loaded PluginManager v1.4.2.2");
+			Bukkit.getServer().getLogger().info("[PluginManager] Loaded PluginManager v1.4.2.3");
 		} catch(Exception e) {
 			Bukkit.getServer().getLogger().info("[PluginManager] Got Unknown error: " + e);
 			e.printStackTrace();
@@ -149,8 +173,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 				}
 			}
 		} else if(args.length == 2) {
-			if(args[0] == "config") {
-				if(args[1] == "language") {
+			if(args[0].equals("config") && args[1].equals("language")) {
 					if(args[2].length() == 0) {
 						return Arrays.asList("af_ZA", "ar_SA", "ca_ES", "cs_CZ", "da_DK", "de_DE", "el_GR", "en_US", "es_ES", "fi_FI", "fr_FR",
 								"he_IL", "hu_HU", "it_IT", "ja_JP", "ko_KR", "nl_NL", "no_NO", "pl_PL", "pt_BR", "pt_PT", "ro_RO", "ru_RU", "sr_SP",
@@ -212,7 +235,6 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 							return Collections.singletonList("zh_TW");
 						}
 					}
-				}
 				if(args[1].length() == 0) {
 					return Arrays.asList("reload", "language");
 				}
@@ -223,7 +245,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 				}
 			}
 		}
-		// Calling JavaPlugin#onTabComplete()
+		// Call JavaPlugin#onTabComplete()
 		return super.onTabComplete(sender, command, alias, args);
 	}
 
@@ -237,18 +259,20 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					return false;
 				}
 			}
-			if(args.length == 0 || args.equals(null)) {
+			if(args.length == 0 || args == null) {
 				sender.sendMessage(ChatColor.translateAlternateColorCodes('&', String.format(Lang.running_on, Lang.version)));
 				sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Lang.available_commands));
+				if(warning) {
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.warning_lang_invalid));
+				}
 				return true;
 			}
 			if(args[0].equalsIgnoreCase("help")) {
 				try {
-					//Manager.getCommand().ShowHelp(sender);
 					sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + " -----");
 					sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
 					sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
-					sender.sendMessage(ChatColor.AQUA + " - /pman load <Plugin name> <PluginFile> - " + Lang.pman_load_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman load <Plugin> - " + Lang.pman_load_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman unload(or /pman disable) <Plugin name> - " + Lang.pman_unload_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman reload <Plugin> - " + Lang.pman_reload_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman download <FileName> <URL> - " + Lang.pman_download_desc);
@@ -267,6 +291,9 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.developer_version, "http://ci.rht0910.tk/job/PluginManager/")));
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.source_code, "https://github.com/rht0910/PluginManager/")));
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.problem_case, "https://github.com/rht0910/PluginManager/issues/")));
+					if(warning) {
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.warning_lang_invalid));
+					}
 				} catch(Exception | Error e) {
 					e.printStackTrace();
 				}
@@ -328,7 +355,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.not_enough_args));
 					return false;
 				}
-				PluginUtils.Download(sender, args[1], args[2]);
+				PluginUtils.download(sender, args[1], args[2]);
 			} else if(args[0].equalsIgnoreCase("restore")) {
 				if(sender instanceof Player) {
 					if(!sender.isOp()) {
@@ -348,7 +375,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.not_enough_args));
 					return false;
 				}
-				PluginUtils.RestorePlugin(sender, args[1]);
+				PluginUtils.restorePlugin(sender, args[1]);
 			} else if(args[0].equalsIgnoreCase("delete")) {
 				if(sender instanceof Player) {
 					if(!sender.isOp()) {
@@ -368,14 +395,20 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.not_enough_args));
 					return false;
 				}
-				PluginUtils.DeletePlugin(sender, args[1], args[2]);
+				PluginUtils.deletePlugin(sender, args[1], args[2]);
 			} else if(args[0].equalsIgnoreCase("viewer")) {
 				Bukkit.getServer().getLogger().warning(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.opened_config_viewer, sender.toString())));
 				try {
 					if(args.length < 3 || args.length <= 2) {
-						PluginUtils.ConfigViewer(sender, args[1], args[2], "");
+						if(!PluginUtils.configViewer(sender, args[1], args[2], "")) {
+							sender.sendMessage(Lang.translate(Lang.not_enough_args));
+							return true;
+						}
 					} else {
-						PluginUtils.ConfigViewer(sender, args[1], args[2], args[3]);
+						if(!PluginUtils.configViewer(sender, args[1], args[2], args[3])) {
+							sender.sendMessage(Lang.translate(Lang.not_enough_args));
+						}
+						return true;
 					}
 				} catch(Exception | Error e) {
 					// PluginUtils.ConfigViewer(sender, args[1], args[2], "");
@@ -388,7 +421,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.not_enough_args));
 					return false;
 				}
-				PluginUtils.EditConfigFile(sender, args[1], args[2], args[3], args[4]);
+				PluginUtils.editConfigFile(sender, args[1], args[2], args[3], args[4]);
 			} else if(args[0].equalsIgnoreCase("update")) {
 				if(sender instanceof Player) {
 					if(!sender.isOp()) {
@@ -402,7 +435,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 				}
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.updating_plugin));
 				try {
-					PluginUtils.Download(sender, "PluginManager", "https://ci.rht0910.tk/job/PluginManager/lastSuccessfulBuild/artifact/target/PluginManager.jar");
+					PluginUtils.download(sender, "PluginManager", "https://ci.rht0910.tk/job/PluginManager/lastSuccessfulBuild/artifact/target/PluginManager.jar");
 				} catch(Exception e) {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.failed_update_plugin));
 					return false;
@@ -427,7 +460,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 				}
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.updating_plugin));
 				try {
-					PluginUtils.Download(sender, "PluginManager", "https://ci.rht0910.tk/job/PluginManager-dev/lastSuccessfulBuild/artifact/target/PluginManager.jar");
+					PluginUtils.download(sender, "PluginManager", "https://ci.rht0910.tk/job/PluginManager-dev/lastSuccessfulBuild/artifact/target/PluginManager.jar");
 				} catch(Exception e) {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.failed_update_plugin));
 					return false;
@@ -440,7 +473,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					}
 				}
 			} else if(args[0].equalsIgnoreCase("usage")) {
-				tk.rht0910.plugin_manager.command.Command.getUsageOfCmd(sender, args[1]);
+				PluginUtils.getUsageOfCmd(sender, args[1]);
 			} else if(args[0].equalsIgnoreCase("check")) {
 				VersionCheck vc = new VersionCheck(true, sender, "https://api.rht0910.tk/pluginmanager_version", "");
 				vc.start();
@@ -461,7 +494,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.problem_case, "https://github.com/rht0910/PluginManager/issues/")));
 						return true;
 					}
-					if(args[1] == "") {
+					if(args[1].equals("")) {
 						sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + " -----");
 						sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
 						sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
@@ -488,7 +521,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 				if(args[1].equalsIgnoreCase("language")) {
 					try {
 						this.getConfig().set("language", args[2]);
-					} catch(Exception | Error e) {
+					} catch(Throwable e) {
 						sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + " -----");
 						sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
 						sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
@@ -522,11 +555,6 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					}
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.reloaded_config));
 				}
-			} else if(args[0].equalsIgnoreCase("sun")) {
-				World world = Bukkit.getWorld(Bukkit.getPlayer(sender.getName()).getWorld().getName());
-				world.setStorm(false);
-				world.setThundering(false);
-				world.setWeatherDuration(Integer.MAX_VALUE);
 			} else {
 				Lang.use();
 				sender.sendMessage(ChatColor.RED + Lang.invalid_args);
@@ -547,12 +575,13 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 				sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...> - " + Lang.pman_config_language);
 				sender.sendMessage(ChatColor.AQUA + " - /pman config reload - " + Lang.pman_config_reload);
 				sender.sendMessage(ChatColor.AQUA + " - /pman check - " + Lang.pman_check_desc);
+				sender.sendMessage(ChatColor.AQUA + " - /pman check-dev - " + Lang.pman_check_desc + ChatColor.RED + "(dev)");
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.project_page, "https://dev.bukkit.org/projects/pluginmanagement/")));
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.developer_version, "http://point.rht0910.tk:8080/job/PluginManager/")));
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.source_code, "https://github.com/rht0910/PluginManager/")));
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.problem_case, "https://github.com/rht0910/PluginManager/issues/")));
 			}
-			if(warning == true) {
+			if(warning) {
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.warning_lang_invalid));
 			}
 		}
@@ -568,16 +597,14 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Log.info("Event attached to " + event.getPlayer().getName() + ", EventPriority: HIGHEST, EventHandler: On");
-		if(event.getPlayer().isOp() == true) {
+		if(event.getPlayer().isOp()) {
 			Log.info(event.getPlayer().getName() + " is OP!");
-			if(this.is_available_new_version == true) {
-				Log.info("New version found, notifying...");
+			if(this.is_available_new_version) {
+				Log.info("New version found, notifing...");
 				String new_version_available3 = ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.new_version_available, this.current, this.newv));
 				String new_version_available4 = ChatColor.translateAlternateColorCodes(altColorChar, Lang.new_version_available2);
 				event.getPlayer().sendMessage(new_version_available3);
 				event.getPlayer().sendMessage(new_version_available4);
-			} else {
-
 			}
 		}
 	}

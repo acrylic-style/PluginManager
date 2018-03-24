@@ -3,6 +3,8 @@ package tk.rht0910.plugin_manager.language;
 import java.io.File;
 import java.io.IOException;
 
+import org.bukkit.ChatColor;
+
 import com.google.common.io.Files;
 
 import tk.rht0910.plugin_manager.PluginManager;
@@ -277,4 +279,12 @@ public final class Lang {
 			e.printStackTrace();
 		}
 	  }
+
+		public static String translate(String string) {
+			return ChatColor.translateAlternateColorCodes('&', string);
+		}
+
+		public static String format(String string, Object... format) {
+			return ChatColor.translateAlternateColorCodes('&', String.format(string, format));
+		}
 }
