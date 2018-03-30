@@ -41,11 +41,11 @@ Project page: https://dev.bukkit.org/projects/pluginmanagement
 
 | Version | Status |
 | ----- | ----- |
-| 1.4.2.4 | ![#ffa500](https://placehold.it/15/ffa500/000000?text=+) Latest / ![](https://placehold.it/15/00ff00/000000?text=+) Recommended |
+| [1.4.2.4](https://github.com/rht0910/PluginManager/releases/tag/1.4.2.4) | ![#ffa500](https://placehold.it/15/ffa500/000000?text=+) Latest / ![](https://placehold.it/15/00ff00/000000?text=+) Recommended |
 | 1.4.2.3 | OK |
-| 1.4.2.2 | Almost OK |
+| [1.4.2.2](https://github.com/rht0910/PluginManager/releases/tag/1.4.2.2) | Almost OK |
 | 1.4.2.1 | Almost OK |
 | 1.4.2 | ![](https://placehold.it/15/ff0000/000000?text=+) Including bugs |
-| 1.4.1 | ![](https://placehold.it/15/8b4513/000000?text=+) Old version but OK |
+| [1.4.1](https://github.com/rht0910/PluginManager/releases/tag/1.4.1) | ![](https://placehold.it/15/8b4513/000000?text=+) Old version but OK |
 | 1.4 | ![](https://placehold.it/15/8b4513/000000?text=+) Old version |
 | Or older | ![](https://placehold.it/15/ff0000/000000?text=+) ![](https://placehold.it/15/8b4513/000000?text=+) ![](https://placehold.it/15/ff0000/000000?text=+) Extremely old version |
