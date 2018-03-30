@@ -35,7 +35,9 @@ Project page: https://dev.bukkit.org/projects/pluginmanagement
 
 ### Versions
 
-<span style="color:orange">Latest: 1.4.2.4</span>
+<span style="color:orange">Latest: [1.4.2.4](https://github.com/rht0910/PluginManager/releases/tag/1.4.2.4)</span>
+
+<span style="color:green">Recommended: [1.4.2.4](https://github.com/rht0910/PluginManager/releases/tag/1.4.2.4)</span>
 
 | Version | Status |
 | ----- | ----- |
