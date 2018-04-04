@@ -143,6 +143,7 @@ public final class Lang {
 	public static String value = null;
 	public static String plugin = null;
 	public static String pman_permission_desc = null;
+	public static String player = null;
 
 	/**
 	 * Initialize a class
@@ -243,6 +244,7 @@ public final class Lang {
 		 value = LanguageProvider.load("value", "Value");
 		 plugin = LanguageProvider.load("plugin", "Plugin");
 		 pman_permission_desc = LanguageProvider.load("pman_permission_desc", "Test if a player has permission");
+		 player = LanguageProvider.load("player", "Player");
 	}
 
 	  /**
