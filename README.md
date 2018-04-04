@@ -28,6 +28,7 @@ Project page: https://dev.bukkit.org/projects/pluginmanagement
 | /pman update | Update this plugin. |
 | /pman update-dev | Update this plugin to development build. |
 | /pman usage <Command> | Usage of command. |
+| /pman permission <ID> <Permission Node> | Test if player has a permission. |
 | /pman config language <en_US, ja_JP, ...> | Change language. |
 | /pman config reload | Reload config |
 | /pman check | Check version manually. |
