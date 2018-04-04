@@ -470,12 +470,6 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.failed_update_plugin));
 					return false;
 				}
-				final Collection<? extends Player> onplayers = Bukkit.getServer().getOnlinePlayers();
-				for(Player p : onplayers) {
-					if(p.isOp()) {
-						p.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.success_update_plugin, sender.toString())));
-					}
-				}
 			} else if(args[0].equalsIgnoreCase("usage")) {
 				PluginUtils.getUsageOfCmd(sender, args[1]);
 			} else if(args[0].equalsIgnoreCase("check")) {
