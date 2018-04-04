@@ -471,10 +471,9 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					return false;
 				}
 				final Collection<? extends Player> onplayers = Bukkit.getServer().getOnlinePlayers();
-				final Player[] players = (Player[]) onplayers.toArray();
-				for(int i=0;i<=players.length;i++) {
-					if(players[i].isOp()) {
-						players[i].sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.success_update_plugin, sender.toString())));
+				for(Player p : onplayers) {
+					if(p.isOp()) {
+						p.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.success_update_plugin, sender.toString())));
 					}
 				}
 			} else if(args[0].equalsIgnoreCase("usage")) {
