@@ -287,7 +287,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					sender.sendMessage(ChatColor.AQUA + " - /pman update - " + Lang.pman_update_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman update-dev - Update to UNSTABLE and DEVELOPER version.");
 					sender.sendMessage(ChatColor.AQUA + " - /pman usage <" + Lang.command + "> - " + Lang.pman_usage_desc);
-					sender.sendMessage(ChatColor.AQUA + " - /pman permission <" + Lang.permission_node + "> - " + Lang.pman_permission_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman permission <" + Lang.player + "> <" + Lang.permission_node + "> - " + Lang.pman_permission_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...> - " + Lang.pman_config_language);
 					sender.sendMessage(ChatColor.AQUA + " - /pman config reload - " + Lang.pman_config_reload);
 					sender.sendMessage(ChatColor.AQUA + " - /pman check - " + Lang.pman_check_desc);
@@ -485,11 +485,17 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 			} else if(args[0].equalsIgnoreCase("check-dev")) {
 				VersionCheck vcd = new VersionCheck(true, sender, "https://api.rht0910.tk/pluginmanager_dev_version", "(dev)");
 				vcd.start();
-			} else if(args[0].equalsIgnoreCase("permission")) {
+			} else if(args[0].equalsIgnoreCase("permission")) { // Check if player has a permission, always returns true
 				if(args.length < 2) {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.not_enough_args));
 					return true;
 				}
+				if(Bukkit.getPlayer(args[1]).hasPermission(args[2])) {
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.test_has_permission, args[1], args[2])));
+				} else {
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.test_donthave_permission, args[1], args[2])));
+				}
+				return true;
 			} else if(args[0].equalsIgnoreCase("config")) {
 				try {
 					if(args[1] == null) {

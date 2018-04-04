@@ -144,6 +144,8 @@ public final class Lang {
 	public static String plugin = null;
 	public static String pman_permission_desc = null;
 	public static String player = null;
+	public static String test_donthave_permission = null;
+	public static String test_has_permission = null;
 
 	/**
 	 * Initialize a class
@@ -245,6 +247,8 @@ public final class Lang {
 		 plugin = LanguageProvider.load("plugin", "Plugin");
 		 pman_permission_desc = LanguageProvider.load("pman_permission_desc", "Test if a player has permission");
 		 player = LanguageProvider.load("player", "Player");
+		 test_donthave_permission = LanguageProvider.load("test_donthave_permission", "&c%s does not have a permission: %s");
+		 test_has_permission = LanguageProvider.load("test_has_permission", "&a%s has permission: %s");
 	}
 
 	  /**
