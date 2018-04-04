@@ -486,11 +486,11 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 				VersionCheck vcd = new VersionCheck(true, sender, "https://api.rht0910.tk/pluginmanager_dev_version", "(dev)");
 				vcd.start();
 			} else if(args[0].equalsIgnoreCase("permission")) { // Check if player has a permission, always returns true
-				if(args.length < 2) {
+				if(args.length < 3) {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.not_enough_args));
 					return true;
 				}
-				if(Bukkit.getPlayer(args[1]).hasPermission(args[2])) {
+				if(Bukkit.getPlayer(args[1]).isPermissionSet(args[2])) {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.test_has_permission, args[1], args[2])));
 				} else {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.test_donthave_permission, args[1], args[2])));
