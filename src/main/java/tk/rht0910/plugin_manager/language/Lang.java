@@ -121,7 +121,7 @@ public final class Lang {
 	public static String pman_check_desc = null;
 	public static String start_dl_plugin = null;
 	public static String url = null;
-	public static String file = null;
+	public static String filename = null;
 	public static String download_failed = null;
 	public static String download_success = null;
 	public static String total_time = null;
@@ -134,6 +134,15 @@ public final class Lang {
 	public static String reloaded_plugin = null;
 	public static String reloading_plugin_error = null;
 	public static String pman_reload_desc = null;
+	public static String permission_node = null;
+	public static String command = null;
+	public static String directory = null;
+	public static String file = null;
+	public static String current_filename = null;
+	public static String new_name = null;
+	public static String value = null;
+	public static String plugin = null;
+	public static String pman_permission_desc = null;
 
 	/**
 	 * Initialize a class
@@ -212,7 +221,7 @@ public final class Lang {
 		 pman_check_desc = LanguageProvider.load("pman_check_desc", "Check version manually.");
 		 start_dl_plugin = LanguageProvider.load("start_dl_plugin", "&aStarted downloading plugin.");
 		 url = LanguageProvider.load("url", "&bURL: %s");
-		 file = LanguageProvider.load("file", "&bFilename: %s");
+		 filename = LanguageProvider.load("file", "&bFilename: %s");
 		 download_failed = LanguageProvider.load("download_failed", "&cFailed to download. Server down or wrong url.");
 		 download_success = LanguageProvider.load("download_success", "&aSuccessfully download.");
 		 total_time = LanguageProvider.load("total_time", "&bTotal time: %s");
@@ -225,6 +234,15 @@ public final class Lang {
 		 reloaded_plugin = LanguageProvider.load("reloaded_plugin", "&aReloaded plugin: %s");
 		 reloading_plugin_error = LanguageProvider.load("reloading_plugin_error", "&cError while reloading plugin: %s");
 		 pman_reload_desc = LanguageProvider.load("pman_reload_desc", "Reload a plugin.");
+		 permission_node = LanguageProvider.load("permission_node", "Permission Node");
+		 command = LanguageProvider.load("command", "Command");
+		 directory = LanguageProvider.load("directory", "Directory");
+		 file = LanguageProvider.load("file", "File");
+		 current_filename = LanguageProvider.load("current_filename", "(Current)FileName");
+		 new_name = LanguageProvider.load("new_name", "New Name");
+		 value = LanguageProvider.load("value", "Value");
+		 plugin = LanguageProvider.load("plugin", "Plugin");
+		 pman_permission_desc = LanguageProvider.load("pman_permission_desc", "Test if a player has permission");
 	}
 
 	  /**
