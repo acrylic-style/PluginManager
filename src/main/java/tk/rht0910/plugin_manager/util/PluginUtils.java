@@ -113,7 +113,6 @@ public final class PluginUtils {
 			e.printStackTrace();
 			return;
 		}
-		return;
 	}
 
 	public boolean unloadPlugin(CommandSender sender, Plugin plugin) {
@@ -138,7 +137,7 @@ public final class PluginUtils {
 		return true;
 	}
 
-	public static boolean EditConfigFile(CommandSender sender, String dir, String cfile, String vine, String strs) {
+	public static boolean editConfigFile(CommandSender sender, String dir, String cfile, String vine, String strs) {
 		Lang.use();
 		if(!sender.isOp()) {
 			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.you_are_not_operator));
@@ -219,7 +218,7 @@ public final class PluginUtils {
 				}
 				list.set(line, strs);
 				Object[] arg = list.toArray();
-				FileWrite(sender, arg, file);
+				fileWrite(sender, arg, file);
 			} else {
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.selected_directory));
 			}
@@ -231,12 +230,12 @@ public final class PluginUtils {
 	//	return ConfigViewer(sender, configDir, configFile, null);
 	//}
 
-	public static boolean ConfigViewer(CommandSender sender, String configDir, String configFile, String marg) {
+	public static boolean configViewer(CommandSender sender, String configDir, String configFile, String marg) {
 		if(configDir == null) {
-			Manager.getCommand().showHelp(sender);
+			return false;
 		}
 		if(configFile == null) {
-			Manager.getCommand().showHelp(sender);
+			return false;
 		}
 		String arg1 = configDir;
 		String arg2 = configFile;
@@ -312,7 +311,6 @@ public final class PluginUtils {
 							br.close();
 						} catch (IOException e) {
 							e.printStackTrace();
-							return false;
 						}
 					}
 				}
@@ -330,7 +328,7 @@ public final class PluginUtils {
 		return true;
 	}
 
-	public static void FileWrite(CommandSender sender, Object[] args, File file) {
+	public static void fileWrite(CommandSender sender, Object[] args, File file) {
 		FileWriter fw = null;
 		try {
 			fw = new FileWriter(file);
@@ -381,27 +379,22 @@ public final class PluginUtils {
 		}
 	}
 
-	public static void DeletePlugin(CommandSender sender, String filename, String pluginName) {
+	public static void deletePlugin(CommandSender sender, String filename, String pluginName) {
 		File file = new File("plugins/" + filename + ".jar");
 		if(file.exists()) {
 			if(Bukkit.getServer().getPluginManager().isPluginEnabled(Bukkit.getServer().getPluginManager().getPlugin(pluginName))) {
 				Bukkit.getServer().getPluginManager().disablePlugin(Bukkit.getServer().getPluginManager().getPlugin(pluginName));
 			}
-			if(!file.isDirectory()) {
-				if(file.canRead()) {
+			if(!file.isDirectory() && file.canRead()) {
 					File dir = new File("plugins/plugins_backup/");
-					if(!dir.exists()) {
-						if(!dir.mkdirs()) {
+					if(!dir.exists() && !dir.mkdirs()) {
 							Bukkit.getServer().getPluginManager().enablePlugin(Bukkit.getServer().getPluginManager().getPlugin(pluginName));
 							return;
-						}
 					}
-					if(!dir.canWrite()) {
-						if(!dir.setWritable(true, false)) {
+					if(!dir.canWrite() && !dir.setWritable(true)) {
 							Bukkit.getServer().getPluginManager().enablePlugin(Bukkit.getServer().getPluginManager().getPlugin(pluginName));
-							sender.sendMessage("File is not writable.");
+							sender.sendMessage("File is not writable or don't have permission.");
 							return;
-						}
 					}
 					File to = new File("plugins/plugins_backup/" + pluginName + ".jar");
 					try {
@@ -413,23 +406,18 @@ public final class PluginUtils {
 						sender.sendMessage("Unexpected error occurred.");
 						e.printStackTrace();
 					}
-				} else {
-					Bukkit.getServer().getPluginManager().enablePlugin(Bukkit.getServer().getPluginManager().getPlugin(pluginName));
-					sender.sendMessage("File is not readable.");
-					return;
-				}
 			} else {
 				Bukkit.getServer().getPluginManager().enablePlugin(Bukkit.getServer().getPluginManager().getPlugin(pluginName));
-				sender.sendMessage("Selected file is DIRECTORY.");
+				sender.sendMessage("Selected file is directory or cannot readable.");
 				return;
 			}
 		} else {
-			sender.sendMessage(ChatColor.RED + "Selected file is not exists!");
+			sender.sendMessage(ChatColor.RED + "Selected file is not exist!");
 			return;
 		}
 	}
 
-	public static void RestorePlugin(CommandSender sender, String pluginName) {
+	public static void restorePlugin(CommandSender sender, String pluginName) {
 		File from = new File("plugins/plugins_backup/" + pluginName + ".jar");
 		File to = new File("plugins/" + pluginName + ".jar");
 		try {
@@ -441,8 +429,20 @@ public final class PluginUtils {
 		}
 	}
 
-	public static void Download(CommandSender sender, String file, String url) {
+	public static void download(CommandSender sender, String file, String url) {
 		AsyncDownload async_thread = new AsyncDownload(sender, file, url);
 		async_thread.start();
+	}
+
+	public static void getUsageOfCmd(CommandSender sender, String cmd) {
+		try {
+			String usageof = Bukkit.getPluginCommand(cmd.replaceFirst("/", "")).getUsage();
+			String cmd2 = cmd.replaceFirst("/", "");
+			String usage = usageof.replaceFirst("/<command>", "/" + cmd2);
+			sender.sendMessage(usage);
+		} catch(Exception e) {
+			sender.sendMessage(ChatColor.RED + "Can't show usage of command.(Command not found)");
+			e.printStackTrace();
+		}
 	}
 }
