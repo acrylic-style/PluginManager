@@ -36,13 +36,13 @@ Project page: https://dev.bukkit.org/projects/pluginmanagement
 
 ### Versions
 
-<span style="color:orange">Latest: [1.4.3(NOT released)](https://github.com/rht0910/PluginManager/releases/tag/1.4.3)</span>
+<span style="color:orange">Latest: [1.4.3](https://github.com/rht0910/PluginManager/releases/tag/1.4.3)</span>
 
 <span style="color:green">Recommended: [1.4.2.4](https://github.com/rht0910/PluginManager/releases/tag/1.4.2.4)</span>
 
 | Version | Status |
 | ----- | ----- |
-| [1.4.3](https://github.com/rht0910/PluginManager/releases/tag/1.4.3) | ![#ffa500](https://placehold.it/15/ffa500/000000?text=+) Latest / ![](https://placehold.it/15/8b4513/000000?text=+) Not released|
+| [1.4.3](https://github.com/rht0910/PluginManager/releases/tag/1.4.3) | ![#ffa500](https://placehold.it/15/ffa500/000000?text=+) Latest  Not released|
 | [1.4.2.4](https://github.com/rht0910/PluginManager/releases/tag/1.4.2.4) | ![](https://placehold.it/15/00ff00/000000?text=+) Recommended |
 | 1.4.2.3 | OK |
 | [1.4.2.2](https://github.com/rht0910/PluginManager/releases/tag/1.4.2.2) | Almost OK |
