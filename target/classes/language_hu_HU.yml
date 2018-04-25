@@ -13,6 +13,7 @@ pman_restore_desc: "Egy eltávolított bővítmény visszaállítása."
 pman_editor_desc: "Szerkeszt egy plugin configot"
 pman_viewer_desc: "Plugin config megtekintése"
 pman_update_desc: "Frissíti ezt a plugint."
+pman_permission_desc: "Test if a player has permission"
 pman_config_language: "Nyelv változtatása"
 pman_config_reload: "Újratölti a konfigot"
 pman_usage_desc: "A parancs használata."
@@ -36,7 +37,7 @@ developer_version: '&b - Fejlesztői verzió: %s'
 source_code: '&b - Forráskód: %s'
 starting_load_plugins: "&aA plugin betöltése..."
 already_enabled: "&cEz a plugin már engedélyezve!"
-already_disabled: "&cThis plugin is already disabled!"
+already_disabled: "&cEz a plugin már letiltva!"
 failed_load_plugin: '&cNem lehet betölteni a plugint: %s'
 success_load_plugin: '&aPlugin betöltve: %s'
 error_occured: '&cHiba lépett fel: %s'
@@ -59,7 +60,7 @@ started_version_check: "&aA verziók ellenőrzése..."
 already_checking: "&cMár verzióellenőrzés van!"
 version_check_complete1: "&aA verzió ellenőrzés befejezve."
 version_check_complete_update_no: "&aNincs frissítés."
-version_check_complete_update5: "&aRun &b/pman update-dev&a to update."
+version_check_complete_update5: "&aFuttatás &b/pman update-dev&a a frissítéshez."
 version_check_complete_update1: "&aFrissítés található!"
 version_check_complete_update2: '&bJelenlegi: %s'
 version_check_complete_update3: '&eÚj: %s'
@@ -67,7 +68,7 @@ version_check_complete_update4: "&aFuttasd a &b/pman update&a a frissítéshez."
 selected_directory: "&cA kiválasztott fájl a könyvtár, nem folytatható."
 start_dl_plugin: "&aA plugin letöltése elkezdve."
 url: '&bURL: %s'
-file: '&bFájl név: %s'
+filename: '&bFilename: %s'
 download_failed: "&cNem sikerült letölteni. Szerver lefelé vagy rossz url."
 download_success: "&aA letöltés sikeres."
 total_time: '&bTeljes idő: %s'
@@ -79,3 +80,14 @@ cant_show_usage: "&cA parancs használatát nem lehet megjeleníteni."
 reloading_plugin: '&aA plugin újratöltése: %s ...'
 reloaded_plugin: '&aA plugin újratöltve: %s'
 reloading_plugin_error: '&cA plugin újratöltése közben hiba történt: %s'
+permission_node: 'Permission Node'
+command: 'Command'
+directory: 'Directory'
+file: 'File'
+current_filename: '(Current)FileName'
+new_name: 'New Name'
+value: 'Value'
+plugin: 'Plugin'
+test_donthave_permission: '&c%s does not have a permission: %s'
+test_has_permission: '&a%s has permission: %s'
+player: 'Player'

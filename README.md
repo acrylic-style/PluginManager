@@ -7,7 +7,7 @@ Jenkins (Development Build): [![Build Status](https://ci.rht0910.tk/job/PluginMa
 
 TravisCI: [![Build Status](https://travis-ci.org/rht0910/PluginManager.svg?branch=master)](https://travis-ci.org/rht0910/PluginManager)
 
-PluginManager is Bukkit plugin.
+PluginManager is a Bukkit plugin.
 
 Project page: https://dev.bukkit.org/projects/pluginmanagement
 
@@ -28,7 +28,26 @@ Project page: https://dev.bukkit.org/projects/pluginmanagement
 | /pman update | Update this plugin. |
 | /pman update-dev | Update this plugin to development build. |
 | /pman usage <Command> | Usage of command. |
+| /pman permission <ID> <Permission Node> | Test if player has a permission. |
 | /pman config language <en_US, ja_JP, ...> | Change language. |
 | /pman config reload | Reload config |
 | /pman check | Check version manually. |
 | /pman check-dev | Check version manually for development build. |
+
+### Versions
+
+<span style="color:orange">Latest: [1.4.3(NOT released)](https://github.com/rht0910/PluginManager/releases/tag/1.4.3)</span>
+
+<span style="color:green">Recommended: [1.4.2.4](https://github.com/rht0910/PluginManager/releases/tag/1.4.2.4)</span>
+
+| Version | Status |
+| ----- | ----- |
+| [1.4.3](https://github.com/rht0910/PluginManager/releases/tag/1.4.3) | ![#ffa500](https://placehold.it/15/ffa500/000000?text=+) Latest / ![](https://placehold.it/15/8b4513/000000?text=+) Not released|
+| [1.4.2.4](https://github.com/rht0910/PluginManager/releases/tag/1.4.2.4) | ![](https://placehold.it/15/00ff00/000000?text=+) Recommended |
+| 1.4.2.3 | OK |
+| [1.4.2.2](https://github.com/rht0910/PluginManager/releases/tag/1.4.2.2) | Almost OK |
+| 1.4.2.1 | Almost OK |
+| 1.4.2 | ![](https://placehold.it/15/ff0000/000000?text=+) Including bugs |
+| [1.4.1](https://github.com/rht0910/PluginManager/releases/tag/1.4.1) | ![](https://placehold.it/15/8b4513/000000?text=+) Old version but OK |
+| 1.4 | ![](https://placehold.it/15/8b4513/000000?text=+) Old version |
+| Or older | ![](https://placehold.it/15/ff0000/000000?text=+) ![](https://placehold.it/15/8b4513/000000?text=+) ![](https://placehold.it/15/ff0000/000000?text=+) Extremely old version |

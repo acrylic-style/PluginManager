@@ -33,22 +33,21 @@ public class AsyncDownload extends Thread {
 	public void run() {
 		Log.info(ChatColor.translateAlternateColorCodes(altColorChar, Lang.start_dl_plugin));
 		Log.info(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.url, url)));
-		Log.info(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.file, file)));
+		Log.info(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.filename, file)));
 		long start = System.currentTimeMillis();
 		String start_time = Calendar.YEAR + "/" + Calendar.MONTH + "/" + Calendar.DAY_OF_MONTH + ":" + Calendar.HOUR_OF_DAY + ":" + Calendar.MINUTE + ":" + Calendar.SECOND + "." + Calendar.MILLISECOND;
 		try {
 			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.start_dl_plugin));
 			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.start_time, start_time)));
 			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.url, url)));
-			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.file, file)));
+			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.filename, file)));
 			URL url2 = new URL(url);
 			HttpURLConnection conn = (HttpURLConnection) url2.openConnection();
 			conn.setAllowUserInteraction(false);
 			conn.setInstanceFollowRedirects(true);
 			conn.setRequestMethod("GET");
 			conn.connect();
-			@SuppressWarnings("unused")
-			int httpStatusCode = conn.getResponseCode();
+			//int httpStatusCode = conn.getResponseCode();
 			//if(httpStatusCode != HttpURLConnection.HTTP_OK){ if(httpStatusCode != -1) {throw new Exception();} } // Input Stream
 			DataInputStream dataInStream = new DataInputStream( conn.getInputStream()); // Output Stream
 			DataOutputStream dataOutStream = new DataOutputStream( new BufferedOutputStream( new FileOutputStream("plugins/" + file + ".jar"))); // Read Data

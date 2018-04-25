@@ -27,13 +27,11 @@ import tk.rht0910.tomeito_core.utils.Log;
 
 /**
  *
- * The Perfect Plugin Manager
- * <br/><br/>
- * <b>Note: Do not use extends for this class.</b>
+ * The Perfect Plugin Manager.
+ * This class is cannot be extend.
  *
  */
 public final class PluginManager extends JavaPlugin implements TabCompleter, Listener {
-	//private static final String[] COMMANDS = {""};
 	public char altColorChar = '&';
 	public static Boolean is_available_new_version = false;
 	public static String current = "";
@@ -44,9 +42,11 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 		String getty = PluginManager.getPlugin(PluginManager.class).getConfig().getString("language");
 		if(!Arrays.asList("af_ZA", "ar_SA", "ca_ES", "cs_CZ", "da_DK", "de_DE", "el_GR", "en_US", "es_ES", "fi_FI", "fr_FR",
 				"he_IL", "hu_HU", "it_IT", "ja_JP", "ko_KR", "nl_NL", "no_NO", "pl_PL", "pt_BR", "pt_PT", "ro_RO", "ru_RU", "sr_SP",
-				"sv_SE", "tr_TR", "uk_UA", "vi_VN", "zh_CN", "zh_TW").contains(getty)) {
+				"sv_SE", "tr_TR", "uk_UA", "vi_VN", "zh_CN", "zh_TW", "lol_US").contains(getty)) {
 			getty = Locale.getDefault().toString();
 			warning = true;
+		} else {
+			warning = false;
 		}
 		return getty;
 	}
@@ -132,7 +132,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 			/*} else if(args[0].length() == 1) {
 				return Arrays.asList("af_ZA", "ar_SA", "ca_ES", "cs_CZ", "da_DK", "de_DE", "el_GR", "en_US", "es_ES", "fi_FI", "fr_FR",
 						"he_IL", "hu_HU", "it_IT", "ja_JP", "ko_KR", "nl_NL", "no_NO", "pl_PL", "pt_BR", "pt_PT", "ro_RO", "ru_RU", "sr_SP",
-						"sv_SE", "tr_TR", "uk_UA", "vi_VN", "zh_CN", "zh_TW");
+						"sv_SE", "tr_TR", "uk_UA", "vi_VN", "zh_CN", "zh_TW", "lol_US");
 			*/} else {
 				// Correct first input string
 
@@ -168,6 +168,8 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					return Collections.singletonList("check");
 				} else if("check-dev".startsWith(args[0])) {
 					return Collections.singletonList("check-dev");
+				} else if("permission".startsWith(args[0])) {
+					return Collections.singletonList("permission");
 				} else if("config".startsWith(args[0])) {
 					return Collections.singletonList("config");
 				}
@@ -177,7 +179,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					if(args[2].length() == 0) {
 						return Arrays.asList("af_ZA", "ar_SA", "ca_ES", "cs_CZ", "da_DK", "de_DE", "el_GR", "en_US", "es_ES", "fi_FI", "fr_FR",
 								"he_IL", "hu_HU", "it_IT", "ja_JP", "ko_KR", "nl_NL", "no_NO", "pl_PL", "pt_BR", "pt_PT", "ro_RO", "ru_RU", "sr_SP",
-								"sv_SE", "tr_TR", "uk_UA", "vi_VN", "zh_CN", "zh_TW");
+								"sv_SE", "tr_TR", "uk_UA", "vi_VN", "zh_CN", "zh_TW", "lol_US");
 					} else {
 						if("af_ZA".startsWith(args[2])) {
 							return Collections.singletonList("af_ZA");
@@ -233,6 +235,8 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 							return Collections.singletonList("zh_CN");
 						} else if("zh_TW".startsWith(args[2])) {
 							return Collections.singletonList("zh_TW");
+						} else if("lol_US".startsWith(args[2])) {
+							return Collections.singletonList("lol_US");
 						}
 					}
 				if(args[1].length() == 0) {
@@ -272,17 +276,18 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + " -----");
 					sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
 					sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
-					sender.sendMessage(ChatColor.AQUA + " - /pman load <Plugin> - " + Lang.pman_load_desc);
-					sender.sendMessage(ChatColor.AQUA + " - /pman unload(or /pman disable) <Plugin name> - " + Lang.pman_unload_desc);
-					sender.sendMessage(ChatColor.AQUA + " - /pman reload <Plugin> - " + Lang.pman_reload_desc);
-					sender.sendMessage(ChatColor.AQUA + " - /pman download <FileName> <URL> - " + Lang.pman_download_desc);
-					sender.sendMessage(ChatColor.AQUA + " - /pman delete <PluginFileName> <PluginName(or Backup file name)> - " + Lang.pman_delete_desc);
-					sender.sendMessage(ChatColor.AQUA + " - /pman restore <FileName> - " + Lang.pman_restore_desc);
-					sender.sendMessage(ChatColor.AQUA + " - /pman editor <Dir> <File> <Line(Count from 0)> <value> - " + Lang.pman_editor_desc);
-					sender.sendMessage(ChatColor.AQUA + " - /pman viewer <Dir> <File> [options] - " + Lang.pman_viewer_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman load <" + Lang.plugin + "> - " + Lang.pman_load_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman unload(or /pman disable) <" + Lang.plugin + "> - " + Lang.pman_unload_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman reload <" + Lang.plugin + "> - " + Lang.pman_reload_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman download <" + Lang.new_name + "> <URL> - " + Lang.pman_download_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman delete <" + Lang.file + "> <" + Lang.new_name + "> - " + Lang.pman_delete_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman restore <" + Lang.file + "> - " + Lang.pman_restore_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman editor <" + Lang.directory + "> <" + Lang.file + "> <Line(Count from 0)> <" + Lang.value + "> - " + Lang.pman_editor_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman viewer <" + Lang.directory + "> <" + Lang.file + "> [options] - " + Lang.pman_viewer_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman update - " + Lang.pman_update_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman update-dev - Update to UNSTABLE and DEVELOPER version.");
-					sender.sendMessage(ChatColor.AQUA + " - /pman usage <Command> - " + Lang.pman_usage_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman usage <" + Lang.command + "> - " + Lang.pman_usage_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman permission <" + Lang.player + "> <" + Lang.permission_node + "> - " + Lang.pman_permission_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...> - " + Lang.pman_config_language);
 					sender.sendMessage(ChatColor.AQUA + " - /pman config reload - " + Lang.pman_config_reload);
 					sender.sendMessage(ChatColor.AQUA + " - /pman check - " + Lang.pman_check_desc);
@@ -465,13 +470,6 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.failed_update_plugin));
 					return false;
 				}
-				final Collection<? extends Player> onplayers = Bukkit.getServer().getOnlinePlayers();
-				final Player[] players = (Player[]) onplayers.toArray();
-				for(int i=0;i<=players.length;i++) {
-					if(players[i].isOp()) {
-						players[i].sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.success_update_plugin, sender.toString())));
-					}
-				}
 			} else if(args[0].equalsIgnoreCase("usage")) {
 				PluginUtils.getUsageOfCmd(sender, args[1]);
 			} else if(args[0].equalsIgnoreCase("check")) {
@@ -480,6 +478,17 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 			} else if(args[0].equalsIgnoreCase("check-dev")) {
 				VersionCheck vcd = new VersionCheck(true, sender, "https://api.rht0910.tk/pluginmanager_dev_version", "(dev)");
 				vcd.start();
+			} else if(args[0].equalsIgnoreCase("permission")) { // Check if player has a permission, always returns true
+				if(args.length < 3) {
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.not_enough_args));
+					return true;
+				}
+				if(Bukkit.getPlayer(args[1]).isPermissionSet(args[2])) {
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.test_has_permission, args[1], args[2])));
+				} else {
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.test_donthave_permission, args[1], args[2])));
+				}
+				return true;
 			} else if(args[0].equalsIgnoreCase("config")) {
 				try {
 					if(args[1] == null) {
@@ -556,52 +565,55 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.reloaded_config));
 				}
 			} else {
-				Lang.use();
-				sender.sendMessage(ChatColor.RED + Lang.invalid_args);
-				// Manager.getCommand().ShowHelp(sender);
-				sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + " -----");
-				sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
-				sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
-				sender.sendMessage(ChatColor.AQUA + " - /pman load <Plugin name or Plugin File> - " + Lang.pman_load_desc);
-				sender.sendMessage(ChatColor.AQUA + " - /pman unload(or /pman disable) <Plugin name> - " + Lang.pman_unload_desc);
-				sender.sendMessage(ChatColor.AQUA + " - /pman download <FileName> <URL> - " + Lang.pman_download_desc);
-				sender.sendMessage(ChatColor.AQUA + " - /pman delete <(Current)FileName> <PluginName(or Backup file name)> - " + Lang.pman_delete_desc);
-				sender.sendMessage(ChatColor.AQUA + " - /pman restore <FileName> - " + Lang.pman_restore_desc);
-				sender.sendMessage(ChatColor.AQUA + " - /pman editor <Dir> <File> <Line(Count from 0)> <value> - " + Lang.pman_editor_desc);
-				sender.sendMessage(ChatColor.AQUA + " - /pman viewer <Dir> <File> - " + Lang.pman_viewer_desc);
-				sender.sendMessage(ChatColor.AQUA + " - /pman update - " + Lang.pman_update_desc);
-				sender.sendMessage(ChatColor.AQUA + " - /pman update-dev - Update to UNSTABLE and DEVELOPER version.");
-				sender.sendMessage(ChatColor.AQUA + " - /pman usage <Command> - " + Lang.pman_usage_desc);
-				sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...> - " + Lang.pman_config_language);
-				sender.sendMessage(ChatColor.AQUA + " - /pman config reload - " + Lang.pman_config_reload);
-				sender.sendMessage(ChatColor.AQUA + " - /pman check - " + Lang.pman_check_desc);
-				sender.sendMessage(ChatColor.AQUA + " - /pman check-dev - " + Lang.pman_check_desc + ChatColor.RED + "(dev)");
-				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.project_page, "https://dev.bukkit.org/projects/pluginmanagement/")));
-				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.developer_version, "http://point.rht0910.tk:8080/job/PluginManager/")));
-				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.source_code, "https://github.com/rht0910/PluginManager/")));
-				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.problem_case, "https://github.com/rht0910/PluginManager/issues/")));
+				try {
+					sender.sendMessage(ChatColor.GREEN + " ----- Plugin Manager[" + Lang.version + "] " + Lang.help + " -----");
+					sender.sendMessage(ChatColor.RED + " ----- <" + Lang.required + "> [" + Lang.optional + "] - " + Lang.information);
+					sender.sendMessage(ChatColor.AQUA + " - /pman help - " + Lang.pman_help_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman load <" + Lang.plugin + "> - " + Lang.pman_load_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman unload(or /pman disable) <" + Lang.plugin + "> - " + Lang.pman_unload_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman reload <" + Lang.plugin + "> - " + Lang.pman_reload_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman download <" + Lang.new_name + "> <URL> - " + Lang.pman_download_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman delete <" + Lang.file + "> <" + Lang.new_name + "> - " + Lang.pman_delete_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman restore <" + Lang.file + "> - " + Lang.pman_restore_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman editor <" + Lang.directory + "> <" + Lang.file + "> <Line(Count from 0)> <" + Lang.value + "> - " + Lang.pman_editor_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman viewer <" + Lang.directory + "> <" + Lang.file + "> [options] - " + Lang.pman_viewer_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman update - " + Lang.pman_update_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman update-dev - Update to UNSTABLE and DEVELOPER version.");
+					sender.sendMessage(ChatColor.AQUA + " - /pman usage <" + Lang.command + "> - " + Lang.pman_usage_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman permission <" + Lang.player + "> <" + Lang.permission_node + "> - " + Lang.pman_permission_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...> - " + Lang.pman_config_language);
+					sender.sendMessage(ChatColor.AQUA + " - /pman config reload - " + Lang.pman_config_reload);
+					sender.sendMessage(ChatColor.AQUA + " - /pman check - " + Lang.pman_check_desc);
+					sender.sendMessage(ChatColor.AQUA + " - /pman check-dev - " + Lang.pman_check_desc + ChatColor.RED + "(dev)");
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.project_page, "https://dev.bukkit.org/projects/pluginmanagement/")));
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.developer_version, "http://ci.rht0910.tk/job/PluginManager/")));
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.source_code, "https://github.com/rht0910/PluginManager/")));
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.problem_case, "https://github.com/rht0910/PluginManager/issues/")));
+					if(warning) {
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.warning_lang_invalid));
+					}
+				} catch(Throwable e) {
+					Log.error(ChatColor.translateAlternateColorCodes(altColorChar, Lang.error_occured));
+					Log.error(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.continue_error_catch, e)));
+					e.printStackTrace();
+				}
 			}
-			if(warning) {
-				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.warning_lang_invalid));
-			}
-		}
-		} catch(Throwable e) {
-			Log.error(ChatColor.translateAlternateColorCodes(altColorChar, Lang.error_occured));
-			Log.error(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.continue_error_catch, e)));
-			e.printStackTrace();
-		}
+		} // Close of if statements
+		} catch(Throwable ex) {
+			ex.printStackTrace();
+			ex.getCause().printStackTrace();
+		} // Close of try statements
 		return true;
 	}
 
-	@SuppressWarnings("static-access")
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Log.info("Event attached to " + event.getPlayer().getName() + ", EventPriority: HIGHEST, EventHandler: On");
 		if(event.getPlayer().isOp()) {
 			Log.info(event.getPlayer().getName() + " is OP!");
-			if(this.is_available_new_version) {
+			if(PluginManager.is_available_new_version) {
 				Log.info("New version found, notifing...");
-				String new_version_available3 = ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.new_version_available, this.current, this.newv));
+				String new_version_available3 = ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.new_version_available, PluginManager.current, PluginManager.newv));
 				String new_version_available4 = ChatColor.translateAlternateColorCodes(altColorChar, Lang.new_version_available2);
 				event.getPlayer().sendMessage(new_version_available3);
 				event.getPlayer().sendMessage(new_version_available4);
