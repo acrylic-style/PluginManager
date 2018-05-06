@@ -11,6 +11,12 @@ PluginManager is a Bukkit plugin.
 
 Project page: https://dev.bukkit.org/projects/pluginmanagement
 
+## Before you use the plugin(Required Plugins)
+| Plugin | Download |
+| ------ | -------- |
+| [TomeitoLib](https://github.com/rht0910/TomeitoLib/) | [here](https://dl.rht0910.tk/TomeitoLib.jar) |
+| Permission Managements | Search yourself(Almost servers are using [LuckPerms](https://github.com/lucko/LuckPerms/).) |
+
 ## Unsupported Plugins
 | Plugin | When | Why not supported | Technical Information |
 | ------ | ---- | --------------- | -------------- |
