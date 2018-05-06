@@ -22,7 +22,6 @@ Project page: https://dev.bukkit.org/projects/pluginmanagement
 | ------ | ---- | --------------- | -------------- |
 | [BKCommonLib](https://github.com/bergerhealer/BKCommonLib) | Enabling | java.lang.RuntimeException: BKCommonLib is not enabled - Plugin Instance can not be obtained! (disjointed Class state?) | |
 | [PluginManager](https://github.com/rht0910/PluginManager/) | Reloading | Cannot reload itself, but if you executed it, Plugin will die | Plugin is already initialized |
-| [ImageOnMap](https://github.com/zDevelopers/ImageOnMap) | Enabling | java.lang.IllegalStateException: Configuration is not loaded. | fr.moribus.imageonmap.components.configuration.ConfigurationItem.getInstance(ConfigurationItem.java:229) |
 | [Still have](https://github.com/rht0910/PluginManager/issues/) | [ a ](https://github.com/rht0910/PluginManager/issues/) | [Problems?](https://github.com/rht0910/PluginManager/issues/) | |
 
 ## Commands
