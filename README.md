@@ -5,7 +5,7 @@ Development Builds: [![Build Status](https://ci.rht0910.tk/job/PluginManager-dev
 
 TravisCI: [![Build Status](https://travis-ci.org/rht0910/PluginManager.svg?branch=master)](https://travis-ci.org/rht0910/PluginManager)
 
-This is a Bukkit Plugin.
+Join our Discord Server! [PluginManager](https://discord.gg/hkkF8nF)
 
 Bukkit Project page: https://dev.bukkit.org/projects/pluginmanagement
 
@@ -43,7 +43,7 @@ Bukkit Project page: https://dev.bukkit.org/projects/pluginmanagement
 | /pman check | Check version manually |
 | /pman check-dev | Check version manually for development build |
 
-### Versions
+## Versions
 
 <span style="color:orange">Latest: [1.4.3](https://github.com/rht0910/PluginManager/releases/tag/1.4.3)</span>
 
