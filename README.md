@@ -61,3 +61,10 @@ Bukkit Project page: https://dev.bukkit.org/projects/pluginmanagement
 | [1.4.1](https://github.com/rht0910/PluginManager/releases/tag/1.4.1) | ![](https://placehold.it/15/ff0000/000000?text=+) Not supported |
 | 1.4 | ![](https://placehold.it/15/ff0000/000000?text=+) Not supported |
 | Or older | ![](https://placehold.it/15/ff0000/000000?text=+) ![](https://placehold.it/15/ff0000/000000?text=+) ![](https://placehold.it/15/ff0000/000000?text=+) Extremely old version |
+
+## Downloads
+**Latest Stable: **[PluginManager.jar](https://storage.rht0910.tk/download/PluginManager.jar)
+
+**Latest(under dev): **[PluginManager-dev.jar](https://storage.rht0910.tk/download/PluginManager-dev.jar)
+
+**Required Plugin: **[TomeitoLib.jar](https://storage.rht0910.tk/download/TomeitoLib.jar)
