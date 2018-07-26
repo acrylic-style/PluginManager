@@ -23,6 +23,7 @@ import tk.rht0910.plugin_manager.language.Lang;
 import tk.rht0910.plugin_manager.thread.VersionCheck;
 import tk.rht0910.plugin_manager.util.Manager;
 import tk.rht0910.plugin_manager.util.PluginUtils;
+import tk.rht0910.plugin_manager.util.StringTool;
 import tk.rht0910.tomeito_core.utils.Log;
 
 /**
@@ -54,18 +55,19 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 	@Override
 	public void onEnable() {
 		try {
-			/*
+
 			Log.info("Checking bukkit version");
 			try {
 				//String version = Bukkit.getServer().getClass().getPackage().getName().substring(Bukkit.getServer().getClass().getPackage().getName().lastIndexOf('n') + 1);
-				// String version = Bukkit.getBukkitVersion();
+				//String version = Bukkit.getBukkitVersion();
+				String version = Bukkit.getVersion();
 				if(StringTool.toVersion("1.8").compareTo(StringTool.toVersion(version)) == 1) {
 					Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
 					Log.warn("Your server version(" + version + ") is not supported!");
 					Log.warn("We recommended update " + version + " to 1.8 or later!");
 					Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
 				}
-				if(StringTool.toVersion("1.12.2").compareTo(StringTool.toVersion(version)) == -1) {
+				if(StringTool.toVersion("1.13").compareTo(StringTool.toVersion(version)) == -1) {
 					Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
 					Log.warn("Your server version(" + version + ") is not supported!");
 					Log.warn("We recommended downgrade " + version + " to 1.12.2 or older!");
@@ -74,7 +76,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 			} catch(Throwable e) {
 				Log.error("Version comparation failed!");
 				e.printStackTrace();
-			}*/
+			}
 			this.getConfig().options().copyDefaults(true);
 			this.saveConfig();
 			CatchException catchException = new CatchException();
@@ -304,7 +306,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 				}
 			} else if(args[0].equalsIgnoreCase("load")) {
 				if(sender instanceof Player) {
-					if(!sender.isPermissionSet("pluginmanager.admin")) {
+					if(!sender.hasPermission("pluginmanager.admin")) {
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
 						return false;
 					}
@@ -320,7 +322,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 				}
 			} else if(args[0].equalsIgnoreCase("disable")) {
 				if(sender instanceof Player) {
-					if(!sender.isPermissionSet("pluginmanager.admin")) {
+					if(!sender.hasPermission("pluginmanager.admin")) {
 						Bukkit.getServer().getLogger().severe("No permission: /pman disable : " + sender.toString());
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
 						return false;
@@ -329,7 +331,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 				PluginUtils.unloadPlugin(sender, args[1]);
 			} else if(args[0].equalsIgnoreCase("unload")) {
 				if(sender instanceof Player) {
-					if(!sender.isPermissionSet("pluginmanager.admin")) {
+					if(!sender.hasPermission("pluginmanager.admin")) {
 						Bukkit.getServer().getLogger().severe("No permission: /pman unload : " + sender.toString());
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
 						return false;
@@ -338,7 +340,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 				PluginUtils.unloadPlugin(sender, args[1]);
 			} else if(args[0].equalsIgnoreCase("reload")) {
 				if(sender instanceof Player) {
-					if(!sender.isPermissionSet("pluginmanager.admin")) {
+					if(!sender.hasPermission("pluginmanager.admin")) {
 						Bukkit.getServer().getLogger().severe("No permission: /pman reload : " + sender.toString());
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
 						return false;
@@ -351,12 +353,12 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.you_are_not_operator));
 						return false;
 					}
-					if(!sender.isPermissionSet("pluginmanager.admin")) {
+					if(!sender.hasPermission("pluginmanager.admin")) {
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
 						return false;
 					}
 				}
-				if(args[1] == null || args[2] == null) {
+				if(args.length < 2) {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.not_enough_args));
 					return false;
 				}
@@ -367,11 +369,11 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.you_are_not_operator));
 						return false;
 					}
-					if(!sender.isPermissionSet("pluginmanager.admin")) {
+					if(!sender.hasPermission("pluginmanager.admin")) {
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
 						return false;
 					}
-					if(!sender.isPermissionSet("pluginmanager.super-admin")) {
+					if(!sender.hasPermission("pluginmanager.super-admin")) {
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
 						return false;
 					}
@@ -387,11 +389,11 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.you_are_not_operator));
 						return false;
 					}
-					if(!sender.isPermissionSet("pluginmanager.admin")) {
+					if(!sender.hasPermission("pluginmanager.admin")) {
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
 						return false;
 					}
-					if(!sender.isPermissionSet("pluginmanager.super-admin")) {
+					if(!sender.hasPermission("pluginmanager.super-admin")) {
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
 						return false;
 					}
@@ -433,7 +435,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.you_are_not_operator));
 						return false;
 					}
-					if(!sender.isPermissionSet("pluginmanager.admin")) {
+					if(!sender.hasPermission("pluginmanager.admin")) {
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
 						return false;
 					}
@@ -458,7 +460,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.you_are_not_operator));
 						return false;
 					}
-					if(!sender.isPermissionSet("pluginmanager.admin")) {
+					if(!sender.hasPermission("pluginmanager.admin")) {
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
 						return false;
 					}

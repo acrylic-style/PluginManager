@@ -117,6 +117,9 @@ public class VersionCheck extends Thread implements Runnable {
 			Log.error(ChatColor.translateAlternateColorCodes(altColorChar, Lang.error_occured));
 			iae.printStackTrace();
 			iae.getCause().printStackTrace();
+		} catch(NoClassDefFoundError ncdfe) {
+			ncdfe.printStackTrace();
+			ncdfe.getCause().printStackTrace();
 		}
 	}
 }
