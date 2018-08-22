@@ -22,7 +22,7 @@ pman_reload_desc: "Обновить плагин"
 pman_version_desc: "Показывает версию плагина."
 pman_version: "&aPluginManager:&b&n %s"
 failed_update_plugin: "&cFailed to update(Is server down?)"
-updating_plugin: "& aUpdating плагин..."
+updating_plugin: "&aUpdating plugin..."
 success_update_plugin: "&5Plugin is updated by %s . Please reload!"
 you_are_not_operator: "&cYou are not operator!"
 no_permission: "&cНедостаточно прав."
@@ -51,12 +51,12 @@ init_complete: "Полная инициализация."
 init_error: "Ошибка при инициализации, Отключение плагина, смотрите ошибки."
 continue_error: "&4If вы видите ошибка продолжение? Пожалуйста, сообщите разработчику!"
 continue_error_catch: '&4If вы видите ошибка продолжение? Пожалуйста, сообщите разработчику! (Пожалуйста, сообщите разработчику: %s)'
-please_report_developer: "&4Error не могут быть разрешены в пользователя. Пожалуйста, сообщите разработчику!"
-please_report_developer_catch: '&4Error не могут быть разрешены в пользователя. Пожалуйста, сообщите разработчику! Пожалуйста, сообщите разработчику: %s'
+please_report_developer: "&4Error cannot be resolved in user. Please report to developer!"
+please_report_developer_catch: '&4Error cannot be resolved in user. Please report to developer! Please tell to developer: %s'
 problem_case: '&b - в случае проблем: %s'
-new_version_available: '&a Заново версия доступна для PluginManager: текущий: %s, New: %s'
+new_version_available: '&aNew version available for PluginManager: Current: %s, New: %s'
 new_version_available2: "&a Арун & b/pman обновление & Ато обновление."
-started_version_check: "&a Проверка версии aRunning..."
+started_version_check: "&aRunning version check..."
 already_checking: "&cAlready version checking!"
 version_check_complete1: "&aОтвращение проверить полный."
 version_check_complete_update_no: "&aСвежих обновлений нет."
