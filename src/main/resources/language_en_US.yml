@@ -21,13 +21,13 @@ pman_check_desc: "Check version manually."
 pman_reload_desc: "Reload a plugin."
 pman_version_desc: "Shows plugin version."
 pman_version: "&aPluginManager:&b&n %s"
-failed_update_plugin: "&cFailed to update(Is server down?)"
+failed_update_plugin: "&cFailed to update(Is the server down?)"
 updating_plugin: "&aUpdating plugin..."
 success_update_plugin: "&5Plugin is updated by %s . Please reload!"
-you_are_not_operator: "&cYou are not operator!"
+you_are_not_operator: "&cYou are not an operator!"
 no_permission: "&cYou don't have permission."
 opened_config_viewer: "Opened config viewer by %s"
-not_enough_args: "&cNot enough argument, cannot continue."
+not_enough_args: "&cNot enough arguments, cannot continue."
 running_on: '&aPluginManager is running on: %s'
 available_commands: '&aAvailable commands: /pman help'
 beta: "(BETA)"
@@ -41,14 +41,14 @@ already_disabled: "&cThis plugin is already disabled!"
 failed_load_plugin: '&cCouldn''t load plugin: %s'
 success_load_plugin: '&aLoaded plugin: %s'
 error_occured: '&cAn error occured: %s'
-error_unload_plugin: '&cError while unloading plugin: %s'
+error_unload_plugin: '&cAn error occurred while unloading the plugin: %s'
 unloaded_plugin: '&aUnloaded plugin: %s'
 reloading_config: "&aReloading config..."
-error_reload_config: '&cError while reloading config: PluginManager'
+error_reload_config: '&cAn error occurred while reloading the config: PluginManager'
 reloaded_config: '&aReloaded config: PluginManager'
 set_language: '&aSet config: language: %s'
 init_complete: "Initialize complete."
-init_error: "Error while initializing, disabling plugin, please see errors."
+init_error: "An error occurred while initializing, disabling the plugin, please see errors."
 continue_error: "&4If you see error continuing? please report to developer!"
 continue_error_catch: '&4If you see error continuing? please report to developer!(Please tell to developer: %s)'
 please_report_developer: "&4Error cannot be resolved in user. Please report to developer!"
