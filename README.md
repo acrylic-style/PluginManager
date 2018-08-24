@@ -9,9 +9,6 @@ Join our Discord Server! [PluginManager](https://discord.gg/hkkF8nF)
 
 Bukkit Project page: https://dev.bukkit.org/projects/pluginmanagement
 
-## Important
-__You can't build this repository... because [repository server](https://repo.rht0910.tk) is currently broken...(Self hacked by swagger.io)__
-**__Please use pre-builded version! (latest/recommended version; 1.4.3)__**
 
 ## Before you use the plugin(Required Plugins)
 | Plugin | Download |
