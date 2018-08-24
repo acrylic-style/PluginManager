@@ -52,7 +52,7 @@ init_error: "初始化时发生错误，已禁用本插件，请查看错误日�
 continue_error: "&4若您发现错误仍存在请汇报给开发者！"
 continue_error_catch: '&4若您发现错误仍存在请汇报给开发者！（请告知开发者：%s）'
 please_report_developer: "&4错误无法被用户消除，请汇报给开发者！"
-please_report_developer_catch: '&4错误无法被用户消除，请汇报给开发者！（请告知开发者：%s）'
+please_report_developer_catch: '&4Error cannot be resolved in user. Please report to developer! Please tell to developer: %s'
 problem_case: '&b - 在发生问题时： %s'
 new_version_available: '&a有新版本的插件管理可用：当前： %s， 新版： %s'
 new_version_available2: "&a输入 &b/pman update &a进行更新。"
