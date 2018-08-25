@@ -21,13 +21,13 @@ pman_check_desc: "手動でバージョンをチェックします。"
 pman_reload_desc: "プラグインを再読み込みします。"
 pman_version_desc: "プラグインのバージョンを表示します。"
 pman_version: "&aPluginManager:&b&n %s"
-failed_update_plugin: "&cFailed to update(Is the server down?)"
+failed_update_plugin: "&c更新に失敗しました(サーバーダウン？)"
 updating_plugin: "&aプラグインをアップデート中..."
 success_update_plugin: "&5プラグインは %s によって更新されました。再読み込みしてください！"
-you_are_not_operator: "&cYou are not an operator!"
+you_are_not_operator: "&cあなたはオペレーターではありません！"
 no_permission: "&c権限がありません。"
 opened_config_viewer: "設定ビューアーが %s に開かれました。"
-not_enough_args: "&cNot enough arguments, cannot continue."
+not_enough_args: "&c引数が足りません。続行できません。"
 running_on: '&aPluginManagerを実行中: %s'
 available_commands: '&a利用可能なコマンド: /pman help'
 beta: "(ベータ)"
@@ -41,14 +41,14 @@ already_disabled: "&cこのプラグインはすでに無効になっていま�
 failed_load_plugin: '&cプラグインを読み込めませんでした: %s'
 success_load_plugin: '&aプラグインを読み込みました: %s'
 error_occured: '&cエラーが発生しました: %s'
-error_unload_plugin: '&cAn error occurred while unloading the plugin: %s'
+error_unload_plugin: '&cプラグインのアンロード中にエラーが発生しました: %s'
 unloaded_plugin: '&aプラグインをアンロードしました: %s'
 reloading_config: "&a設定を再読み込みしています..."
-error_reload_config: '&cAn error occurred while reloading the config: PluginManager'
+error_reload_config: '&c設定を再読み込み中にエラーが発生しました: PluginManager'
 reloaded_config: '&a設定を再読み込みしました: PluginManager'
 set_language: '&a言語を設定: language: %s'
 init_complete: "初期化が完了しました。"
-init_error: "An error occurred while initializing, disabling the plugin, please see errors."
+init_error: "初期化中にエラーが発生しました。プラグインを無効化中です、エラーを見てください。"
 continue_error: "&4継続的にエラーを見る場合は、開発者に報告してください！"
 continue_error_catch: '&4継続的にエラーを見る場合は、開発者に報告してください！(開発者にこの情報を伝えてください: %s)'
 please_report_developer: "&4このエラーはユーザーでは解決できません。開発者に報告してください！"
@@ -74,12 +74,12 @@ download_success: "&aダウンロードに成功しました。"
 total_time: '&b合計時間: %s'
 finished_time: '&b終了時間: %s'
 start_time: '&b開始時間: %s'
-warning_lang_invalid: '&cWarning: Invalid properties ''language'' in config. Please set the language again.'
+warning_lang_invalid: '&c注意: 無効なプロパティ: configの中の ''language''。 (もう一回) 言語を設定してください。'
 unknown_args: '&b不明な引数: %s'
 cant_show_usage: "&cコマンドの使用例を表示できません。"
 reloading_plugin: '&aプラグインを再読み込みしています: %s ...'
 reloaded_plugin: '&aプラグインを再読み込みしました: %s'
-reloading_plugin_error: '&cError while reloading the plugin: %s'
+reloading_plugin_error: '&cプラグインの再読み込み中にエラーが発生しました: %s'
 permission_node: 'パーミッションノード'
 command: 'コマンド'
 directory: 'フォルダ'

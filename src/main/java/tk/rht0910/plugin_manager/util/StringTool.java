@@ -25,7 +25,7 @@ public class StringTool {
 				return true;
 			} else if(Integer.parseInt(o.toString()) == 0) {
 				return true;
-			} else if(!Boolean.parseBoolean(o.toString())) {
+			} else if(Boolean.parseBoolean(o.toString()) == false) {
 				return true;
 			} else {
 				return false;
@@ -38,6 +38,10 @@ public class StringTool {
 	}
 
 	public static <T> boolean isNull(T o) {
-		return o == null
+		if(o == null) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

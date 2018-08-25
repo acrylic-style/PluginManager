@@ -22,17 +22,20 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/frand/OneDrive/Documents/Vault.jar"/>
-	<classpathentry kind="lib" path="C:/Users/frand/OneDrive/Documents/bukkit-1.13-R0.1-SNAPSHOT-shaded-b1758.jar"/>
+	<classpathentry kind="lib" path="D:/oldownloads/PlugMan.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Owner/AppData/Roaming/.minecraft/libraries/com/google/guava/guava/17.0/guava-17.0.jar"/>
+	<classpathentry kind="lib" path="D:/oldownloads/DiscordSRV-Build-13.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Owner/Documents/bukkit-1.12.1-R0.1-SNAPSHOT-b1398.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Owner/Documents/craftbukkit-0.1-SNAPSHOT-latest.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
