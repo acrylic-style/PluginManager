@@ -21,13 +21,13 @@ pman_check_desc: "Sprawdź wersję manualnie."
 pman_reload_desc: "Reload a plugin."
 pman_version_desc: "Wyświetl wersje pluginu."
 pman_version: "&aPluginManager:&b&n %s"
-failed_update_plugin: "&cFailed to update(Is server down?)"
+failed_update_plugin: "&cFailed to update(Is the server down?)"
 updating_plugin: "&aAktualizowanie pluginu..."
 success_update_plugin: "&5Plugin jest aktualizowany %s . Załaduj ponownie!"
-you_are_not_operator: "&cNie jesteś operatorem!"
+you_are_not_operator: "&cYou are not an operator!"
 no_permission: "&cNie posiadasz uprawnień."
 opened_config_viewer: "Opened config viewer by %s"
-not_enough_args: "&cNot enough argument, cannot continue."
+not_enough_args: "&cNot enough arguments, cannot continue."
 running_on: '&aPluginManager is running on: %s'
 available_commands: '&aDostępne komendy: /pman help'
 beta: "(BETA)"
@@ -41,14 +41,14 @@ already_disabled: "&cThis plugin is already disabled!"
 failed_load_plugin: '&cNie można załadować pluginu: %s'
 success_load_plugin: '&aZaładowany plugin: %s'
 error_occured: '&cWystąpił błąd: %s'
-error_unload_plugin: '&cError while unloading plugin: %s'
+error_unload_plugin: '&cAn error occurred while unloading the plugin: %s'
 unloaded_plugin: '&aUnloaded plugin: %s'
 reloading_config: "&aReloading config..."
-error_reload_config: '&cError while reloading config: PluginManager'
+error_reload_config: '&cAn error occurred while reloading the config: PluginManager'
 reloaded_config: '&aReloaded config: PluginManager'
 set_language: '&aSet config: language: %s'
 init_complete: "Inicjacja zakończona."
-init_error: "Error while initializing, disabling plugin, please see errors."
+init_error: "An error occurred while initializing, disabling the plugin, please see errors."
 continue_error: "&4If you see error continuing? please report to developer!"
 continue_error_catch: '&4If you see error continuing? please report to developer!(Please tell to developer: %s)'
 please_report_developer: "&4Error cannot be resolved in user. Please report to developer!"
@@ -74,12 +74,12 @@ download_success: "&aSuccessfully download."
 total_time: '&bTotal time: %s'
 finished_time: '&bFinished time: %s'
 start_time: '&bStart time: %s'
-warning_lang_invalid: '&cWarning: Invalid properties ''language'' in config. Please set (again) language.'
+warning_lang_invalid: '&cWarning: Invalid properties ''language'' in config. Please set the language again.'
 unknown_args: '&bUnknown arg: %s'
 cant_show_usage: "&cCan't show usage of command."
 reloading_plugin: '&aReloading plugin: %s ...'
 reloaded_plugin: '&aReloaded plugin: %s'
-reloading_plugin_error: '&cError while reloading plugin: %s'
+reloading_plugin_error: '&cError while reloading the plugin: %s'
 permission_node: 'Permission Node'
 command: 'Command'
 directory: 'Directory'
