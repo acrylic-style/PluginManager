@@ -259,11 +259,9 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 		try {
 			Lang.use(); // Initialize variables
 		if(command.getName().equalsIgnoreCase("pman")) {
-			if(sender instanceof Player) {
-				if(!sender.isOp()) {
-					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.you_are_not_operator));
-					return false;
-				}
+			if(sender instanceof Player && !sender.isOp()) {
+				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.you_are_not_operator));
+				return false;
 			}
 			if(args.length == 0 || args == null) {
 				sender.sendMessage(ChatColor.translateAlternateColorCodes('&', String.format(Lang.running_on, Lang.version)));
@@ -319,30 +317,24 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					sender.sendMessage(ChatColor.YELLOW + "Note: Two arguments are not supported. Use /pman load <Plugin>");
 				}
 			} else if(args[0].equalsIgnoreCase("disable")) {
-				if(sender instanceof Player) {
-					if(!sender.hasPermission("pluginmanager.admin")) {
-						Bukkit.getServer().getLogger().severe("No permission: /pman disable : " + sender.toString());
-						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
-						return false;
-					}
+				if(sender instanceof Player && !sender.hasPermission("pluginmanager.admin")) {
+					Bukkit.getServer().getLogger().severe("No permission: /pman disable : " + sender.toString());
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
+					return false;
 				}
 				PluginUtils.unloadPlugin(sender, args[1]);
 			} else if(args[0].equalsIgnoreCase("unload")) {
-				if(sender instanceof Player) {
-					if(!sender.hasPermission("pluginmanager.admin")) {
-						Bukkit.getServer().getLogger().severe("No permission: /pman unload : " + sender.toString());
-						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
-						return false;
-					}
+				if(sender instanceof Player && !sender.hasPermission("pluginmanager.admin")) {
+					Bukkit.getServer().getLogger().severe("No permission: /pman unload : " + sender.toString());
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
+					return false;
 				}
 				PluginUtils.unloadPlugin(sender, args[1]);
 			} else if(args[0].equalsIgnoreCase("reload")) {
-				if(sender instanceof Player) {
-					if(!sender.hasPermission("pluginmanager.admin")) {
-						Bukkit.getServer().getLogger().severe("No permission: /pman reload : " + sender.toString());
-						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
-						return false;
-					}
+				if(sender instanceof Player && !sender.hasPermission("pluginmanager.admin")) {
+					Bukkit.getServer().getLogger().severe("No permission: /pman reload : " + sender.toString());
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
+					return false;
 				}
 				PluginUtils.reloadPlugin(sender, args[1]);
 			} else if(args[0].equalsIgnoreCase("download")) {
@@ -367,11 +359,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.you_are_not_operator));
 						return false;
 					}
-					if(!sender.hasPermission("pluginmanager.admin")) {
-						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
-						return false;
-					}
-					if(!sender.hasPermission("pluginmanager.super-admin")) {
+					if(!sender.hasPermission("pluginmanager.admin") && !sender.hasPermission("pluginmanager.super-admin")) {
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
 						return false;
 					}
@@ -387,11 +375,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.you_are_not_operator));
 						return false;
 					}
-					if(!sender.hasPermission("pluginmanager.admin")) {
-						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
-						return false;
-					}
-					if(!sender.hasPermission("pluginmanager.super-admin")) {
+					if(!sender.hasPermission("pluginmanager.admin") && !sender.hasPermission("pluginmanager.super-admin")) {
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
 						return false;
 					}
