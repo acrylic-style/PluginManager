@@ -9,6 +9,7 @@ Join our Discord Server! [PluginManager](https://discord.gg/hkkF8nF)
 
 Bukkit Project page: https://dev.bukkit.org/projects/pluginmanagement
 
+
 ## Before you use the plugin(Required Plugins)
 | Plugin | Download |
 | ------ | -------- |
