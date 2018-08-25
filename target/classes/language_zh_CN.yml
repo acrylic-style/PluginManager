@@ -1,93 +1,93 @@
 ---
-help: "Help"
-invalid_args: "Invalid args"
-required: "Required"
-optional: "Optional"
-information: "Information"
-pman_help_desc: "Display this."
-pman_load_desc: "Load a plugin."
-pman_unload_desc: "Unload a plugin."
-pman_download_desc: "Download a plugin."
-pman_delete_desc: "Remove a plugin."
-pman_restore_desc: "Restore a removed plugin."
-pman_editor_desc: "Edit a plugin config"
-pman_viewer_desc: "View a plugin config"
-pman_update_desc: "Update this plugin."
-pman_permission_desc: "Test if a player has permission"
-pman_config_language: "Change language"
-pman_config_reload: "Reload config"
-pman_usage_desc: "Usage of command."
-pman_check_desc: "Check version manually."
-pman_reload_desc: "Reload a plugin."
-pman_version_desc: "Shows plugin version."
-pman_version: "&aPluginManager:&b&n %s"
-failed_update_plugin: "&cFailed to update(Is server down?)"
-updating_plugin: "&aUpdating plugin..."
-success_update_plugin: "&5Plugin is updated by %s . Please reload!"
-you_are_not_operator: "&cYou are not operator!"
-no_permission: "&cYou don't have permission."
-opened_config_viewer: "Opened config viewer by %s"
-not_enough_args: "&cNot enough argument, cannot continue."
-running_on: '&aPluginManager is running on: %s'
-available_commands: '&aAvailable commands: /pman help'
-beta: "(BETA)"
-alpha: "(ALPHA)"
-project_page: '&b - Project page: %s'
-developer_version: '&b - Developer version: %s'
-source_code: '&b - Source code: %s'
-starting_load_plugins: "&aLoading plugin..."
-already_enabled: "&cThis plugin is already enabled!"
-already_disabled: "&cThis plugin is already disabled!"
-failed_load_plugin: '&cCouldn''t load plugin: %s'
-success_load_plugin: '&aLoaded plugin: %s'
-error_occured: '&cAn error occured: %s'
-error_unload_plugin: '&cError while unloading plugin: %s'
-unloaded_plugin: '&aUnloaded plugin: %s'
-reloading_config: "&aReloading config..."
-error_reload_config: '&cError while reloading config: PluginManager'
-reloaded_config: '&aReloaded config: PluginManager'
-set_language: '&aSet config: language: %s'
-init_complete: "Initialize complete."
-init_error: "Error while initializing, disabling plugin, please see errors."
-continue_error: "&4If you see error continuing? please report to developer!"
-continue_error_catch: '&4If you see error continuing? please report to developer!(Please tell to developer: %s)'
-please_report_developer: "&4Error cannot be resolved in user. Please report to developer!"
-please_report_developer_catch: '&4Error cannot be resolved in user. Please report to developer! Please tell to developer: %s'
-problem_case: '&b - In case of problems: %s'
-new_version_available: '&aNew version available for PluginManager: Current: %s, New: %s'
-new_version_available2: "&aRun &b/pman update &ato update."
-started_version_check: "&aRunning version check..."
-already_checking: "&cAlready version checking!"
-version_check_complete1: "&aVersion check complete."
-version_check_complete_update_no: "&aNo updates found."
-version_check_complete_update5: "&aRun &b/pman update-dev&a to update."
-version_check_complete_update1: "&aUpdate found!"
-version_check_complete_update2: '&bCurrent: %s'
-version_check_complete_update3: '&eNew: %s'
-version_check_complete_update4: "&aRun &b/pman update&a to update."
-selected_directory: "&cSelected File is Directory, cannot continue."
-start_dl_plugin: "&aStarted downloading plugin."
-url: '&bURL: %s'
-filename: '&bFilename: %s'
-download_failed: "&cFailed to download. Server down or wrong url."
-download_success: "&aSuccessfully download."
-total_time: '&bTotal time: %s'
-finished_time: '&bFinished time: %s'
-start_time: '&bStart time: %s'
-warning_lang_invalid: '&cWarning: Invalid properties ''language'' in config. Please set (again) language.'
-unknown_args: '&bUnknown arg: %s'
-cant_show_usage: "&cCan't show usage of command."
-reloading_plugin: '&aReloading plugin: %s ...'
-reloaded_plugin: '&aReloaded plugin: %s'
-reloading_plugin_error: '&cError while reloading plugin: %s'
-permission_node: 'Permission Node'
-command: 'Command'
-directory: 'Directory'
-file: 'File'
-current_filename: '(Current)FileName'
-new_name: 'New Name'
-value: 'Value'
-plugin: 'Plugin'
-test_donthave_permission: '&c%s does not have a permission: %s'
-test_has_permission: '&a%s has permission: %s'
-player: 'Player'
+help: "帮助"
+invalid_args: "无效参数"
+required: "必填"
+optional: "可选"
+information: "信息"
+pman_help_desc: "显示此消息。"
+pman_load_desc: "加载一个插件。"
+pman_unload_desc: "卸载一个插件。"
+pman_download_desc: "下载一个插件。"
+pman_delete_desc: "移除一个插件。"
+pman_restore_desc: "恢复一个已移除的插件。"
+pman_editor_desc: "编辑插件配置"
+pman_viewer_desc: "预览插件配置"
+pman_update_desc: "更新此插件。"
+pman_permission_desc: "测试玩家是否拥有权限"
+pman_config_language: "选择语言"
+pman_config_reload: "重载配置"
+pman_usage_desc: "指令使用。"
+pman_check_desc: "手动检查版本更新。"
+pman_reload_desc: "重载一个插件。"
+pman_version_desc: "显示插件版本。"
+pman_version: "&a插件管理：&b&n %s"
+failed_update_plugin: "&c无法进行更新（服务器是否处于离线状态？）"
+updating_plugin: "&a正在更新插件···"
+success_update_plugin: "&5插件已被 %s 更新。请重新载入！"
+you_are_not_operator: "&c您不是操作员！"
+no_permission: "&c您没有权限。"
+opened_config_viewer: "由 %s 打开了配置预览"
+not_enough_args: "&c参数不足，无法继续。"
+running_on: '&a插件管理正运行于： %s'
+available_commands: '&a可用指令：/pman help'
+beta: "（测试版）"
+alpha: "（内测版）"
+project_page: '&b - 项目页面： %s'
+developer_version: '&b - 开发者版本： %s'
+source_code: '&b - 源代码： %s'
+starting_load_plugins: "&a正在载入插件···"
+already_enabled: "&c此插件已被启用！"
+already_disabled: "&c此插件已被禁用！"
+failed_load_plugin: '&c无法载入插件： %s'
+success_load_plugin: '&a已载入插件： %s'
+error_occured: '&c发生错误： %s'
+error_unload_plugin: '&c卸载插件时发生错误： %s'
+unloaded_plugin: '&a已卸载插件： %s'
+reloading_config: "&a正在重新载入配置···"
+error_reload_config: '&c重新载入配置时发生错误：插件管理'
+reloaded_config: '&a已重新载入配置：插件管理'
+set_language: '&a设置配置：language： %s'
+init_complete: "初始化完毕。"
+init_error: "初始化时发生错误，已禁用本插件，请查看错误日志。"
+continue_error: "&4若您发现错误仍存在请汇报给开发者！"
+continue_error_catch: '&4若您发现错误仍存在请汇报给开发者！（请告知开发者：%s）'
+please_report_developer: "&4错误无法被用户消除，请汇报给开发者！"
+please_report_developer_catch: '&4错误无法被用户消除，请汇报给开发者！（请告知开发者：%s）'
+problem_case: '&b - 在发生问题时： %s'
+new_version_available: '&a有新版本的插件管理可用：当前： %s， 新版： %s'
+new_version_available2: "&a输入 &b/pman update &a进行更新。"
+started_version_check: "&a正在运行版本检查···"
+already_checking: "&c正在进行版本检查！"
+version_check_complete1: "&a版本检查完毕。"
+version_check_complete_update_no: "&a无可用更新。"
+version_check_complete_update5: "&a输入 &b/pman update-dev&a 进行更新。"
+version_check_complete_update1: "&a更新可用！"
+version_check_complete_update2: '&b当前： %s'
+version_check_complete_update3: '&e更新： %s'
+version_check_complete_update4: "&a输入 &b/pman update&a进行更新。"
+selected_directory: "&c选择的文件为目录，无法进行操作。"
+start_dl_plugin: "&a已开始下载插件。"
+url: '&b网址： %s'
+filename: '&b文件名： %s'
+download_failed: "&c下载失败。服务器处于离线状态或网址错误。"
+download_success: "&a已成功下载。"
+total_time: '&b总时长： %s'
+finished_time: '&b完成时间： %s'
+start_time: '&b开始时间： %s'
+warning_lang_invalid: '&c警告：配置文件内包含无效设置项“language”。请（重新）设置语言。'
+unknown_args: '&b未知参数： %s'
+cant_show_usage: "&c无法显示指令使用。"
+reloading_plugin: '&a正在重新加载插件： %s ···'
+reloaded_plugin: '&a已重载插件： %s ···'
+reloading_plugin_error: '&c重载插件时发生错误： %s'
+permission_node: '权限节点'
+command: '指令'
+directory: '目录'
+file: '文件'
+current_filename: '（当前）文件名'
+new_name: '新名称'
+value: '值'
+plugin: '插件'
+test_donthave_permission: '&c%s 不拥有权限： %s'
+test_has_permission: '&a%s 拥有权限： %s'
+player: '玩家'
