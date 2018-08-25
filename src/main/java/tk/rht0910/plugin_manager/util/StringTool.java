@@ -38,6 +38,6 @@ public class StringTool {
 	}
 
 	public static <T> boolean isNull(T o) {
-		return o == null
+		return o == null;
 	}
 }
