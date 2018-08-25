@@ -305,11 +305,9 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					e.printStackTrace();
 				}
 			} else if(args[0].equalsIgnoreCase("load")) {
-				if(sender instanceof Player) {
-					if(!sender.hasPermission("pluginmanager.admin")) {
-						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
-						return false;
-					}
+				if(sender instanceof Player && !sender.hasPermission("pluginmanager.admin")) {
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.no_permission));
+					return false;
 				}
 				if(args.length == 1) {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.not_enough_args));
