@@ -13,6 +13,7 @@ pman_restore_desc: "Восстановите удаленные плагин."
 pman_editor_desc: "Редактирование конфигурации плагина"
 pman_viewer_desc: "Редактирование конфигурации плагина"
 pman_update_desc: "Обновите этот плагин."
+pman_permission_desc: "Test if a player has permission"
 pman_config_language: "Измените язык"
 pman_config_reload: "Перезагрузить конфигурационный"
 pman_usage_desc: "Использование: /<команда>"
@@ -67,7 +68,7 @@ version_check_complete_update4: "&aАрун & b/pman обновление & дл
 selected_directory: "&cВыбранный файл является директорией, продолжение невозможно."
 start_dl_plugin: "&aStarted загрузки плагина."
 url: '&bБерл: %s'
-file: '&bFilename: %s'
+filename: '&bFilename: %s'
 download_failed: "&cFailed для скачивания. Сервер вниз или неправильный Url-адрес."
 download_success: "&aSuccessfully загрузки."
 total_time: '&bTotal время: %s'
@@ -79,3 +80,14 @@ cant_show_usage: "&cCan't показать использование коман
 reloading_plugin: '& плагин aLoaded: %s'
 reloaded_plugin: '&aплагин aLoaded: %s'
 reloading_plugin_error: '&cОшибка при обновлении плагина %s'
+permission_node: 'Permission Node'
+command: 'Command'
+directory: 'Directory'
+file: 'File'
+current_filename: '(Current)FileName'
+new_name: 'New Name'
+value: 'Value'
+plugin: 'Plugin'
+test_donthave_permission: '&c%s does not have a permission: %s'
+test_has_permission: '&a%s has permission: %s'
+player: 'Player'

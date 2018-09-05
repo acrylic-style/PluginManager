@@ -95,7 +95,7 @@ public class VersionCheck extends Thread implements Runnable {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update1));
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.version_check_complete_update2, PluginManager.current)));
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.version_check_complete_update3, line + ChatColor.RED + edition)));
-					if(edition.equals("(dev)")) {
+					if("(dev)".equals(edition)) {
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update5));
 					} else {
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.version_check_complete_update4));
@@ -117,6 +117,9 @@ public class VersionCheck extends Thread implements Runnable {
 			Log.error(ChatColor.translateAlternateColorCodes(altColorChar, Lang.error_occured));
 			iae.printStackTrace();
 			iae.getCause().printStackTrace();
+		} catch(NoClassDefFoundError ncdfe) {
+			ncdfe.printStackTrace();
+			ncdfe.getCause().printStackTrace();
 		}
 	}
 }

@@ -47,8 +47,7 @@ public class AsyncDownload extends Thread {
 			conn.setInstanceFollowRedirects(true);
 			conn.setRequestMethod("GET");
 			conn.connect();
-			@SuppressWarnings("unused")
-			int httpStatusCode = conn.getResponseCode();
+			//int httpStatusCode = conn.getResponseCode();
 			//if(httpStatusCode != HttpURLConnection.HTTP_OK){ if(httpStatusCode != -1) {throw new Exception();} } // Input Stream
 			DataInputStream dataInStream = new DataInputStream( conn.getInputStream()); // Output Stream
 			DataOutputStream dataOutStream = new DataOutputStream( new BufferedOutputStream( new FileOutputStream("plugins/" + file + ".jar"))); // Read Data

@@ -13,6 +13,7 @@ pman_restore_desc: "Gjenopprett en fjernet plugin."
 pman_editor_desc: "Redigér en pluginkonfigurasjon"
 pman_viewer_desc: "Se på en pluginkonfigurasjon"
 pman_update_desc: "Oppdatér denne pluginen."
+pman_permission_desc: "Test if a player has permission"
 pman_config_language: "Bytt språk"
 pman_config_reload: "Last inn konfigurasjon på nytt"
 pman_usage_desc: "Kommandobruk."
@@ -67,7 +68,7 @@ version_check_complete_update4: "&aKjør &b/pman update&a for å oppdatere."
 selected_directory: "&cSelected File is Directory, cannot continue."
 start_dl_plugin: "&aStarted downloading plugin."
 url: '&bURL: %s'
-file: '&bFilename: %s'
+filename: '&bFilename: %s'
 download_failed: "&cFailed to download. Server down or wrong url."
 download_success: "&aSuccessfully download."
 total_time: '&bTotal time: %s'
@@ -79,3 +80,14 @@ cant_show_usage: "&cCan't show usage of command."
 reloading_plugin: '&aReloading plugin: %s ...'
 reloaded_plugin: '&aReloaded plugin: %s'
 reloading_plugin_error: '&cError while reloading plugin: %s'
+permission_node: 'Permission Node'
+command: 'Command'
+directory: 'Directory'
+file: 'File'
+current_filename: '(Current)FileName'
+new_name: 'New Name'
+value: 'Value'
+plugin: 'Plugin'
+test_donthave_permission: '&c%s does not have a permission: %s'
+test_has_permission: '&a%s has permission: %s'
+player: 'Player'
