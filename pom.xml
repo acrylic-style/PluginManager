@@ -55,10 +55,10 @@
             <enabled>true</enabled>
         </snapshots>
     </repository>
-    <!-- repository>
+    <repository>
       <id>tomeito-repo</id>
       <url>https://rht0910.tk/maven/</url>
-    </repository -->
+    </repository>
     <repository>
       <id>spigot-repo</id>
       <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
