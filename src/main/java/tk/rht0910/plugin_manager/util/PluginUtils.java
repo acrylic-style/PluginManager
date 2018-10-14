@@ -303,7 +303,6 @@ public final class PluginUtils {
 						sender.sendMessage(list.toArray()[line_option].toString());
 					} catch (Throwable e) {
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.invalid_args));
-						e.printStackTrace();
 					}
 					return true;
 				}
