@@ -285,6 +285,8 @@ public final class PluginUtils {
 				List<String> list = new ArrayList<String>();
 				String str;
 				if(line_option != null ) {
+					sender.sendMessage(list.toArray()[line_option].toString());
+					/*
 					try {
 						for(int i=0; i<=list.size(); i++) {
 							if(i != line_option) {
@@ -302,6 +304,7 @@ public final class PluginUtils {
 							e.printStackTrace();
 						}
 					}
+					*/
 				} else {
 					try {
 						while((str = br.readLine()) != null){
