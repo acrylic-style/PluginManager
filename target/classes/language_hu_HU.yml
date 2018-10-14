@@ -1,7 +1,7 @@
 ---
 help: "Segítség"
 invalid_args: "Érvénytelen argumentumok"
-required: "Kötelező"
+required: "Szükséges"
 optional: "Választható"
 information: "Információ"
 pman_help_desc: "Jelenítse meg."
@@ -21,13 +21,13 @@ pman_check_desc: "Ellenőrzi kézzel a verziót."
 pman_reload_desc: "Újratölti a plugint."
 pman_version_desc: "Megjeleníti a plugin verziót."
 pman_version: "&aPluginManager:&b&n %s"
-failed_update_plugin: "&cNem sikerült frissíteni(A szerver le van állítva?)"
+failed_update_plugin: "&cNem sikerült frissíteni (le van-e állítva a szerver?)"
 updating_plugin: "&aA plugin frissítése..."
 success_update_plugin: "&5A plugin frissítve lett %s által . Kérlek, töltsd újra!"
-you_are_not_operator: "&cNem vagy egy operátor!"
+you_are_not_operator: "&cYou are not an operator!"
 no_permission: "&cNincs jogod ehhez."
 opened_config_viewer: "%s megnyitott egy konfigurációs megjelenítőt"
-not_enough_args: "&cNincs elég argumentum, nem folytatható."
+not_enough_args: "&cNincs elég argumentum, nem folytatódik."
 running_on: '&aA PluginManager fut: %s'
 available_commands: '&aElérhető parancsok: /pman help'
 beta: "(BETA)"
@@ -41,14 +41,14 @@ already_disabled: "&cEz a plugin már letiltva!"
 failed_load_plugin: '&cNem lehet betölteni a plugint: %s'
 success_load_plugin: '&aPlugin betöltve: %s'
 error_occured: '&cHiba lépett fel: %s'
-error_unload_plugin: '&cHiba történt a plugin újratöltése közben: %s'
+error_unload_plugin: '&cAn error occurred while unloading the plugin: %s'
 unloaded_plugin: '&aA plugin újratöltve: %s'
 reloading_config: "&aKonfig újratöltése..."
-error_reload_config: '&cHiba történt a konfigurálás újratöltése közben: PluginManager'
+error_reload_config: '&cHiba lépett fel a konfig újratöltésekor: PluginManager'
 reloaded_config: '&aKonfig újratöltve: PluginManager'
 set_language: '&aA konfig nyelv beállítva: %s'
 init_complete: "Inicializálása befejezve."
-init_error: "Hiba történt a beépülő modul inicializálásakor, letiltva a hibákat."
+init_error: "Hiba történt a plugin inicializálásakor, plugin letiltása, kérlek, nézd meg a hibákat."
 continue_error: "&4Ha a hiba továbbra is fennáll? Kérjük, jelentse a fejlesztőnek!"
 continue_error_catch: '&4Ha a hiba továbbra is fennáll? Kérjük, jelentse a fejlesztőnek! (Kérjük, mondja meg a fejlesztőnek: %s)'
 please_report_developer: "&4A hiba nem oldható meg a felhasználóban. Kérjük, jelentkezzen a fejlesztőnek!"
@@ -74,12 +74,12 @@ download_success: "&aA letöltés sikeres."
 total_time: '&bTeljes idő: %s'
 finished_time: '&bBefejeződött idő: %s'
 start_time: '&bKezdési idő: %s'
-warning_lang_invalid: '&cFigyelmeztetés: Érvénytelen tulajdonságok ''nyelv'' a konfigurációban. Kérjük, állítsa be (ismét) a nyelvet.'
+warning_lang_invalid: '&cFigyelmeztetés: Érvénytelen tulajdonságok ''nyelv'' a konfigurációban. Állítsd be újra a nyelvet.'
 unknown_args: '&bIsmeretlen argumentum: %s'
 cant_show_usage: "&cA parancs használatát nem lehet megjeleníteni."
 reloading_plugin: '&aA plugin újratöltése: %s ...'
 reloaded_plugin: '&aA plugin újratöltve: %s'
-reloading_plugin_error: '&cA plugin újratöltése közben hiba történt: %s'
+reloading_plugin_error: '&cHiba történt a plugin újratöltésekor: %s'
 permission_node: 'Engedélyezési csomópont'
 command: 'Parancs'
 directory: 'Könyvtár'

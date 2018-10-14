@@ -242,16 +242,20 @@ public final class PluginUtils {
 		String[] args = marg.split(",");
 		Integer line_option = null;
 		try {
-		for(int i=0; i<=args.length; i++) {
-			if(args[i].contains("l:")) { // l : line
-				// String line_debug = args[i].replaceAll("l:", "");
-				Log.debug(args[i].replaceAll("l:", ""));
-				line_option = new Integer(args[i].replaceAll("l:", ""));
-			} else {
-				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.unknown_args, args[i])));
+			for(int i=0; i<=args.length; i++) {
+				String[] split = args[i].split(":");
+				if ("l".equals(split[0])) {
+					line_option = Integer.parseInt(split[1]);
+				} else {
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.invalid_args));
+					return true;
+				}
 			}
+		} catch(NullPointerException | ArrayIndexOutOfBoundsException ignore) {/* - Abort - */} catch (NumberFormatException ex) {
+			Bukkit.getServer().getLogger().severe(ChatColor.translateAlternateColorCodes(altColorChar, Lang.error_occured));
+			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.error_occured));
+			ex.printStackTrace();
 		}
-		} catch(NullPointerException | ArrayIndexOutOfBoundsException ignoore) {/* - Abort - */}
 		BufferedReader br = null;
 		File file = null;
 		file = new File("plugins/" + arg1 + "/" + arg2 + ".yml");
