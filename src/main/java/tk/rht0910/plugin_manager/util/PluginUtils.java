@@ -300,8 +300,7 @@ public final class PluginUtils {
 						e.printStackTrace();
 					}
 				}
-				if(((line_option != null) && (!Double.isNaN((double)line_option) && (args.length != 0)) || 
-						"all".equals(line_raw))) { // it meaning you can use " ... config.yml l:all"
+				if(((line_option != null) && (!Double.isNaN((double)line_option) && (args.length != 0)) || !"all".equals(line_raw))) {
 					try {
 						sender.sendMessage(list.toArray()[line_option].toString());
 					} catch (Throwable e) {
@@ -309,11 +308,13 @@ public final class PluginUtils {
 					}
 					return true;
 				}
-				Object[] arg = list.toArray();
-				for(int i=0;i<=arg.length;i++) {
-					sender.sendMessage("[" + i + "] " + arg[i]);
-				}
-				//Object[] arg = list.toArray();
+				try {
+					Object[] arg = list.toArray();
+					for(int i=0;i<=arg.length;i++) {
+						sender.sendMessage("[" + i + "] " + arg[i]);
+					}
+					//Object[] arg = list.toArray();
+				} catch (Throwable ignore) {}
 				return true;
 			} else {
 				sender.sendMessage(ChatColor.RED + "Selected File is Directory, cannot continue.");
