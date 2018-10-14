@@ -242,19 +242,19 @@ public final class PluginUtils {
 		String[] args = marg.split(",");
 		Integer line_option = null;
 		try {
-			for(int i=0; i<=args.length; i++) {
-				String[] split = args[i].split(":");
-				if ("l".equals(split[0])) {
-					line_option = Integer.parseInt(split[1]);
-				} else {
-					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.invalid_args));
-					return true;
+			if (args.length != 0) {
+				for(int i=0; i<=args.length; i++) {
+					String[] split = args[i].split(":");
+					if ("l".equals(split[0])) {
+						line_option = Integer.parseInt(split[1]);
+					} else {
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.invalid_args));
+						return true;
+					}
 				}
 			}
-		} catch(NullPointerException | ArrayIndexOutOfBoundsException ignore) {/* - Abort - */} catch (NumberFormatException ex) {
-			Bukkit.getServer().getLogger().severe(ChatColor.translateAlternateColorCodes(altColorChar, Lang.error_occured));
-			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.error_occured));
-			ex.printStackTrace();
+		} catch(NullPointerException | ArrayIndexOutOfBoundsException ignore) {/* - Abort - */} catch (NumberFormatException ignore) {
+			sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.invalid_args));
 		}
 		BufferedReader br = null;
 		File file = null;
@@ -298,7 +298,7 @@ public final class PluginUtils {
 						e.printStackTrace();
 					}
 				}
-				if(line_option != null ) {
+				if((line_option != null) && (line_option != 0) && (Double.isNaN((double)line_option))) {
 					try {
 						sender.sendMessage(list.toArray()[line_option].toString());
 					} catch (Throwable e) {
