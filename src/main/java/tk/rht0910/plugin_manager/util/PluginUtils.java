@@ -241,12 +241,14 @@ public final class PluginUtils {
 		String arg2 = configFile;
 		String[] args = marg.split(",");
 		Integer line_option = null;
+		String line_raw = null;
 		try {
 			if (args.length != 0) {
 				for(int i=0; i<=args.length; i++) {
 					String[] split = args[i].split(":");
 					if ("l".equals(split[0])) {
 						line_option = Integer.parseInt(split[1]);
+						line_raw = split[1];
 					} else {
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.invalid_args));
 						return true;
@@ -298,7 +300,8 @@ public final class PluginUtils {
 						e.printStackTrace();
 					}
 				}
-				if((line_option != null) && (!Double.isNaN((double)line_option) && (args.length != 0))) {
+				if(((line_option != null) && (!Double.isNaN((double)line_option) && (args.length != 0)) || 
+						"all".equals(line_raw))) { // it meaning you can use " ... config.yml l:all"
 					try {
 						sender.sendMessage(list.toArray()[line_option].toString());
 					} catch (Throwable e) {
