@@ -284,42 +284,22 @@ public final class PluginUtils {
 				}
 				List<String> list = new ArrayList<String>();
 				String str;
-				if(line_option != null ) {
-					sender.sendMessage(list.toArray()[line_option].toString());
-					/*
-					try {
-						for(int i=0; i<=list.size(); i++) {
-							if(i != line_option) {
-								list.remove(i);
-							} else {
-								list.set(0, (String) list.toArray()[line_option]);
-								continue;
-							}
-						}
-					} catch(Exception | Error ignored) {
-					} finally {
-						try {
-							br.close();
-						} catch(IOException e) {
-							e.printStackTrace();
-						}
+				try {
+					while((str = br.readLine()) != null){
+						list.add(str);
 					}
-					*/
-				} else {
+				} catch (IOException e) {
+					e.printStackTrace();
+					return false;
+				} finally {
 					try {
-						while((str = br.readLine()) != null){
-							list.add(str);
-						}
+						br.close();
 					} catch (IOException e) {
 						e.printStackTrace();
-						return false;
-					} finally {
-						try {
-							br.close();
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
 					}
+				}
+				if(line_option != null ) {
+					sender.sendMessage(list.toArray()[line_option].toString());
 				}
 				Object[] arg = list.toArray();
 				for(int i=0;i<=arg.length;i++) {
