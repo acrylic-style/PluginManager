@@ -298,7 +298,7 @@ public final class PluginUtils {
 						e.printStackTrace();
 					}
 				}
-				if((line_option != null) && (line_option != 0) && (Double.isNaN((double)line_option))) {
+				if((line_option != null) && (!Double.isNaN((double)line_option) && (args.length != 0))) {
 					try {
 						sender.sendMessage(list.toArray()[line_option].toString());
 					} catch (Throwable e) {
