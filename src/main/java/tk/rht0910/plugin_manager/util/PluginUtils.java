@@ -299,7 +299,13 @@ public final class PluginUtils {
 					}
 				}
 				if(line_option != null ) {
-					sender.sendMessage(list.toArray()[line_option].toString());
+					try {
+						sender.sendMessage(list.toArray()[line_option].toString());
+					} catch (Throwable e) {
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.invalid_args));
+						e.printStackTrace();
+					}
+					return true;
 				}
 				Object[] arg = list.toArray();
 				for(int i=0;i<=arg.length;i++) {
