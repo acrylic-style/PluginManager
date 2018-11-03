@@ -1,5 +1,5 @@
 
-# PluginManager [![Discord](https://discordapp.com/api/guilds/444356644109811713/embed.png)](https://discord.gg/hkkF8nF) [![Build Status](https://ci.rht0910.tk/job/PluginManager/badge/icon)](https://ci.rht0910.tk/job/PluginManager/) 
+# PluginManager [![Discord](https://discordapp.com/api/guilds/460812821412708352/embed.png)](https://discord.gg/xQQXp4B) [![Build Status](https://ci.rht0910.tk/job/PluginManager/badge/icon)](https://ci.rht0910.tk/job/PluginManager/) 
 
 Development Builds: [![Build Status](https://ci.rht0910.tk/job/PluginManager-dev/badge/icon)](https://ci.rht0910.tk/job/PluginManager-dev/)
 
