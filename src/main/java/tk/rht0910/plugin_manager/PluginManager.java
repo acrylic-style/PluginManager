@@ -67,10 +67,10 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					Log.warn("We recommended update " + version + " to 1.8 or later!");
 					Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
 				}
-				if(StringTool.toVersion("1.13").compareTo(StringTool.toVersion(version)) == -1) {
+				if(StringTool.toVersion("1.13.2").compareTo(StringTool.toVersion(version)) == -1) {
 					Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
 					Log.warn("Your server version(" + version + ") is not supported!");
-					Log.warn("We recommended downgrade " + version + " to 1.12.2 or older!");
+					Log.warn("We recommended downgrade " + version + " to 1.13.2 or older!");
 					Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
 				}
 			} catch(Throwable e) {
@@ -80,7 +80,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 			this.getConfig().options().copyDefaults(true);
 			this.saveConfig();
 			CatchException catchException = new CatchException();
-				Thread thread = new Thread(new VersionCheck(null, null, "https://api.rht0910.tk/pluginmanager_version"), "");
+				Thread thread = new Thread(new VersionCheck(null, null, "https://api.acrylicstyle.xyz/pluginmanager_version"), "");
 				thread.setUncaughtExceptionHandler(catchException);
 				thread.start();
 				getServer().getPluginManager().registerEvents(this, this);
@@ -291,9 +291,9 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					sender.sendMessage(ChatColor.AQUA + " - /pman check - " + Lang.pman_check_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman check-dev - " + Lang.pman_check_desc + ChatColor.RED + "(dev)");
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.project_page, "https://dev.bukkit.org/projects/pluginmanagement/")));
-					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.developer_version, "http://ci.rht0910.tk/job/PluginManager/")));
-					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.source_code, "https://github.com/rht0910/PluginManager/")));
-					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.problem_case, "https://github.com/rht0910/PluginManager/issues/")));
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.developer_version, "http://ci.acrylicstyle.xyz/job/PluginManager/")));
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.source_code, "https://github.com/acrylic-style/PluginManager/")));
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.problem_case, "https://github.com/acrylic-style/PluginManager/issues/")));
 					if(warning) {
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.warning_lang_invalid));
 					}
@@ -425,7 +425,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 				}
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.updating_plugin));
 				try {
-					PluginUtils.download(sender, "PluginManager", "https://ci.rht0910.tk/job/PluginManager/lastSuccessfulBuild/artifact/target/PluginManager.jar");
+					PluginUtils.download(sender, "PluginManager", "https://ci.acrylicstyle.xyz/job/PluginManager/lastSuccessfulBuild/artifact/target/PluginManager.jar");
 				} catch(Exception e) {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.failed_update_plugin));
 					return false;
@@ -450,7 +450,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 				}
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.updating_plugin));
 				try {
-					PluginUtils.download(sender, "PluginManager", "https://ci.rht0910.tk/job/PluginManager-dev/lastSuccessfulBuild/artifact/target/PluginManager.jar");
+					PluginUtils.download(sender, "PluginManager", "https://ci.acrylicstyle.xyz/job/PluginManager-dev/lastSuccessfulBuild/artifact/target/PluginManager.jar");
 				} catch(Exception e) {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.failed_update_plugin));
 					return false;
@@ -458,10 +458,10 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 			} else if(args[0].equalsIgnoreCase("usage")) {
 				PluginUtils.getUsageOfCmd(sender, args[1]);
 			} else if(args[0].equalsIgnoreCase("check")) {
-				VersionCheck vc = new VersionCheck(true, sender, "https://api.rht0910.tk/pluginmanager_version", "");
+				VersionCheck vc = new VersionCheck(true, sender, "https://api.acrylicstyle.xyz/pluginmanager_version", "");
 				vc.start();
 			} else if(args[0].equalsIgnoreCase("check-dev")) {
-				VersionCheck vcd = new VersionCheck(true, sender, "https://api.rht0910.tk/pluginmanager_dev_version", "(dev)");
+				VersionCheck vcd = new VersionCheck(true, sender, "https://api.acrylicstyle.xyz/pluginmanager_dev_version", "(dev)");
 				vcd.start();
 			} else if(args[0].equalsIgnoreCase("permission")) { // Check if player has a permission, always returns true
 				if(args.length < 3) {
@@ -483,9 +483,9 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 						sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...> - " + Lang.pman_config_language);
 						sender.sendMessage(ChatColor.AQUA + " - /pman config reload - " + Lang.pman_config_reload);
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.project_page, "https://dev.bukkit.org/projects/pluginmanagement/")));
-						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.developer_version, "http://point.rht0910.tk:8080/job/PluginManager/")));
-						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.source_code, "https://github.com/rht0910/PluginManager/")));
-						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.problem_case, "https://github.com/rht0910/PluginManager/issues/")));
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.developer_version, "http://ci.acrylicstyle.xyz/job/PluginManager/")));
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.source_code, "https://github.com/acrylic-style/PluginManager/")));
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.problem_case, "https://github.com/acrylic-style/PluginManager/issues/")));
 						return true;
 					}
 					if(args[1].equals("")) {
@@ -495,7 +495,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 						sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...> - " + Lang.pman_config_language);
 						sender.sendMessage(ChatColor.AQUA + " - /pman config reload - " + Lang.pman_config_reload);
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.project_page, "https://dev.bukkit.org/projects/pluginmanagement/")));
-						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.developer_version, "http://point.rht0910.tk:8080/job/PluginManager/")));
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.developer_version, "http://ci.acrylicstyle.xyz/job/PluginManager/")));
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.source_code, "https://github.com/rht0910/PluginManager/")));
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.problem_case, "https://github.com/rht0910/PluginManager/issues/")));
 						return true;
@@ -507,7 +507,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...> - " + Lang.pman_config_language);
 					sender.sendMessage(ChatColor.AQUA + " - /pman config reload - " + Lang.pman_config_reload);
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.project_page, "https://dev.bukkit.org/projects/pluginmanagement/")));
-					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.developer_version, "http://point.rht0910.tk:8080/job/PluginManager/")));
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.developer_version, "http://ci.acrylicstyle.xyz/job/PluginManager/")));
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.source_code, "https://github.com/rht0910/PluginManager/")));
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.problem_case, "https://github.com/rht0910/PluginManager/issues/")));
 					return true;
@@ -522,9 +522,9 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 						sender.sendMessage(ChatColor.AQUA + " - /pman config language <en_US, ja_JP, ...> - " + Lang.pman_config_language);
 						sender.sendMessage(ChatColor.AQUA + " - /pman config reload - " + Lang.pman_config_reload);
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.project_page, "https://dev.bukkit.org/projects/pluginmanagement/")));
-						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.developer_version, "http://point.rht0910.tk:8080/job/PluginManager/")));
-						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.source_code, "https://github.com/rht0910/PluginManager/")));
-						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.problem_case, "https://github.com/rht0910/PluginManager/issues/")));
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.developer_version, "http://ci.acrylicstyle.xyz/job/PluginManager/")));
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.source_code, "https://github.com/acrylic-style/PluginManager/")));
+						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.problem_case, "https://github.com/acrylic-style/PluginManager/issues/")));
 						Log.warn(Lang.error_occured);
 
 						e.printStackTrace();
@@ -571,9 +571,9 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					sender.sendMessage(ChatColor.AQUA + " - /pman check - " + Lang.pman_check_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman check-dev - " + Lang.pman_check_desc + ChatColor.RED + "(dev)");
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.project_page, "https://dev.bukkit.org/projects/pluginmanagement/")));
-					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.developer_version, "http://ci.rht0910.tk/job/PluginManager/")));
-					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.source_code, "https://github.com/rht0910/PluginManager/")));
-					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.problem_case, "https://github.com/rht0910/PluginManager/issues/")));
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.developer_version, "http://ci.acrylicstyle.xyz/job/PluginManager/")));
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.source_code, "https://github.com/acrylic-style/PluginManager/")));
+					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.problem_case, "https://github.com/acrylic-style/PluginManager/issues/")));
 					if(warning) {
 						sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.warning_lang_invalid));
 					}

@@ -7,10 +7,8 @@
 
   <developers>
     <developer>
-      <name>rht0910</name>
-      <email>rht0910@rht0910.tk</email>
-      <organization>rht0910</organization>
-      <organizationUrl>rht0910.tk</organizationUrl>
+      <name>Acrylic Style</name>
+      <email>me@acrylicstyle.xyz</email>
     </developer>
   </developers>
 
@@ -46,8 +44,8 @@
   <repositories>
       <repository>
         <id>rht0910-central</id>
-        <name>rht0910's maven central[proxy]</name>
-        <url>https://repo.rht0910.tk/repository/maven-public/</url>
+        <name>Acrylic Style's Repository</name>
+        <url>https://repo.acrylicstyle.xyz/maven/</url>
         <releases>
             <enabled>true</enabled>
         </releases>
@@ -102,14 +100,7 @@
       <pluginRepositories>
         <pluginRepository>
             <id>maven-public</id>
-            <url>https://repo.rht0910.tk/repository/maven-public/</url>
+            <url>https://repo.acrylicstyle.xyz/maven/</url>
         </pluginRepository>
     </pluginRepositories>
-
-    <distributionManagement>
-        <repository>
-            <id>plugin-manager</id>
-            <url>https://repo.rht0910.tk/repository/PluginManager/</url>
-        </repository>
-    </distributionManagement>
 </project>
