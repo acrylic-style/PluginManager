@@ -1,7 +1,6 @@
 package tk.rht0910.plugin_manager;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -403,16 +402,14 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 				}
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.updating_plugin));
 				try {
-					PluginUtils.download(sender, "PluginManager", "https://ci.acrylicstyle.xyz/job/PluginManager/lastSuccessfulBuild/artifact/target/PluginManager.jar");
+					PluginUtils.download(sender, "PluginManager", "https://ci.acrylicstyle.xyz/job/PluginManager/lastSuccessfulBuild/artifact/PluginManager.jar");
 				} catch(Exception e) {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.failed_update_plugin));
 					return false;
 				}
-				final Collection<? extends Player> onplayers = Bukkit.getServer().getOnlinePlayers();
-				final Player[] players = (Player[]) onplayers.toArray();
-				for(int i=0;i<=players.length;i++) {
-					if(players[i].isOp()) {
-						players[i].sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.success_update_plugin, sender.toString())));
+				for(Player player: Bukkit.getOnlinePlayers()) {
+					if(player.isOp()) {
+						player.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.success_update_plugin, sender.toString())));
 					}
 				}
 			} else if(args[0].equalsIgnoreCase("update-dev")) {
@@ -428,7 +425,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 				}
 				sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.updating_plugin));
 				try {
-					PluginUtils.download(sender, "PluginManager", "https://ci.acrylicstyle.xyz/job/PluginManager-dev/lastSuccessfulBuild/artifact/target/PluginManager.jar");
+					PluginUtils.download(sender, "PluginManager", "https://ci.acrylicstyle.xyz/job/PluginManager-dev/lastSuccessfulBuild/artifact/PluginManager.jar");
 				} catch(Exception e) {
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, Lang.failed_update_plugin));
 					return false;
@@ -456,7 +453,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 				if (args[2] == null) return false;
 				PacketContainer demo = new PacketContainer(PacketType.Play.Server.GAME_STATE_CHANGE);
 				Log.debug("args1: " + Integer.parseUnsignedInt(args[1]) + ", args2: " + Float.parseFloat(args[2]));
-				demo.getFloat().write(Integer.parseUnsignedInt(args[1]), Float.parseFloat(args[2]));
+				demo.getFloat().write(Integer.parseInt(args[2]), Float.parseFloat(args[1]));
 				for (Player player : Bukkit.getOnlinePlayers()) {
 					protocolManager.sendServerPacket(player, demo);
 					player.sendMessage(ChatColor.GREEN + sender.getName() + " changed game settings to: " + args[1] + ", " + args[2]);
