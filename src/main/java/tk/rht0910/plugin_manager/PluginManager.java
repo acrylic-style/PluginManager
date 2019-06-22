@@ -455,9 +455,8 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 			} else if(args[0].equalsIgnoreCase("sendgamestate")) {
 				if (args[2] == null) return false;
 				PacketContainer demo = new PacketContainer(PacketType.Play.Server.GAME_STATE_CHANGE);
-				Log.debug("args1: " + Integer.parseInt(args[1]) + ", args2: " + Float.parseFloat(args[2]));
-				//demo.getFloat().write(Integer.parseInt(args[1]), Float.parseFloat(args[2]));
-				demo.getFloat().write(5, 0.0f);
+				Log.debug("args1: " + Integer.parseUnsignedInt(args[1]) + ", args2: " + Float.parseFloat(args[2]));
+				demo.getFloat().write(Integer.parseUnsignedInt(args[1]), Float.parseFloat(args[2]));
 				for (Player player : Bukkit.getOnlinePlayers()) {
 					protocolManager.sendServerPacket(player, demo);
 					player.sendMessage(ChatColor.GREEN + sender.getName() + " changed game settings to: " + args[1] + ", " + args[2]);
