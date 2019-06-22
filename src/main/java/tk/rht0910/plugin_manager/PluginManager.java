@@ -456,6 +456,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 				if (args[2] == null) return false;
 				PacketContainer demo = protocolManager
 					.createPacket(PacketType.Play.Server.GAME_STATE_CHANGE);
+				Log.debug("args1: " + Integer.parseInt(args[1]) + ", args2: " + Float.parseFloat(args[2]));
 				demo.getFloat().write(Integer.parseInt(args[1]), Float.parseFloat(args[2]));
 				for (Player player : Bukkit.getOnlinePlayers()) {
 					protocolManager.sendServerPacket(player, demo);
