@@ -20,6 +20,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.ProtocolManager;
 import com.comphenix.protocol.events.PacketContainer;
 
 import tk.rht0910.plugin_manager.exception.CatchException;
@@ -54,6 +55,12 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 		}
 		return getty;
 	}
+	private ProtocolManager protocolManager;
+
+	@Override
+	public void onLoad() {
+		protocolManager = ProtocolLibrary.getProtocolManager();
+	}
 
 	@Override
 	public void onEnable() {
@@ -73,16 +80,6 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 			e.printStackTrace();
 			Manager.getPluginUtil();
 			PluginUtils.unloadPlugin(null, "PluginManager");
-		}
-	}
-
-	@Override
-	public void onLoad() {
-		try {
-			Bukkit.getServer().getLogger().info("[PluginManager] Loaded PluginManager v1.4.2.3");
-		} catch(Exception e) {
-			Bukkit.getServer().getLogger().info("[PluginManager] Got Unknown error: " + e);
-			e.printStackTrace();
 		}
 	}
 
@@ -457,14 +454,12 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 				return true;
 			} else if(args[0].equalsIgnoreCase("sendgamestate")) {
 				if (args[2] == null) return false;
-				PacketContainer demo = ProtocolLibrary.getProtocolManager()
+				PacketContainer demo = protocolManager
 					.createPacket(PacketType.Play.Server.GAME_STATE_CHANGE);
-				demo.getIntegers().write(Integer.parseInt(args[1]), Integer.parseInt(args[2]));
-				demo.getFloat().write(Integer.parseInt(args[2]), Float.parseFloat(args[2]));
-				Player[] ppl = (Player[])Bukkit.getOnlinePlayers().toArray();
-				for (int i = 0; i <= ppl.length; i++) {
-					ProtocolLibrary.getProtocolManager().sendServerPacket(ppl[i], demo);
-					ppl[i].sendMessage(ChatColor.GREEN + sender.getName() + " changed game settings to: " + args[1] + ", " + args[2]);
+				demo.getFloat().write(Integer.parseInt(args[1]), Float.parseFloat(args[2]));
+				for (Player player : Bukkit.getOnlinePlayers()) {
+					protocolManager.sendServerPacket(player, demo);
+					player.sendMessage(ChatColor.GREEN + sender.getName() + " changed game settings to: " + args[1] + ", " + args[2]);
 				}
 			} else if(args[0].equalsIgnoreCase("config")) {
 				try {

@@ -1,7 +1,7 @@
 name: PluginManager
 main: tk.rht0910.plugin_manager.PluginManager
 version: 1.4.3
-depend: [TomeitoLib]
+depend: [TomeitoLib, ProtocolLib]
 
 commands:
    pman:
