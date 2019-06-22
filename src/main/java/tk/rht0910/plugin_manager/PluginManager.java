@@ -18,18 +18,21 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.events.PacketContainer;
+
 import tk.rht0910.plugin_manager.exception.CatchException;
 import tk.rht0910.plugin_manager.language.Lang;
 import tk.rht0910.plugin_manager.thread.VersionCheck;
 import tk.rht0910.plugin_manager.util.Manager;
 import tk.rht0910.plugin_manager.util.PluginUtils;
-import tk.rht0910.plugin_manager.util.StringTool;
 import tk.rht0910.tomeito_core.utils.Log;
 
 /**
  *
  * The Perfect Plugin Manager.
- * This class is cannot be extend.
+ * This class is cannot be extend'd.
  *
  */
 public final class PluginManager extends JavaPlugin implements TabCompleter, Listener {
@@ -55,28 +58,6 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 	@Override
 	public void onEnable() {
 		try {
-
-			Log.info("Checking bukkit version");
-			try {
-				//String version = Bukkit.getServer().getClass().getPackage().getName().substring(Bukkit.getServer().getClass().getPackage().getName().lastIndexOf('n') + 1);
-				//String version = Bukkit.getBukkitVersion();
-				String version = Bukkit.getVersion();
-				if(StringTool.toVersion("1.8").compareTo(StringTool.toVersion(version)) == 1) {
-					Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
-					Log.warn("Your server version(" + version + ") is not supported!");
-					Log.warn("We recommended update " + version + " to 1.8 or later!");
-					Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
-				}
-				if(StringTool.toVersion("1.13.2").compareTo(StringTool.toVersion(version)) == -1) {
-					Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
-					Log.warn("Your server version(" + version + ") is not supported!");
-					Log.warn("We recommended downgrade " + version + " to 1.13.2 or older!");
-					Log.warn("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
-				}
-			} catch(Throwable e) {
-				Log.error("Version comparation failed!");
-				e.printStackTrace();
-			}
 			this.getConfig().options().copyDefaults(true);
 			this.saveConfig();
 			CatchException catchException = new CatchException();
@@ -474,6 +455,17 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.test_donthave_permission, args[1], args[2])));
 				}
 				return true;
+			} else if(args[0].equalsIgnoreCase("sendgamestate")) {
+				if (args[2] == null) return false;
+				PacketContainer demo = ProtocolLibrary.getProtocolManager()
+					.createPacket(PacketType.Play.Server.GAME_STATE_CHANGE);
+				demo.getIntegers().write(Integer.parseInt(args[1]), Integer.parseInt(args[2]));
+				demo.getFloat().write(Integer.parseInt(args[2]), Float.parseFloat(args[2]));
+				Player[] ppl = (Player[])Bukkit.getOnlinePlayers().toArray();
+				for (int i = 0; i <= ppl.length; i++) {
+					ProtocolLibrary.getProtocolManager().sendServerPacket(ppl[i], demo);
+					ppl[i].sendMessage(ChatColor.GREEN + sender.getName() + " changed game settings to: " + args[1] + ", " + args[2]);
+				}
 			} else if(args[0].equalsIgnoreCase("config")) {
 				try {
 					if(args[1] == null) {
@@ -570,6 +562,7 @@ public final class PluginManager extends JavaPlugin implements TabCompleter, Lis
 					sender.sendMessage(ChatColor.AQUA + " - /pman config reload - " + Lang.pman_config_reload);
 					sender.sendMessage(ChatColor.AQUA + " - /pman check - " + Lang.pman_check_desc);
 					sender.sendMessage(ChatColor.AQUA + " - /pman check-dev - " + Lang.pman_check_desc + ChatColor.RED + "(dev)");
+					sender.sendMessage(ChatColor.DARK_PURPLE + " - /pman sendgamestate <Reason> <Value> - ????????");
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.project_page, "https://dev.bukkit.org/projects/pluginmanagement/")));
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.developer_version, "http://ci.acrylicstyle.xyz/job/PluginManager/")));
 					sender.sendMessage(ChatColor.translateAlternateColorCodes(altColorChar, String.format(Lang.source_code, "https://github.com/acrylic-style/PluginManager/")));

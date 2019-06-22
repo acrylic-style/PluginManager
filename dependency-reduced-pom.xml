@@ -4,13 +4,11 @@
   <groupId>tk.rht0910.plugin_manager</groupId>
   <artifactId>PluginManager</artifactId>
   <name>PluginManager</name>
-  <version>1.4.2.3</version>
+  <version>1.4.3</version>
   <developers>
     <developer>
-      <name>rht0910</name>
-      <email>rht0910@rht0910.tk</email>
-      <organization>rht0910</organization>
-      <organizationUrl>rht0910.tk</organizationUrl>
+      <name>Acrylic Style</name>
+      <email>me@acrylicstyle.xyz</email>
     </developer>
   </developers>
   <build>
@@ -45,18 +43,22 @@
       <releases />
       <snapshots />
       <id>rht0910-central</id>
-      <name>rht0910's maven central[proxy]</name>
-      <url>https://repo.rht0910.tk/repository/maven-public/</url>
+      <name>Acrylic Style's Repository</name>
+      <url>https://repo.acrylicstyle.xyz/maven/</url>
     </repository>
     <repository>
       <id>spigot-repo</id>
       <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
     </repository>
+    <repository>
+      <id>dmulloy2-repo</id>
+      <url>http://repo.dmulloy2.net/nexus/repository/public/</url>
+    </repository>
   </repositories>
   <pluginRepositories>
     <pluginRepository>
       <id>maven-public</id>
-      <url>https://repo.rht0910.tk/repository/maven-public/</url>
+      <url>https://repo.acrylicstyle.xyz/maven/</url>
     </pluginRepository>
   </pluginRepositories>
   <dependencies>
@@ -121,11 +123,5 @@
       </exclusions>
     </dependency>
   </dependencies>
-  <distributionManagement>
-    <repository>
-      <id>plugin-manager</id>
-      <url>https://repo.rht0910.tk/repository/PluginManager/</url>
-    </repository>
-  </distributionManagement>
 </project>
 
