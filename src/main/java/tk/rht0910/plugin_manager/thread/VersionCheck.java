@@ -13,7 +13,7 @@ import org.bukkit.command.CommandSender;
 import tk.rht0910.plugin_manager.PluginManager;
 import tk.rht0910.plugin_manager.language.Lang;
 import tk.rht0910.plugin_manager.util.StringTool;
-import tk.rht0910.tomeito_core.utils.Log;
+import xyz.acrylicstyle.tomeito_core.utils.Log;
 
 public class VersionCheck extends Thread implements Runnable {
 	private static Boolean player;

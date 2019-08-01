@@ -16,7 +16,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
 import tk.rht0910.plugin_manager.language.Lang;
-import tk.rht0910.tomeito_core.utils.Log;
+import xyz.acrylicstyle.tomeito_core.utils.Log;
 
 public class AsyncDownload extends Thread {
 	private CommandSender sender = null;

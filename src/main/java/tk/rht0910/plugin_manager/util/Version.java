@@ -1,6 +1,6 @@
 package tk.rht0910.plugin_manager.util;
 
-import tk.rht0910.tomeito_core.utils.Log;
+import xyz.acrylicstyle.tomeito_core.utils.Log;
 
 public class Version implements Comparable<Version> {
 

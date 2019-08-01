@@ -34,5 +34,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="D:/OneDrive/Documents/bukkit-1.13-R0.1-SNAPSHOT-shaded-b1758.jar"/>
 	<classpathentry kind="lib" path="D:/OneDrive/Documents/Vault.jar"/>
+	<classpathentry kind="lib" path="D:/downloads/MicroJump.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -27,7 +27,7 @@ import tk.rht0910.plugin_manager.language.Lang;
 import tk.rht0910.plugin_manager.thread.VersionCheck;
 import tk.rht0910.plugin_manager.util.Manager;
 import tk.rht0910.plugin_manager.util.PluginUtils;
-import tk.rht0910.tomeito_core.utils.Log;
+import xyz.acrylicstyle.tomeito_core.utils.Log;
 
 /**
  *

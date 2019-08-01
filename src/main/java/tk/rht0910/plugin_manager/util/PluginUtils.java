@@ -18,7 +18,7 @@ import com.google.common.io.Files;
 
 import tk.rht0910.plugin_manager.language.Lang;
 import tk.rht0910.plugin_manager.thread.AsyncDownload;
-import tk.rht0910.tomeito_core.utils.Log;
+import xyz.acrylicstyle.tomeito_core.utils.Log;
 
 /**
  *
