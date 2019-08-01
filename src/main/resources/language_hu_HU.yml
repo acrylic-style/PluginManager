@@ -74,7 +74,7 @@ download_success: "&aA letöltés sikeres."
 total_time: '&bTeljes idő: %s'
 finished_time: '&bBefejeződött idő: %s'
 start_time: '&bKezdési idő: %s'
-warning_lang_invalid: '&cFigyelmeztetés: Érvénytelen tulajdonságok ''nyelv'' a konfigurációban. Állítsd be újra a nyelvet.'
+warning_lang_invalid: '&cFigyelmeztetés: Érvénytelen tulajdonságok a ''nyelv'' konfigurációban. Állítsd be újra a nyelvet.'
 unknown_args: '&bIsmeretlen argumentum: %s'
 cant_show_usage: "&cA parancs használatát nem lehet megjeleníteni."
 reloading_plugin: '&aA plugin újratöltése: %s ...'
