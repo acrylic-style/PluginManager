@@ -21,13 +21,13 @@ pman_check_desc: "手动检查版本更新。"
 pman_reload_desc: "重载一个插件。"
 pman_version_desc: "显示插件版本。"
 pman_version: "&a插件管理：&b&n %s"
-failed_update_plugin: "&cFailed to update(Is the server down?)"
+failed_update_plugin: "&c无法进行更新（服务器是否处于离线状态？）"
 updating_plugin: "&a正在更新插件···"
 success_update_plugin: "&5插件已被 %s 更新。请重新载入！"
-you_are_not_operator: "&cYou are not an operator!"
+you_are_not_operator: "&c您不是操作员！"
 no_permission: "&c您没有权限。"
 opened_config_viewer: "由 %s 打开了配置预览"
-not_enough_args: "&cNot enough arguments, cannot continue."
+not_enough_args: "&c参数不足，无法继续。"
 running_on: '&a插件管理正运行于： %s'
 available_commands: '&a可用指令：/pman help'
 beta: "（测试版）"
@@ -41,18 +41,18 @@ already_disabled: "&c此插件已被禁用！"
 failed_load_plugin: '&c无法载入插件： %s'
 success_load_plugin: '&a已载入插件： %s'
 error_occured: '&c发生错误： %s'
-error_unload_plugin: '&cAn error occurred while unloading the plugin: %s'
+error_unload_plugin: '&c卸载插件时发生错误：%s'
 unloaded_plugin: '&a已卸载插件： %s'
 reloading_config: "&a正在重新载入配置···"
-error_reload_config: '&cAn error occurred while reloading the config: PluginManager'
+error_reload_config: '&c重新载入配置时发生错误：插件管理'
 reloaded_config: '&a已重新载入配置：插件管理'
 set_language: '&a设置配置：language： %s'
 init_complete: "初始化完毕。"
-init_error: "An error occurred while initializing, disabling the plugin, please see errors."
+init_error: "初始化时发生错误，已禁用本插件，请查看错误日志。"
 continue_error: "&4若您发现错误仍存在请汇报给开发者！"
 continue_error_catch: '&4若您发现错误仍存在请汇报给开发者！（请告知开发者：%s）'
 please_report_developer: "&4错误无法被用户消除，请汇报给开发者！"
-please_report_developer_catch: '&4Error cannot be resolved in user. Please report to developer! Please tell to developer: %s'
+please_report_developer_catch: '&4用户无法解决此错误。请向开发者反馈下列信息：%s'
 problem_case: '&b - 在发生问题时： %s'
 new_version_available: '&a有新版本的插件管理可用：当前： %s， 新版： %s'
 new_version_available2: "&a输入 &b/pman update &a进行更新。"
@@ -74,12 +74,12 @@ download_success: "&a已成功下载。"
 total_time: '&b总时长： %s'
 finished_time: '&b完成时间： %s'
 start_time: '&b开始时间： %s'
-warning_lang_invalid: '&cWarning: Invalid properties ''language'' in config. Please set the language again.'
+warning_lang_invalid: '&c警告：配置内含有无效设置项 “language”。请再次设置语言。'
 unknown_args: '&b未知参数： %s'
 cant_show_usage: "&c无法显示指令使用。"
 reloading_plugin: '&a正在重新加载插件： %s ···'
 reloaded_plugin: '&a已重载插件： %s ···'
-reloading_plugin_error: '&cError while reloading the plugin: %s'
+reloading_plugin_error: '&c重载插件时发生错误：%s'
 permission_node: '权限节点'
 command: '指令'
 directory: '目录'
