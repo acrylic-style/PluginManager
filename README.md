@@ -1,5 +1,5 @@
 
-# PluginManager [![Discord](https://discordapp.com/api/guilds/460812821412708352/embed.png)](https://discord.gg/xQQXp4B) [![Build Status](https://ci.acrylicstyle.tk/job/PluginManager/badge/icon)](https://ci.acrylicstyle.tk/job/PluginManager/) 
+# PluginManager [![Build Status](https://ci.acrylicstyle.tk/job/PluginManager/badge/icon)](https://ci.acrylicstyle.tk/job/PluginManager/) 
 
 Development Builds: [![Build Status](https://ci.acrylicstyle.tk/job/PluginManager-dev/badge/icon)](https://ci.acrylicstyle.tk/job/PluginManager-dev/)
 
