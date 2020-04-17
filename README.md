@@ -1,11 +1,6 @@
+<b>Archived because of inactivity of this repository. See [PluginManager-Reloaded](https://github.com/acrylic-style/PluginManager-Reloaded.git) instead.</b> \(New repository with new bugless mechanics\)
 
-# PluginManager [![Build Status](https://ci.acrylicstyle.tk/job/PluginManager/badge/icon)](https://ci.acrylicstyle.tk/job/PluginManager/) 
-
-Development Builds: [![Build Status](https://ci.acrylicstyle.tk/job/PluginManager-dev/badge/icon)](https://ci.acrylicstyle.tk/job/PluginManager-dev/)
-
-TravisCI: [![Build Status](https://travis-ci.org/acrylic-style/PluginManager.svg?branch=master)](https://travis-ci.org/rht0910/PluginManager)
-
-Join our Discord Server! [PluginManager Support server](https://discord.gg/xQQXp4B)
+# PluginManager
 
 Bukkit Project page: https://dev.bukkit.org/projects/plugin-manage-r
 
@@ -62,10 +57,3 @@ Bukkit Project page: https://dev.bukkit.org/projects/plugin-manage-r
 | [1.4.1](https://github.com/acrylic-style/PluginManager/releases/tag/1.4.1) | ![](https://placehold.it/15/ff0000/000000?text=+) Not supported |
 | 1.4 | ![](https://placehold.it/15/ff0000/000000?text=+) Not supported |
 | Or older | ![](https://placehold.it/15/ff0000/000000?text=+) ![](https://placehold.it/15/ff0000/000000?text=+) ![](https://placehold.it/15/ff0000/000000?text=+) Extremely old version |
-
-## Downloads
-**Latest Stable: **[PluginManager.jar](https://dev.acrylicstyle.tk/dl/PluginManager.jar)
-
-**Latest(under dev): **[PluginManager-dev.jar](https://dev.acrylicstyle.tk/dl/PluginManager-dev.jar)
-
-**Required Plugin: **[TomeitoLib.jar](https://dev.acrylicstyle.tk/dl/TomeitoLib.jar)
